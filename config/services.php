@@ -31,4 +31,9 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'bee_fly_tour' => [
+        'base_url' => env('BEE_FLY_TOUR_BASE_URL', 'https://online.joinup.ua/export/default.php'),
+        'token' => env('BEE_FLY_TOUR_TOKEN'),
+    ],
+
 ];

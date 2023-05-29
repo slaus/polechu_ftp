@@ -83,7 +83,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'uk',
 
     /*
     |--------------------------------------------------------------------------
@@ -159,6 +159,8 @@ return [
         /*
          * Package Service Providers...
          */
+        App\Providers\BeeFlyTourProvider::class,
+        App\Providers\HelperServiceProvider::class,
 
         /*
          * Application Service Providers...
