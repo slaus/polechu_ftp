@@ -1,6 +1,6 @@
 <template>
     <div>
-        <v-tabs v-model="tab">
+        <v-tabs v-model="tab" height="40">
             <v-tab
                 v-for="locale in localizations"
                 :key="locale.code"

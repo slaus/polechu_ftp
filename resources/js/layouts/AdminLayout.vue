@@ -77,8 +77,9 @@ export default {
         })
     },
     mounted() {
-        this.$store.dispatch('authStore/user');
-        this.$store.commit('localizationStore/setLocale', this.authUser.locale);
+        this.$store.dispatch('authStore/user').then(() => {
+            this.$store.commit('localizationStore/setLocale', this.authUser.locale);
+        });
     },
     methods: {
         exit() {

@@ -29,12 +29,22 @@
                     </v-flex>
 
                     <v-flex class="xs12 sm12 px-0 px-sm-2">
-                        <MultiLangEditor
-                            :value.sync="page.content"
-                            :label="$t('labels.pageContent')"
-                            :readonly="isLoading"
-                            :error-messages="messageFieldError('content')"
-                        />
+                        <template v-if="page.slug === 'home'">
+                            <HomeContent :value.sync="page.content" />
+                        </template>
+
+<!--                        <template v-else-if="page.slug === 'about'">-->
+<!--                            <AboutContent :value.sync="page.content" />-->
+<!--                        </template>-->
+
+                        <template v-else>
+                            <MultiLangEditor
+                                :value.sync="page.content"
+                                :label="$t('labels.pageContent')"
+                                :readonly="isLoading"
+                                :error-messages="messageFieldError('content')"
+                            />
+                        </template>
                     </v-flex>
                 </v-layout>
             </v-card-text>
@@ -63,6 +73,7 @@ import validation from "../../mixins/validation";
 import localization from "../../mixins/localization";
 import MultiLangTextField from "../shared/MultiLangTextField";
 import MultiLangEditor from "../shared/MultiLangEditor";
+import HomeContent from "./contents/HomeContent.vue";
 
 export default {
     name: "EditPageComponent",
@@ -72,7 +83,8 @@ export default {
     ],
     components: {
         MultiLangTextField,
-        MultiLangEditor
+        MultiLangEditor,
+        HomeContent
     },
     props: {
         isActive: {

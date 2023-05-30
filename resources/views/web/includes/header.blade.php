@@ -5,8 +5,19 @@
                 <div class="col-md-6">
                     <div class="left">
                         <div class="social-icons-subnav">
-                            <div><i class="ti-mobile"></i>+02151 7778 009</div>
-                            <div><i class="ti-email"></i><a href= "mailto:companyname@gmail.com">contact@luxury.com</a></div>
+                            @if(! empty(settings('company.phone')))
+                                <div>
+                                    <i class="ti-mobile"></i>
+                                    {{ settings('company.phone') }}
+                                </div>
+                            @endif
+
+                            @if(! empty(settings('company.email')))
+                                <div>
+                                    <i class="ti-email"></i>
+                                    <a href="mailto:{{ settings('company.email') }}">{{ settings('company.email') }}</a>
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -14,11 +25,11 @@
                 <div class="col-md-6">
                     <div class="right">
                         <div class="social-icons-subnav">
-                            <a href="#"><span class="ti-facebook"></span></a>
-                            <a href="#"><span class="ti-dribbble"></span></a>
-                            <a href="#"><span class="ti-twitter"></span></a>
-                            <a  href="#"><span class="ti-instagram"></span></a>
-                            <a href="#"><span class="ti-linkedin"></span></a>
+                            @foreach(settings('socials', []) as $item)
+                                <a href="{{ $item['url'] }}" title="{{ translation($item['name'] ?? []) }}" rel="nofollow" target="_blank">
+                                    <span class="{{ $item['icon'] }}"></span>
+                                </a>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -35,9 +46,14 @@
                     <span class="icon icon-bar"></span>
                 </button>
 
-                <a class="navbar-brand white" href="/">
-                    <img class="white" alt="logo" src="/web/img/logo-white.png">
-                    <img class="black" alt="logo" src="/web/img/logo-black.png">
+                <a class="navbar-brand white" href="{{ route('page') }}">
+                    @if (! empty(settings('logo.light')))
+                        <img class="white" alt="logo" src="{{ image_uri(settings('logo.light')) }}">
+                    @endif
+
+                    @if (! empty(settings('logo.dark')))
+                        <img class="black" alt="logo" src="{{ image_uri(settings('logo.dark')) }}">
+                    @endif
                 </a>
 
                 <div class="white menu-init" id="main-menu">
@@ -86,18 +102,4 @@
             </div>
         </div>
     </div>
-
-{{--    @if (Route::has('login'))--}}
-{{--        <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10">--}}
-{{--            @auth--}}
-{{--                <a href="{{ url('/home') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Home</a>--}}
-{{--            @else--}}
-{{--                <a href="{{ route('login') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log in</a>--}}
-
-{{--                @if (Route::has('register'))--}}
-{{--                    <a href="{{ route('register') }}" class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a>--}}
-{{--                @endif--}}
-{{--            @endauth--}}
-{{--        </div>--}}
-{{--    @endif--}}
 </header>

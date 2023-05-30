@@ -28,7 +28,7 @@ h2 {
   min-height: 700px; }
 
 .half .contents {
-  background: #3ab0ff; }
+  background: #586487; }
 
 .half .bg {
   width: 25%; }
@@ -105,7 +105,7 @@ h2 {
   width: 20px;
   background: #ffffff;
   border-radius: 2px;
-    border: 1px solid #3ab0ff!important;
+    border: 1px solid #ffb600!important;
 }
 
 .control--radio .control__indicator {
@@ -116,11 +116,11 @@ h2 {
   background: #ffffff; }
 
 .control input:checked ~ .control__indicator {
-  background: #3ab0ff; }
+  background: #ffb600; }
 
 .control:hover input:not([disabled]):checked ~ .control__indicator,
 .control input:checked:focus ~ .control__indicator {
-  background: #3ab0ff; }
+  background: #ffb600; }
 
 .control input:disabled ~ .control__indicator {
   background: #e6e6e6;
@@ -168,14 +168,14 @@ h2 {
 
 .btn-primary, .btn-primary:hover {
     color: #fff;
-    background-color: #3ab0ff;
-    border-color: #3ab0ff;
+    background-color: #ffb600;
+    border-color: #ffb600;
 }
 
 .btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle {
     color: #fff;
-    background-color: #3ab0ff;
-    border-color: #3ab0ff;
+    background-color: #ffb600;
+    border-color: #ffb600;
 }
 
 .btn:focus {

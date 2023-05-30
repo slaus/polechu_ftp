@@ -14,7 +14,7 @@ const actions = {
     async user({ commit }) {
         try {
             const response = await Vue.prototype.$api.get('v1/user');
-            commit('setUser', response.data)
+            commit('setUser', response.data);
         } catch (error) {
             console.log(error);
         }

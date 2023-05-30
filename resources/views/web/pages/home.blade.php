@@ -13,42 +13,36 @@
 @endpush
 
 @section('content')
-    <!-- home -->
-    <section aria-label="home" class="mainbg" id="home">
-
-        <!-- intro -->
-        <div class="container">
-            <div class="row">
-                <div class="overlay-main v-align">
-                    <div class="col-md-10 col-xs-11">
-
-                        <h1 class="onStep" data-animation="animbouncefall" data-time="300">PROVIDING COMFORTABLE</h1>
-                        <div class="onStep" data-animation="fadeInUp" data-time="600" id="slidertext">
-                            <h3 class="main-text">LUXURY RESIDENCE</h3>
-                            <h3 class="main-text">LUXURY BEACH</h3>
-                            <h3 class="main-text">LUXURY VACATION</h3>
+    @if (! empty($content['banner']['items']))
+        <div class="bgslider-owl" id="home">
+            <div id="owl-slider-home" class="owl-carousel">
+                @foreach($content['banner']['items'] as $item)
+                    @continue(empty($item['image']))
+                    <div class="item imgbg" style="background-image:url('{{ image_uri($item['image']) }}')">
+                        <div class="overlay-main v-align text-center ">
+                            <div class="col-md-10 col-xs-11 onStep" data-animation="fadeInUp" data-time="300">
+                                <h1>{!! translation($item['title'] ?? []) !!}</h1>
+                                <h3>{!! translation($item['subtitle'] ?? []) !!}</h3>
+                                <br>
+                                <div class="star-content">
+                                    @for($i = 1; $i <= 5; $i++)
+                                        <i class="fa fa-star{{ $i <= (int) $item['stars'] ? '' : '-o' }}" aria-hidden="{{ $i <= (int) $item['stars'] ? 'true' : 'false' }}"></i>
+                                    @endfor
+                                    {!! translation($item['name'] ?? []) !!}
+                                </div>
+                            </div>
                         </div>
-
-                        <div class="star-content onStep" data-animation="fadeInUp" data-time="900"><i class="fa fa-star-o" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> Five Star Luxury Hotel</div>
-
                     </div>
-                </div>
+                @endforeach
             </div>
         </div>
-        <!-- intro end -->
+    @endif
 
-    </section>
-    <!-- home end -->
-
-    <!-- booking home -->
     <div class="bot-home-text onStep" data-animation="fadeInUp" data-time="1200">
         <div class="container">
-
             <div id="reservation" class="imgbgres" style="background-image:url(/web/img/bg-res.jpg)">
-
                 <form action="#" id="form1" method="post" name="form1">
                     <div class="row">
-
                         <div class="col-sm-6 form-group">
                             <select class="form-control" id="selectroom">
                                 <optgroup label="SELECT ROOM">
@@ -68,7 +62,6 @@
                                 </div>
                             </div>
                         </div>
-
 
                         <div class="col-md-3 form-group">
                             <div class="input-group">
@@ -105,147 +98,72 @@
 
                     </div>
                 </form>
-
             </div>
-
         </div>
     </div>
-    <!-- booking home end -->
 
-    <!-- section room -->
     <section class="whitepage">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="wrap-news onStep" data-animation="fadeInLeft" data-time="300">
+                        <img alt="imageportofolio" class="img-responsive" src="img/img-news.jpg">
+                        <h3>Luxury Single room</h3>
+                        <p>Qui ut ceteros comprehensam. Cu eos sale sanctus eligendi, id ius elitr saperet, ocurreret pertinacia pri an. No mei nibh consectetuer, semper laoreet perfecto ad qui, est rebum nulla argumentum ei. </p>
+                        <a class="link-class" href="service.html">
+                            MORE DETAIL
+                            <span class="devider"></span>
+                        </a>
+                    </div>
+                </div>
 
+                <div class="col-md-4">
+                    <div class="wrap-news onStep" data-animation="fadeInRight" data-time="600">
+                        <img alt="imageportofolio" class="img-responsive" src="img/img-news1.jpg">
+                        <h3>Luxury Double room</h3>
+                        <p>Qui ut ceteros comprehensam. Cu eos sale sanctus eligendi, id ius elitr saperet, ocurreret pertinacia pri an. No mei nibh consectetuer, semper laoreet perfecto ad qui, est rebum nulla argumentum ei. </p>
+                        <a class="link-class" href="service-1.html">
+                            MORE DETAIL
+                            <span class="devider"></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="wrap-news onStep" data-animation="fadeInRight" data-time="900">
+                        <img alt="imageportofolio" class="img-responsive" src="img/img-news2.jpg">
+                        <h3>Luxury Premium room</h3>
+                        <p>Qui ut ceteros comprehensam. Cu eos sale sanctus eligendi, id ius elitr saperet, ocurreret pertinacia pri an. No mei nibh consectetuer, semper laoreet perfecto ad qui, est rebum nulla argumentum ei. </p>
+                        <a class="link-class" href="service.html">
+                            MORE DETAIL
+                            <span class="devider"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section aria-label="about" class="about-history" style="padding-top: 0">
         <div class="container">
             <div class="row">
-
                 <div class="col-md-12">
-                    <div class="text-center">
-                        <h2>LUXURY ROOMS</h2>
-                        <span class="devider-center"></span>
-                        <h3>Display Our Room</h3>
-                    </div>
+                    <article>
+                        <h2>
+                            Our History
+                        </h2>
+                        <span class="devider-cont"></span>
+                        <p>Etiam purus lorem, aliquet a eros sit
+                            amet, vestibulum finibus augue. Cras egestas neque vitae dui tincidunt, vitae tristique tellus volutpat. Fusce justo ante, interdum Praesent vel augue rutrum, scelerisque velit
+                            non, interdum nisl. Nunc acumsan comodo. Sed non mauris vitae erat consequat auctor eu in elit. Mauris in erat justo. Nullam ac urna. Nam nec tellus a odio tincidunt auctor.
+                        </p>
+                    </article>
                 </div>
-
-                <!-- spacer -->
-                <div class="space-single"></div>
-                <!-- spacer -->
-
-                <div class="with-gutter">
-
-                    <div class="onStep" data-animation="fadeInUp" data-time="300">
-                        <div class="col-md-5">
-                            <div class="projects-home" style="background-image:url(/web/img/rooms/resto-room.jpg)">
-                                <div class="hovereffect">
-                                    <a href="#">
-                                        <div class="overlay v-align">
-                                            <div class="content">
-                                                <span class="heading">OUR RESTAURANT</span>
-                                                <span class="devider-projects"></span>
-                                                <span class="subheading">Display Our Room</span>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-7">
-                            <div class="projects-home" style="background-image:url(/web/img/rooms/com-room.jpg)">
-                                <div class="hovereffect">
-                                    <a href="#">
-                                        <div class="overlay v-align">
-                                            <div class="content">
-                                                <h3 class="heading">COMPARTMENT</h3>
-                                                <span class="devider-projects"></span>
-                                                <p class="subheading">Full Served</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-7">
-                            <div class="projects-home" style="background-image:url(/web/img/rooms/rel-room.jpg)">
-                                <div class="hovereffect">
-                                    <a href="#">
-                                        <div class="overlay v-align">
-                                            <div class="content">
-                                                <span class="heading">RELAXING</span>
-                                                <span class="devider-projects"></span>
-                                                <span class="subheading">Spa & Pool</span>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-5">
-                            <div class="projects-home" style="background-image:url(/web/img/rooms/beach.jpg)">
-                                <div class="hovereffect">
-                                    <a href="#">
-                                        <div class="overlay v-align">
-                                            <div class="content">
-                                                <h3 class="heading">THE BEACH</h3>
-                                                <span class="devider-projects"></span>
-                                                <p class="subheading">Ocean View</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div>
-
-
             </div>
         </div>
     </section>
-    <!-- section room end -->
 
-    <!-- subscribe -->
-    <section class="subscribe-section" style="background-image:url(/web/img/subscribe-bg.jpg)">
-        <div class="container">
-            <div class="row">
-
-                <div class="col-md-6 subwrap-tagline">
-                    <h2>
-                        THE
-                        GREATEST
-                        LANDSCAPE
-                        HOTEL
-                        FOR
-                        VACATION
-                    </h2>
-                </div>
-
-                <div class="col-md-6 subwrap">
-                    <h2>Newsletter</h2>
-                    <h5>Sign up for Our News!</h5>
-
-                    <div class="space-half">
-                    </div>
-
-                    <form action="subscribe.php" id="subscribe" method="post" name="subscribe">
-                        <input class="subscribfield subscribeemail" id="subscribeemail" name="subscribeemail" type="text" placeholder="Enter - email">
-                        <button class="btn-form" id="submit-2" type="submit">SUBSCRIBE</button>
-                    </form>
-
-                    <div class="subscribesuccess">
-                        Thank you for fill your email
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-    <!-- subscribe end -->
-
-    <section class="whitepage">
+    <section class="whitepage" style="padding-top: 0">
         <div class="container">
             <div class="row">
 
@@ -380,114 +298,40 @@
             </div>
         </div>
     </section>
-    <!-- section about end -->
 
-
-    <section id="brand" class="brand-page" aria-label="brands" style="background-image:url(/web/img/bg-logo.jpg)">
-        <!-- brands-->
+    <section class="subscribe-section" style="background-image:url(/web/img/subscribe-bg.jpg)">
         <div class="container">
             <div class="row">
 
-                <div class="owl-carousel" id="owl-brand">
-
-                    <div class="item">
-                        <img alt="background" src="/web/img/ourclients/1.png">
-                    </div>
-
-                    <div class="item">
-                        <img alt="background" src="/web/img/ourclients/2.png">
-                    </div>
-
-                    <div class="item">
-                        <img alt="background" src="/web/img/ourclients/3.png">
-                    </div>
-
-                    <div class="item">
-                        <img alt="background" src="/web/img/ourclients/4.png">
-                    </div>
-
-                    <div class="item">
-                        <img alt="background" src="/web/img/ourclients/5.png">
-                    </div>
-
-                    <div class="item">
-                        <img alt="background" src="/web/img/ourclients/6.png">
-                    </div>
-
-                    <div class="item">
-                        <img alt="background" src="/web/img/ourclients/1.png">
-                    </div>
-
-                    <div class="item">
-                        <img alt="background" src="/web/img/ourclients/2.png">
-                    </div>
-
-                    <div class="item">
-                        <img alt="background" src="/web/img/ourclients/3.png">
-                    </div>
-
-                    <div class="item">
-                        <img alt="background" src="/web/img/ourclients/4.png">
-                    </div>
-
-                    <div class="item">
-                        <img alt="background" src="/web/img/ourclients/5.png">
-                    </div>
-
-                    <div class="item">
-                        <img alt="background" src="/web/img/ourclients/6.png">
-                    </div>
-
+                <div class="col-md-6 subwrap-tagline">
+                    <h2>
+                        THE
+                        GREATEST
+                        LANDSCAPE
+                        HOTEL
+                        FOR
+                        VACATION
+                    </h2>
                 </div>
 
-            </div>
-        </div>
-        <!-- brands end-->
-    </section>
+                <div class="col-md-6 subwrap">
+                    <h2>Newsletter</h2>
+                    <h5>Sign up for Our News!</h5>
 
-
-    <!-- subfooter -->
-    <section aria-label="footer" class="subfooter">
-        <div class="container">
-            <div class="row">
-
-                <div class="col-md-4 col-xs-12">
-                    <div class="logo">
-                        <img alt="logo" src="/web/img/logo.png">
+                    <div class="space-half">
                     </div>
 
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec mollis. Quisque convallis libero in sapien pharetra tincidunt. Aliquam elit ante, malesuada id, tempor eu, gravida
-                        id, odio. Maecenas suscipit, risus et eleifend imperdiet, nisi orci ullamcorper massa adipiscing.
-                    </p>
-                </div>
+                    <form action="subscribe.php" id="subscribe" method="post" name="subscribe">
+                        <input class="subscribfield subscribeemail" id="subscribeemail" name="subscribeemail" type="text" placeholder="Enter - email">
+                        <button class="btn-form" id="submit-2" type="submit">SUBSCRIBE</button>
+                    </form>
 
-
-                <div class="col-md-4 col-xs-12 col-md-offset-1">
-                    <h3>
-                        CONTACT INFO
-                    </h3>
-
-                    <address>
-                        <span>129 Park street, New York City, NY 10903</span> <span>PHONE: (+6221) 000 888 999</span> <span>EMAIL : <a href=
-                                                                                                                                           "mailto:companyname@gmail.com">companyname@gmail.com</a></span> <span>SITE : <a href="#">www.companyname.com</a></span>
-                    </address>
-                </div>
-
-                <div class="col-md-3 col-xs-12 pull-right">
-                    <h3>
-                        PHOTO STREAM
-                    </h3>
-                    <div id="flickr-photo-stream">
-                        <script src="http://www.flickr.com/badge_code_v2.gne?count=8&amp;display=random&amp;size=s&amp;layout=x&amp;source=user&amp;user=52617155@N08" type="text/javascript">
-                        </script>
-                        <div class="clearfix">
-                        </div>
+                    <div class="subscribesuccess">
+                        Thank you for fill your email
                     </div>
                 </div>
 
             </div>
         </div>
     </section>
-    <!-- subfooter end -->
 @endsection

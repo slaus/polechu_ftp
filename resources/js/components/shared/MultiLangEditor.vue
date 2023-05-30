@@ -2,7 +2,7 @@
     <div>
         <label class="d-block mb-2 font-weight-bold">{{ label }}</label>
 
-        <v-tabs v-model="tab">
+        <v-tabs v-model="tab" height="40">
             <v-tab
                 v-for="locale in localizations"
                 :key="locale.code"

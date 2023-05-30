@@ -7,11 +7,13 @@ import VueRouter from "vue-router";
 import App from "./AppComponent";
 import VueI18n from 'vue-i18n';
 import localizations from "../../lang/vue/localizations";
+import FileManager from 'laravel-file-manager';
 
 window.Vue = Vue;
 
 Vue.use(VueRouter);
 Vue.use(VueI18n);
+Vue.use(FileManager, { store });
 
 Vue.prototype.$api = axios;
 Vue.prototype.$api.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
