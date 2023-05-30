@@ -1,9 +1,1 @@
-.fm .fm-navbar .btn {
-  color: #ffffff !important;
-}
-.fm .fm-navbar .text-right .btn-group:last-child {
-  display: none;
-}
-.fm .fm-content-body {
-  max-height: 300px;
-}
+.fm .fm-navbar .btn{color:#fff!important}.fm .fm-navbar .text-right .btn-group:last-child{display:none}.fm .fm-content-body{max-height:300px}
