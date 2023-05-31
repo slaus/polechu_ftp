@@ -15,11 +15,14 @@ if (feedbackForm) {
         const emailInput = document.querySelector('input[name=email]');
         const mailSendSuccessContainer = document.getElementById('mailSendSuccess');
         const mailSendFailContainer = document.getElementById('mailSendFail');
+        const formErrorsContainer = document.getElementById('formErrors');
 
         submitButton.setAttribute('disabled', true);
         mailSendFailContainer.style.display = 'none';
         mailSendSuccessContainer.style.display = 'none';
         mailSendFailContainer.style.display = 'none';
+        formErrorsContainer.style.display = 'none';
+        formErrorsContainer.innerHTML = '';
 
         axios.post('form/feedback', {
             email: emailInput.value
@@ -45,8 +48,8 @@ if (feedbackForm) {
                 }
             }
 
-            mailSendFailContainer.innerHTML = errorText;
-            mailSendFailContainer.style.display = 'block';
+            formErrorsContainer.style.display = 'block';
+            formErrorsContainer.innerHTML = errorText;
         }).finally(() => {
             submitButton.removeAttribute('disabled');
         });
@@ -65,11 +68,13 @@ if (contactForm) {
         const textInput = document.querySelector('textarea[name=message]');
         const mailSendSuccessContainer = document.getElementById('mailSendSuccess');
         const mailSendFailContainer = document.getElementById('mailSendFail');
+        const formErrorsContainer = document.getElementById('formErrors');
 
         submitButton.setAttribute('disabled', true);
         mailSendFailContainer.style.display = 'none';
         mailSendSuccessContainer.style.display = 'none';
-        mailSendFailContainer.style.display = 'none';
+        formErrorsContainer.style.display = 'none';
+        formErrorsContainer.innerHTML = '';
 
         axios.post('form/contact', {
             name: nameInput.value,
@@ -99,8 +104,8 @@ if (contactForm) {
                 }
             }
 
-            mailSendFailContainer.innerHTML = errorText;
-            mailSendFailContainer.style.display = 'block';
+            formErrorsContainer.style.display = 'block';
+            formErrorsContainer.innerHTML = errorText;
         }).finally(() => {
             submitButton.removeAttribute('disabled');
         });

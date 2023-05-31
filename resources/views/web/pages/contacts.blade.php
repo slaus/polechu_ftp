@@ -71,6 +71,9 @@
                             <div class="error" id="mailSendFail">
                                 {{ translation($content['contact_form']['fail_send_tex'] ?? []) }}
                             </div>
+
+                            <div class="error" id="formErrors"></div>
+
                             <button class="btn-contact" id="contactSubmit" type="submit">{{ translation($content['contact_form']['button_text'] ?? []) }}</button>
                         </form>
                     </div>

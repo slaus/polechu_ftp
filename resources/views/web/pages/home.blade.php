@@ -320,6 +320,8 @@
                             {!! translation($content['feedback_form']['fail_send_text'] ?? []) !!}
                         </div>
 
+                        <div class="error" id="formErrors"></div>
+
                         <button class="btn-form" id="feedbackSubmit" type="submit">
                             {{ translation($content['feedback_form']['button_text'] ?? []) }}
                         </button>
