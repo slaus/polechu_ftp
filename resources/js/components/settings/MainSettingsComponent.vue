@@ -93,7 +93,7 @@
                             ></v-text-field>
                         </div>
                         <div class="px-2">
-                            <v-btn icon @click="removeOffice(item)" color="error">
+                            <v-btn icon @click="removeSocial(item)" color="error">
                                 <v-icon small>fa-solid fa-trash-can</v-icon>
                             </v-btn>
                         </div>
@@ -180,8 +180,8 @@ export default {
                 url: ''
             });
         },
-        removeOffice(office) {
-            this.settings.socials = this.settings.socials.filter(item => item !== office);
+        removeSocial(social) {
+            this.settings.socials = this.settings.socials.filter(item => item !== social);
         }
     }
 }

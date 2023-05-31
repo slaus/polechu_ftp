@@ -149,14 +149,10 @@
             <div class="row">
                 <div class="col-md-12">
                     <article>
-                        <h2>
-                            Our History
-                        </h2>
+                        <h2>{!! translation($content['seo']['title'] ?? []) !!}</h2>
                         <span class="devider-cont"></span>
-                        <p>Etiam purus lorem, aliquet a eros sit
-                            amet, vestibulum finibus augue. Cras egestas neque vitae dui tincidunt, vitae tristique tellus volutpat. Fusce justo ante, interdum Praesent vel augue rutrum, scelerisque velit
-                            non, interdum nisl. Nunc acumsan comodo. Sed non mauris vitae erat consequat auctor eu in elit. Mauris in erat justo. Nullam ac urna. Nam nec tellus a odio tincidunt auctor.
-                        </p>
+
+                        {!! translation($content['seo']['text'] ?? []) !!}
                     </article>
                 </div>
             </div>
@@ -299,38 +295,36 @@
         </div>
     </section>
 
-    <section class="subscribe-section" style="background-image:url(/web/img/subscribe-bg.jpg)">
+    <section class="subscribe-section" style="background-image:url('{{ image_uri($content['feedback_form']['background_image'] ?? '') }}')">
         <div class="container">
             <div class="row">
-
                 <div class="col-md-6 subwrap-tagline">
-                    <h2>
-                        THE
-                        GREATEST
-                        LANDSCAPE
-                        HOTEL
-                        FOR
-                        VACATION
-                    </h2>
+                    <h2>{!! translation($content['feedback_form']['text'] ?? []) !!}</h2>
                 </div>
 
                 <div class="col-md-6 subwrap">
-                    <h2>Newsletter</h2>
-                    <h5>Sign up for Our News!</h5>
+                    <h2>{!! translation($content['feedback_form']['form_title'] ?? []) !!}</h2>
+                    <h5>{!! translation($content['feedback_form']['form_subtitle'] ?? []) !!}</h5>
 
                     <div class="space-half">
                     </div>
 
-                    <form action="subscribe.php" id="subscribe" method="post" name="subscribe">
-                        <input class="subscribfield subscribeemail" id="subscribeemail" name="subscribeemail" type="text" placeholder="Enter - email">
-                        <button class="btn-form" id="submit-2" type="submit">SUBSCRIBE</button>
+                    <form action="{{ route('form.feedback') }}" id="feedbackForm" method="post" name="subscribe">
+                        <input class="subscribfield subscribeemail" id="subscribeemail" name="email" type="text" placeholder="{{ translation($content['feedback_form']['email_placeholder'] ?? []) }}">
+
+                        <div class="success" id="mailSendSuccess">
+                            {!! translation($content['feedback_form']['success_send_text'] ?? []) !!}
+                        </div>
+
+                        <div class="error" id="mailSendFail">
+                            {!! translation($content['feedback_form']['fail_send_text'] ?? []) !!}
+                        </div>
+
+                        <button class="btn-form" id="feedbackSubmit" type="submit">
+                            {{ translation($content['feedback_form']['button_text'] ?? []) }}
+                        </button>
                     </form>
-
-                    <div class="subscribesuccess">
-                        Thank you for fill your email
-                    </div>
                 </div>
-
             </div>
         </div>
     </section>

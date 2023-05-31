@@ -20,6 +20,33 @@
     <link href="{{ asset('web/css/on3step-style.css') }}" rel="stylesheet">
     <link href="{{ asset('web/css/queries-on3step.css') }}" media="all" rel="stylesheet" type="text/css">
 
+    <style>
+        strong {
+            font-weight: bold !important;
+        }
+        em {
+            font-style: italic !important;
+        }
+        ul, ol {
+            list-style: initial;
+            margin-left: 15px;
+        }
+        ul li {
+            list-style: initial;
+        }
+        ol li {
+            list-style: decimal;
+        }
+        .success {
+            color: #0F6400FF !important;
+            font-size: 14px;
+        }
+        .error {
+            color: #FF0000FF !important;
+            font-size: 14px;
+        }
+    </style>
+
     @stack('meta')
     @stack('styles')
 </head>
@@ -48,5 +75,8 @@
 <!-- on3step JS -->
 <script src="{{ asset('web/js/on3step.js') }}" type="text/javascript"></script>
 <script src="{{ asset('web/js/plugin-set.js') }}" type="text/javascript"></script>
+<script src="{{ asset('js/app.js') }}" type="text/javascript"></script>
+
+@stack('scripts')
 </body>
 </html>
