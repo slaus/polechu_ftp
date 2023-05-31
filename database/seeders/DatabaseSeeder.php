@@ -19,7 +19,9 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $this->call([
-            PageTableSeeder::class,
+            MediaFilesSeeder::class,
+            PagesTableSeeder::class,
+            SettingsTableSeeder::class,
         ]);
     }
 }
