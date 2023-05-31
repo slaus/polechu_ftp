@@ -69,7 +69,7 @@
                             </div>
 
                             <div class="error" id="mailSendFail">
-                                {{ translation($content['contact_form']['fail_send_tex'] ?? []) }}
+                                {{ translation($content['contact_form']['fail_send_text'] ?? []) }}
                             </div>
 
                             <div class="error" id="formErrors"></div>
