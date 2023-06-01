@@ -33,6 +33,10 @@
                             <HomeContent :value.sync="page.content" />
                         </template>
 
+                        <template v-else-if="page.slug === 'about'">
+                            <AboutContent :value.sync="page.content" />
+                        </template>
+
                         <template v-else-if="page.slug === 'contacts'">
                             <ContactsContent :value.sync="page.content" />
                         </template>
@@ -74,6 +78,7 @@ import localization from "../../mixins/localization";
 import MultiLangTextField from "../shared/MultiLangTextField";
 import MultiLangEditor from "../shared/MultiLangEditor";
 import HomeContent from "./contents/HomeContent.vue";
+import AboutContent from "./contents/AboutContent.vue";
 import ContactsContent from "./contents/ContactsContent.vue";
 
 export default {
@@ -86,6 +91,7 @@ export default {
         MultiLangTextField,
         MultiLangEditor,
         HomeContent,
+        AboutContent,
         ContactsContent
     },
     props: {
