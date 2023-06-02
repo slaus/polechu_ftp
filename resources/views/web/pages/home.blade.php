@@ -102,47 +102,29 @@
         </div>
     </div>
 
-    <section class="whitepage">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="wrap-news onStep" data-animation="fadeInLeft" data-time="300">
-                        <img alt="imageportofolio" class="img-responsive" src="img/img-news.jpg">
-                        <h3>Luxury Single room</h3>
-                        <p>Qui ut ceteros comprehensam. Cu eos sale sanctus eligendi, id ius elitr saperet, ocurreret pertinacia pri an. No mei nibh consectetuer, semper laoreet perfecto ad qui, est rebum nulla argumentum ei. </p>
-                        <a class="link-class" href="service.html">
-                            MORE DETAIL
-                            <span class="devider"></span>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="wrap-news onStep" data-animation="fadeInRight" data-time="600">
-                        <img alt="imageportofolio" class="img-responsive" src="img/img-news1.jpg">
-                        <h3>Luxury Double room</h3>
-                        <p>Qui ut ceteros comprehensam. Cu eos sale sanctus eligendi, id ius elitr saperet, ocurreret pertinacia pri an. No mei nibh consectetuer, semper laoreet perfecto ad qui, est rebum nulla argumentum ei. </p>
-                        <a class="link-class" href="service-1.html">
-                            MORE DETAIL
-                            <span class="devider"></span>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="wrap-news onStep" data-animation="fadeInRight" data-time="900">
-                        <img alt="imageportofolio" class="img-responsive" src="img/img-news2.jpg">
-                        <h3>Luxury Premium room</h3>
-                        <p>Qui ut ceteros comprehensam. Cu eos sale sanctus eligendi, id ius elitr saperet, ocurreret pertinacia pri an. No mei nibh consectetuer, semper laoreet perfecto ad qui, est rebum nulla argumentum ei. </p>
-                        <a class="link-class" href="service.html">
-                            MORE DETAIL
-                            <span class="devider"></span>
-                        </a>
-                    </div>
+    @if (! empty(tours()))
+        <section class="whitepage">
+            <div class="container-fluid">
+                <div class="row">
+                    @foreach(tours() as $tour)
+                        <div class="col-md-4">
+                            <div class="wrap-news onStep" data-animation="fadeInLeft" data-time="300">
+                                @if (! empty($tour['image']))
+                                    <img alt="{{ translation($tour['name'] ?? []) }}" class="img-responsive" src="{{ image_uri($tour['image']) }}">
+                                @endif
+                                <h3>{{ translation($tour['name'] ?? []) }}</h3>
+                                <p>{{ translation($tour['description'] ?? []) }}</p>
+                                <a class="link-class" href="#">
+                                    {{ __('MORE DETAIL') }}
+                                    <span class="devider"></span>
+                                </a>
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    @endif
 
     <section aria-label="about" class="about-history" style="padding-top: 0">
         <div class="container">

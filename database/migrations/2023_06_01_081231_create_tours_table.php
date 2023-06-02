@@ -8,19 +8,24 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('pages', function (Blueprint $table) {
+        Schema::create('tours', function (Blueprint $table) {
             $table->id();
             $table->string('slug')->unique();
             $table->json('name');
+            $table->string('image')->nullable();
+            $table->json('gallery')->nullable();
+            $table->json('price')->nullable();
+            $table->json('description')->nullable();
             $table->json('content')->nullable();
             $table->json('seo')->nullable();
             $table->boolean('visibility')->default(true);
+            $table->smallInteger('order')->default(0);
             $table->timestamps();
         });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('pages');
+        Schema::dropIfExists('tours');
     }
 };

@@ -8,6 +8,7 @@ import validationStore from './modules/validation-store';
 import userStore from './modules/user-store';
 import localizationStore from "./modules/localization-store";
 import pageStore from "./modules/page-store";
+import tourStore from "./modules/tour-store";
 import settingStore from "./modules/setting-store";
 
 Vue.use(Vuex);
@@ -32,6 +33,7 @@ export default new Vuex.Store({
         userStore,
         localizationStore,
         pageStore,
+        tourStore,
         settingStore
     },
     strict: false,

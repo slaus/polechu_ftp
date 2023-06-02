@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             MediaFilesSeeder::class,
             PagesTableSeeder::class,
+            ToursTableSeeder::class,
             SettingsTableSeeder::class,
         ]);
     }

@@ -60,16 +60,16 @@
                     <nav id="menu-center">
                         <ul>
                             <li>
-                                <a class="actived" href="{{ route('page') }}">{{ __('Home') }}</i></a>
+                                <a href="{{ route('page') }}" @if(route('page') == url()->current()) class="actived" @endif>{{ __('Home') }}</i></a>
                             </li>
                             <li>
-                                <a href="{{ route('page', 'about') }}">{{ __('About') }}</i></a>
+                                <a href="{{ route('page', 'about') }}" @if(route('page', 'about') == url()->current()) class="actived" @endif>{{ __('About') }}</i></a>
                             </li>
                             <li>
-                                <a href="{{ route('page', 'blog') }}">{{ __('Blog') }}</i></a>
+                                <a href="{{ route('page', 'blog') }}" @if(route('page', 'blog') == url()->current()) class="actived" @endif>{{ __('Blog') }}</i></a>
                             </li>
                             <li>
-                                <a href="{{ route('page', 'contacts') }}">{{ __('Contacts') }}</i></a>
+                                <a href="{{ route('page', 'contacts') }}" @if(route('page', 'contacts') == url()->current()) class="actived" @endif>{{ __('Contacts') }}</i></a>
                             </li>
 
                             @if (! empty(config('localizations.supported_locales')))

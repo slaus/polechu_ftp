@@ -27,9 +27,9 @@
         </template>
 
         <template v-slot:item.actions="{ item }">
-            <v-btn icon @click="seoPage(item.id)" color="warning">
-                <v-icon small>fa-regular fa-magnifying-glass-dollar</v-icon>
-            </v-btn>
+<!--            <v-btn icon @click="seoPage(item.id)" color="warning">-->
+<!--                <v-icon small>fa-regular fa-magnifying-glass-dollar</v-icon>-->
+<!--            </v-btn>-->
             <v-btn icon @click="viewPage(item.slug)" color="info">
                 <v-icon small>fa-solid fa-eye</v-icon>
             </v-btn>

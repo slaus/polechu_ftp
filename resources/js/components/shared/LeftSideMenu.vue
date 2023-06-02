@@ -26,8 +26,9 @@ export default {
             menus: [
                 { id: 1, text: 'menu.dashboard', route: 'admin.dashboard', icon: 'fa-solid fa-gauge' },
                 { id: 2, text: 'menu.pages', route: 'admin.pages', icon: 'fa-regular fa-sidebar' },
-                { id: 3, text: 'menu.fm', route: 'admin.fm', icon: 'fa-sharp fa-regular fa-photo-film' },
-                { id: 4, text: 'menu.settings', route: 'admin.settings', icon: 'fa-solid fa-screwdriver-wrench' }
+                { id: 3, text: 'menu.tours', route: 'admin.tours', icon: 'fa-regular fa-tree-palm' },
+                { id: 4, text: 'menu.fm', route: 'admin.fm', icon: 'fa-sharp fa-regular fa-photo-film' },
+                { id: 5, text: 'menu.settings', route: 'admin.settings', icon: 'fa-solid fa-screwdriver-wrench' }
                 // { id: 7, text: 'menu.users', route: 'admin.users', icon: 'fa-solid fa-users' },
             ]
         }
