@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Api\V1\Tour;
+namespace App\Http\Requests\Api\V1\Post;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class TourUpdateRequest extends FormRequest
+class PostUpdateRequest extends FormRequest
 {
     public function authorize(): bool
     {
@@ -14,16 +14,14 @@ class TourUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'slug' => ['required', 'alpha_dash', 'string', 'max:255', 'unique:tours,slug,' . $this->route('tour') . ',id'],
+            'slug' => ['required', 'alpha_dash', 'string', 'max:255', 'unique:posts,slug,' . $this->route('post') . ',id'],
             'name' => ['required', 'array', 'min:1'],
             'image' => ['nullable', 'string', 'max:255'],
-            'gallery' => ['nullable', 'array'],
-            'price' => ['nullable', 'array'],
             'description' => ['nullable', 'array'],
             'content' => ['nullable', 'array'],
             'seo' => ['nullable', 'array'],
+            'tags' => ['nullable', 'array'],
             'visibility' => ['nullable', 'boolean'],
-            'order' => ['nullable', 'integer'],
         ];
     }
 }

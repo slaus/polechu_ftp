@@ -9,6 +9,7 @@ import userStore from './modules/user-store';
 import localizationStore from "./modules/localization-store";
 import pageStore from "./modules/page-store";
 import tourStore from "./modules/tour-store";
+import postStore from "./modules/post-store";
 import settingStore from "./modules/setting-store";
 
 Vue.use(Vuex);
@@ -34,6 +35,7 @@ export default new Vuex.Store({
         localizationStore,
         pageStore,
         tourStore,
+        postStore,
         settingStore
     },
     strict: false,

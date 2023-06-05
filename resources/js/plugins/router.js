@@ -3,6 +3,7 @@ import AdminLayout from "../layouts/AdminLayout";
 import DashboardPage from "../pages/admin/DashboardPage.vue";
 import PagesPage from "../pages/admin/PagesPage.vue";
 import ToursPage from "../pages/admin/ToursPage.vue";
+import PostsPage from "../pages/admin/PostsPage.vue";
 import FileManagerPage from "../pages/admin/FileManagerPage";
 import NotFoundPage from "../pages/admin/NotFoundPage";
 import UsersPage from "../pages/admin/UsersPage";
@@ -30,6 +31,11 @@ const router = new VueRouter({
                     path: 'tours',
                     name: 'admin.tours',
                     component: ToursPage,
+                },
+                {
+                    path: 'posts',
+                    name: 'admin.posts',
+                    component: PostsPage,
                 },
                 {
                     path: 'fm',

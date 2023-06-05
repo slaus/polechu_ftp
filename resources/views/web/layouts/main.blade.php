@@ -45,6 +45,73 @@
             color: #FF0000FF !important;
             font-size: 14px;
         }
+        .title-h {
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        .title-h1 {
+            font-size: 36px;
+            font-weight: 500;
+            line-height: normal;
+            text-transform: uppercase;
+        }
+        .home-title-h1 {
+            font-size: 44pt;
+            letter-spacing: 2px;
+            font-weight: 500;
+            line-height: normal;
+            text-transform: uppercase;
+        }
+        .title-h2 {
+            font-size: 30pt;
+            font-weight: 400;
+            line-height: normal;
+        }
+        .title-h3 {
+            font-size: 17px;
+            font-weight: 400;
+            text-transform: none;
+            line-height: normal;
+        }
+        .home-title-h3 {
+            font-size: 40pt;
+            font-weight: 500;
+            letter-spacing: 1px;
+            line-height: normal;
+        }
+        .title-h5 {
+            font-size: 14pt;
+            font-weight: 500;
+        }
+
+        .subscribe-section .title-h2 {
+            text-transform: none;
+            font-weight: 600;
+            width: 7em;
+            word-wrap: break-word;
+            line-height: 40pt;
+        }
+        .wrap-news .title-h3 {
+            display: block;
+            font-size: 13pt;
+            font-weight: 500;
+            text-transform: uppercase;
+            margin: 15px 0 10px 0;
+        }
+        #subheader .title-h1 {
+            color: #fefefe;
+            text-align: center;
+            margin-top: 40px;
+            font-size: 32px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .whitepage .title-h2 {
+            font-size: 22px;
+            font-weight: 500;
+            text-transform: none;
+        }
     </style>
 
     @stack('meta')

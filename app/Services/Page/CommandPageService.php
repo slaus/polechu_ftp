@@ -23,6 +23,7 @@ class CommandPageService
     public function update(int $id, array $data): void
     {
         $page = Page::findOrFail($id);
+        unset($data['slug']);
         $page->update($data);
 
         $this->page = $page;

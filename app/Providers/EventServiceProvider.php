@@ -2,8 +2,12 @@
 
 namespace App\Providers;
 
+use App\Models\Page;
+use App\Models\Post;
 use App\Models\Setting;
 use App\Models\Tour;
+use App\Observers\PageObserver;
+use App\Observers\PostObserver;
 use App\Observers\SettingObserver;
 use App\Observers\TourObserver;
 use Illuminate\Auth\Events\Registered;
@@ -20,7 +24,9 @@ class EventServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
+        Page::observe(PageObserver::class);
         Tour::observe(TourObserver::class);
+        Post::observe(PostObserver::class);
         Setting::observe(SettingObserver::class);
     }
 

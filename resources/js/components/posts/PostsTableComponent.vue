@@ -1,7 +1,7 @@
 <template>
     <v-data-table
         fixed-header
-        :items="tours"
+        :items="posts"
         :headers="headers"
         :options.sync="options"
         :footer-props="footerProps"
@@ -20,15 +20,15 @@
                 <v-btn
                     depressed
                     color="primary"
-                    @click="editTour(0)"
+                    @click="editPost(0)"
                 >
                     <v-icon small left>fa-solid fa-plus</v-icon>
                     <span class="no-upper">{{ $t('buttons.add') }}</span>
                 </v-btn>
             </v-toolbar>
 
-            <SeoComponent v-bind.sync="tourSeo" v-on:save="saveSeo" />
-            <EditTourComponent v-bind.sync="tourEdit" v-on:reload="loadTours" />
+            <SeoComponent v-bind.sync="postSeo" v-on:save="saveSeo" />
+            <EditPostComponent v-bind.sync="postEdit" v-on:reload="loadPosts" />
         </template>
 
         <template v-slot:item.name="{ item }">
@@ -40,16 +40,16 @@
         </template>
 
         <template v-slot:item.actions="{ item }">
-            <v-btn icon @click="seoTour(item.id)" color="warning">
+            <v-btn icon @click="seoPost(item.id)" color="warning">
                 <v-icon small>fa-regular fa-magnifying-glass-dollar</v-icon>
             </v-btn>
-            <v-btn icon @click="viewTour(item.slug)" color="info">
+            <v-btn icon @click="viewPost(item.slug)" color="info">
                 <v-icon small>fa-solid fa-eye</v-icon>
             </v-btn>
-            <v-btn icon @click="editTour(item.id)" color="success">
+            <v-btn icon @click="editPost(item.id)" color="success">
                 <v-icon small>fa-solid fa-pen-to-square</v-icon>
             </v-btn>
-            <v-btn icon @click="confirmDeleteTour(item.id)" color="error">
+            <v-btn icon @click="confirmDeletePost(item.id)" color="error">
                 <v-icon small>fa-solid fa-trash-can</v-icon>
             </v-btn>
         </template>
@@ -58,7 +58,7 @@
 
 <script>
 import { mapState } from "vuex";
-import EditTourComponent from "./EditTourComponent.vue";
+import EditPostComponent from "./EditPostComponent";
 import confirm from "../../mixins/confirm";
 import localization from "../../mixins/localization";
 import SearchInput from "../shared/SearchInput";
@@ -71,18 +71,18 @@ export default {
         localization
     ],
     components: {
-        EditTourComponent,
+        EditPostComponent,
         SearchInput,
         SeoComponent
     },
     computed: {
         ...mapState({
-            isLoading: state => state.tourStore.isLoading,
-            tours: state => state.tourStore.listWithPaginate,
-            totalCount: state => state.tourStore.totalCount,
-            itemsPerPage: state => state.tourStore.itemsPerPage,
-            currentPage: state => state.tourStore.currentPage,
-            tour: state => state.tourStore.tour
+            isLoading: state => state.postStore.isLoading,
+            posts: state => state.postStore.listWithPaginate,
+            totalCount: state => state.postStore.totalCount,
+            itemsPerPage: state => state.postStore.itemsPerPage,
+            currentPage: state => state.postStore.currentPage,
+            post: state => state.postStore.post
         })
     },
     data() {
@@ -95,16 +95,17 @@ export default {
                 itemsPerPageOptions: [10, 15, 30]
             },
             headers: [
-                { text: this.$t('columns.tourName'), value: 'name', sortable: true },
-                { text: this.$t('columns.order'), value: 'order', width: 160, sortable: true, align: 'center' },
+                { text: this.$t('columns.postName'), value: 'name', sortable: true },
+                { text: this.$t('columns.createdAt'), value: 'created_at', width: 160, sortable: true, align: 'center' },
                 { text: this.$t('columns.visibility'), value: 'visibility', width: 160, sortable: true, align: 'center' },
                 { text: '', value: 'actions', width: 240, sortable: false, align: 'right' }
             ],
-            tourSeo: {
+            postSeo: {
                 isActive: false,
+                name: null,
                 id: 0
             },
-            tourEdit: {
+            postEdit: {
                 isActive: false,
                 id: 0
             }
@@ -113,57 +114,57 @@ export default {
     watch: {
         options: {
             handler() {
-                this.loadTours();
+                this.loadPosts();
             },
             deep: true
         },
         '$store.state.confirmStore.isConfirmed': function (value) {
-            if (value && this.confirmPayload.action && this.confirmPayload.action === 'deleteTour') {
-                this.deleteTour();
+            if (value && this.confirmPayload.action && this.confirmPayload.action === 'deletePost') {
+                this.deletePost();
             }
         }
     },
     methods: {
-        loadTours() {
-            this.$store.dispatch('tourStore/listWithPaginate', this.options);
+        loadPosts() {
+            this.$store.dispatch('postStore/listWithPaginate', this.options);
         },
-        seoTour(id) {
-            this.$store.dispatch('tourStore/loadTour', id).then(response => {
-                this.tourSeo.value = this.tour.seo;
-                this.tourSeo.name = this.tour.name;
-                this.tourSeo.isActive = true;
+        seoPost(id) {
+            this.$store.dispatch('postStore/loadPost', id).then(response => {
+                this.postSeo.value = this.post.seo;
+                this.postSeo.name = this.post.name;
+                this.postSeo.isActive = true;
             });
         },
-        viewTour(slug) {
-            window.open('/tours/' + slug, '_blank').focus();
+        viewPost(slug) {
+            window.open('/blog/' + slug, '_blank').focus();
         },
-        editTour(id) {
-            this.tourEdit.id = id;
-            this.tourEdit.isActive = true;
+        editPost(id) {
+            this.postEdit.id = id;
+            this.postEdit.isActive = true;
         },
-        confirmDeleteTour(id) {
+        confirmDeletePost(id) {
             this.setConfirm({
                 title: 'confirm.deleteTitle',
                 message: 'confirm.deleteMessage',
-                payload: { action: 'deleteTour', id: id }
+                payload: { action: 'deletePost', id: id }
             });
         },
-        deleteTour() {
-            this.$store.dispatch('tourStore/deleteTour', this.confirmPayload?.id ?? 0).finally(() => {
-                this.loadTours();
+        deletePost() {
+            this.$store.dispatch('postStore/deletePost', this.confirmPayload?.id ?? 0).finally(() => {
+                this.loadPosts();
                 this.clearConfirm();
             });
         },
         saveSeo() {
-            this.tour.seo = this.tourSeo.value;
-            this.$store.dispatch('tourStore/updateTour', this.tour).then(response => {
+            this.post.seo = this.postSeo.value;
+            this.$store.dispatch('postStore/updatePost', this.post).then(response => {
                 this.successSaveSeoAction();
             });
         },
         successSaveSeoAction() {
-            this.tourSeo.value = {};
-            this.tourSeo.isActive = false;
-        },
+            this.postSeo.value = {};
+            this.postSeo.isActive = false;
+        }
     }
 }
 </script>

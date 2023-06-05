@@ -18,7 +18,7 @@
                 />
             </v-toolbar>
 
-            <SeoPageComponent v-bind.sync="pageSeo" v-on:reload="loadPages" />
+            <SeoComponent v-bind.sync="pageSeo" v-on:save="saveSeo" />
             <EditPageComponent v-bind.sync="pageEdit" v-on:reload="loadPages" />
         </template>
 
@@ -27,9 +27,9 @@
         </template>
 
         <template v-slot:item.actions="{ item }">
-<!--            <v-btn icon @click="seoPage(item.id)" color="warning">-->
-<!--                <v-icon small>fa-regular fa-magnifying-glass-dollar</v-icon>-->
-<!--            </v-btn>-->
+            <v-btn icon @click="seoPage(item.id)" color="warning">
+                <v-icon small>fa-regular fa-magnifying-glass-dollar</v-icon>
+            </v-btn>
             <v-btn icon @click="viewPage(item.slug)" color="info">
                 <v-icon small>fa-solid fa-eye</v-icon>
             </v-btn>
@@ -46,7 +46,7 @@ import EditPageComponent from "./EditPageComponent";
 import confirm from "../../mixins/confirm";
 import localization from "../../mixins/localization";
 import SearchInput from "../shared/SearchInput";
-import SeoPageComponent from "./SeoPageComponent";
+import SeoComponent from "../shared/SeoComponent.vue";
 
 export default {
     name: "PagesTableComponent",
@@ -57,7 +57,7 @@ export default {
     components: {
         EditPageComponent,
         SearchInput,
-        SeoPageComponent
+        SeoComponent
     },
     computed: {
         ...mapState({
@@ -66,6 +66,7 @@ export default {
             totalCount: state => state.pageStore.totalCount,
             itemsPerPage: state => state.pageStore.itemsPerPage,
             currentPage: state => state.pageStore.currentPage,
+            page: state => state.pageStore.page
         })
     },
     data() {
@@ -83,7 +84,7 @@ export default {
             ],
             pageSeo: {
                 isActive: false,
-                id: 0
+                value: {}
             },
             pageEdit: {
                 isActive: false,
@@ -104,11 +105,24 @@ export default {
             this.$store.dispatch('pageStore/listWithPaginate', this.options);
         },
         seoPage(id) {
-            this.pageSeo.isActive = true;
-            this.pageSeo.id = id;
+            this.$store.dispatch('pageStore/loadPage', id).then(response => {
+                this.pageSeo.value = this.page.seo;
+                this.pageSeo.name = this.page.name;
+                this.pageSeo.isActive = true;
+            });
         },
         viewPage(slug) {
             window.open('/' + slug, '_blank').focus();
+        },
+        saveSeo() {
+            this.page.seo = this.pageSeo.value;
+            this.$store.dispatch('pageStore/updatePage', this.page).then(response => {
+                this.successSaveSeoAction();
+            });
+        },
+        successSaveSeoAction() {
+            this.pageSeo.value = {};
+            this.pageSeo.isActive = false;
         },
         editPage(id) {
             this.pageEdit.id = id;

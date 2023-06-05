@@ -17,7 +17,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h1>{{ translation($content['banner']['title'] ?? $page['name'] ?? []) }}</h1>
+                    <div class="title-h1 title-h">{{ translation($content['banner']['title'] ?? $page['name'] ?? []) }}</div>
                 </div>
 
                 <div class="col-md-12">
@@ -48,7 +48,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <article>
-                        <h2>{!! translation($content['seo']['title'] ?? []) !!}</h2>
+                        <div class="title-h2 title-h">{!! translation($content['seo']['title'] ?? []) !!}</div>
                         <span class="devider-cont"></span>
 
                         {!! translation($content['seo']['text'] ?? []) !!}

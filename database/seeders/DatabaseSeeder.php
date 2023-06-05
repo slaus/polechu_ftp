@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             MediaFilesSeeder::class,
             PagesTableSeeder::class,
             ToursTableSeeder::class,
+            PostsTableSeeder::class,
             SettingsTableSeeder::class,
         ]);
     }

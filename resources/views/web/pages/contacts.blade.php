@@ -18,7 +18,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h1>{{ translation($content['banner']['title'] ?? $page['name'] ?? []) }}</h1>
+                    <div class="title-h1 title-h">{{ translation($content['banner']['title'] ?? $page['name'] ?? []) }}</div>
                 </div>
 
                 <div class="col-md-12">
@@ -54,7 +54,7 @@
                 <div class="space-double"></div>
 
                 <div class="col-md-8 col-xs-12">
-                    <h2>{{ translation($content['contact_form']['title'] ?? []) }}</h2>
+                    <div class="title-h2 title-h">{{ translation($content['contact_form']['title'] ?? []) }}</div>
 
                     <div class="space-single"></div>
 
@@ -81,7 +81,7 @@
                 </div>
 
                 <div class="col-md-4 col-sm-6">
-                    <h2>{{ translation($content['address']['title'] ?? []) }}</h2>
+                    <div class="title-h2 title-h">{{ translation($content['address']['title'] ?? []) }}</div>
 
                     <div class="space-single"></div>
 

@@ -21,8 +21,8 @@
                     <div class="item imgbg" style="background-image:url('{{ image_uri($item['image']) }}')">
                         <div class="overlay-main v-align text-center ">
                             <div class="col-md-10 col-xs-11 onStep" data-animation="fadeInUp" data-time="300">
-                                <h1>{!! translation($item['title'] ?? []) !!}</h1>
-                                <h3>{!! translation($item['subtitle'] ?? []) !!}</h3>
+                                <div class="home-title-h1 title-h">{!! translation($item['title'] ?? []) !!}</div>
+                                <div class="home-title-h3 title-h">{!! translation($item['subtitle'] ?? []) !!}</div>
                                 <br>
                                 <div class="star-content">
                                     @for($i = 1; $i <= 5; $i++)
@@ -112,7 +112,7 @@
                                 @if (! empty($tour['image']))
                                     <img alt="{{ translation($tour['name'] ?? []) }}" class="img-responsive" src="{{ image_uri($tour['image']) }}">
                                 @endif
-                                <h3>{{ translation($tour['name'] ?? []) }}</h3>
+                                <div class="title-h3 title-h">{{ translation($tour['name'] ?? []) }}</div>
                                 <p>{{ translation($tour['description'] ?? []) }}</p>
                                 <a class="link-class" href="#">
                                     {{ __('MORE DETAIL') }}
@@ -131,7 +131,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <article>
-                        <h2>{!! translation($content['seo']['title'] ?? []) !!}</h2>
+                        <div class="title-h2 title-h">{!! translation($content['seo']['title'] ?? []) !!}</div>
                         <span class="devider-cont"></span>
 
                         {!! translation($content['seo']['text'] ?? []) !!}
@@ -141,152 +141,57 @@
         </div>
     </section>
 
-    <section class="whitepage" style="padding-top: 0">
-        <div class="container">
-            <div class="row">
-
-                <div class="col-md-12">
-                    <div class="text-center">
-                        <h2>RECENT POST</h2>
-                        <span class="devider-center"></span>
-                        <h3>Experience of Guest</h3>
+    @if (! empty(posts((int) ($content['posts']['count'] ?? 10))))
+        <section class="whitepage" style="padding-top: 0">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="text-center">
+                            <div class="title-h2 title-h">{{ translation($content['posts']['title'] ?? []) }}</div>
+                            <span class="devider-center"></span>
+                            <div class="title-h3 title-h">{{ translation($content['posts']['subtitle'] ?? []) }}</div>
+                        </div>
+                    </div>
+                    <div class="space-double"></div>
+                    <div class="onStep" data-animation="fadeInUp" data-time="300">
+                        <div class="owl-carousel" id="owl-post">
+                            @foreach(posts((int) ($content['posts']['count'] ?? 10)) as $post)
+                                <div class="item">
+                                    <div class="recent-post" style="background-image:url('{{ image_uri($post['image'] ?? '') }}')">
+                                        <div class="hovereffect">
+                                            <a href="{{ route('post', $post['slug']) }}">
+                                                <div class="overlay ">
+                                                    <div class="content">
+                                                        <div class="heading">
+                                                            {{ translation($post['name'] ?? []) }}
+                                                            <span class="devider-recent"></span>
+                                                        </div>
+                                                        <div class="subheading">{{ $post['published_at'] }}</div>
+                                                        <div class="readmore">{{ __('Read more') }} <i class="fa fa-angle-right"></i></div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
                     </div>
                 </div>
-
-                <!-- spacer -->
-                <div class="space-double"></div>
-                <!-- spacer -->
-
-                <div class="onStep" data-animation="fadeInUp" data-time="300">
-
-                    <div class="owl-carousel" id="owl-post">
-
-                        <div class="item">
-                            <div class="recent-post" style="background-image:url(/web/img/recent/img1.jpg)">
-                                <div class="hovereffect">
-                                    <a href="#">
-                                        <div class="overlay ">
-                                            <div class="content">
-                                                <div class="heading">COUPLE OF JOURNEY
-                                                    <span class="devider-recent"></span>
-                                                </div>
-                                                <div class="subheading">3 days vacation</div>
-                                                <div class="readmore">Read more <i class="fa fa-angle-right"></i></div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="item">
-                            <div class="recent-post" style="background-image:url(/web/img/recent/img2.jpg)">
-                                <div class="hovereffect">
-                                    <a href="#">
-                                        <div class="overlay ">
-                                            <div class="content">
-                                                <div class="heading">FAMILY HAPPINESS
-                                                    <span class="devider-recent"></span>
-                                                </div>
-                                                <div class="subheading">7 days vacation</div>
-                                                <div class="readmore">Read more <i class="fa fa-angle-right"></i></div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="item">
-                            <div class="recent-post" style="background-image:url(/web/img/recent/img3.jpg)">
-                                <div class="hovereffect">
-                                    <a href="#">
-                                        <div class="overlay ">
-                                            <div class="content">
-                                                <div class="heading">TRAVELER
-                                                    <span class="devider-recent"></span>
-                                                </div>
-                                                <div class="subheading">2 days vacation</div>
-                                                <div class="readmore">Read more <i class="fa fa-angle-right"></i></div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="item">
-                            <div class="recent-post" style="background-image:url(/web/img/recent/img1.jpg)">
-                                <div class="hovereffect">
-                                    <a href="#">
-                                        <div class="overlay ">
-                                            <div class="content">
-                                                <div class="heading">COUPLE OF JOURNEY
-                                                    <span class="devider-recent"></span>
-                                                </div>
-                                                <div class="subheading">3 days vacation</div>
-                                                <div class="readmore">Read more <i class="fa fa-angle-right"></i></div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="item">
-                            <div class="recent-post" style="background-image:url(/web/img/recent/img2.jpg)">
-                                <div class="hovereffect">
-                                    <a href="#">
-                                        <div class="overlay ">
-                                            <div class="content">
-                                                <div class="heading">FAMILY HAPPINESS
-                                                    <span class="devider-recent"></span>
-                                                </div>
-                                                <div class="subheading">7 days vacation</div>
-                                                <div class="readmore">Read more <i class="fa fa-angle-right"></i></div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="item">
-                            <div class="recent-post" style="background-image:url(/web/img/recent/img3.jpg)">
-                                <div class="hovereffect">
-                                    <a href="#">
-                                        <div class="overlay ">
-                                            <div class="content">
-                                                <div class="heading">TRAVELER
-                                                    <span class="devider-recent"></span>
-                                                </div>
-                                                <div class="subheading">2 days vacation</div>
-                                                <div class="readmore">Read more <i class="fa fa-angle-right"></i></div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div>
-
             </div>
-        </div>
-    </section>
+        </section>
+    @endif
 
     <section class="subscribe-section" style="background-image:url('{{ image_uri($content['feedback_form']['background_image'] ?? '') }}')">
         <div class="container">
             <div class="row">
                 <div class="col-md-6 subwrap-tagline">
-                    <h2>{!! translation($content['feedback_form']['text'] ?? []) !!}</h2>
+                    <div class="title-h2 title-h">{!! translation($content['feedback_form']['text'] ?? []) !!}</div>
                 </div>
 
                 <div class="col-md-6 subwrap">
-                    <h2>{!! translation($content['feedback_form']['form_title'] ?? []) !!}</h2>
-                    <h5>{!! translation($content['feedback_form']['form_subtitle'] ?? []) !!}</h5>
+                    <div class="title-h2 title-h">{!! translation($content['feedback_form']['form_title'] ?? []) !!}</div>
+                    <div class="title-h5 title-h">{!! translation($content['feedback_form']['form_subtitle'] ?? []) !!}</div>
 
                     <div class="space-half">
                     </div>

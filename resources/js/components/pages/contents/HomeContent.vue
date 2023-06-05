@@ -97,6 +97,42 @@
         </v-card>
 
         <v-card tile outlined class="mb-6">
+            <v-card-title>{{ $t('titles.recentPosts') }}</v-card-title>
+
+            <v-card-text class="pa-4">
+                <v-layout wrap align-center>
+                    <v-flex class="xs12 sm6 px-0 px-sm-2 mb-6">
+                        <MultiLangTextField
+                            :value.sync="content.posts.title"
+                            :label="$t('labels.title')"
+                            class="mb-2"
+                        />
+                    </v-flex>
+                    <v-flex class="xs12 sm4 px-0 px-sm-2 mb-6">
+                        <MultiLangTextField
+                            :value.sync="content.posts.subtitle"
+                            :label="$t('labels.subtitle')"
+                            class="mb-2"
+                        />
+                    </v-flex>
+                    <v-flex class="xs12 sm2 px-0 px-sm-2 mb-6">
+                        <v-text-field
+                            dense
+                            outlined
+                            type="number"
+                            min="0"
+                            step="1"
+                            :label="$t('labels.countShow')"
+                            v-model="content.posts.count"
+                            hide-details="auto"
+                            class="mb-2"
+                        ></v-text-field>
+                    </v-flex>
+                </v-layout>
+            </v-card-text>
+        </v-card>
+
+        <v-card tile outlined class="mb-6">
             <v-card-title>{{ $t('titles.feedbackForm') }}</v-card-title>
 
             <v-card-text class="pa-4">
@@ -193,6 +229,11 @@ export default {
             content: {
                 banner: {
                     items: []
+                },
+                posts: {
+                    title: null,
+                    subtitle: null,
+                    count: 0
                 },
                 seo: {
                     title: null,

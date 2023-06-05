@@ -1,0 +1,42 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Spatie\Tags\HasTags;
+
+class Post extends Model
+{
+    use HasFactory;
+    use HasTags;
+
+    protected $table = 'posts';
+
+    protected $fillable = [
+        'slug',
+        'name',
+        'image',
+        'description',
+        'content',
+        'seo',
+        'visibility',
+    ];
+
+    protected $casts = [
+        'name' => 'array',
+        'description' => 'array',
+        'content' => 'array',
+        'seo' => 'array',
+        'visibility' => 'boolean',
+    ];
+
+    protected $appends = [
+        'published_at',
+    ];
+
+    public function getPublishedAtAttribute(): string
+    {
+        return $this->created_at?->format('d.m.Y H:i') ?? '';
+    }
+}
