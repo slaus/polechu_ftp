@@ -3,8 +3,13 @@
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
-    <!-- favicon -->
-    <link href="{{ asset('web/img/favicon.png') }}" rel="icon" sizes="32x32" type="image/png">
+
+    @if (! empty(settings('logo.light')))
+        <link rel="icon" href="{{ image_uri(settings('logo.light'), 'favicon-32x32') }}" sizes="32x32" />
+        <link rel="icon" href="{{ image_uri(settings('logo.light'), 'favicon-192x192') }}" sizes="192x192" />
+        <link rel="apple-touch-icon" href="{{ image_uri(settings('logo.light'), 'favicon-apple-touch-180x180') }}" />
+    @endif
+
     <!-- Bootstrap CSS -->
     <link href="{{ asset('web/css/bootstrap.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('web/css/jquery.dateselect.css') }}">
@@ -111,6 +116,12 @@
             font-size: 22px;
             font-weight: 500;
             text-transform: none;
+        }
+        .navbar-brand.white .white {
+            max-height: 100px!important;
+        }
+        .navbar-brand.white .black {
+            max-height: 50px!important;
         }
     </style>
 

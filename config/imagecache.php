@@ -56,7 +56,12 @@ return [
     'templates' => [
         'thumbnail' => App\Services\Intervention\Filters\Thumbnail::class,
         'thumb' => App\Services\Intervention\Filters\Thumbnail::class,
+        'favicon-16x16' => App\Services\Intervention\Filters\Favicon\Favicon16X16::class,
+        'favicon-32x32' => App\Services\Intervention\Filters\Favicon\Favicon32X32::class,
+        'favicon-192x192' => App\Services\Intervention\Filters\Favicon\Favicon192X192::class,
+        'favicon-apple-touch-180x180' => App\Services\Intervention\Filters\Favicon\FaviconAppleTouch180X180::class,
 
+        '160' => App\Services\Intervention\Filters\Size160::class,
         '320' => App\Services\Intervention\Filters\Size320::class,
         '540' => App\Services\Intervention\Filters\Size540::class,
         '768' => App\Services\Intervention\Filters\Size768::class,

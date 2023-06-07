@@ -48,11 +48,11 @@
 
                 <a class="navbar-brand white" href="{{ route('page') }}">
                     @if (! empty(settings('logo.light')))
-                        <img class="white" alt="logo" src="{{ image_uri(settings('logo.light')) }}">
+                        <img class="white" alt="logo" src="{{ image_uri(settings('logo.light'), '160') }}">
                     @endif
 
                     @if (! empty(settings('logo.dark')))
-                        <img class="black" alt="logo" src="{{ image_uri(settings('logo.dark')) }}">
+                        <img class="black" alt="logo" src="{{ image_uri(settings('logo.dark'), '160') }}">
                     @endif
                 </a>
 
@@ -72,24 +72,24 @@
                                 <a href="{{ route('page', 'contacts') }}" @if(route('page', 'contacts') == url()->current()) class="actived" @endif>{{ __('Contacts') }}</i></a>
                             </li>
 
-                            @if (! empty(config('localizations.supported_locales')))
-                                <li>
-                                    <a  href="#">
-                                        {{ config('localizations.supported_locales', [])[app()->getLocale()]['native'] ?? app()->getLocale() }}
-                                        <i class="fa fa-angle-down"></i>
-                                    </a>
-                                    <ul>
-                                        @foreach(config('localizations.supported_locales', []) as $code => $localization)
-                                            <li style="width: fit-content"><a href="{{ route('locale', $code) }}">{{ $localization['native'] ?? $code }}</a></li>
-                                        @endforeach
-                                    </ul>
-                                </li>
-                            @endif
+{{--                            @if (! empty(config('localizations.supported_locales')))--}}
+{{--                                <li>--}}
+{{--                                    <a  href="#">--}}
+{{--                                        {{ config('localizations.supported_locales', [])[app()->getLocale()]['native'] ?? app()->getLocale() }}--}}
+{{--                                        <i class="fa fa-angle-down"></i>--}}
+{{--                                    </a>--}}
+{{--                                    <ul>--}}
+{{--                                        @foreach(config('localizations.supported_locales', []) as $code => $localization)--}}
+{{--                                            <li style="width: fit-content"><a href="{{ route('locale', $code) }}">{{ $localization['native'] ?? $code }}</a></li>--}}
+{{--                                        @endforeach--}}
+{{--                                    </ul>--}}
+{{--                                </li>--}}
+{{--                            @endif--}}
 
                             <li>
-                                <form role="search">
+                                <form role="search" action="{{ route('page', 'blog') }}" method="get">
                                     <div class="input-group">
-                                        <input type="text" id="search" class="form-control" placeholder="SEARCH">
+                                        <input type="text" name="search" class="form-control" value="{{ request('search') }}" placeholder="{{ __('SEARCH') }}">
                                         <div class="input-group-btn">
                                             <button type="submit"><span class="icon"><i class="fa fa-search"></i></span></button>
                                         </div>

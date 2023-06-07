@@ -4,6 +4,7 @@ return [
 
     'supported_locales' => [
 
+        /*
         'en' => [
             'name' => 'English',
             'native' => 'EN',
@@ -11,6 +12,7 @@ return [
             'code' => 'en',
             'flag' => '/images/icons/countries/gb.svg',
         ],
+        */
 
         'uk' => [
             'name' => 'Ukraine',

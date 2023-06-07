@@ -4,7 +4,7 @@
             <div class="col-md-4 col-xs-12">
                 @if (! empty(settings('logo.white')))
                     <div class="logo">
-                        <img alt="logo" src="{{ image_uri(settings('logo.white')) }}">
+                        <img alt="logo" src="{{ image_uri(settings('logo.white'), '160') }}">
                     </div>
                 @endif
 

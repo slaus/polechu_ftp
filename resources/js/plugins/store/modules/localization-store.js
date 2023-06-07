@@ -1,7 +1,7 @@
 const state = {
     localizations: [
         { code: 'uk', name: 'UA', icon: '' },
-        { code: 'en', name: 'EN', icon: '' }
+        // { code: 'en', name: 'EN', icon: '' }
     ],
     locale: 'uk',
     fallbackLocale: 'en'
