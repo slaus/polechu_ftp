@@ -27,16 +27,16 @@
         em {
             font-style: italic !important;
         }
-        ul, ol {
-            list-style: initial;
-            margin-left: 15px;
-        }
-        ul li {
-            list-style: initial;
-        }
-        ol li {
-            list-style: decimal;
-        }
+        /*ul, ol {*/
+        /*    list-style: initial;*/
+        /*    margin-left: 15px;*/
+        /*}*/
+        /*ul li {*/
+        /*    list-style: initial;*/
+        /*}*/
+        /*ol li {*/
+        /*    list-style: decimal;*/
+        /*}*/
         .success {
             color: #0F6400FF !important;
             font-size: 14px;

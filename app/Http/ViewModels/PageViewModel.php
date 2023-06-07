@@ -20,6 +20,25 @@ class PageViewModel extends ViewModel
         return $this->page->content ?? [];
     }
 
+    public function posts(): array
+    {
+        $payload = $this->page->posts?->toArray();
+
+        return ! empty($payload) ? [
+            'data' => $payload['data'],
+            'meta' => [
+                'current_page' => $payload['current_page'],
+                'last_page' => $payload['last_page'],
+                'per_page' => $payload['per_page'],
+                'total' => $payload['total'],
+                'links' => $payload['links'],
+                'next_page_url' => $payload['next_page_url'],
+                'path' => $payload['path'],
+                'first_page_url' => $payload['first_page_url'],
+                'last_page_url' => $payload['last_page_url'],
+            ]] : [];
+    }
+
     public function seo(): array
     {
         $seo = $this->page->seo ?? [];

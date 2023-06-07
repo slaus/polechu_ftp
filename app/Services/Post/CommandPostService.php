@@ -32,8 +32,10 @@ class CommandPostService
     {
         $tagIds = [];
 
-        foreach (array_map(fn ($item) => $item['text'], $data['tags'] ?? []) as $tag) {
-            $tagIds[] = Tag::findOrCreateFromString($tag, 'post', '__')?->id;
+        foreach ($data['tags'] ?? [] as $tags) {
+            foreach ($tags as $locale => $tag) {
+                $tagIds[] = Tag::findOrCreateFromString($tag, 'post', $locale)?->id;
+            }
         }
 
         $post = Post::findOrFail($id);

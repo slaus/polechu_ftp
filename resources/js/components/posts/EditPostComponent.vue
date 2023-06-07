@@ -73,81 +73,12 @@
                     </v-flex>
 
                     <v-flex class="xs12 sm12 px-0 px-sm-2 mt-10">
-                        <v-combobox
-                            v-model="post.tags"
-                            :filter="filter"
-                            :hide-no-data="!tagSearch"
+                        <MultiLangCombobox
+                            :value.sync="post.tags"
+                            :placeholder="$t('labels.tags')"
                             :items="tags"
-                            :search-input.sync="tagSearch"
-                            hide-selected
-                            :label="$t('labels.tags')"
-                            multiple
-                            small-chips
-                            dense
-                            outlined
-                        >
-                            <template v-slot:no-data>
-                                <v-list-item>
-                                    <span class="subheading mr-2">Create</span>
-                                    <v-chip
-                                        label
-                                        small
-                                    >
-                                        {{ tagSearch }}
-                                    </v-chip>
-                                </v-list-item>
-                            </template>
-
-                            <template v-slot:selection="{ attrs, item, parent, selected }">
-                                <v-chip
-                                    v-if="item === Object(item)"
-                                    v-bind="attrs"
-                                    :input-value="selected"
-                                    label
-                                    small
-                                >
-                                    <span class="pr-2">
-                                        {{ item.text }}
-                                    </span>
-                                    <v-icon
-                                        small
-                                        @click="parent.selectItem(item)"
-                                    >
-                                        $delete
-                                    </v-icon>
-                                </v-chip>
-                            </template>
-
-                            <template v-slot:item="{ index, item }">
-                                <v-text-field
-                                    v-if="tagEditing === item"
-                                    v-model="tagEditing.text"
-                                    autofocus
-                                    flat
-                                    background-color="transparent"
-                                    hide-details
-                                    solo
-                                    @keyup.enter="editTag(index, item)"
-                                ></v-text-field>
-                                <v-chip
-                                    v-else
-                                    dark
-                                    label
-                                    small
-                                >
-                                    {{ item.text }}
-                                </v-chip>
-                                <v-spacer></v-spacer>
-                                <v-list-item-action @click.stop>
-                                    <v-btn
-                                        icon
-                                        @click.stop.prevent="editTag(index, item)"
-                                    >
-                                        <v-icon>{{ tagEditing !== item ? 'mdi-pencil' : 'mdi-check' }}</v-icon>
-                                    </v-btn>
-                                </v-list-item-action>
-                            </template>
-                        </v-combobox>
+                            :error-messages="messageFieldError('tags')"
+                        />
                     </v-flex>
 
                     <v-flex class="xs12 sm12 px-0 px-sm-2">
@@ -187,6 +118,7 @@ import MultiLangTextField from "../shared/MultiLangTextField";
 import MultiLangEditor from "../shared/MultiLangEditor";
 import ImageThumb from "../shared/ImageThumb.vue";
 import MultiLangTextarea from "../shared/MultiLangTextarea.vue";
+import MultiLangCombobox from "../shared/MultiLangCombobox.vue";
 
 export default {
     name: "EditPostComponent",
@@ -198,6 +130,7 @@ export default {
         MultiLangTextarea,
         MultiLangTextField,
         MultiLangEditor,
+        MultiLangCombobox,
         ImageThumb
     },
     props: {
@@ -212,11 +145,7 @@ export default {
     },
     data() {
         return {
-            noEditSlug: true,
-            tagEditing: null,
-            tagEditingIndex: -1,
-            nonce: 1,
-            tagSearch: null
+            noEditSlug: true
         }
     },
     computed: {
@@ -244,25 +173,6 @@ export default {
         },
         'post.name': function (value) {
             this.setSlug(this.translation(value))
-        },
-        'post.tags': function (value, prev) {
-            if (value.length === prev.length) {
-                return;
-            }
-
-            this.post.tags = value.map(v => {
-                if (typeof v === 'string') {
-                    v = {
-                        text: v,
-                    }
-
-                    this.post.tags.push(v)
-
-                    this.nonce++
-                }
-
-                return v;
-            })
         }
     },
     methods: {
@@ -292,29 +202,6 @@ export default {
         close() {
             this.cleanErrors();
             this.$emit('update:isActive', false);
-        },
-        editTag(index, item) {
-            if (!this.tagEditing) {
-                this.tagEditing = item
-                this.tagEditingIndex = index
-            } else {
-                this.tagEditing = null
-                this.tagEditingIndex = -1
-            }
-        },
-        filter(item, queryText, itemText) {
-            if (item.header) {
-                return false;
-            }
-
-            const hasValue = val => val != null ? val : '';
-
-            const text = hasValue(itemText);
-            const query = hasValue(queryText);
-
-            return text.toString()
-                .toLowerCase()
-                .indexOf(query.toString().toLowerCase()) > -1;
         }
     }
 }

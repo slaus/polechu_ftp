@@ -30,7 +30,7 @@
                 <div class="col-md-12">
                     <ul class="subdetail">
                         <li>
-                            <a href="{{ route('page') }}">Home</a>
+                            <a href="{{ route('page') }}">{{ __('Home') }}</a>
                         </li>
 
                         <li class="sep">/

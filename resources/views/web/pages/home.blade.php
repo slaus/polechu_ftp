@@ -18,7 +18,7 @@
             <div id="owl-slider-home" class="owl-carousel">
                 @foreach($content['banner']['items'] as $item)
                     @continue(empty($item['image']))
-                    <div class="item imgbg" style="background-image:url('{{ image_uri($item['image']) }}')">
+                    <div class="item imgbg" style="background-image: url('{{ image_uri($item['image']) }}')">
                         <div class="overlay-main v-align text-center ">
                             <div class="col-md-10 col-xs-11 onStep" data-animation="fadeInUp" data-time="300">
                                 <div class="home-title-h1 title-h">{!! translation($item['title'] ?? []) !!}</div>
@@ -110,7 +110,7 @@
                         <div class="col-md-4">
                             <div class="wrap-news onStep" data-animation="fadeInLeft" data-time="300">
                                 @if (! empty($tour['image']))
-                                    <img alt="{{ translation($tour['name'] ?? []) }}" class="img-responsive" src="{{ image_uri($tour['image']) }}">
+                                    <img alt="{{ translation($tour['name'] ?? []) }}" class="img-responsive" src="{{ image_uri($tour['image'], '540') }}">
                                 @endif
                                 <div class="title-h3 title-h">{{ translation($tour['name'] ?? []) }}</div>
                                 <p>{{ translation($tour['description'] ?? []) }}</p>

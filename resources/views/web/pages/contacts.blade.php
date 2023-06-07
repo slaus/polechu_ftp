@@ -14,7 +14,7 @@
 @endpush
 
 @section('content')
-    <section id="subheader" @if(! empty($content['banner']['image'])) style="background: url('{{ $content['banner']['image'] }}')" @endif>
+    <section id="subheader" @if(! empty($content['banner']['image'])) style="background: url('{{ image_uri($content['banner']['image']) }}')" @endif>
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -31,7 +31,7 @@
                 <div class="col-md-12">
                     <ul class="subdetail">
                         <li>
-                            <a href="{{ route('page') }}">Home</a>
+                            <a href="{{ route('page') }}">{{ __('Home') }}</a>
                         </li>
 
                         <li class="sep">/

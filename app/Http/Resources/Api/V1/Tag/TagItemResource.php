@@ -8,8 +8,6 @@ class TagItemResource extends JsonResource
 {
     public function toArray($request): array
     {
-        return [
-            'text' => $this->getTranslation('name', '__'),
-        ];
+        return $this->getOriginal('name');
     }
 }

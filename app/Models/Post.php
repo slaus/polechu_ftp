@@ -33,10 +33,16 @@ class Post extends Model
 
     protected $appends = [
         'published_at',
+        'format_published_at',
     ];
 
     public function getPublishedAtAttribute(): string
     {
         return $this->created_at?->format('d.m.Y H:i') ?? '';
+    }
+
+    public function getFormatPublishedAtAttribute(): string
+    {
+        return $this->created_at?->format('M j, Y') ?? '';
     }
 }

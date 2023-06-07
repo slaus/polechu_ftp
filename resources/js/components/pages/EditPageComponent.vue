@@ -37,6 +37,10 @@
                             <AboutContent :value.sync="page.content" />
                         </template>
 
+                        <template v-else-if="page.slug === 'blog'">
+                            <BlogContent :value.sync="page.content" />
+                        </template>
+
                         <template v-else-if="page.slug === 'contacts'">
                             <ContactsContent :value.sync="page.content" />
                         </template>
@@ -79,6 +83,7 @@ import MultiLangTextField from "../shared/MultiLangTextField";
 import MultiLangEditor from "../shared/MultiLangEditor";
 import HomeContent from "./contents/HomeContent.vue";
 import AboutContent from "./contents/AboutContent.vue";
+import BlogContent from "./contents/BlogContent.vue";
 import ContactsContent from "./contents/ContactsContent.vue";
 
 export default {
@@ -92,6 +97,7 @@ export default {
         MultiLangEditor,
         HomeContent,
         AboutContent,
+        BlogContent,
         ContactsContent
     },
     props: {

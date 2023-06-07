@@ -2,6 +2,7 @@
 
 namespace App\Http\ViewModels;
 
+use App\Models\Page;
 use App\Models\Post;
 
 class PostViewModel extends ViewModel
@@ -13,6 +14,11 @@ class PostViewModel extends ViewModel
     public function post(): Post
     {
         return $this->post;
+    }
+
+    public function page(): Page
+    {
+        return $this->post->page;
     }
 
     public function content(): array

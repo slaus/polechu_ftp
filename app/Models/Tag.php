@@ -6,6 +6,7 @@ use ArrayAccess;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection as DbCollection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Support\Collection;
 use Spatie\EloquentSortable\SortableTrait;
 use Spatie\Tags\HasSlug;
@@ -25,7 +26,7 @@ class Tag extends BaseTag
 
     public static function getLocale()
     {
-        return '__';
+        return app()->getLocale();
     }
 
     public function scopeWithType(Builder $query, string $type = null): Builder

@@ -18,7 +18,7 @@ class PostShowResource extends JsonResource
             'content' => $this->content,
             'seo' => $this->seo,
             'visibility' => $this->visibility,
-            'tags' => $this->tags->map(fn (Tag $tag) => $tag->name)->toArray()
+            'tags' => $this->tags->map(fn (Tag $tag) => $tag->getOriginal('name'))->toArray()
         ];
     }
 }
