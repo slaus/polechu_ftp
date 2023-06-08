@@ -6,6 +6,7 @@ use App\Http\Controllers\Web\FormController;
 use App\Http\Controllers\Web\LocalizationController;
 use App\Http\Controllers\Web\PageController;
 use App\Http\Controllers\Web\PostController;
+use App\Http\Controllers\Web\TourController;
 use App\Services\Localization\LocalizationService;
 use Illuminate\Support\Facades\Route;
 
@@ -42,6 +43,7 @@ Route::group(['prefix' => (new LocalizationService(request()))->setLocale()], fu
         Route::post('contact', [FormController::class, 'contact'])->name('contact');
     });
 
+    Route::get('/tours/{slug}', TourController::class)->name('tours');
     Route::get('/blog/{slug}', PostController::class)->name('post');
     Route::get('/{slug?}', PageController::class)->name('page');
 

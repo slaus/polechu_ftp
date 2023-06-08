@@ -106,6 +106,8 @@ export default {
             postContent: 'Контент посту',
             tags: 'Теги',
             countShow: 'Кількість для показу',
+            tourPrice: 'Ціна туру',
+            tourContent: 'Контент',
         },
         tabs: {
             main: 'Головні',

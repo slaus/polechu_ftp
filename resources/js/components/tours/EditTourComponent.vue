@@ -83,6 +83,14 @@
                             :error-messages="messageFieldError('description')"
                             rows="3"
                             :no-resize="true"
+                            class="mb-3"
+                        />
+
+                        <MultiLangTextField
+                            :value.sync="tour.price"
+                            :label="$t('labels.tourPrice')"
+                            :readonly="isLoading"
+                            :error-messages="messageFieldError('price')"
                         />
                     </v-flex>
 
@@ -111,14 +119,12 @@
                     </v-flex>
 
                     <v-flex class="xs12 sm12 px-0 px-sm-2">
-
-
-
-
-
-
-
-
+                        <MultiLangEditor
+                            :value.sync="tour.content"
+                            :label="$t('labels.tourContent')"
+                            :readonly="isLoading"
+                            :error-messages="messageFieldError('content')"
+                        />
                     </v-flex>
                 </v-layout>
             </v-card-text>

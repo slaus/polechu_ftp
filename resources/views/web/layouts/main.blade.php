@@ -123,6 +123,16 @@
         .navbar-brand.white .black {
             max-height: 50px!important;
         }
+        .preview-price {
+            font-size: 28px;
+            color: #ffb600;
+            font-weight: bold;
+            margin-top: 16px;
+        }
+        .preview-price sub {
+            font-size: 14px;
+            font-weight: normal;
+        }
     </style>
 
     @stack('meta')

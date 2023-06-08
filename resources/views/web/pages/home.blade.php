@@ -114,7 +114,8 @@
                                 @endif
                                 <div class="title-h3 title-h">{{ translation($tour['name'] ?? []) }}</div>
                                 <p>{{ translation($tour['description'] ?? []) }}</p>
-                                <a class="link-class" href="#">
+                                <div class="preview-price">{!! translation($tour['price'] ?? []) !!}</div>
+                                <a class="link-class" href="{{ route('tours', $tour['slug']) }}">
                                     {{ __('MORE DETAIL') }}
                                     <span class="devider"></span>
                                 </a>
