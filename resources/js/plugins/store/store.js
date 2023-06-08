@@ -11,6 +11,7 @@ import pageStore from "./modules/page-store";
 import tourStore from "./modules/tour-store";
 import postStore from "./modules/post-store";
 import settingStore from "./modules/setting-store";
+import menuStore from "./modules/menu-store";
 
 Vue.use(Vuex);
 
@@ -36,7 +37,8 @@ export default new Vuex.Store({
         pageStore,
         tourStore,
         postStore,
-        settingStore
+        settingStore,
+        menuStore
     },
     strict: false,
     plugins: [

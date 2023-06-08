@@ -1,6 +1,7 @@
 import VueRouter from 'vue-router';
 import AdminLayout from "../layouts/AdminLayout";
 import DashboardPage from "../pages/admin/DashboardPage.vue";
+import MenuPage from "../pages/admin/MenuPage.vue";
 import PagesPage from "../pages/admin/PagesPage.vue";
 import ToursPage from "../pages/admin/ToursPage.vue";
 import PostsPage from "../pages/admin/PostsPage.vue";
@@ -21,6 +22,11 @@ const router = new VueRouter({
                     path: '/',
                     name: 'admin.dashboard',
                     component: DashboardPage,
+                },
+                {
+                    path: 'menu',
+                    name: 'admin.menu',
+                    component: MenuPage,
                 },
                 {
                     path: 'pages',

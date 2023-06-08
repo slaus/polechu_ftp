@@ -16,6 +16,15 @@
                     :value.sync="options.search"
                     :placeholder="$t('placeholders.search')"
                 />
+
+                <v-btn
+                    depressed
+                    color="primary"
+                    @click="editPage(0)"
+                >
+                    <v-icon small left>fa-solid fa-plus</v-icon>
+                    <span class="no-upper">{{ $t('buttons.add') }}</span>
+                </v-btn>
             </v-toolbar>
 
             <SeoComponent v-bind.sync="pageSeo" v-on:save="saveSeo" />
@@ -35,6 +44,9 @@
             </v-btn>
             <v-btn icon @click="editPage(item.id)" color="success">
                 <v-icon small>fa-solid fa-pen-to-square</v-icon>
+            </v-btn>
+            <v-btn icon @click="confirmDeletePage(item.id)" :disabled="protectPageIds.includes(item.id)" color="error">
+                <v-icon small>fa-solid fa-trash-can</v-icon>
             </v-btn>
         </template>
     </v-data-table>
@@ -66,7 +78,8 @@ export default {
             totalCount: state => state.pageStore.totalCount,
             itemsPerPage: state => state.pageStore.itemsPerPage,
             currentPage: state => state.pageStore.currentPage,
-            page: state => state.pageStore.page
+            page: state => state.pageStore.page,
+            protectPageIds: state => state.pageStore.protectPageIds
         })
     },
     data() {
@@ -80,7 +93,7 @@ export default {
             },
             headers: [
                 { text: this.$t('columns.pageName'), value: 'name', sortable: false },
-                { text: '', value: 'actions', width: 160, sortable: false, align: 'right' }
+                { text: '', value: 'actions', width: 240, sortable: false, align: 'right' }
             ],
             pageSeo: {
                 isActive: false,
@@ -98,6 +111,11 @@ export default {
                 this.loadPages();
             },
             deep: true
+        },
+        '$store.state.confirmStore.isConfirmed': function (value) {
+            if (value && this.confirmPayload.action && this.confirmPayload.action === 'deletePage') {
+                this.deletePage();
+            }
         }
     },
     methods: {
@@ -113,6 +131,19 @@ export default {
         },
         viewPage(slug) {
             window.open('/' + slug, '_blank').focus();
+        },
+        confirmDeletePage(id) {
+            this.setConfirm({
+                title: 'confirm.deleteTitle',
+                message: 'confirm.deleteMessage',
+                payload: { action: 'deletePage', id: id }
+            });
+        },
+        deletePage() {
+            this.$store.dispatch('pageStore/deletePage', this.confirmPayload?.id ?? 0).finally(() => {
+                this.loadPages();
+                this.clearConfirm();
+            });
         },
         saveSeo() {
             this.page.seo = this.pageSeo.value;

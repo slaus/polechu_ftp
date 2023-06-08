@@ -13,11 +13,11 @@
 @endpush
 
 @section('content')
-    <section id="subheader">
+    <section id="subheader" @if(! empty($content['banner']['image'])) style="background: url('{{ image_uri($content['banner']['image']) }}')" @endif>
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h1>{{ translation($page['name'] ?? []) }}</h1>
+                    <div class="title-h1 title-h">{{ translation($content['banner']['title'] ?? $page['name'] ?? []) }}</div>
                 </div>
 
                 <div class="col-md-12">
@@ -38,6 +38,23 @@
 
                         <li>{{ translation($page['name'] ?? []) }}</li>
                     </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section aria-label="about" class="about-history" style="padding-top: 0">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <article>
+                        @if (! empty(translation($content['seo']['title'] ?? [])))
+                            <div class="title-h2 title-h">{!! translation($content['seo']['title'] ?? []) !!}</div>
+                            <span class="devider-cont"></span>
+                        @endif
+
+                        {!! translation($content['seo']['text'] ?? []) !!}
+                    </article>
                 </div>
             </div>
         </div>

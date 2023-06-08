@@ -13,6 +13,7 @@ export default {
         },
         menu: {
             dashboard: 'Dashboard',
+            menu: 'Меню',
             pages: 'Сторінки',
             tours: 'Тури',
             posts: 'Болг',
@@ -44,6 +45,11 @@ export default {
             editPost: 'Редагування посту - {post}',
             posts: 'Болг',
             recentPosts: 'Нещодавні пости',
+            menu: 'Меню',
+            mainMenu: 'Головне меню',
+            footerMenu: 'Меню підвалу',
+            newMenu: 'Новий пункт меню',
+            editMenu: 'Редагування меню - {menu}',
         },
         columns: {
             pageName: 'Назва сторінки',
@@ -108,6 +114,7 @@ export default {
             countShow: 'Кількість для показу',
             tourPrice: 'Ціна туру',
             tourContent: 'Контент',
+            menuName: 'Назва пункту меню',
         },
         tabs: {
             main: 'Головні',

@@ -6,6 +6,7 @@ use App\Models\Page;
 use App\Models\User;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Collection;
 
 class QueryPageService
 {
@@ -40,6 +41,13 @@ class QueryPageService
         }
 
         return $query->paginate(perPage: $data['itemsPerPage'] ?? 10);
+    }
+
+    public function list(array $data): Collection
+    {
+        $query = Page::where('visibility', true);
+
+        return $query->get();
     }
 
     public function show(int $id): Page

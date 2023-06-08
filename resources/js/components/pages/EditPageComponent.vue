@@ -19,13 +19,26 @@
 
             <v-card-text class="pa-3">
                 <v-layout wrap class="mt-4">
-                    <v-flex class="xs12 sm12 px-0 px-sm-2 mb-4">
+                    <v-flex :class="protectPageIds.includes(id) ? 'sm12' : 'sm8'" class="xs12 px-0 px-sm-2 mb-4">
                         <MultiLangTextField
                             :value.sync="page.name"
                             :label="$t('labels.pageName')"
                             :readonly="isLoading"
                             :error-messages="messageFieldError('name')"
                         />
+                    </v-flex>
+
+                    <v-flex class="xs12 sm4 px-0 px-sm-2">
+                        <v-text-field
+                            outlined
+                            dense
+                            v-model="page.slug"
+                            :readonly="isLoading || noEditSlug"
+                            :label="$t('labels.postSlug')"
+                            @dblclick="noEditSlug=false"
+                            @focusout="noEditSlug=true"
+                            :error-messages="messageFieldError('slug')"
+                        ></v-text-field>
                     </v-flex>
 
                     <v-flex class="xs12 sm12 px-0 px-sm-2">
@@ -46,12 +59,7 @@
                         </template>
 
                         <template v-else>
-                            <MultiLangEditor
-                                :value.sync="page.content"
-                                :label="$t('labels.pageContent')"
-                                :readonly="isLoading"
-                                :error-messages="messageFieldError('content')"
-                            />
+                            <DefaultContent :value.sync="page.content" />
                         </template>
                     </v-flex>
                 </v-layout>
@@ -85,6 +93,7 @@ import HomeContent from "./contents/HomeContent.vue";
 import AboutContent from "./contents/AboutContent.vue";
 import BlogContent from "./contents/BlogContent.vue";
 import ContactsContent from "./contents/ContactsContent.vue";
+import DefaultContent from "./contents/DefaultContent.vue";
 
 export default {
     name: "EditPageComponent",
@@ -98,7 +107,8 @@ export default {
         HomeContent,
         AboutContent,
         BlogContent,
-        ContactsContent
+        ContactsContent,
+        DefaultContent
     },
     props: {
         isActive: {
@@ -118,7 +128,8 @@ export default {
     computed: {
         ...mapState({
             isLoading: state => state.pageStore.isLoading,
-            page: state => state.pageStore.page
+            page: state => state.pageStore.page,
+            protectPageIds: state => state.pageStore.protectPageIds
         }),
         title() {
             return this.id > 0 ? 'titles.editPage' : 'titles.newPage';

@@ -25,11 +25,12 @@ export default {
             selectedItem: 0,
             menus: [
                 { id: 1, text: 'menu.dashboard', route: 'admin.dashboard', icon: 'fa-solid fa-gauge' },
-                { id: 2, text: 'menu.pages', route: 'admin.pages', icon: 'fa-regular fa-sidebar' },
-                { id: 3, text: 'menu.tours', route: 'admin.tours', icon: 'fa-regular fa-tree-palm' },
-                { id: 4, text: 'menu.posts', route: 'admin.posts', icon: 'fa-regular fa-newspaper' },
-                { id: 5, text: 'menu.fm', route: 'admin.fm', icon: 'fa-sharp fa-regular fa-photo-film' },
-                { id: 6, text: 'menu.settings', route: 'admin.settings', icon: 'fa-solid fa-screwdriver-wrench' }
+                { id: 2, text: 'menu.menu', route: 'admin.menu', icon: 'fa-regular fa-bars' },
+                { id: 3, text: 'menu.pages', route: 'admin.pages', icon: 'fa-regular fa-sidebar' },
+                { id: 4, text: 'menu.tours', route: 'admin.tours', icon: 'fa-regular fa-tree-palm' },
+                { id: 5, text: 'menu.posts', route: 'admin.posts', icon: 'fa-regular fa-newspaper' },
+                { id: 6, text: 'menu.fm', route: 'admin.fm', icon: 'fa-sharp fa-regular fa-photo-film' },
+                { id: 7, text: 'menu.settings', route: 'admin.settings', icon: 'fa-solid fa-screwdriver-wrench' }
                 // { id: 7, text: 'menu.users', route: 'admin.users', icon: 'fa-solid fa-users' },
             ]
         }

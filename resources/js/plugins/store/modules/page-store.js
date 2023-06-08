@@ -3,6 +3,7 @@ import Vue from "vue";
 const state = {
     isLoading: false,
     listWithPaginate: [],
+    list: [],
     totalCount: 0,
     itemsPerPage: 10,
     currentPage: 1,
@@ -13,7 +14,8 @@ const state = {
         content: null,
         seo: null,
         visibility: true
-    }
+    },
+    protectPageIds: [1, 2, 3, 4]
 };
 const getters = {
     isLoading(state) {
@@ -21,6 +23,9 @@ const getters = {
     },
     listWithPaginate(state) {
         return state.listWithPaginate
+    },
+    list(state) {
+        return state.list
     },
     totalCount(state) {
         return state.totalCount
@@ -43,6 +48,23 @@ const actions = {
                     commit('totalCount', response.data.meta.total);
                     commit('currentPage', response.data.meta.current_page);
                     commit('itemsPerPage', response.data.meta.per_page);
+                }
+
+                return response;
+            }).finally(() => {
+                commit('isLoading', false);
+            });
+        } catch (error) {
+            console.log(error);
+        }
+    },
+    async list({ commit }, params) {
+        try {
+            commit('isLoading', true);
+
+            return Vue.prototype.$api.get('v1/pages/list', { params: params }).then(response => {
+                if (response.data) {
+                    commit('list', response.data);
                 }
 
                 return response;
@@ -126,6 +148,9 @@ const mutations = {
     },
     listWithPaginate(state, payload) {
         state.listWithPaginate = payload;
+    },
+    list(state, payload) {
+        state.list = payload;
     },
     totalCount(state, payload) {
         state.totalCount = payload;
