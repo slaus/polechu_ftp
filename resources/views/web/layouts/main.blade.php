@@ -133,6 +133,15 @@
             font-size: 14px;
             font-weight: normal;
         }
+        .container ul, .container ul li {
+            list-style: initial !important
+        }
+        .container ol, .container ol li {
+            list-style: decimal !important
+        }
+        .container ul, .container ol {
+            margin-left: 30px;
+        }
     </style>
 
     @stack('meta')
