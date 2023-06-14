@@ -28,10 +28,20 @@
                             outlined
                         />
                     </v-flex>
-                    <v-flex class="xs12 sm12 px-0 px-sm-2 mb-4">
+                    <v-flex class="xs12 sm4 px-0 px-sm-2 mb-4">
+                        <label>{{ $t('labels.image') }}</label>
+                        <ImageThumb
+                            :value.sync="seo.og.image"
+                            width="290px"
+                            height="180px"
+                            class="mx-auto"
+                        />
+                    </v-flex>
+                    <v-flex class="xs12 sm8 px-0 px-sm-2 mb-4">
                         <label>{{ $t('labels.metaDescription') }}</label>
                         <MultiLangTextarea
                             :value.sync="seo.description"
+                            rows="4"
                         />
                     </v-flex>
                 </v-layout>
@@ -58,6 +68,7 @@ import validation from "../../mixins/validation";
 import localization from "../../mixins/localization";
 import MultiLangTextField from "../shared/MultiLangTextField";
 import MultiLangTextarea from "../shared/MultiLangTextarea";
+import ImageThumb from "./ImageThumb.vue";
 
 export default {
     name: "SeoComponent",
@@ -67,7 +78,8 @@ export default {
     ],
     components: {
         MultiLangTextarea,
-        MultiLangTextField
+        MultiLangTextField,
+        ImageThumb
     },
     props: {
         isActive: {
@@ -95,7 +107,10 @@ export default {
             seo: {
                 title: null,
                 description: null,
-                indexes: 'all'
+                indexes: 'all',
+                og: {
+                    image: null
+                }
             }
         }
     },
@@ -117,7 +132,10 @@ export default {
             this.seo = {
                 title: null,
                 description: null,
-                indexes: 'all'
+                indexes: 'all',
+                og: {
+                    image: null
+                }
             };
         },
         close() {
