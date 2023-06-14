@@ -116,7 +116,7 @@
                                 <p>{{ translation($tour['description'] ?? []) }}</p>
                                 <div class="preview-price">{!! translation($tour['price'] ?? []) !!}</div>
                                 <a class="link-class" href="{{ route('tours', $tour['slug']) }}">
-                                    {{ __('MORE DETAIL') }}
+                                    {{ __('More detail') }}
                                     <span class="devider"></span>
                                 </a>
                             </div>
@@ -126,21 +126,6 @@
             </div>
         </section>
     @endif
-
-    <section aria-label="about" class="about-history" style="padding-top: 0">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <article>
-                        <div class="title-h2 title-h">{!! translation($content['seo']['title'] ?? []) !!}</div>
-                        <span class="devider-cont"></span>
-
-                        {!! translation($content['seo']['text'] ?? []) !!}
-                    </article>
-                </div>
-            </div>
-        </div>
-    </section>
 
     @if (! empty(posts((int) ($content['posts']['count'] ?? 10))))
         <section class="whitepage" style="padding-top: 0">
@@ -158,21 +143,16 @@
                         <div class="owl-carousel" id="owl-post">
                             @foreach(posts((int) ($content['posts']['count'] ?? 10)) as $post)
                                 <div class="item">
-                                    <div class="recent-post" style="background-image:url('{{ image_uri($post['image'] ?? '') }}')">
-                                        <div class="hovereffect">
-                                            <a href="{{ route('post', $post['slug']) }}">
-                                                <div class="overlay ">
-                                                    <div class="content">
-                                                        <div class="heading">
-                                                            {{ translation($post['name'] ?? []) }}
-                                                            <span class="devider-recent"></span>
-                                                        </div>
-                                                        <div class="subheading">{{ $post['published_at'] }}</div>
-                                                        <div class="readmore">{{ __('Read more') }} <i class="fa fa-angle-right"></i></div>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
+                                    <div class="wrap-news onStep" data-animation="fadeInLeft" data-time="300">
+                                        @if (! empty($post['image']))
+                                            <img alt="{{ translation($post['name'] ?? []) }}" class="img-responsive" src="{{ image_uri($post['image'], '540') }}">
+                                        @endif
+                                        <div class="title-h3 title-h">{{ translation($post['name'] ?? []) }}</div>
+                                        <p>{{ translation($post['description'] ?? []) }}</p>
+                                        <a class="link-class" href="{{ route('post', $post['slug']) }}">
+                                            {{ __('Read more') }}
+                                            <span class="devider"></span>
+                                        </a>
                                     </div>
                                 </div>
                             @endforeach
@@ -214,6 +194,21 @@
                             {{ translation($content['feedback_form']['button_text'] ?? []) }}
                         </button>
                     </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section aria-label="about" class="about-history" style="padding-top: 40px; padding-bottom: 40px">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <article>
+                        <div class="title-h2 title-h">{!! translation($content['seo']['title'] ?? []) !!}</div>
+                        <span class="devider-cont"></span>
+
+                        {!! translation($content['seo']['text'] ?? []) !!}
+                    </article>
                 </div>
             </div>
         </div>

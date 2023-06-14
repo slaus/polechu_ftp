@@ -17,7 +17,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="title-h1 title-h">{{ translation($post['name'] ?? []) }}</div>
+                    <h1 class="title-h1 title-h">{{ translation($post['name'] ?? []) }}</h1>
                 </div>
 
                 <div class="col-md-12">
@@ -58,21 +58,40 @@
                                 @if (! empty($post['image']))
                                     <img alt="blog-img" class="img-responsive" src="{{ image_uri($post['image'], '768') }}">
                                 @endif
-
-                                <div class="post-heading">
-                                    <div class="title-h3 title-h">
-                                        <a href="{{ route('post', $post['slug']) }}">{{ translation($post['name'] ?? []) }}</a>
-                                </div>
                             </div>
 
                             {!! translation($post['content'] ?? []) !!}
 
                             <div class="bottom-article">
-                                <ul class="meta-post">
-                                    <li>
-                                        <a class="link" href="{{ route('post', $post['slug']) }}">{{ $post['format_published_at'] }}</a>
-                                    </li>
-                                </ul>
+                                <div style="display:flex;justify-content:space-between;align-items:center;">
+                                    <div>
+                                        <span>
+                                            {{ $post['format_published_at'] }}.
+                                        </span>
+
+                                        @if (! empty($post['author']))
+                                            <span style="margin-left: 8px">{{ translation($post['author']) }}</span>
+                                        @endif
+                                    </div>
+
+                                    <div class="widget" style="margin: 20px 0;">
+                                        <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(route('post', $post['slug'])) }}&amp;p[images][0]={{ ! empty($post['image']) ? urlencode(image_uri($post['image'], '768')) : '' }}" title="{{ translation($post['name'] ?? []) }}" onclick="window.open(this.href, this.title, 'toolbar=0, status=0, width=548, height=325'); return false" rel="nofollow" target="_parent">
+                                            <img src="/images/icons/facebook.svg" width="40" height="40" alt="Facebook">
+                                        </a>
+
+                                        <a href="https://twitter.com/intent/tweet?url={{ urlencode(route('post', $post['slug'])) }}&amp;text={{ translation($post['name'] ?? []) }}" title="{{ translation($post['name'] ?? []) }}" onclick="window.open(this.href, this.title, 'toolbar=0, status=0, width=548, height=325'); return false" rel="nofollow" target="_parent">
+                                            <img src="/images/icons/twitter.svg" width="40" height="40" alt="Twitter">
+                                        </a>
+
+                                        <a href="https://telegram.me/share/url?url={{ urlencode(route('post', $post['slug'])) }}&amp;text={{ translation($post['name'] ?? []) }}" rel="nofollow" target="_blank">
+                                            <img src="/images/icons/telegramm.svg" width="40" height="40" alt="Telegram">
+                                        </a>
+
+                                        <a href="viber://forward?text={{ urlencode(route('post', $post['slug'])) }}" rel="nofollow" target="_blank">
+                                            <img src="/images/icons/viber.svg" width="40" height="40" alt="Viber">
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                         </article>
                     </div>
@@ -80,18 +99,12 @@
 
                 <div class="col-md-4">
                     <aside class="onStep" data-animation="fadeInUp" data-time="600">
-                        @include('web.widgets.posts-search')
-
                         @if (! empty(posts(3, [$post['id']])))
                             @include('web.widgets.recent-posts', ['posts' => posts(3, [$post['id']])])
                         @endif
 
                         @if (! empty(tags('post')))
                             @include('web.widgets.tags-cloud', ['tags' => tags('post')])
-                        @endif
-
-                        @if (! empty(translation($post['page']['content']['seo']['title'] ?? [])) || ! empty(translation($post['page']['content']['seo']['text'] ?? [])))
-                            @include('web.widgets.seo-text', ['title' => translation($post['page']['content']['seo']['title'] ?? []), 'text' => translation($post['page']['content']['seo']['text'] ?? [])])
                         @endif
                     </aside>
                 </div>

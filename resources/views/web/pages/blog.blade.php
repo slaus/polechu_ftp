@@ -103,8 +103,6 @@
 
                 <div class="col-md-4">
                     <aside class="onStep" data-animation="fadeInUp" data-time="600">
-                        @include('web.widgets.posts-search')
-
                         @if (! empty(posts(3, array_column($posts['data'], 'id'))))
                             @include('web.widgets.recent-posts', ['posts' => posts(3, array_column($posts['data'], 'id'))])
                         @endif

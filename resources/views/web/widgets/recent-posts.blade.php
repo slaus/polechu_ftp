@@ -1,5 +1,5 @@
 <div class="widget">
-    <div class="title-h5 title-h">
+    <div class="title-h5 title-h" style="margin-top: 0">
         {{ __('Recent posts') }}
     </div>
 

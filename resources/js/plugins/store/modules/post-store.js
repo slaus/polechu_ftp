@@ -13,6 +13,7 @@ const state = {
         image: '',
         description: null,
         content: null,
+        author: null,
         seo: null,
         visibility: true,
         tags: []
@@ -172,6 +173,7 @@ const mutations = {
         state.post.image = '';
         state.post.description = null;
         state.post.content = null;
+        state.post.author = null;
         state.post.seo = null;
         state.post.visibility = true;
         state.post.tags = [];

@@ -14,19 +14,23 @@ class Post extends Model
     protected $table = 'posts';
 
     protected $fillable = [
+        'user_id',
         'slug',
         'name',
         'image',
         'description',
         'content',
+        'author',
         'seo',
         'visibility',
     ];
 
     protected $casts = [
+        'user_id' => 'array',
         'name' => 'array',
         'description' => 'array',
         'content' => 'array',
+        'author' => 'array',
         'seo' => 'array',
         'visibility' => 'boolean',
     ];

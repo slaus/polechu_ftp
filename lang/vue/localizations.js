@@ -108,6 +108,7 @@ export default {
             gallery: 'Галерея',
             visibility: 'Видимість',
             postName: 'Назва посту',
+            postAuthor: 'Автор посту',
             postSlug: 'slug',
             postContent: 'Контент посту',
             tags: 'Теги',

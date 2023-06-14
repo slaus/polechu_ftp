@@ -19,7 +19,7 @@
 
             <v-card-text class="pa-3">
                 <v-layout wrap class="mt-4">
-                    <v-flex class="xs12 sm6 px-0 px-sm-2 mb-4">
+                    <v-flex class="xs12 sm5 px-0 px-sm-2 mb-4">
                         <MultiLangTextField
                             :value.sync="post.name"
                             :label="$t('labels.postName')"
@@ -28,7 +28,7 @@
                         />
                     </v-flex>
 
-                    <v-flex class="xs12 sm4 px-0 px-sm-2">
+                    <v-flex class="xs12 sm2 px-0 px-sm-2">
                         <v-text-field
                             outlined
                             dense
@@ -39,6 +39,15 @@
                             @focusout="noEditSlug=true"
                             :error-messages="messageFieldError('slug')"
                         ></v-text-field>
+                    </v-flex>
+
+                    <v-flex class="xs12 sm3 px-0 px-sm-2 mb-4">
+                        <MultiLangTextField
+                            :value.sync="post.author"
+                            :label="$t('labels.postAuthor')"
+                            :readonly="isLoading"
+                            :error-messages="messageFieldError('author')"
+                        />
                     </v-flex>
 
                     <v-flex class="xs12 sm2 px-0 px-sm-2">

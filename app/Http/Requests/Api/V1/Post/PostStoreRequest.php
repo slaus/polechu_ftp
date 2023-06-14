@@ -16,9 +16,10 @@ class PostStoreRequest extends FormRequest
         return [
             'slug' => ['required', 'alpha_dash', 'string', 'max:255', 'unique:posts,slug'],
             'name' => ['required', 'array', 'min:1'],
-            'image' => ['nullable', 'string', 'max:255'],
+            'image' => ['required', 'string', 'max:255'],
             'description' => ['nullable', 'array'],
             'content' => ['nullable', 'array'],
+            'author' => ['required', 'array'],
             'tags' => ['nullable', 'array'],
             'visibility' => ['nullable', 'boolean'],
         ];
