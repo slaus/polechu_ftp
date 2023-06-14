@@ -138,7 +138,6 @@
                             <div class="title-h3 title-h">{{ translation($content['posts']['subtitle'] ?? []) }}</div>
                         </div>
                     </div>
-                    <div class="space-double"></div>
                     <div class="onStep" data-animation="fadeInUp" data-time="300">
                         <div class="owl-carousel" id="owl-post">
                             @foreach(posts((int) ($content['posts']['count'] ?? 10)) as $post)
