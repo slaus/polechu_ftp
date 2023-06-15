@@ -20,7 +20,7 @@ class PageController extends Controller
         $page = Page::where('slug', $slug)->where('visibility', true)->firstOrFail();
 
         if ($slug == 'blog') {
-            $query = Post::where('visibility', true);
+            $query = Post::where('visibility', true)->orderByDesc('created_at');
 
             if (! empty($request->get('search'))) {
                 $search = $request->get('search');

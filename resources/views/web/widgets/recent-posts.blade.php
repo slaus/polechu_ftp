@@ -13,9 +13,9 @@
                     <img alt="blog-img" class="pull-left" src="{{ image_uri($post['image'], 'thumb') }}">
                 @endif
 
-                <h6>
+                <div class="title-h6 title-h">
                     <a href="{{ route('post', $post['slug']) }}">{{ translation($post['name'] ?? []) }}</a>
-                </h6>
+                </div>
 
                 <p>{{ mb_strimwidth(translation($post['description'] ?? []), 0, 70, '...') }}</p>
             </div>

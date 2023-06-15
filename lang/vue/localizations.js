@@ -50,6 +50,7 @@ export default {
             footerMenu: 'Меню підвалу',
             newMenu: 'Новий пункт меню',
             editMenu: 'Редагування меню - {menu}',
+            hotTours: 'Гарячі тури',
         },
         columns: {
             pageName: 'Назва сторінки',

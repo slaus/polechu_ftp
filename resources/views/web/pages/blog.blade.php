@@ -17,7 +17,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="title-h1 title-h">{{ translation($content['banner']['title'] ?? $page['name'] ?? []) }}</div>
+                    <h1 class="title-h1 title-h">{{ translation($content['banner']['title'] ?? $page['name'] ?? []) }}</h1>
                 </div>
 
                 <div class="col-md-12">
@@ -45,10 +45,8 @@
     <section aria-label="section-blog" id="content">
         <div class="container">
             <div class="row">
-
                 <div class="col-md-8">
                     <div class="onStep" data-animation="fadeInUp" data-time="300">
-
                         @foreach($posts['data'] ?? [] as $post)
                             <article>
                                 <div class="post-image">
@@ -56,21 +54,16 @@
                                         <img alt="blog-img" class="img-responsive" src="{{ image_uri($post['image'], '768') }}">
                                     @endif
                                     <div class="post-heading">
-                                        <h3>
+                                        <div class="post-title-h3 title-h">
                                             <a href="{{ route('post', $post['slug']) }}">{{ translation($post['name'] ?? []) }}</a>
-                                        </h3>
+                                        </div>
                                     </div>
                                 </div>
 
                                 <p>{{ translation($post['description'] ?? []) }}</p>
 
                                 <div class="bottom-article">
-                                    <ul class="meta-post">
-                                        <li>
-                                            <a href="{{ route('post', $post['slug']) }}">{{ $post['format_published_at'] }}</a>
-                                        </li>
-                                    </ul>
-                                    <a class="btn pull-right" href="{{ route('post', $post['slug']) }}">{{ __('Read More') }}</a>
+                                    <div>{{ $post['format_published_at'] }}</div>
                                 </div>
                             </article>
                         @endforeach
@@ -107,9 +100,9 @@
                             @include('web.widgets.recent-posts', ['posts' => posts(3, array_column($posts['data'], 'id'))])
                         @endif
 
-                        @if (! empty(tags('post')))
-                            @include('web.widgets.tags-cloud', ['tags' => tags('post')])
-                        @endif
+{{--                        @if (! empty(tags('post')))--}}
+{{--                            @include('web.widgets.tags-cloud', ['tags' => tags('post')])--}}
+{{--                        @endif--}}
 
                         @if (! empty(translation($content['seo']['title'] ?? [])) || ! empty(translation($content['seo']['text'] ?? [])))
                             @include('web.widgets.seo-text', ['title' => translation($content['seo']['title'] ?? []), 'text' => translation($content['seo']['text'] ?? [])])

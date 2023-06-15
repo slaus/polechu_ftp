@@ -102,11 +102,26 @@
         </div>
     </div>
 
-    @if (! empty(tours()))
+    @if (! empty(tours((int) ($content['posts']['count'] ?? 3))))
         <section class="whitepage">
             <div class="container-fluid">
                 <div class="row">
-                    @foreach(tours() as $tour)
+                    @if (! empty($content['tours']['title']) || ! empty($content['tours']['subtitle']))
+                        <div class="col-md-12">
+                            <div class="text-center">
+                                @if (! empty($content['tours']['title']))
+                                    <h2 class="title-h2 title-h">{{ translation($content['tours']['title']) }}</h2>
+                                    <span class="devider-center"></span>
+                                @endif
+
+                                @if (! empty($content['tours']['subtitle']))
+                                    <div class="title-h3 title-h">{{ translation($content['tours']['subtitle']) }}</div>
+                                @endif
+                            </div>
+                        </div>
+                    @endif
+
+                    @foreach(tours((int) ($content['posts']['count'] ?? 3)) as $tour)
                         <div class="col-md-4">
                             <div class="wrap-news onStep" data-animation="fadeInLeft" data-time="300">
                                 @if (! empty($tour['image']))
@@ -131,13 +146,21 @@
         <section class="whitepage" style="padding-top: 0">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-12">
-                        <div class="text-center">
-                            <div class="title-h2 title-h">{{ translation($content['posts']['title'] ?? []) }}</div>
-                            <span class="devider-center"></span>
-                            <div class="title-h3 title-h">{{ translation($content['posts']['subtitle'] ?? []) }}</div>
+                    @if (! empty($content['posts']['title']) || ! empty($content['posts']['subtitle']))
+                        <div class="col-md-12">
+                            <div class="text-center">
+                                @if (! empty($content['posts']['title']))
+                                    <h2 class="title-h2 title-h">{{ translation($content['posts']['title']) }}</h2>
+                                    <span class="devider-center"></span>
+                                @endif
+
+                                @if (! empty($content['posts']['subtitle']))
+                                    <div class="title-h3 title-h">{{ translation($content['posts']['subtitle']) }}</div>
+                                @endif
+                            </div>
                         </div>
-                    </div>
+                    @endif
+
                     <div class="onStep" data-animation="fadeInUp" data-time="300">
                         <div class="owl-carousel" id="owl-post">
                             @foreach(posts((int) ($content['posts']['count'] ?? 10)) as $post)

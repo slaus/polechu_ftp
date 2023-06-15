@@ -84,9 +84,20 @@
             letter-spacing: 1px;
             line-height: normal;
         }
+        .post-title-h3 {
+            margin: 20px 0 -10px 0;
+            font-size: 16pt;
+            font-weight: 500;
+        }
         .title-h5 {
             font-size: 14pt;
             font-weight: 500;
+        }
+        .title-h6 {
+            font-size: 14px!important;
+            font-weight: 500!important;
+            margin-top: 0!important;
+            margin-bottom: 10px!important;
         }
 
         .subscribe-section .title-h2 {
@@ -132,6 +143,9 @@
         .preview-price sub {
             font-size: 14px;
             font-weight: normal;
+        }
+        #menu-center ul, #menu-center ul li {
+            list-style: none !important
         }
         .container ul, .container ul li {
             list-style: initial !important

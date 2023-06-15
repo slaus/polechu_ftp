@@ -47,6 +47,6 @@ class Post extends Model
 
     public function getFormatPublishedAtAttribute(): string
     {
-        return $this->created_at?->format('M j, Y') ?? '';
+        return $this->created_at?->isoFormat('D MMMM Y') ?? '';
     }
 }

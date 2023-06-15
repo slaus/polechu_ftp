@@ -103,9 +103,9 @@
                             @include('web.widgets.recent-posts', ['posts' => posts(3, [$post['id']])])
                         @endif
 
-                        @if (! empty(tags('post')))
-                            @include('web.widgets.tags-cloud', ['tags' => tags('post')])
-                        @endif
+{{--                        @if (! empty(tags('post')))--}}
+{{--                            @include('web.widgets.tags-cloud', ['tags' => tags('post')])--}}
+{{--                        @endif--}}
                     </aside>
                 </div>
             </div>

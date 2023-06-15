@@ -17,7 +17,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="title-h1 title-h">{{ translation($content['banner']['title'] ?? $page['name'] ?? []) }}</div>
+                    <h1 class="title-h1 title-h">{{ translation($content['banner']['title'] ?? $page['name'] ?? []) }}</h1>
                 </div>
 
                 <div class="col-md-12">

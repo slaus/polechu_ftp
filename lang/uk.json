@@ -3,5 +3,11 @@
     "More detail": "Більше деталей",
     "Search": "Пошук",
     "Page not found...": "Сторінку не знайдено...",
-    "To Home": "На Головну"
+    "To Home": "На Головну",
+    "Recent posts": "Недавні Пости",
+    "Page :current_page of :last_page": "Сторінка :current_page з :last_page",
+    "next": "наступна",
+    "prev": "попередня",
+    "Home": "Головна",
+    "Blog": "Блог"
 }
