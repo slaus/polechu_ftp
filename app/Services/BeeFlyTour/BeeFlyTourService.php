@@ -44,7 +44,7 @@ class BeeFlyTourService
     public function listTownsFrom(int $countryId): array
     {
         try {
-            return Cache::rememberForever('towns_from', function () use ($countryId) {
+            return Cache::rememberForever('towns_from_' . $countryId, function () use ($countryId) {
                 $towns = [];
 
                 foreach ($this->listTowns() as $town) {
