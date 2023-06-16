@@ -30,8 +30,6 @@
                     PHOTO STREAM
                 </h3>
                 <div id="flickr-photo-stream">
-                    <script src="http://www.flickr.com/badge_code_v2.gne?count=8&amp;display=random&amp;size=s&amp;layout=x&amp;source=user&amp;user=52617155@N08" type="text/javascript">
-                    </script>
                     <div class="clearfix">
                     </div>
                 </div>

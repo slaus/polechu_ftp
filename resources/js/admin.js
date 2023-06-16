@@ -6,7 +6,7 @@ import router from "./plugins/router";
 import VueRouter from "vue-router";
 import App from "./AppComponent";
 import VueI18n from 'vue-i18n';
-import localizations from "../../lang/vue/localizations";
+import localizations from "../../lang/vue/admin.localizations.js";
 import FileManager from 'laravel-file-manager';
 
 window.Vue = Vue;

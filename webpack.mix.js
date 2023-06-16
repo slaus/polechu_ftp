@@ -40,6 +40,7 @@ mix.webpackConfig({
 
 mix.js('resources/js/app.js', 'public/js');
 mix.js('resources/js/admin.js', 'public/js').vuetify().vue();
+mix.js('resources/js/site.js', 'public/js').vue();
 mix.sass('resources/sass/admin.sass', 'public/css');
 
 if (mix.inProduction()) {
