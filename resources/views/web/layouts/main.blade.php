@@ -171,7 +171,7 @@
 </div>
 <!-- preloader end -->
 
-<div id="app" class="content-wrapper">
+<div class="content-wrapper">
     @include('web.includes.header')
     @yield('content')
     @include('web.includes.footer')

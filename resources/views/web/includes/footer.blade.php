@@ -15,26 +15,36 @@
 
 
             <div class="col-md-4 col-xs-12 col-md-offset-1">
-                <h3>
-                    CONTACT INFO
-                </h3>
-
+                <div class="title-h3 title-h">{!! translation(settings('contacts.title', [])) !!}</div>
                 <address>
-                    <span>129 Park street, New York City, NY 10903</span> <span>PHONE: (+6221) 000 888 999</span> <span>EMAIL : <a href=
-                                                                                                                                       "mailto:companyname@gmail.com">companyname@gmail.com</a></span> <span>SITE : <a href="#">www.companyname.com</a></span>
+                    {!! translation(settings('contacts.text', [])) !!}
                 </address>
             </div>
 
             <div class="col-md-3 col-xs-12 pull-right">
-                <h3>
-                    PHOTO STREAM
-                </h3>
-                <div id="flickr-photo-stream">
-                    <div class="clearfix">
-                    </div>
+                <div class="title-h3 title-h">{!! translation(settings('subscribe.title', [])) !!}</div>
+                <div>
+                    <form action="{{ route('form.feedback') }}" id="feedbackForm" method="post" name="subscribe">
+                        <div style="display: flex; height: 40px">
+                            <input class="subscribfield subscribeemail" id="subscribeemail" name="email" type="text" placeholder="{{ translation(settings('subscribe.email_placeholder', [])) }}">
+
+                            <button class="btn-form" id="feedbackSubmit" type="submit" style="background: #ffb600; height: 40px; width: fit-content; padding: 0 20px; margin: 0 5px;">
+                                {{ translation(settings('subscribe.button_text', [])) }}
+                            </button>
+                        </div>
+
+                        <div class="success" id="mailSendSuccess">
+                            {!! translation(settings('subscribe.success_send_message', [])) !!}
+                        </div>
+
+                        <div class="error" id="mailSendFail">
+                            {!! translation(settings('subscribe.fail_send_message', [])) !!}
+                        </div>
+
+                        <div class="error" id="formErrors" style="margin-bottom: 0"></div>
+                    </form>
                 </div>
             </div>
-
         </div>
     </div>
 </section>

@@ -149,69 +149,6 @@
         </v-card>
 
         <v-card tile outlined class="mb-6">
-            <v-card-title>{{ $t('titles.feedbackForm') }}</v-card-title>
-
-            <v-card-text class="pa-4">
-                <v-layout wrap align-center>
-                    <v-flex class="xs12 sm3 px-0 px-sm-2 mb-6">
-                        <ImageThumb
-                            :value.sync="content.feedback_form.background_image"
-                            width="290px"
-                            height="180px"
-                            class="mx-auto"
-                        />
-                    </v-flex>
-
-                    <v-flex class="xs12 sm9 px-0 px-sm-2 mb-6">
-                        <MultiLangTextarea
-                            :value.sync="content.feedback_form.text"
-                            :placeholder="$t('labels.text')"
-                            rows="4"
-                            :no-resize="true"
-                            class="mb-2"
-                        />
-
-                        <MultiLangTextField
-                            :value.sync="content.feedback_form.form_title"
-                            :label="$t('labels.formTitle')"
-                            class="mb-2"
-                        />
-
-                        <MultiLangTextField
-                            :value.sync="content.feedback_form.form_subtitle"
-                            :label="$t('labels.formSubtitle')"
-                            class="mb-2"
-                        />
-
-                        <MultiLangTextField
-                            :value.sync="content.feedback_form.email_placeholder"
-                            :label="$t('labels.emailPlaceholder')"
-                            class="mb-2"
-                        />
-
-                        <MultiLangTextField
-                            :value.sync="content.feedback_form.button_text"
-                            :label="$t('labels.buttonText')"
-                            class="mb-2"
-                        />
-
-                        <MultiLangTextField
-                            :value.sync="content.feedback_form.success_send_text"
-                            :label="$t('labels.successSend')"
-                            class="mb-2"
-                        />
-
-                        <MultiLangTextField
-                            :value.sync="content.feedback_form.fail_send_text"
-                            :label="$t('labels.failSend')"
-                            class="mb-2"
-                        />
-                    </v-flex>
-                </v-layout>
-            </v-card-text>
-        </v-card>
-
-        <v-card tile outlined class="mb-6">
             <v-card-title>{{ $t('titles.seoContent') }}</v-card-title>
 
             <v-card-text class="pa-4">
@@ -279,16 +216,6 @@ export default {
                 seo: {
                     title: null,
                     text: null
-                },
-                feedback_form: {
-                    background_image: null,
-                    text: null,
-                    form_title: null,
-                    form_subtitle: null,
-                    email_placeholder: null,
-                    button_text: null,
-                    success_send_text: null,
-                    fail_send_text: null
                 }
             }
         }

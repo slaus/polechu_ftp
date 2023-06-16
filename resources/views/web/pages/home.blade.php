@@ -38,7 +38,7 @@
         </div>
     @endif
 
-    <div class="bot-home-text onStep" data-animation="fadeInUp" data-time="1200">
+    <div id="app" class="bot-home-text onStep" data-animation="fadeInUp" data-time="1200">
         <div class="container">
             <find-tours-component></find-tours-component>
         </div>
@@ -126,42 +126,6 @@
             </div>
         </section>
     @endif
-
-    <section class="subscribe-section" style="background-image:url('{{ image_uri($content['feedback_form']['background_image'] ?? '') }}')">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 subwrap-tagline">
-                    <div class="title-h2 title-h">{!! translation($content['feedback_form']['text'] ?? []) !!}</div>
-                </div>
-
-                <div class="col-md-6 subwrap">
-                    <div class="title-h2 title-h">{!! translation($content['feedback_form']['form_title'] ?? []) !!}</div>
-                    <div class="title-h5 title-h">{!! translation($content['feedback_form']['form_subtitle'] ?? []) !!}</div>
-
-                    <div class="space-half">
-                    </div>
-
-                    <form action="{{ route('form.feedback') }}" id="feedbackForm" method="post" name="subscribe">
-                        <input class="subscribfield subscribeemail" id="subscribeemail" name="email" type="text" placeholder="{{ translation($content['feedback_form']['email_placeholder'] ?? []) }}">
-
-                        <div class="success" id="mailSendSuccess">
-                            {!! translation($content['feedback_form']['success_send_text'] ?? []) !!}
-                        </div>
-
-                        <div class="error" id="mailSendFail">
-                            {!! translation($content['feedback_form']['fail_send_text'] ?? []) !!}
-                        </div>
-
-                        <div class="error" id="formErrors"></div>
-
-                        <button class="btn-form" id="feedbackSubmit" type="submit">
-                            {{ translation($content['feedback_form']['button_text'] ?? []) }}
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <section aria-label="about" class="about-history" style="padding-top: 40px; padding-bottom: 40px">
         <div class="container">

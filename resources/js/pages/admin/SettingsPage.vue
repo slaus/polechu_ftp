@@ -7,6 +7,7 @@
             <v-tabs v-model="tab" class="px-3">
                 <v-tab>{{ $t('tabs.main') }}</v-tab>
                 <v-tab>{{ $t('tabs.notifications') }}</v-tab>
+                <v-tab>{{ $t('tabs.subscribe') }}</v-tab>
                 <v-tab>{{ $t('tabs.services') }}</v-tab>
             </v-tabs>
 
@@ -16,6 +17,9 @@
                 </v-tab-item>
                 <v-tab-item>
                     <NotificationsSettingsComponent />
+                </v-tab-item>
+                <v-tab-item>
+                    <SubscribeFormSettingsComponent />
                 </v-tab-item>
                 <v-tab-item>
                     <ServicesSettingsComponent />
@@ -28,6 +32,7 @@
 <script>
 import MainSettingsComponent from "../../components/settings/MainSettingsComponent";
 import NotificationsSettingsComponent from "../../components/settings/NotificationsSettingsComponent.vue";
+import SubscribeFormSettingsComponent from "../../components/settings/SubscribeFormSettingsComponent.vue";
 import ServicesSettingsComponent from "../../components/settings/ServicesSettingsComponent.vue";
 
 export default {
@@ -35,6 +40,7 @@ export default {
     components: {
         MainSettingsComponent,
         NotificationsSettingsComponent,
+        SubscribeFormSettingsComponent,
         ServicesSettingsComponent
     },
     data() {

@@ -107,6 +107,21 @@
                         {{ $t('buttons.addSocial')}}
                     </v-btn>
                 </v-flex>
+
+                <v-flex class="xs12 sm12 px-0 px-sm-2 mb-6">
+                    <label class="d-block font-weight-bold mb-4">{{ $t('labels.contacts') }}</label>
+
+                    <MultiLangTextField
+                        :value.sync="settings.contacts.title"
+                        :label="$t('labels.title')"
+                        class="mb-2"
+                    />
+
+                    <MultiLangEditor
+                        :value.sync="settings.contacts.text"
+                        height="300"
+                    />
+                </v-flex>
             </v-layout>
 
             <v-divider />
@@ -131,10 +146,12 @@ import { mapState } from "vuex";
 import MultiLangTextField from "../shared/MultiLangTextField";
 import ImageThumb from "../shared/ImageThumb.vue";
 import MultiLangTextarea from "../shared/MultiLangTextarea.vue";
+import MultiLangEditor from "../shared/MultiLangEditor.vue";
 
 export default {
     name: "MainSettingsComponent",
     components: {
+        MultiLangEditor,
         MultiLangTextarea,
         ImageThumb,
         MultiLangTextField
@@ -152,7 +169,11 @@ export default {
                     email: '',
                     description: null
                 },
-                socials: []
+                socials: [],
+                contacts: {
+                    title: '',
+                    text: ''
+                }
             }
         }
     },
