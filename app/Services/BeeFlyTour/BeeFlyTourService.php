@@ -22,7 +22,7 @@ class BeeFlyTourService
                         'samo_action' => 'api',
                         'type' => 'json',
                         'action' => 'SearchTour_STATES',
-                        'TOWNFROMINC' => $townId,
+                        'TOWNFROMINC' => $town['id'],
                     ])['SearchTour_STATES'] ?? [];
 
                     foreach ($countriesByTown as $country) {
