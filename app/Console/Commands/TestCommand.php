@@ -13,6 +13,6 @@ class TestCommand extends Command
 
     public function handle(BeeFlyTourService $service): void
     {
-        $service->listTowns();
+        dd($service->listCountries());
     }
 }
