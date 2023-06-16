@@ -33,7 +33,7 @@ class BeeFlyTourService
                 'samo_action' => 'api',
                 'type' => 'json',
                 'action' => 'SearchTour_TOWNFROMS',
-            ]);
+            ])['SearchTour_TOWNFROMS'] ?? [];
         } catch (\Exception $exception) {
             Log::error('Error get list of towns.' . $exception->getMessage());
         }
