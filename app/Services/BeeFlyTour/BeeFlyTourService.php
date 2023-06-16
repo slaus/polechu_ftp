@@ -10,13 +10,14 @@ class BeeFlyTourService
         private readonly BeeFlyTourApi $api
     ) {}
 
-    public function listCountries(): array
+    public function listCountries(int $townId): array
     {
         try {
             return $this->api->get([
                 'samo_action' => 'api',
                 'type' => 'json',
                 'action' => 'SearchTour_STATES',
+                'TOWNFROMINC' => $townId,
             ]);
         } catch (\Exception $exception) {
             Log::error('Error get list of countries.' . $exception->getMessage());
