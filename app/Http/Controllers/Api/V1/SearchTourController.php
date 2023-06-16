@@ -8,7 +8,6 @@ use App\Http\Resources\Api\V1\SearchTour\CountriesListResource;
 use App\Http\Resources\Api\V1\SearchTour\TownsListResource;
 use App\Services\BeeFlyTour\BeeFlyTourService;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 
 class SearchTourController extends Controller
 {

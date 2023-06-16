@@ -90,10 +90,10 @@ export default {
     },
     watch: {
         'payload.country'(value) {
+            this.towns = [];
+
             if (value > 0) {
                 this.loadTowns();
-            } else {
-                this.towns = [];
             }
         }
     },
