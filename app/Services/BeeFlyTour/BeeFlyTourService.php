@@ -56,10 +56,8 @@ class BeeFlyTourService
                         'TOWNFROMINC' => $town['id'],
                     ])['SearchTour_CHECKIN'] ?? [];
 
-                    foreach ($townsByCountry as $item) {
-                        if (isset($item['valid']) && $item['valid'] != '') {
-                            $towns[] = $town;
-                        }
+                    if (isset($townsByCountry['valid']) && $townsByCountry['valid'] != '') {
+                        $towns[] = $town;
                     }
                 }
 
