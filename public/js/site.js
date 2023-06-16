@@ -18,7 +18,10 @@ __webpack_require__.r(__webpack_exports__);
       searchTour: 'Знайти тур'
     },
     titles: {},
-    labels: {},
+    labels: {
+      selectCountry: 'Оберіть країну',
+      selectTownFrom: 'Оберіть місто відправлення'
+    },
     placeholders: {},
     alerts: {}
   }
@@ -43,9 +46,56 @@ __webpack_require__.r(__webpack_exports__);
   name: "FindToursComponent",
   mixins: [_mixins_localization__WEBPACK_IMPORTED_MODULE_0__["default"]],
   data: function data() {
-    return {};
+    return {
+      isLoading: false,
+      countries: [],
+      towns: [],
+      payload: {
+        country: 0,
+        town: 0
+      }
+    };
   },
-  methods: {}
+  watch: {
+    'payload.country': function payloadCountry(value) {
+      if (value > 0) {
+        this.loadTowns();
+      } else {
+        this.towns = [];
+      }
+    }
+  },
+  mounted: function mounted() {
+    this.loadCountries();
+  },
+  methods: {
+    loadCountries: function loadCountries() {
+      var _this = this;
+      this.isLoading = true;
+      this.$api.get('v1/tours/countries').then(function (response) {
+        if (response.data) {
+          _this.countries = response.data;
+        }
+      })["finally"](function () {
+        _this.isLoading = false;
+      });
+    },
+    loadTowns: function loadTowns() {
+      var _this2 = this;
+      this.isLoading = true;
+      this.$api.get('v1/tours/towns', {
+        params: {
+          country_id: this.payload.country
+        }
+      }).then(function (response) {
+        if (response.data) {
+          _this2.towns = response.data;
+        }
+      })["finally"](function () {
+        _this2.isLoading = false;
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -75,162 +125,78 @@ var render = function render() {
     }
   }, [_c("div", {
     staticClass: "row"
-  }, [_vm._m(0), _vm._v(" "), _vm._m(1), _vm._v(" "), _vm._m(2), _vm._v(" "), _vm._m(3), _vm._v(" "), _vm._m(4), _vm._v(" "), _vm._m(5), _vm._v(" "), _vm._m(6), _vm._v(" "), _vm._m(7), _vm._v(" "), _c("div", {
-    staticClass: "success-white",
-    attrs: {
-      id: "mail_success"
-    }
-  }, [_vm._v("Thank you. Your reservation has been sent.")]), _vm._v(" "), _c("div", {
-    staticClass: "error-white",
-    attrs: {
-      id: "mail_failed"
-    }
-  }, [_vm._v("Error, email not sent")]), _vm._v(" "), _c("button", {
-    staticClass: "btn-content"
-  }, [_vm._v(_vm._s(_vm.$t("buttons.searchTour")))])])]);
-};
-var staticRenderFns = [function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
+  }, [_c("div", {
     staticClass: "col-sm-6 form-group"
   }, [_c("select", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.payload.country,
+      expression: "payload.country"
+    }],
     staticClass: "form-control",
-    attrs: {
-      id: "selectroom"
-    }
-  }, [_c("optgroup", {
-    attrs: {
-      label: "SELECT ROOM"
+    on: {
+      change: function change($event) {
+        var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+          return o.selected;
+        }).map(function (o) {
+          var val = "_value" in o ? o._value : o.value;
+          return val;
+        });
+        _vm.$set(_vm.payload, "country", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
+      }
     }
   }, [_c("option", {
     attrs: {
-      value: "LUXURY SINGLE"
+      value: "0"
     }
-  }, [_vm._v("LUXURY SINGLE ROOM")]), _vm._v(" "), _c("option", {
+  }, [_vm._v(_vm._s(_vm.$t("labels.selectCountry")))]), _vm._v(" "), _vm._l(_vm.countries, function (country) {
+    return _c("option", {
+      domProps: {
+        value: country.id
+      }
+    }, [_vm._v(_vm._s(country.name))]);
+  })], 2)]), _vm._v(" "), _c("div", {
+    staticClass: "col-sm-6 form-group"
+  }, [_c("select", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.payload.town,
+      expression: "payload.town"
+    }],
+    staticClass: "form-control",
+    on: {
+      change: function change($event) {
+        var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+          return o.selected;
+        }).map(function (o) {
+          var val = "_value" in o ? o._value : o.value;
+          return val;
+        });
+        _vm.$set(_vm.payload, "town", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
+      }
+    }
+  }, [_c("option", {
     attrs: {
-      value: "LUXURY DOUBLE"
+      value: "0"
     }
-  }, [_vm._v("LUXURY DOUBLE ROOM")]), _vm._v(" "), _c("option", {
-    attrs: {
-      value: "PREMIUM LUXURY"
-    }
-  }, [_vm._v("PREMIUM LUXURY ROOM")]), _vm._v(" "), _c("option", {
-    attrs: {
-      value: "PREMIUM SUITE"
-    }
-  }, [_vm._v("PREMIUM SUITE ROOM")])])])]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "col-md-3 form-group"
-  }, [_c("div", {
-    staticClass: "input-group"
-  }, [_c("input", {
-    staticClass: "form-control fox1",
-    attrs: {
-      type: "text",
-      name: "date1",
-      id: "date1",
-      placeholder: "CHECK IN DATE"
-    }
-  }), _vm._v(" "), _c("div", {
-    staticClass: "input-group-btn"
-  }, [_c("span", {
-    staticClass: "icon"
-  }, [_c("i", {
-    staticClass: "fa fa-calendar"
-  })])])])]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "col-md-3 form-group"
-  }, [_c("div", {
-    staticClass: "input-group"
-  }, [_c("input", {
-    staticClass: "form-control fox2",
-    attrs: {
-      type: "text",
-      name: "date2",
-      id: "date2",
-      placeholder: "CHECK OUT DATE"
-    }
-  }), _vm._v(" "), _c("div", {
-    staticClass: "input-group-btn"
-  }, [_c("span", {
-    staticClass: "icon"
-  }, [_c("i", {
-    staticClass: "fa fa-calendar"
-  })])])])]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "col-sm-2 form-group"
-  }, [_c("input", {
-    attrs: {
-      id: "personbook",
-      name: "personbook",
-      placeholder: "PERSON",
-      type: "text"
-    }
-  })]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "col-sm-4 form-group"
-  }, [_c("input", {
-    attrs: {
-      id: "namebook",
-      name: "namebook",
-      placeholder: "NAME",
-      type: "text"
-    }
-  })]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "col-sm-3 form-group"
-  }, [_c("input", {
-    attrs: {
-      id: "emailbook",
-      name: "emailbook",
-      placeholder: "EMAIL",
-      type: "text"
-    }
-  })]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "col-sm-3 form-group"
-  }, [_c("input", {
-    attrs: {
-      id: "phonebook",
-      name: "phonebook",
-      placeholder: "PHONE",
-      type: "text"
-    }
-  })]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
+  }, [_vm._v(_vm._s(_vm.$t("labels.selectTownFrom")))]), _vm._v(" "), _vm._l(_vm.towns, function (town) {
+    return _c("option", {
+      domProps: {
+        value: town.id
+      }
+    }, [_vm._v(_vm._s(town.name))]);
+  })], 2)]), _vm._v(" "), _c("div", {
     staticClass: "col-sm-12 form-group"
-  }, [_c("textarea", {
+  }, [_c("button", {
+    staticClass: "btn-content",
     attrs: {
-      cols: "50",
-      id: "messagebook",
-      name: "message",
-      placeholder: "YOUR MESSAGE",
-      rows: "2"
+      disabled: _vm.isLoading
     }
-  })]);
-}];
+  }, [_vm._v(_vm._s(_vm.$t("buttons.searchTour")))])])])]);
+};
+var staticRenderFns = [];
 render._withStripped = true;
 
 

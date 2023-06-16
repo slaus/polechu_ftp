@@ -7,7 +7,8 @@ export default {
 
         },
         labels: {
-
+            selectCountry: 'Оберіть країну',
+            selectTownFrom: 'Оберіть місто відправлення',
         },
         placeholders: {
 

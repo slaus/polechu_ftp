@@ -41,6 +41,37 @@ class BeeFlyTourService
         return [];
     }
 
+    public function listTownsFrom(int $countryId): array
+    {
+        try {
+            return Cache::rememberForever('towns_from', function () use ($countryId) {
+                $towns = [];
+
+                foreach ($this->listTowns() as $town) {
+                    $townsByCountry = $this->api->get([
+                        'samo_action' => 'api',
+                        'type' => 'json',
+                        'action' => 'SearchTour_CHECKIN',
+                        'STATEINC' => $countryId,
+                        'TOWNFROMINC' => $town['id'],
+                    ])['SearchTour_CHECKIN'] ?? [];
+
+                    foreach ($townsByCountry as $item) {
+                        if (isset($item['valid']) && $item['valid'] != '') {
+                            $towns[] = $town;
+                        }
+                    }
+                }
+
+                return $towns;
+            });
+        } catch (\Exception $exception) {
+            Log::error('Error get list of towns from.' . $exception->getMessage());
+        }
+
+        return [];
+    }
+
     public function listTowns(): array
     {
         try {

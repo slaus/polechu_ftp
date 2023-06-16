@@ -4,12 +4,18 @@ use App\Http\Controllers\Api\V1\AuthController;
 use App\Http\Controllers\Api\V1\MenuController;
 use App\Http\Controllers\Api\V1\PageController;
 use App\Http\Controllers\Api\V1\PostController;
+use App\Http\Controllers\Api\V1\SearchTourController;
 use App\Http\Controllers\Api\V1\SettingController;
 use App\Http\Controllers\Api\V1\TagController;
 use App\Http\Controllers\Api\V1\TourController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'v1'], function() {
+
+    Route::group(['prefix' => 'tours'], function () {
+        Route::get('countries', [SearchTourController::class, 'countries']);
+        Route::get('towns', [SearchTourController::class, 'towns']);
+    });
 
     Route::group(['middleware' => 'auth:sanctum'], function() {
 
