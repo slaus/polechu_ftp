@@ -110,7 +110,7 @@ class BeeFlyTourService
             }
 
             if (isset($response['TOWNS'])) {
-                $towns = $response['CURRENCIES'];
+                $towns = $response['TOWNS'];
             }
 
             if (isset($response['STARS'])) {
@@ -149,33 +149,32 @@ class BeeFlyTourService
                 'samo_action' => 'api',
                 'type' => 'json',
                 'action' => 'SearchTour_PRICES',
-
-                'STATEINC' => $country_id,
-                'TOWNFROMINC' => $townfrom,
-                'ADULT' => $adult,
-                'CHILD' => $child,
-                'AGES' => $child_ages,
-                'CHECKIN_BEG' => $checkin_beg,
-                'CHECKIN_END' => $checkin_end,
-                'NIGHTS_FROM' => $nights_from,
-                'NIGHTS_TILL' => $nights_till,
-                'CURRENCY' => $currency_id,
-                'COSTMIN' => $costmin,
-                'COSTMAX' => $costmax,
-                'TOWNS' => $towns,
-                'HOTELS' => $hotels,
-                'STARS' => $stars,
-                'MEALS' => $meals,
-                'CHILD_IN_BED' => $child_in_bed,
-                'FREIGHT' => $freight,
-                'FILTER' => $filter,
-                'MOMENT_CONFIRM' => $moment_confirm,
-                'PARTITION_PRICE' => $partition_price,
-                'PRICEPAGE' => $pricepage,
+                'STATEINC' => $payload['country_id'],
+                'TOWNFROMINC' => $payload['town_from_id'],
+                'ADULT' => $payload['adult'],
+                'CHILD' => $payload['child'],
+                'AGES' => implode(',', $payload['child_ages'] ?? []),
+                'CHECKIN_BEG' => $payload['checkin_beg'],
+                'CHECKIN_END' => $payload['checkin_end'],
+                'NIGHTS_FROM' => $payload['nights_from'],
+                'NIGHTS_TILL' => $payload['nights_till'],
+                'CURRENCY' => $payload['currency_id'],
+                'COSTMIN' => $payload['cost_min'] ?? '',
+                'COSTMAX' => $payload['cost_max'] ?? '',
+                'TOWNS' => implode(',', array_filter($payload['towns'])),
+                'HOTELS' => implode(',', array_filter($payload['hotels'])),
+                'STARS' => implode(',', array_filter($payload['stars'])),
+                'MEALS' => implode(',', array_filter($payload['meals'])),
+                'CHILD_IN_BED' => $payload['child_in_bed'],
+                'FREIGHT' => $payload['freight'],
+                'FILTER' => $payload['filter'],
+                'MOMENT_CONFIRM' => $payload['moment_confirm'],
+                'PARTITION_PRICE' => 255,
+                'PRICEPAGE' => 1,
                 'PERPAGE' => 6,
-            ])['SearchTour_PRICES'] ?? [];
+            ])['SearchTour_PRICES']['prices'] ?? [];
         } catch (\Exception $exception) {
-            Log::error('Error get list of towns.' . $exception->getMessage());
+            Log::error('Error get list of tours.' . $exception->getMessage());
         }
 
         return [];

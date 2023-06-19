@@ -156,6 +156,9 @@
         .container ul, .container ol {
             margin-left: 30px;
         }
+        .bot-home-text {
+            z-index: 99!important;
+        }
     </style>
 
     @stack('meta')

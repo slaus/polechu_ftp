@@ -84,3 +84,14 @@ export function mergeDeep(target, ...sources) {
 
     return mergeDeep(target, ...sources);
 }
+
+export function stringToDate(string) {
+    let dateParts = string.split(".");
+    let output = false;
+
+    if (dateParts.length > 0) {
+        output = new Date(+dateParts[2], dateParts[1] - 1, +dateParts[0]);
+    }
+
+    return output;
+}
