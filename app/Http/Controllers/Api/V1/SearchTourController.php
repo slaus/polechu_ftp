@@ -35,10 +35,10 @@ class SearchTourController extends Controller
     {
         $payload = $request->validated();
 
-       // $options = $service->listOptions($payload);
+        $options = $service->listOptions($payload);
 
-        //return new JsonResponse(OptionsListResource::make($options));
-        return new JsonResponse(OptionsListResource::make([
+        return new JsonResponse(OptionsListResource::make($options));
+        /*return new JsonResponse(OptionsListResource::make([
                 "checkin" => [
                     "21.06.2023",
                     "24.06.2023",
@@ -7970,7 +7970,7 @@ class SearchTourController extends Controller
             ]
 
 
-    ));
+    )); */
     }
 
     public function tours(SearchToursRequest $request, BeeFlyTourService $service): JsonResponse

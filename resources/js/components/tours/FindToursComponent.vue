@@ -295,7 +295,7 @@ export default {
         this.loadCountries();
 
         // TEMP
-        this.loadOptions();
+        //this.loadOptions();
     },
     methods: {
         loadCountries() {
