@@ -35,7 +35,7 @@ class SearchTourController extends Controller
 
         $options = $service->listOptions($payload);
 
-        return new JsonResponse(OptionsListResource::collection($options));
+        return new JsonResponse(OptionsListResource::make($options));
     }
 
     public function tours(): JsonResponse
