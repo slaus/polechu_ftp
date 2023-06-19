@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Api\V1\SearchTour\SearchTourOptionsRequest;
 use App\Http\Requests\Api\V1\SearchTour\SearchTourTownsRequest;
 use App\Http\Resources\Api\V1\SearchTour\CountriesListResource;
+use App\Http\Resources\Api\V1\SearchTour\OptionsListResource;
 use App\Http\Resources\Api\V1\SearchTour\TownsListResource;
 use App\Services\BeeFlyTour\BeeFlyTourService;
 use Illuminate\Http\JsonResponse;
@@ -25,6 +27,15 @@ class SearchTourController extends Controller
         $towns = $service->listTownsFrom($payload['country_id']);
 
         return new JsonResponse(TownsListResource::collection($towns));
+    }
+
+    public function options(SearchTourOptionsRequest $request, BeeFlyTourService $service): JsonResponse
+    {
+        $payload = $request->validated();
+
+        $options = $service->listOptions($payload);
+
+        return new JsonResponse(OptionsListResource::collection($options));
     }
 
     public function tours(): JsonResponse

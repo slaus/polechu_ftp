@@ -15,6 +15,8 @@ Route::group(['prefix' => 'v1'], function() {
     Route::group(['prefix' => 'tours'], function () {
         Route::get('countries', [SearchTourController::class, 'countries']);
         Route::get('towns', [SearchTourController::class, 'towns']);
+        Route::get('options', [SearchTourController::class, 'options']);
+        Route::get('tours', [SearchTourController::class, 'tours']);
     });
 
     Route::group(['middleware' => 'auth:sanctum'], function() {

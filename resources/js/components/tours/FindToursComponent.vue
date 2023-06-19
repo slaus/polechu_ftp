@@ -60,7 +60,7 @@
 <!--            </div>-->
 
             <div class="col-sm-12 form-group">
-                <button class="btn-content" :disabled="isLoading">{{ $t('buttons.searchTour') }}</button>
+                <button class="btn-content" :disabled="isLoading" @click="loadTours">{{ $t('buttons.searchTour') }}</button>
             </div>
 
 <!--            <div class="success-white" id="mail_success">Thank you. Your reservation has been sent.</div>-->
@@ -82,9 +82,37 @@ export default {
             isLoading: false,
             countries: [],
             towns: [],
+            options: {
+
+            },
+            tours: [],
             payload: {
                 country: 0,
                 town: 0
+            },
+            filter: {
+                country_id: 0,
+                town_from_id: 0,
+                adult: 0,
+                child: 0,
+                child_ages: '',
+                checkin_beg: '',
+                checkin_end: '',
+                nights_from: 0,
+                nights_till: 0,
+                currency_id: 0,
+                cost_min: 0,
+                cost_max: 0,
+                towns: [],
+                hotels: [],
+                stars: [],
+                meals: [],
+                child_in_bed: false,
+                freight: false,
+                filter: false,
+                moment_confirm: false,
+                partition_price: 255,
+                price_page: 1,
             }
         }
     },
@@ -94,6 +122,13 @@ export default {
 
             if (value > 0) {
                 this.loadTowns();
+            }
+        },
+        'payload.town'(value) {
+            this.options = [];
+
+            if (value > 0) {
+                this.loadOptions();
             }
         }
     },
@@ -116,6 +151,26 @@ export default {
             this.$api.get('v1/tours/towns', { params: { country_id: this.payload.country } }).then(response => {
                 if (response.data) {
                     this.towns = response.data;
+                }
+            }).finally(() => {
+                this.isLoading = false;
+            });
+        },
+        loadOptions() {
+            this.isLoading = true;
+            this.$api.get('v1/tours/options', { params: this.payload }).then(response => {
+                if (response.data) {
+                    this.options = response.data;
+                }
+            }).finally(() => {
+                this.isLoading = false;
+            });
+        },
+        loadTours() {
+            this.isLoading = true;
+            this.$api.get('v1/tours/tours', { params: this.filter }).then(response => {
+                if (response.data) {
+                    this.tours = response.data;
                 }
             }).finally(() => {
                 this.isLoading = false;
