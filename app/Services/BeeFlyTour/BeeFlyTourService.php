@@ -77,8 +77,8 @@ class BeeFlyTourService
                 'samo_action' => 'api',
                 'type' => 'json',
                 'action' => 'SearchTour_ALL',
-                'STATEINC' => $payload['country_id'],
-                'TOWNFROMINC' => $payload['town_id'],
+                'STATEINC' => $payload['country'],
+                'TOWNFROMINC' => $payload['town'],
             ])['SearchTour_ALL'] ?? [];
 
             if (isset($response['CHECKIN_BEG'], $response['CHECKIN_BEG']['startDate'], $response['CHECKIN_BEG']['validDates'])) {
@@ -101,8 +101,8 @@ class BeeFlyTourService
                 'samo_action' => 'api',
                 'type' => 'json',
                 'action' => 'SearchTour_NIGHTS',
-                'STATEINC' => $payload['country_id'],
-                'TOWNFROMINC' => $payload['town_id'],
+                'STATEINC' => $payload['country'],
+                'TOWNFROMINC' => $payload['town'],
             ])['SearchTour_NIGHTS'] ?? [];
 
             if (isset($response['CURRENCIES'])) {

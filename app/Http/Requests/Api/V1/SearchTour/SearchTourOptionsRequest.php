@@ -14,8 +14,8 @@ class SearchTourOptionsRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'country_id' => ['required', 'integer'],
-            'town_id' => ['required', 'integer'],
+            'country' => ['required', 'integer'],
+            'town' => ['required', 'integer'],
         ];
     }
 }
