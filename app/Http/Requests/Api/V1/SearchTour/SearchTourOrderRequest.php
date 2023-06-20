@@ -15,7 +15,8 @@ class SearchTourOrderRequest extends FormRequest
     {
         return [
             'tour' => ['required', 'array'],
-            'tour.id' => ['required', 'integer'],
+            'tour.tour_id' => ['required', 'integer'],
+            'tour.hotel_id' => ['required', 'integer'],
             'tour.name' => ['required', 'string'],
             'tour.state' => ['required', 'string'],
             'tour.town' => ['required', 'string'],
@@ -23,6 +24,7 @@ class SearchTourOrderRequest extends FormRequest
             'tour.currency' => ['required', 'string'],
             'tour.checkin' => ['required', 'string'],
             'tour.nights' => ['required', 'integer'],
+            'tour.town_from' => ['required', 'string'],
             'client' => ['required', 'array'],
             'client.name' => ['required', 'string'],
             'client.phone' => ['required', 'string'],

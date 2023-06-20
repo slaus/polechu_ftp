@@ -175,11 +175,13 @@ class BeeFlyTourService
             ])['SearchTour_PRICES']['prices'] ?? [];
 
             return array_map(function ($item) {
+                $townsFrom = array_filter($this->listTowns(), fn ($town) => $town['id'] == $item['townFromKey']);
+
                 $item['checkIn'] = isset($item['checkIn']) ? date('d.m.Y', strtotime($item['checkIn'])) : '';
                 $item['price'] = isset($item['price']) ? number_format((int) $item['price'], 0, ',', ' ') : '';
                 $item['meal'] = $this->mealName($item['meal'] ?? '');
                 $item['stateKey'] = $this->listCountries()[$item['stateKey']]['name'] ?? '';
-                $item['townFromKey'] = array_filter($this->listTowns(), fn ($town) => $town['id'] == $item['townFromKey'])[0]['name'] ?? '';
+                $item['townFromKey'] = array_shift($townsFrom)['name'] ?? '';
 
                 return $item;
             }, $response);

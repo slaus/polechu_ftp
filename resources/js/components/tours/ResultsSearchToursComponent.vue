@@ -109,12 +109,13 @@
         <simple-modal v-if="showModal">
             <div slot="header">
                 <ul>
-                    <li>{{ order.tour.id }}</li>
+                    <li>{{ order.tour.tour_id }}</li>
                     <li>{{ order.tour.name }}</li>
                     <li>{{ order.tour.state }}, {{ order.tour.town }} *</li>
                     <li>{{ order.tour.price }} {{ order.tour.currency }}</li>
                     <li>{{ order.tour.checkin }}</li>
                     <li>{{ order.tour.nights }}</li>
+                    <li>{{ order.tour.town_from }}</li>
                 </ul>
                 <span>{{ $t('alerts.priceNote')}}</span>
             </div>
@@ -174,14 +175,16 @@ export default {
             failSendOrder: false,
             order: {
                 tour: {
-                    id: 0,
+                    tour_id: 0,
+                    hotel_id: 0,
                     name: '',
                     state: '',
                     town: '',
                     price: '',
                     currency: '',
                     checkin: '',
-                    nights: 0
+                    nights: 0,
+                    town_from: ''
                 },
                 client: {
                     name: '',
@@ -197,14 +200,16 @@ export default {
         makeOrder(tour) {
             this.showModal = true;
             this.order.tour = {
-                id: tour.tour_id,
+                tour_id: tour.tour_id,
+                hotel_id: tour.hotel_id,
                 name: tour.name,
                 state: tour.state,
                 town: tour.town,
                 price: tour.price,
                 currency: tour.currency,
                 checkin: tour.checkin,
-                nights: tour.nights
+                nights: tour.nights,
+                town_from: tour.town_from
             }
         },
         sendOrder() {
@@ -264,14 +269,16 @@ export default {
             this.showModal = false;
             this.order = {
                 tour: {
-                    id: 0,
+                    tour_id: 0,
+                    hotel_id: 0,
                     name: '',
                     state: '',
                     town: '',
                     price: '',
                     currency: '',
                     checkin: '',
-                    nights: 0
+                    nights: 0,
+                    town_from: ''
                 },
                 client: {
                     name: '',

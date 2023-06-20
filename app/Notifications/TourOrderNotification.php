@@ -32,12 +32,16 @@ class TourOrderNotification extends Notification implements ShouldQueue
             ->line('Note: ' . ($this->payload['client']['note'] ?? ''))
             ->line('-------------------------------------------')
             ->line('TOUR')
-            ->line('ID: ' . $this->payload['tour']['id'])
+            ->line('Tour ID: ' . $this->payload['tour']['tour_id'])
+            ->line('Hotel ID: ' . $this->payload['tour']['hotel_id'])
             ->line('Name: ' . $this->payload['tour']['name'])
             ->line('State: ' . $this->payload['tour']['state'])
             ->line('Town: ' . $this->payload['tour']['town'])
             ->line('Check In: ' . $this->payload['tour']['checkin'])
-            ->line('Price: ' . $this->payload['tour']['price'] . ' ' . $this->payload['tour']['currency'])
-            ->line('Nights: ' . $this->payload['tour']['nights']);
+            ->line('Price: ' . $this->payload['tour']['price'])
+            ->line('Currency: ' . $this->payload['tour']['currency'])
+            ->line('Nights: ' . $this->payload['tour']['nights'])
+            ->line('From town: ' . $this->payload['tour']['town_from'])
+            ->line('Order date: ' . now()->format('m.d.Y H:i'));
     }
 }
