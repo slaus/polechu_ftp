@@ -112,7 +112,7 @@
                     <li>{{ order.tour.id }}</li>
                     <li>{{ order.tour.name }}</li>
                     <li>{{ order.tour.state }}, {{ order.tour.town }} *</li>
-                    <li>{{ order.tour.price }}</li>
+                    <li>{{ order.tour.price }} {{ order.tour.currency }}</li>
                     <li>{{ order.tour.checkin }}</li>
                     <li>{{ order.tour.nights }}</li>
                 </ul>
