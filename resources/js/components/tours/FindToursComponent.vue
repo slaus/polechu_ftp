@@ -325,9 +325,6 @@ export default {
         document.dispatchEvent(new Event('filterMounted'));
 
         this.loadCountries();
-
-        // TEMP
-        //this.loadOptions();
     },
     methods: {
         loadCountries() {
@@ -498,7 +495,7 @@ export default {
                 meals: [0],
                 child_in_bed: false,
                 freight: false,
-                filter: false,
+                filter: true,
                 moment_confirm: false
             }
         },
