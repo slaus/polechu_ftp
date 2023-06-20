@@ -540,7 +540,14 @@ var render = function render() {
         value: town.id
       }
     }, [_vm._v(_vm._s(town.name))]);
-  })], 2)]), _vm._v(" "), [_c("div", {
+  })], 2)]), _vm._v(" "), _c("div", {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: _vm.canMakeRequest,
+      expression: "canMakeRequest"
+    }]
+  }, [_c("div", {
     staticClass: "col-md-3 form-group"
   }, [_c("label", {
     staticClass: "field-label"
@@ -1378,7 +1385,7 @@ var render = function render() {
     }
   }), _vm._v(" "), _c("span", {
     staticClass: "bft-checkbox_text any"
-  }, [_vm._v(_vm._s(_vm.$t("labels.momentConfirm")))])])])], _vm._v(" "), _c("div", {
+  }, [_vm._v(_vm._s(_vm.$t("labels.momentConfirm")))])])])]), _vm._v(" "), _c("div", {
     staticClass: "col-sm-12 form-group"
   }, [_c("button", {
     staticClass: "btn-content",
@@ -1391,7 +1398,7 @@ var render = function render() {
     on: {
       click: _vm.loadTours
     }
-  }, [_vm._v(_vm._s(_vm.$t("buttons.searchTour")))])])], 2)]);
+  }, [_vm._v(_vm._s(_vm.$t("buttons.searchTour")))])])])]);
 };
 var staticRenderFns = [function () {
   var _vm = this,

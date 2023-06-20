@@ -22,7 +22,7 @@
                 </select>
             </div>
 
-            <template v-show="canMakeRequest">
+            <div v-show="canMakeRequest">
                 <div class="col-md-3 form-group">
                     <label class="field-label">{{ $t('labels.checkinFrom') }}</label>
                     <div class="input-group">
@@ -197,7 +197,7 @@
                         <span class="bft-checkbox_text any">{{ $t('labels.momentConfirm') }}</span>
                     </label>
                 </div>
-            </template>
+            </div>
 
             <div class="col-sm-12 form-group">
                 <button
