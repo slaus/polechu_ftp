@@ -142,10 +142,10 @@ class BeeFlyTourService
         return [];
     }
 
-    public function listTours(array $payload)
+    public function listTours(array $payload): array
     {
         try {
-            return $this->api->get([
+            $response = $this->api->get([
                 'samo_action' => 'api',
                 'type' => 'json',
                 'action' => 'SearchTour_PRICES',
@@ -173,6 +173,15 @@ class BeeFlyTourService
                 'PRICEPAGE' => 1,
                 'PERPAGE' => 6,
             ])['SearchTour_PRICES']['prices'] ?? [];
+
+            return array_map(function ($item) {
+                $item['checkIn'] = isset($item['checkIn']) ? date('d.m.Y', strtotime($item['checkIn'])) : '';
+                $item['price'] = isset($item['price']) ? number_format((int) $item['price'], 0, ',', ' ') : '';
+                $item['meal'] = $this->mealName($item['meal'] ?? '');
+                $item['town_from'] = array_filter($this->listTowns(), fn ($item) => $item['id'] == $item['townFromKey'])['name'] ?? $item['townFromKey'];
+
+                return $item;
+            }, $response);
         } catch (\Exception $exception) {
             Log::error('Error get list of tours.' . $exception->getMessage());
         }
@@ -183,11 +192,13 @@ class BeeFlyTourService
     private function listTowns(): array
     {
         try {
-            return $this->api->get([
-                'samo_action' => 'api',
-                'type' => 'json',
-                'action' => 'SearchTour_TOWNFROMS',
-            ])['SearchTour_TOWNFROMS'] ?? [];
+            return Cache::rememberForever('towns', function () {
+                return $this->api->get([
+                    'samo_action' => 'api',
+                    'type' => 'json',
+                    'action' => 'SearchTour_TOWNFROMS',
+                ])['SearchTour_TOWNFROMS'] ?? [];
+            });
         } catch (\Exception $exception) {
             Log::error('Error get list of towns.' . $exception->getMessage());
         }
