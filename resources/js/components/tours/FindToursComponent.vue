@@ -46,7 +46,7 @@
                     <label class="field-label">{{ $t('labels.nightsFrom') }}</label>
                     <select v-model="filter.nights_from" class="form-control">
                         <option
-                            v-for="nights in options.nights.nights"
+                            v-for="nights in options.nights"
                             :value="nights"
                             :key="nights"
                         >{{ nights }}</option>
@@ -56,7 +56,7 @@
                     <label class="field-label">{{ $t('labels.nightsTill') }}</label>
                     <select v-model="filter.nights_till" class="form-control">
                         <option
-                            v-for="nights in options.nights.nights"
+                            v-for="nights in options.nights"
                             :value="nights"
                             :key="nights"
                         >{{ nights }}</option>
@@ -249,9 +249,7 @@ export default {
                 currencies: [],
                 hotels: [],
                 meals: [],
-                nights: {
-                    nights: []
-                },
+                nights: [],
                 stars: [],
                 towns: []
             },
@@ -416,8 +414,8 @@ export default {
             this.hotels = this.hotels.filter(hotel => hotel.name.toLowerCase().match(this.searchHotel.toLowerCase()) || hotel.star.toLowerCase().match(this.searchHotel.toLowerCase()));
         },
         setDefaultFilterValues() {
-            this.filter.nights_from = this.options.nights.nights.length > 0 ? this.options.nights.nights[0] : 0;
-            this.filter.nights_till = this.options.nights.nights.length > 0 ? this.options.nights.nights[this.options.nights.nights.length - 1] : 0;
+            this.filter.nights_from = this.options.nights.length > 0 ? this.options.nights[0] : 0;
+            this.filter.nights_till = this.options.nights.length > 0 ? this.options.nights[this.options.nights.length - 1] : 0;
             this.filter.currency_id = this.options.currencies.length > 0 ? this.options.currencies[0].id : 0;
             this.filter.checkin_beg = this.options.checkin.length > 0 ? this.options.checkin[0] : '';
             this.filter.checkin_end = this.options.checkin.length > 1 ? this.options.checkin[1] : '';
