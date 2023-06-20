@@ -240,6 +240,7 @@ export default {
     data() {
         return {
             isLoading: false,
+            disabledSearchButton: false,
             searchHotel: '',
             countries: [],
             towns: [],
@@ -290,7 +291,7 @@ export default {
             return this.payload.town > 0;
         },
         canMakeRequest() {
-            return !this.isLoading && this.payload.town > 0;
+            return !this.disabledSearchButton && !this.isLoading && this.payload.town > 0;
         }
     },
     watch: {
@@ -312,6 +313,12 @@ export default {
         },
         searchHotel() {
             this.refreshHotels();
+        },
+        filter: {
+            handler() {
+                this.disabledSearchButton = false;
+            },
+            deep: true
         }
     },
     mounted() {
@@ -373,6 +380,7 @@ export default {
                 }
             }).finally(() => {
                 this.isLoading = false;
+                this.disabledSearchButton = true;
             });
         },
         changeCity(event) {

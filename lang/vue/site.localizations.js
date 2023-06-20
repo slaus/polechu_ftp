@@ -35,7 +35,11 @@ export default {
             nights: 'Ночей',
             guaranteedConfirmation: 'Гарантоване підтвердження',
             priceEntireTour: 'Вартість за весь тур',
-            freights: 'Наявність квитків:',
+            freights: 'Наявність квитків',
+            areSeats: 'Є місця',
+            fewSeats: 'Мало місць',
+            noSeats: 'Немає місць',
+            uponRequest: 'За запитом',
         },
         placeholders: {
 

@@ -1,11 +1,10 @@
 <template>
-    <section>
+    <section class="section-tours">
         <div class="container-fluid">
             <div class="row">
                 <div v-for="tour in tours" class="tour-block">
                     <div class="outer">
                         <div class="inner">
-
                             <div class="data">
                                 <div class="wrap">
                                     <div class="info">
@@ -120,13 +119,48 @@ export default {
         })
     },
     methods: {
-        freights(code) {
+        freights(code, key) {
+            let output = { prefix: '', text: '' };
 
+            switch (code.toLowerCase()) {
+                case 'y':
+                    output = {
+                        prefix: '__y',
+                        text: this.$t('labels.areSeats')
+                    }
+                    break;
+                case 'f':
+                    output = {
+                        prefix: '__f',
+                        text: this.$t('labels.fewSeats')
+                    }
+                    break;
+                case 'n':
+                    output = {
+                        prefix: '__n',
+                        text: this.$t('labels.noSeats')
+                    }
+                    break;
+                case 'r':
+                    output = {
+                        prefix: '__r',
+                        text: this.$t('labels.uponRequest')
+                    }
+                    break;
+            }
+
+            return output[key] ?? '';
         }
     }
 }
 </script>
 
 <style scoped>
-
+.section-tours {
+    padding: 0;
+}
+.tour-block {
+    border: 1px solid grey;
+    margin: 30px 0;
+}
 </style>
