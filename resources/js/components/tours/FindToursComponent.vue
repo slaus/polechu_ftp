@@ -303,7 +303,6 @@ export default {
             }
         },
         'payload.town'(value) {
-            this.options = [];
             this.clearSearchResults();
             this.resetFilter();
 

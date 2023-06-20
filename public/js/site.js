@@ -153,9 +153,7 @@ window.dateEnabled = [];
         currencies: [],
         hotels: [],
         meals: [],
-        nights: {
-          nights: []
-        },
+        nights: [],
         stars: [],
         towns: []
       },
@@ -208,7 +206,6 @@ window.dateEnabled = [];
       }
     },
     'payload.town': function payloadTown(value) {
-      this.options = [];
       this.clearSearchResults();
       this.resetFilter();
       if (value > 0) {
@@ -339,8 +336,8 @@ window.dateEnabled = [];
       });
     },
     setDefaultFilterValues: function setDefaultFilterValues() {
-      this.filter.nights_from = this.options.nights.nights.length > 0 ? this.options.nights.nights[0] : 0;
-      this.filter.nights_till = this.options.nights.nights.length > 0 ? this.options.nights.nights[this.options.nights.nights.length - 1] : 0;
+      this.filter.nights_from = this.options.nights.length > 0 ? this.options.nights[0] : 0;
+      this.filter.nights_till = this.options.nights.length > 0 ? this.options.nights[this.options.nights.length - 1] : 0;
       this.filter.currency_id = this.options.currencies.length > 0 ? this.options.currencies[0].id : 0;
       this.filter.checkin_beg = this.options.checkin.length > 0 ? this.options.checkin[0] : '';
       this.filter.checkin_end = this.options.checkin.length > 1 ? this.options.checkin[1] : '';
@@ -631,7 +628,7 @@ var render = function render() {
         _vm.$set(_vm.filter, "nights_from", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
       }
     }
-  }, _vm._l(_vm.options.nights.nights, function (nights) {
+  }, _vm._l(_vm.options.nights, function (nights) {
     return _c("option", {
       key: nights,
       domProps: {
@@ -661,7 +658,7 @@ var render = function render() {
         _vm.$set(_vm.filter, "nights_till", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
       }
     }
-  }, _vm._l(_vm.options.nights.nights, function (nights) {
+  }, _vm._l(_vm.options.nights, function (nights) {
     return _c("option", {
       key: nights,
       domProps: {
