@@ -293,6 +293,7 @@ export default {
     watch: {
         'payload.country'(value) {
             this.towns = [];
+            this.payload.town = 0;
 
             if (value > 0) {
                 this.loadTowns();
@@ -300,6 +301,8 @@ export default {
         },
         'payload.town'(value) {
             this.options = [];
+            this.clearSearchResults();
+            this.resetFilter();
 
             if (value > 0) {
                 this.loadOptions();
@@ -359,7 +362,7 @@ export default {
         },
         loadTours() {
             this.isLoading = true;
-            this.$store.commit('tourStore/resultSearchTours', []);
+            this.clearSearchResults();
             this.filter.country_id = this.payload.country;
             this.filter.town_from_id = this.payload.town;
             this.$api.get('v1/tours/tours', { params: this.filter }).then(response => {
@@ -464,6 +467,33 @@ export default {
                     };
                 }
             });
+        },
+        resetFilter() {
+            this.filter = {
+                country_id: 0,
+                town_from_id: 0,
+                adult: 2,
+                child: 0,
+                child_ages: [],
+                checkin_beg: '',
+                checkin_end: '',
+                nights_from: 0,
+                nights_till: 0,
+                currency_id: 0,
+                cost_min: null,
+                cost_max: null,
+                towns: [0],
+                hotels: [0],
+                stars: [0],
+                meals: [0],
+                child_in_bed: false,
+                freight: false,
+                filter: false,
+                moment_confirm: false
+            }
+        },
+        clearSearchResults() {
+            this.$store.commit('tourStore/resultSearchTours', []);
         }
     }
 }
