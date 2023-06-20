@@ -13,9 +13,9 @@ if (feedbackForm) {
 
         const submitButton = e.target;
         const emailInput = document.querySelector('input[name=email]');
-        const mailSendSuccessContainer = document.getElementById('mailSendSuccess');
-        const mailSendFailContainer = document.getElementById('mailSendFail');
-        const formErrorsContainer = document.getElementById('formErrors');
+        const mailSendSuccessContainer = document.getElementById('mailSubscribeSendSuccess');
+        const mailSendFailContainer = document.getElementById('mailSubscribeSendFail');
+        const formErrorsContainer = document.getElementById('formSubscribeErrors');
 
         submitButton.setAttribute('disabled', true);
         mailSendFailContainer.style.display = 'none';

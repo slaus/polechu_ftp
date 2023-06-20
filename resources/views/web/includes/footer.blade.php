@@ -33,15 +33,15 @@
                             </button>
                         </div>
 
-                        <div class="success" id="mailSendSuccess">
+                        <div class="success" id="mailSubscribeSendSuccess">
                             {!! translation(settings('subscribe.success_send_message', [])) !!}
                         </div>
 
-                        <div class="error" id="mailSendFail">
+                        <div class="error" id="mailSubscribeSendFail">
                             {!! translation(settings('subscribe.fail_send_message', [])) !!}
                         </div>
 
-                        <div class="error" id="formErrors" style="margin-bottom: 0"></div>
+                        <div class="error" id="formSubscribeErrors" style="margin-bottom: 0"></div>
                     </form>
                 </div>
             </div>

@@ -31,4 +31,13 @@ class SearchTourOrderRequest extends FormRequest
             'client.note' => ['nullable', 'string'],
         ];
     }
+
+    public function messages(): array
+    {
+        return [
+            'tour.*.required' => __('The field is required'),
+            'client.*.required' => __('The field is required'),
+            'client.*.email' => __('Wrong email format'),
+        ];
+    }
 }

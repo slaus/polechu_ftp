@@ -9,5 +9,7 @@
     "next": "наступна",
     "prev": "попередня",
     "Home": "Головна",
-    "Blog": "Блог"
+    "Blog": "Блог",
+    "The field is required": "Поле обов'язкове для заповнення",
+    "Wrong email format": "Не вірний формат email"
 }

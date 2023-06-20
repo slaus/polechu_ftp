@@ -19,4 +19,12 @@ class ContactFormRequest extends FormRequest
             'text' => ['required', 'string', 'max:10000'],
         ];
     }
+
+    public function messages(): array
+    {
+        return [
+            '*.required' => __('The field is required'),
+            '*.email' => __('Wrong email format'),
+        ];
+    }
 }

@@ -17,4 +17,12 @@ class FeedbackFormRequest extends FormRequest
             'email' => ['required', 'email', 'max:255'],
         ];
     }
+
+    public function messages(): array
+    {
+        return [
+            '*.required' => __('The field is required'),
+            '*.email' => __('Wrong email format'),
+        ];
+    }
 }
