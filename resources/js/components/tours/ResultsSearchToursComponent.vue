@@ -111,11 +111,12 @@
                 <ul>
                     <li>{{ order.tour.id }}</li>
                     <li>{{ order.tour.name }}</li>
-                    <li>{{ order.tour.state }}, {{ order.tour.town }}</li>
+                    <li>{{ order.tour.state }}, {{ order.tour.town }} *</li>
                     <li>{{ order.tour.price }}</li>
                     <li>{{ order.tour.checkin }}</li>
                     <li>{{ order.tour.nights }}</li>
                 </ul>
+                <span>{{ $t('alerts.priceNote')}}</span>
             </div>
 
             <div slot="body">
@@ -130,6 +131,11 @@
                     <span>{{ messageFieldError('client.phone') }}</span>
 
                     <textarea  v-model="order.client.note" :placeholder="$t('placeholders.note')" rows="4"></textarea>
+                </div>
+
+                <div>
+                    <div v-if="successSendOrder" class="success">{{ $t('alerts.successSendOrder') }}</div>
+                    <div v-if="failSendOrder" class="fail">{{ $t('alerts.failSendOrder') }}</div>
                 </div>
             </div>
 
@@ -163,6 +169,8 @@ export default {
         return {
             isLoading: false,
             showModal: true,
+            successSendOrder: false,
+            failSendOrder: false,
             order: {
                 tour: {
                     id: 0,
@@ -170,8 +178,9 @@ export default {
                     state: '',
                     town: '',
                     price: '',
+                    currency: '',
                     checkin: '',
-                    nights: ''
+                    nights: 0
                 },
                 client: {
                     name: '',
@@ -192,6 +201,7 @@ export default {
                 state: tour.state,
                 town: tour.town,
                 price: tour.price,
+                currency: tour.currency,
                 checkin: tour.checkin,
                 nights: tour.nights
             }
@@ -200,13 +210,15 @@ export default {
             this.isLoading = true;
             this.$api.post('v1/tours/order', this.order).then(response => {
                 if (response.data.status === 'success') {
+                    this.successSendOrder = true;
+
                     setTimeout(() => {
                         this.closeModal();
                     }, 3000);
                 }
 
                 if (response.data.status === 'error') {
-
+                    this.failSendOrder = true;
                 }
             }).finally(() => {
                 this.isLoading = false;
@@ -246,6 +258,8 @@ export default {
         },
         closeModal() {
             this.cleanErrors();
+            this.successSendOrder = false;
+            this.failSendOrder = false;
             this.showModal = false;
             this.order = {
                 tour: {
@@ -254,8 +268,9 @@ export default {
                     state: '',
                     town: '',
                     price: '',
+                    currency: '',
                     checkin: '',
-                    nights: ''
+                    nights: 0
                 },
                 client: {
                     name: '',

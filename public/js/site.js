@@ -118,7 +118,11 @@ __webpack_require__.r(__webpack_exports__);
       time: 'Зручний час для дзвінка *',
       note: 'Побажання до туру'
     },
-    alerts: {}
+    alerts: {
+      priceNote: '* Вартість дійсна на момент оформлення замовлення і може змінитися у момент бронювання туру',
+      successSendOrder: 'Заявка успішно відправлена. Ми з Вами зв\'яжемось.',
+      failSendOrder: 'Помилка відправки заявки. Спробуйте ще раз!'
+    }
   }
 });
 
@@ -504,6 +508,8 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
     return {
       isLoading: false,
       showModal: true,
+      successSendOrder: false,
+      failSendOrder: false,
       order: {
         tour: {
           id: 0,
@@ -511,8 +517,9 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
           state: '',
           town: '',
           price: '',
+          currency: '',
           checkin: '',
-          nights: ''
+          nights: 0
         },
         client: {
           name: '',
@@ -526,13 +533,14 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
   },
   methods: {
     makeOrder: function makeOrder(tour) {
-      this.showModal = true;
+      this.showModal = false;
       this.order.tour = {
         id: tour.tour_id,
         name: tour.name,
         state: tour.state,
         town: tour.town,
         price: tour.price,
+        currency: tour.currency,
         checkin: tour.checkin,
         nights: tour.nights
       };
@@ -542,11 +550,14 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
       this.isLoading = true;
       this.$api.post('v1/tours/order', this.order).then(function (response) {
         if (response.data.status === 'success') {
+          _this.successSendOrder = true;
           setTimeout(function () {
             _this.closeModal();
           }, 3000);
         }
-        if (response.data.status === 'error') {}
+        if (response.data.status === 'error') {
+          _this.failSendOrder = true;
+        }
       })["finally"](function () {
         _this.isLoading = false;
       });
@@ -587,6 +598,8 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
     },
     closeModal: function closeModal() {
       this.cleanErrors();
+      this.successSendOrder = false;
+      this.failSendOrder = false;
       this.showModal = false;
       this.order = {
         tour: {
@@ -595,8 +608,9 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
           state: '',
           town: '',
           price: '',
+          currency: '',
           checkin: '',
-          nights: ''
+          nights: 0
         },
         client: {
           name: '',
@@ -1760,7 +1774,7 @@ var render = function render() {
       slot: "header"
     },
     slot: "header"
-  }, [_c("ul", [_c("li", [_vm._v(_vm._s(_vm.order.tour.id))]), _vm._v(" "), _c("li", [_vm._v(_vm._s(_vm.order.tour.name))]), _vm._v(" "), _c("li", [_vm._v(_vm._s(_vm.order.tour.state) + ", " + _vm._s(_vm.order.tour.town))]), _vm._v(" "), _c("li", [_vm._v(_vm._s(_vm.order.tour.price))]), _vm._v(" "), _c("li", [_vm._v(_vm._s(_vm.order.tour.checkin))]), _vm._v(" "), _c("li", [_vm._v(_vm._s(_vm.order.tour.nights))])])]), _vm._v(" "), _c("div", {
+  }, [_c("ul", [_c("li", [_vm._v(_vm._s(_vm.order.tour.id))]), _vm._v(" "), _c("li", [_vm._v(_vm._s(_vm.order.tour.name))]), _vm._v(" "), _c("li", [_vm._v(_vm._s(_vm.order.tour.state) + ", " + _vm._s(_vm.order.tour.town) + " *")]), _vm._v(" "), _c("li", [_vm._v(_vm._s(_vm.order.tour.price))]), _vm._v(" "), _c("li", [_vm._v(_vm._s(_vm.order.tour.checkin))]), _vm._v(" "), _c("li", [_vm._v(_vm._s(_vm.order.tour.nights))])]), _vm._v(" "), _c("span", [_vm._v(_vm._s(_vm.$t("alerts.priceNote")))])]), _vm._v(" "), _c("div", {
     attrs: {
       slot: "body"
     },
@@ -1845,7 +1859,11 @@ var render = function render() {
         _vm.$set(_vm.order.client, "note", $event.target.value);
       }
     }
-  })])]), _vm._v(" "), _c("div", {
+  })]), _vm._v(" "), _c("div", [_vm.successSendOrder ? _c("div", {
+    staticClass: "success"
+  }, [_vm._v(_vm._s(_vm.$t("alerts.successSendOrder")))]) : _vm._e(), _vm._v(" "), _vm.failSendOrder ? _c("div", {
+    staticClass: "fail"
+  }, [_vm._v(_vm._s(_vm.$t("alerts.failSendOrder")))]) : _vm._e()])]), _vm._v(" "), _c("div", {
     attrs: {
       slot: "footer"
     },

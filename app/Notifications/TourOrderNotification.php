@@ -37,6 +37,7 @@ class TourOrderNotification extends Notification implements ShouldQueue
             ->line('State: ' . $this->payload['tour']['state'])
             ->line('Town: ' . $this->payload['tour']['town'])
             ->line('Check In: ' . $this->payload['tour']['checkin'])
+            ->line('Price: ' . $this->payload['tour']['currency'] . ' ' . $this->payload['tour']['currency'])
             ->line('Nights: ' . $this->payload['tour']['nights']);
     }
 }
