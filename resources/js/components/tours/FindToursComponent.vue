@@ -22,7 +22,7 @@
                 </select>
             </div>
 
-            <div v-show="canMakeRequest">
+            <div v-show="canShowOptions">
                 <div class="col-md-3 form-group">
                     <label class="field-label">{{ $t('labels.checkinFrom') }}</label>
                     <div class="input-group">
@@ -249,7 +249,9 @@ export default {
                 currencies: [],
                 hotels: [],
                 meals: [],
-                nights: [],
+                nights: {
+                    nights: []
+                },
                 stars: [],
                 towns: []
             },
@@ -286,6 +288,9 @@ export default {
         }
     },
     computed: {
+        canShowOptions() {
+            return this.payload.town > 0;
+        },
         canMakeRequest() {
             return !this.isLoading && this.payload.town > 0;
         }

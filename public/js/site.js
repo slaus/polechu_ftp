@@ -153,7 +153,9 @@ window.dateEnabled = [];
         currencies: [],
         hotels: [],
         meals: [],
-        nights: [],
+        nights: {
+          nights: []
+        },
         stars: [],
         towns: []
       },
@@ -190,6 +192,9 @@ window.dateEnabled = [];
     };
   },
   computed: {
+    canShowOptions: function canShowOptions() {
+      return this.payload.town > 0;
+    },
     canMakeRequest: function canMakeRequest() {
       return !this.isLoading && this.payload.town > 0;
     }
@@ -544,8 +549,8 @@ var render = function render() {
     directives: [{
       name: "show",
       rawName: "v-show",
-      value: _vm.canMakeRequest,
-      expression: "canMakeRequest"
+      value: _vm.canShowOptions,
+      expression: "canShowOptions"
     }]
   }, [_c("div", {
     staticClass: "col-md-3 form-group"
