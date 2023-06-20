@@ -178,7 +178,7 @@ class BeeFlyTourService
                 $item['checkIn'] = isset($item['checkIn']) ? date('d.m.Y', strtotime($item['checkIn'])) : '';
                 $item['price'] = isset($item['price']) ? number_format((int) $item['price'], 0, ',', ' ') : '';
                 $item['meal'] = $this->mealName($item['meal'] ?? '');
-                $item['stateKey'] = array_filter($this->listCountries(), fn ($town) => $town['id'] == $item['stateKey'])[0]['name'] ?? '';
+                $item['stateKey'] = array_filter($this->listCountries(), fn ($county) => $county['id'] == $item['stateKey'])[0]['name'] ?? '';
                 $item['townFromKey'] = array_filter($this->listTowns(), fn ($town) => $town['id'] == $item['townFromKey'])[0]['name'] ?? '';
 
                 return $item;
