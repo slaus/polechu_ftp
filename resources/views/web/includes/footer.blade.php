@@ -25,10 +25,10 @@
                 <div class="title-h3 title-h">{!! translation(settings('subscribe.title', [])) !!}</div>
                 <div>
                     <form action="{{ route('form.feedback') }}" id="feedbackForm" method="post" name="subscribe">
-                        <div style="display: flex; height: 40px">
+                        <div>
                             <input class="subscribfield subscribeemail" id="subscribeemail" name="email" type="text" placeholder="{{ translation(settings('subscribe.email_placeholder', [])) }}">
-
-                            <button class="btn-form" id="feedbackSubmit" type="submit" style="background: #ffb600; height: 40px; width: fit-content; padding: 0 20px; margin: 0 5px;">
+                            <div class="error" id="formSubscribeErrors" style="margin-bottom: 0"></div>
+                            <button class="btn-form" id="feedbackSubmit" type="submit" style="background: #ffb600; height: 40px; padding: 0 20px; margin: 5px 0;width: 100%">
                                 {{ translation(settings('subscribe.button_text', [])) }}
                             </button>
                         </div>
@@ -40,8 +40,6 @@
                         <div class="error" id="mailSubscribeSendFail">
                             {!! translation(settings('subscribe.fail_send_message', [])) !!}
                         </div>
-
-                        <div class="error" id="formSubscribeErrors" style="margin-bottom: 0"></div>
                     </form>
                 </div>
             </div>
