@@ -22,174 +22,190 @@
                 </select>
             </div>
 
-            <div class="col-md-3 form-group">
-                <label class="field-label">{{ $t('labels.checkinFrom') }}</label>
-                <div class="input-group">
-                    <input type="text" v-model="filter.checkin_beg" ref="checkinBeg" id="checkinBeg" class="form-control">
-                    <div class="input-group-btn">
-                        <span class="icon"><i class="fa fa-calendar"></i></span>
+            <template v-if="canMakeRequest">
+                <div class="col-md-3 form-group">
+                    <label class="field-label">{{ $t('labels.checkinFrom') }}</label>
+                    <div class="input-group">
+                        <input type="text" v-model="filter.checkin_beg" ref="checkinBeg" id="checkinBeg" class="form-control">
+                        <div class="input-group-btn">
+                            <span class="icon"><i class="fa fa-calendar"></i></span>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-3 form-group">
-                <label class="field-label">{{ $t('labels.checkinTo') }}</label>
-                <div class="input-group">
-                    <input type="text" v-model="filter.checkin_end" ref="checkinEnd" id="checkinEnd" class="form-control">
-                    <div class="input-group-btn">
-                        <span class="icon"><i class="fa fa-calendar"></i></span>
+                <div class="col-md-3 form-group">
+                    <label class="field-label">{{ $t('labels.checkinTo') }}</label>
+                    <div class="input-group">
+                        <input type="text" v-model="filter.checkin_end" ref="checkinEnd" id="checkinEnd" class="form-control">
+                        <div class="input-group-btn">
+                            <span class="icon"><i class="fa fa-calendar"></i></span>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="col-md-3 form-group">
-                <label class="field-label">{{ $t('labels.nightsFrom') }}</label>
-                <select v-model="filter.nights_from" class="form-control">
-                    <option
-                        v-for="nights in options.nights.nights"
-                        :value="nights"
-                        :key="nights"
-                    >{{ nights }}</option>
-                </select>
-            </div>
-            <div class="col-md-3 form-group">
-                <label class="field-label">{{ $t('labels.nightsTill') }}</label>
-                <select v-model="filter.nights_till" class="form-control">
-                    <option
-                        v-for="nights in options.nights.nights"
-                        :value="nights"
-                        :key="nights"
-                    >{{ nights }}</option>
-                </select>
-            </div>
-
-            <div class="col-md-3 form-group">
-                <label class="field-label">{{ $t('labels.adult') }}</label>
-                <select v-model="filter.adult" class="form-control">
-                    <option
-                        v-for="item in adult"
-                        :value="item"
-                        :key="item"
-                    >{{ item }}</option>
-                </select>
-            </div>
-            <div class="col-md-3 form-group">
-                <label class="field-label">{{ $t('labels.child') }}</label>
-                <select v-model="filter.child" class="form-control">
-                    <option
-                        v-for="item in children"
-                        :value="item"
-                        :key="item"
-                    >{{ item }}</option>
-                </select>
-            </div>
-
-            <div class="col-md-2 form-group">
-                <label class="field-label">{{ $t('labels.currency') }}</label>
-                <select v-model="filter.currency_id" class="form-control">
-                    <option
-                        v-for="currency in options.currencies"
-                        :value="currency.id"
-                        :key="currency.id"
-                    >{{ currency.alias }}</option>
-                </select>
-            </div>
-            <div class="col-md-2 form-group">
-                <label class="field-label">{{ $t('labels.costMin') }}</label>
-                <div class="input-group">
-                    <input type="number" min="0" v-model="filter.cost_min" class="form-control input-number">
+                <div class="col-md-3 form-group">
+                    <label class="field-label">{{ $t('labels.nightsFrom') }}</label>
+                    <select v-model="filter.nights_from" class="form-control">
+                        <option
+                            v-for="nights in options.nights.nights"
+                            :value="nights"
+                            :key="nights"
+                        >{{ nights }}</option>
+                    </select>
                 </div>
-            </div>
-            <div class="col-md-2 form-group">
-                <label class="field-label">{{ $t('labels.costMax') }}</label>
-                <div class="input-group">
-                    <input type="number" min="0" v-model="filter.cost_max" class="form-control input-number">
+                <div class="col-md-3 form-group">
+                    <label class="field-label">{{ $t('labels.nightsTill') }}</label>
+                    <select v-model="filter.nights_till" class="form-control">
+                        <option
+                            v-for="nights in options.nights.nights"
+                            :value="nights"
+                            :key="nights"
+                        >{{ nights }}</option>
+                    </select>
                 </div>
-            </div>
 
-            <div class="col-md-3 form-group">
-                <label class="field-label">{{ $t('labels.city') }}</label>
-                <div class="box-container">
-                    <label class="box-checkbox">
-                        <input class="bft-checkbox_checkbox" type="checkbox" v-model="filter.towns" :value="0" @change="changeCity">
-                        <span class="bft-checkbox_text any">{{ $t('labels.anyCity') }}</span>
-                    </label>
-                    <label v-for="town in options.towns" class="box-checkbox" :key="town.id">
-                        <input class="bft-checkbox_checkbox" type="checkbox" v-model="filter.towns" :value="town.id" @change="changeCity">
-                        <span class="bft-checkbox_text">{{ town.name }}</span>
+                <div class="col-md-2 form-group">
+                    <label class="field-label">{{ $t('labels.adult') }}</label>
+                    <select v-model="filter.adult" class="form-control">
+                        <option
+                            v-for="item in adult"
+                            :value="item"
+                            :key="item"
+                        >{{ item }}</option>
+                    </select>
+                </div>
+                <div class="col-md-2 form-group">
+                    <label class="field-label">{{ $t('labels.child') }}</label>
+                    <select v-model="filter.child" class="form-control">
+                        <option
+                            v-for="item in children"
+                            :value="item"
+                            :key="item"
+                        >{{ item }}</option>
+                    </select>
+                </div>
 
-                        <label v-if="town.child && town.showChildren" v-for="townChild in town.child" class="box-checkbox child" :key="townChild.id">
-                            <input class="bft-checkbox_checkbox" type="checkbox" v-model="filter.towns" :value="townChild.id" @change="changeCity">
-                            <span class="bft-checkbox_text">{{ townChild.name }}</span>
+                <div class="col-md-2 form-group">
+                    <label v-if="filter.child > 0" class="field-label">{{ $t('labels.' + (filter.child > 1 ? 'childrenAge' : 'childAge')) }}</label>
+                    <div style="display: flex;">
+                        <div v-for="i in filter.child" :style="i > 0 ? 'margin-left: 2px;' : ''" style="max-width: 50px;" class="input-group">
+                            <input type="number" min="0" step="1" v-model="filter.child_ages[i]" class="form-control input-number">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-2 form-group">
+                    <label class="field-label">{{ $t('labels.currency') }}</label>
+                    <select v-model="filter.currency_id" class="form-control">
+                        <option
+                            v-for="currency in options.currencies"
+                            :value="currency.id"
+                            :key="currency.id"
+                        >{{ currency.alias }}</option>
+                    </select>
+                </div>
+                <div class="col-md-2 form-group">
+                    <label class="field-label">{{ $t('labels.costMin') }}</label>
+                    <div class="input-group">
+                        <input type="number" min="0" v-model="filter.cost_min" class="form-control input-number">
+                    </div>
+                </div>
+                <div class="col-md-2 form-group">
+                    <label class="field-label">{{ $t('labels.costMax') }}</label>
+                    <div class="input-group">
+                        <input type="number" min="0" v-model="filter.cost_max" class="form-control input-number">
+                    </div>
+                </div>
+
+                <div class="col-md-3 form-group">
+                    <label class="field-label">{{ $t('labels.city') }}</label>
+                    <div class="box-container">
+                        <label class="box-checkbox">
+                            <input class="bft-checkbox_checkbox" type="checkbox" v-model="filter.towns" :value="0" @change="changeCity">
+                            <span class="bft-checkbox_text any">{{ $t('labels.anyCity') }}</span>
                         </label>
-                    </label>
+                        <label v-for="town in options.towns" class="box-checkbox" :key="town.id">
+                            <input class="bft-checkbox_checkbox" type="checkbox" v-model="filter.towns" :value="town.id" @change="changeCity">
+                            <span class="bft-checkbox_text">{{ town.name }}</span>
+
+                            <label v-if="town.child && town.showChildren" v-for="townChild in town.child" class="box-checkbox child" :key="townChild.id">
+                                <input class="bft-checkbox_checkbox" type="checkbox" v-model="filter.towns" :value="townChild.id" @change="changeCity">
+                                <span class="bft-checkbox_text">{{ townChild.name }}</span>
+                            </label>
+                        </label>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-2 form-group">
-                <label class="field-label">&nbsp;</label>
-                <div class="box-container">
+                <div class="col-md-2 form-group">
+                    <label class="field-label">&nbsp;</label>
+                    <div class="box-container">
+                        <label class="box-checkbox">
+                            <input class="bft-checkbox_checkbox" type="checkbox" v-model="filter.stars" :value="0" @change="changeStar">
+                            <span class="bft-checkbox_text any">{{ $t('labels.anyStar') }}</span>
+                        </label>
+                        <label v-for="star in options.stars" class="box-checkbox" :key="star.id">
+                            <input class="bft-checkbox_checkbox" type="checkbox" v-model="filter.stars" :value="star.id" @change="changeStar">
+                            <span class="bft-checkbox_text">{{ star.name }}</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="col-md-4 form-group">
+                    <div>
+                        <input type="text" v-model="searchHotel" class="form-control input-search">
+                    </div>
+                    <div class="box-container">
+                        <label class="box-checkbox">
+                            <input class="bft-checkbox_checkbox" type="checkbox" v-model="filter.hotels" :value="0" @change="changeHotel">
+                            <span class="bft-checkbox_text any">{{ $t('labels.anyHotel') }}</span>
+                        </label>
+                        <label v-for="hotel in hotels" class="box-checkbox" :key="hotel.id">
+                            <input class="bft-checkbox_checkbox" type="checkbox" v-model="filter.hotels" :value="hotel.id" @change="changeHotel">
+                            <span class="bft-checkbox_text">{{ hotel.name }} {{ hotel.star }}</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="col-md-3 form-group">
+                    <label class="field-label">&nbsp;</label>
+                    <div class="box-container">
+                        <label class="box-checkbox">
+                            <input class="bft-checkbox_checkbox" type="checkbox" v-model="filter.meals" :value="0" @change="changeMeal">
+                            <span class="bft-checkbox_text any">{{ $t('labels.anyMeal') }}</span>
+                        </label>
+                        <label v-for="meal in options.meals" class="box-checkbox" :key="meal.id">
+                            <input class="bft-checkbox_checkbox" type="checkbox" v-model="filter.meals" :value="meal.id" @change="changeMeal">
+                            <span class="bft-checkbox_text">{{ meal.name }}</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="col-md-12 form-group checkboxes d-flex">
                     <label class="box-checkbox">
-                        <input class="bft-checkbox_checkbox" type="checkbox" v-model="filter.stars" :value="0" @change="changeStar">
-                        <span class="bft-checkbox_text any">{{ $t('labels.anyStar') }}</span>
+                        <input class="bft-checkbox_checkbox" type="checkbox" v-model="filter.child_in_bed" :value="1">
+                        <span class="bft-checkbox_text any">{{ $t('labels.childInBed') }}</span>
                     </label>
-                    <label v-for="star in options.stars" class="box-checkbox" :key="star.id">
-                        <input class="bft-checkbox_checkbox" type="checkbox" v-model="filter.stars" :value="star.id" @change="changeStar">
-                        <span class="bft-checkbox_text">{{ star.name }}</span>
-                    </label>
-                </div>
-            </div>
-            <div class="col-md-4 form-group">
-                <div>
-                    <input type="text" v-model="searchHotel" class="form-control input-search">
-                </div>
-                <div class="box-container">
+
                     <label class="box-checkbox">
-                        <input class="bft-checkbox_checkbox" type="checkbox" v-model="filter.hotels" :value="0" @change="changeHotel">
-                        <span class="bft-checkbox_text any">{{ $t('labels.anyHotel') }}</span>
+                        <input class="bft-checkbox_checkbox" type="checkbox" v-model="filter.freight" :value="1">
+                        <span class="bft-checkbox_text any">{{ $t('labels.freight') }}</span>
                     </label>
-                    <label v-for="hotel in hotels" class="box-checkbox" :key="hotel.id">
-                        <input class="bft-checkbox_checkbox" type="checkbox" v-model="filter.hotels" :value="hotel.id" @change="changeHotel">
-                        <span class="bft-checkbox_text">{{ hotel.name }} {{ hotel.star }}</span>
-                    </label>
-                </div>
-            </div>
-            <div class="col-md-3 form-group">
-                <label class="field-label">&nbsp;</label>
-                <div class="box-container">
+
                     <label class="box-checkbox">
-                        <input class="bft-checkbox_checkbox" type="checkbox" v-model="filter.meals" :value="0" @change="changeMeal">
-                        <span class="bft-checkbox_text any">{{ $t('labels.anyMeal') }}</span>
+                        <input class="bft-checkbox_checkbox" type="checkbox" v-model="filter.filter" :value="1">
+                        <span class="bft-checkbox_text any">{{ $t('labels.filter') }}</span>
                     </label>
-                    <label v-for="meal in options.meals" class="box-checkbox" :key="meal.id">
-                        <input class="bft-checkbox_checkbox" type="checkbox" v-model="filter.meals" :value="meal.id" @change="changeMeal">
-                        <span class="bft-checkbox_text">{{ meal.name }}</span>
+
+                    <label class="box-checkbox">
+                        <input class="bft-checkbox_checkbox" type="checkbox" v-model="filter.moment_confirm" :value="1">
+                        <span class="bft-checkbox_text any">{{ $t('labels.momentConfirm') }}</span>
                     </label>
                 </div>
-            </div>
-
-            <div class="col-md-12 form-group checkboxes d-flex">
-                <label class="box-checkbox">
-                    <input class="bft-checkbox_checkbox" type="checkbox" v-model="filter.child_in_bed" :value="1">
-                    <span class="bft-checkbox_text any">{{ $t('labels.childInBed') }}</span>
-                </label>
-
-                <label class="box-checkbox">
-                    <input class="bft-checkbox_checkbox" type="checkbox" v-model="filter.freight" :value="1">
-                    <span class="bft-checkbox_text any">{{ $t('labels.freight') }}</span>
-                </label>
-
-                <label class="box-checkbox">
-                    <input class="bft-checkbox_checkbox" type="checkbox" v-model="filter.filter" :value="1">
-                    <span class="bft-checkbox_text any">{{ $t('labels.filter') }}</span>
-                </label>
-
-                <label class="box-checkbox">
-                    <input class="bft-checkbox_checkbox" type="checkbox" v-model="filter.moment_confirm" :value="1">
-                    <span class="bft-checkbox_text any">{{ $t('labels.momentConfirm') }}</span>
-                </label>
-            </div>
+            </template>
 
             <div class="col-sm-12 form-group">
-                <button class="btn-content" :disabled="isLoading" @click="loadTours">{{ $t('buttons.searchTour') }}</button>
+                <button
+                    class="btn-content"
+                    :class="{ 'btn-disabled': !canMakeRequest }"
+                    :disabled="!canMakeRequest"
+                    @click="loadTours"
+                >{{ $t('buttons.searchTour') }}</button>
             </div>
         </div>
     </div>
@@ -237,7 +253,6 @@ export default {
                 stars: [],
                 towns: []
             },
-            tours: [],
             adult: [1, 2, 3, 4, 5, 6, 7, 8, 9],
             children: [0, 1, 2, 3],
             datePickerFrom: null,
@@ -268,6 +283,11 @@ export default {
                 filter: false,
                 moment_confirm: false
             }
+        }
+    },
+    computed: {
+        canMakeRequest() {
+            return !this.isLoading && this.payload.town > 0;
         }
     },
     watch: {
@@ -339,11 +359,12 @@ export default {
         },
         loadTours() {
             this.isLoading = true;
+            this.$store.commit('tourStore/resultSearchTours', []);
             this.filter.country_id = this.payload.country;
             this.filter.town_from_id = this.payload.town;
             this.$api.get('v1/tours/tours', { params: this.filter }).then(response => {
                 if (response.data) {
-                    this.tours = response.data;
+                    this.$store.commit('tourStore/resultSearchTours', response.data);
                 }
             }).finally(() => {
                 this.isLoading = false;
@@ -351,28 +372,28 @@ export default {
         },
         changeCity(event) {
             const selectedValue = +event.target.value;
-            this.filter.towns = selectedValue === 0
+            this.filter.towns = selectedValue === 0 || this.filter.towns.length === 0
                 ? [0]
                 : this.filter.towns.filter(i => +i !== 0);
             this.refreshHotels();
         },
         changeHotel(event) {
             const selectedValue = +event.target.value;
-            this.filter.hotels = selectedValue === 0
+            this.filter.hotels = selectedValue === 0 || this.filter.hotels.length === 0
                 ? [0]
                 : this.filter.hotels.filter(i => +i !== 0);
             this.refreshHotels();
         },
         changeStar(event) {
             const selectedValue = +event.target.value;
-            this.filter.stars = selectedValue === 0
+            this.filter.stars = selectedValue === 0 || this.filter.stars.length === 0
                 ? [0]
                 : this.filter.stars = this.filter.stars.filter(i => +i !== 0);
             this.refreshHotels();
         },
         changeMeal(event) {
             const selectedValue = +event.target.value;
-            this.filter.meals = selectedValue === 0
+            this.filter.meals = selectedValue === 0 || this.filter.meals.length === 0
                 ? [0]
                 : this.filter.meals.filter(i => +i !== 0);
         },
@@ -531,5 +552,8 @@ export default {
     letter-spacing: 0;
     color: #555;
     border-radius: 4px;
+}
+.btn-disabled {
+    background: gray;
 }
 </style>

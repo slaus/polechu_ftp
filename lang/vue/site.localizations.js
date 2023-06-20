@@ -27,6 +27,8 @@ export default {
             freight: 'є місця на рейси',
             filter: 'немає зупинки продажу',
             momentConfirm: 'гарантовані готелі',
+            childAge: 'Вік дитини',
+            childrenAge: 'Вік дітей',
         },
         placeholders: {
 

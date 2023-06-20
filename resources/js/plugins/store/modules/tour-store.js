@@ -18,7 +18,8 @@ const state = {
         seo: null,
         visibility: true,
         order: 0
-    }
+    },
+    resultSearchTours: []
 };
 const getters = {
     isLoading(state) {
@@ -35,6 +36,9 @@ const getters = {
     },
     currentPage(state) {
         return state.currentPage
+    },
+    resultSearchTours(state) {
+        return state.resultSearchTours
     }
 };
 const actions = {
@@ -143,6 +147,9 @@ const mutations = {
     },
     tour(state, payload) {
         state.tour = payload;
+    },
+    resultSearchTours(state, payload) {
+        return state.resultSearchTours = payload;
     },
     resetTour(state, payload) {
         state.tour.id = 0;

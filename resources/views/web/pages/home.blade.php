@@ -38,10 +38,15 @@
         </div>
     @endif
 
-    <div id="app" class="bot-home-text onStep" data-animation="fadeInUp" data-time="1200">
-        <div class="container">
-            <find-tours-component></find-tours-component>
+    <div id="app">
+
+        <div class="bot-home-text onStep" data-animation="fadeInUp" data-time="1200">
+            <div class="container">
+                <find-tours-component></find-tours-component>
+            </div>
         </div>
+
+        <results-search-tours-component></results-search-tours-component>
     </div>
 
     @if (! empty(tours((int) ($content['posts']['count'] ?? 3))))
