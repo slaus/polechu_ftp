@@ -135,18 +135,16 @@
 
                     <textarea  v-model="order.client.note" :placeholder="$t('placeholders.note')" rows="4"></textarea>
 
-                    <div>
-                        <div v-if="successSendOrder" class="success">{{ $t('alerts.successSendOrder') }}</div>
-                        <div v-if="failSendOrder" class="fail">{{ $t('alerts.failSendOrder') }}</div>
-                    </div>
+                    <div v-if="successSendOrder" class="success">{{ $t('alerts.successSendOrder') }}</div>
+                    <div v-if="failSendOrder" class="fail">{{ $t('alerts.failSendOrder') }}</div>
                 </div>
             </div>
 
             <div slot="footer">
-                <button class="button" @click="sendOrder">
+                <button class="button" :disabled="isLoading" @click="sendOrder">
                     {{ $t('buttons.orderTour') }}
                 </button>
-                <button class="button" @click="closeModal">
+                <button class="button" :disabled="isLoading" @click="closeModal">
                     {{ $t('buttons.cancel') }}
                 </button>
             </div>
@@ -217,7 +215,7 @@ export default {
 
                     setTimeout(() => {
                         this.closeModal();
-                    }, 3000);
+                    }, 5000);
                 }
 
                 if (response.data.status === 'error') {
