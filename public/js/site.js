@@ -507,7 +507,7 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
   data: function data() {
     return {
       isLoading: false,
-      showModal: true,
+      showModal: false,
       successSendOrder: false,
       failSendOrder: false,
       order: {
@@ -533,7 +533,7 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
   },
   methods: {
     makeOrder: function makeOrder(tour) {
-      this.showModal = false;
+      this.showModal = true;
       this.order.tour = {
         id: tour.tour_id,
         name: tour.name,
