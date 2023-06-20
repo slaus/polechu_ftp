@@ -185,7 +185,7 @@ export default {
     },
     methods: {
         makeOrder(tour) {
-            this.showModal = true;
+            this.showModal = false;
             this.order.tour = {
                 id: tour.tour_id,
                 name: tour.name,
