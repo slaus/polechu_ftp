@@ -22,7 +22,7 @@
                 </select>
             </div>
 
-            <template v-if="canMakeRequest">
+            <template v-show="canMakeRequest">
                 <div class="col-md-3 form-group">
                     <label class="field-label">{{ $t('labels.checkinFrom') }}</label>
                     <div class="input-group">
