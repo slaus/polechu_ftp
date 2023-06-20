@@ -23,7 +23,7 @@ class TourOrderNotification extends Notification implements ShouldQueue
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-            ->subject(__('Request from Contact form'))
+            ->subject(__('New tour order'))
             ->line('CLIENT')
             ->line('Name: ' . $this->payload['client']['name'])
             ->line('Email: ' . $this->payload['client']['email'])
@@ -37,7 +37,7 @@ class TourOrderNotification extends Notification implements ShouldQueue
             ->line('State: ' . $this->payload['tour']['state'])
             ->line('Town: ' . $this->payload['tour']['town'])
             ->line('Check In: ' . $this->payload['tour']['checkin'])
-            ->line('Price: ' . $this->payload['tour']['currency'] . ' ' . $this->payload['tour']['currency'])
+            ->line('Price: ' . $this->payload['tour']['price'] . ' ' . $this->payload['tour']['currency'])
             ->line('Nights: ' . $this->payload['tour']['nights']);
     }
 }
