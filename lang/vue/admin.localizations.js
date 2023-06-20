@@ -93,6 +93,7 @@ export default {
             phone: 'Телефон',
             requestFormEmail: 'Електронна пошта для отримання заявок з форми зворотного зв\'язку',
             contactFormEmail: 'Електронна пошта для прийому заявок з контактної форми',
+            orderFormEmail: 'Електронна пошта для прийому заявок з форми бронювання туру',
             googleServices: 'Google-сервіси',
             googleMapApiKey: 'Google-карти API ключ',
             formTitle: 'Заголовок форми',

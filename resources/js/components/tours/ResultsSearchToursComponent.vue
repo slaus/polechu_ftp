@@ -58,20 +58,6 @@
                                         </div>
                                     </div>
 
-                                    <div class="tour">
-                                        <div class="price">
-                                            {{ tour.price }} <span class="price_currency">{{ tour.currency }}</span>
-                                            <div class="price_desc">
-                                                {{ $t('labels.' + ((+tour.moment_confirm === 1) ? 'guaranteedConfirmation' : 'priceEntireTour')) }}
-                                            </div>
-                                        </div>
-                                        <div class="bftr_action">
-                                            <button class="button">
-                                                {{ $t('buttons.orderTour') }}
-                                            </button>
-                                        </div>
-                                    </div>
-
                                     <div class="fly">
                                         <ul class="list">
                                             <li v-if="tour.freights" class="option">
@@ -98,6 +84,20 @@
                                             </li>
                                         </ul>
                                     </div>
+
+                                    <div class="tour">
+                                        <div class="price">
+                                            {{ tour.price }} <span class="price_currency">{{ tour.currency }}</span>
+                                            <div class="price_desc">
+                                                {{ $t('labels.' + ((+tour.moment_confirm === 1) ? 'guaranteedConfirmation' : 'priceEntireTour')) }}
+                                            </div>
+                                        </div>
+                                        <div class="action">
+                                            <button class="button" @click="makeOrder(tour)">
+                                                {{ $t('buttons.orderTour') }}
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -105,11 +105,22 @@
                 </div>
             </div>
         </div>
+
+        <simple-modal v-if="showModal" @close="showModal = false">
+            <h3 slot="header">custom header</h3>
+            <div slot="body">Body</div>
+            <h3 slot="footer">
+                <button class="modal-default-button" @click="sendOrder">
+                    {{ $t('buttons.orderTour') }}
+                </button>
+            </h3>
+        </simple-modal>
     </section>
 </template>
 
 <script>
 import { mapState } from "vuex";
+import Vue from "vue";
 
 export default {
     name: "ResultsSearchToursComponent",
@@ -118,7 +129,70 @@ export default {
             tours: state => state.tourStore.resultSearchTours
         })
     },
+    data() {
+        return {
+            isLoading: false,
+            showModal: false,
+            order: {
+                tour: {
+                    id: 0,
+                    name: '',
+                    state: '',
+                    town: '',
+                    price: '',
+                    checkin: '',
+                    nights: ''
+                },
+                client: {
+                    name: '',
+                    phone: '',
+                    email: '',
+                    time: '',
+                    note: ''
+                }
+            }
+        }
+    },
     methods: {
+        makeOrder(tour) {
+            this.showModal = true;
+            this.order.tour = {
+                id: tour.tour_id,
+                name: tour.name,
+                state: tour.state,
+                town: tour.town,
+                price: tour.price,
+                checkin: tour.checkin,
+                nights: tour.nights
+            }
+        },
+        sendOrder() {
+            this.isLoading = true;
+            this.$api.post('v1/tours/order', this.order).then(response => {
+                //
+            }).finally(() => {
+                this.isLoading = false;
+                this.showModal = false;
+                this.order = {
+                    tour: {
+                        id: 0,
+                        name: '',
+                        state: '',
+                        town: '',
+                        price: '',
+                        checkin: '',
+                        nights: ''
+                    },
+                    client: {
+                        name: '',
+                        phone: '',
+                        email: '',
+                        time: '',
+                        note: ''
+                    }
+                }
+            });
+        },
         freights(code, key) {
             let output = { prefix: '', text: '' };
 

@@ -2,7 +2,7 @@
     <v-card flat>
         <v-card-text class="py-3">
             <v-layout wrap class="my-4">
-                <v-flex class="xs12 sm6 mb-6 px-sm-2">
+                <v-flex class="xs12 sm4 mb-6 px-sm-2">
                     <v-text-field
                         outlined
                         dense
@@ -12,13 +12,23 @@
                         hide-details="auto"
                     ></v-text-field>
                 </v-flex>
-                <v-flex class="xs12 sm6 mb-6 px-sm-2">
+                <v-flex class="xs12 sm4 mb-6 px-sm-2">
                     <v-text-field
                         outlined
                         dense
                         v-model="settings.emails.contact_form"
                         :readonly="isLoading"
                         :label="$t('labels.contactFormEmail')"
+                        hide-details="auto"
+                    ></v-text-field>
+                </v-flex>
+                <v-flex class="xs12 sm4 mb-6 px-sm-2">
+                    <v-text-field
+                        outlined
+                        dense
+                        v-model="settings.emails.order_form"
+                        :readonly="isLoading"
+                        :label="$t('labels.orderFormEmail')"
                         hide-details="auto"
                     ></v-text-field>
                 </v-flex>
@@ -53,6 +63,7 @@ export default {
                 emails: {
                     request_form: '',
                     contact_form: '',
+                    order_form: ''
                 }
             }
         }

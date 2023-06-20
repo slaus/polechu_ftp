@@ -5,6 +5,7 @@ import VueI18n from 'vue-i18n';
 import localizations from "../../lang/vue/site.localizations.js";
 import FindToursComponent from "./components/tours/FindToursComponent.vue";
 import ResultsSearchToursComponent from "./components/tours/ResultsSearchToursComponent.vue";
+import SimpleModal from "./components/shared/SimpleModal.vue";
 
 window.Vue = Vue;
 
@@ -26,6 +27,7 @@ Vue.mixin({
 
 Vue.component('find-tours-component', FindToursComponent);
 Vue.component('results-search-tours-component', ResultsSearchToursComponent);
+Vue.component('simple-modal', SimpleModal);
 
 const i18n = new VueI18n({
     locale: 'uk',
