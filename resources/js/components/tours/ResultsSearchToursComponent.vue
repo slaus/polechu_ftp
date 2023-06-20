@@ -134,11 +134,11 @@
                     <span>{{ messageFieldError('client.time') }}</span>
 
                     <textarea  v-model="order.client.note" :placeholder="$t('placeholders.note')" rows="4"></textarea>
-                </div>
 
-                <div>
-                    <div v-if="successSendOrder" class="success">{{ $t('alerts.successSendOrder') }}</div>
-                    <div v-if="failSendOrder" class="fail">{{ $t('alerts.failSendOrder') }}</div>
+                    <div>
+                        <div v-if="successSendOrder" class="success">{{ $t('alerts.successSendOrder') }}</div>
+                        <div v-if="failSendOrder" class="fail">{{ $t('alerts.failSendOrder') }}</div>
+                    </div>
                 </div>
             </div>
 
