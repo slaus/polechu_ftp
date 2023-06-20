@@ -178,22 +178,22 @@
 
                 <div class="col-md-12 form-group checkboxes d-flex">
                     <label class="box-checkbox">
-                        <input class="bft-checkbox_checkbox" type="checkbox" v-model="filter.child_in_bed" :value="1">
+                        <input class="bft-checkbox_checkbox" type="checkbox" v-model="filter.child_in_bed" :value="true">
                         <span class="bft-checkbox_text any">{{ $t('labels.childInBed') }}</span>
                     </label>
 
                     <label class="box-checkbox">
-                        <input class="bft-checkbox_checkbox" type="checkbox" v-model="filter.freight" :value="1">
+                        <input class="bft-checkbox_checkbox" type="checkbox" v-model="filter.freight" :value="true">
                         <span class="bft-checkbox_text any">{{ $t('labels.freight') }}</span>
                     </label>
 
                     <label class="box-checkbox">
-                        <input class="bft-checkbox_checkbox" type="checkbox" v-model="filter.filter" :value="1">
+                        <input class="bft-checkbox_checkbox" type="checkbox" v-model="filter.filter" :value="true">
                         <span class="bft-checkbox_text any">{{ $t('labels.filter') }}</span>
                     </label>
 
                     <label class="box-checkbox">
-                        <input class="bft-checkbox_checkbox" type="checkbox" v-model="filter.moment_confirm" :value="1">
+                        <input class="bft-checkbox_checkbox" type="checkbox" v-model="filter.moment_confirm" :value="true">
                         <span class="bft-checkbox_text any">{{ $t('labels.momentConfirm') }}</span>
                     </label>
                 </div>

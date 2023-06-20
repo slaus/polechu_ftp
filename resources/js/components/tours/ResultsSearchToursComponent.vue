@@ -130,6 +130,9 @@
                     <input v-model="order.client.phone" :placeholder="$t('placeholders.phone')" type="text">
                     <span>{{ messageFieldError('client.phone') }}</span>
 
+                    <input v-model="order.client.time" :placeholder="$t('placeholders.time')" type="text">
+                    <span>{{ messageFieldError('client.time') }}</span>
+
                     <textarea  v-model="order.client.note" :placeholder="$t('placeholders.note')" rows="4"></textarea>
                 </div>
 

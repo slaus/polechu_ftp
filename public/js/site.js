@@ -1454,8 +1454,8 @@ var render = function render() {
       type: "checkbox"
     },
     domProps: {
-      value: 1,
-      checked: Array.isArray(_vm.filter.child_in_bed) ? _vm._i(_vm.filter.child_in_bed, 1) > -1 : _vm.filter.child_in_bed
+      value: true,
+      checked: Array.isArray(_vm.filter.child_in_bed) ? _vm._i(_vm.filter.child_in_bed, true) > -1 : _vm.filter.child_in_bed
     },
     on: {
       change: function change($event) {
@@ -1463,7 +1463,7 @@ var render = function render() {
           $$el = $event.target,
           $$c = $$el.checked ? true : false;
         if (Array.isArray($$a)) {
-          var $$v = 1,
+          var $$v = true,
             $$i = _vm._i($$a, $$v);
           if ($$el.checked) {
             $$i < 0 && _vm.$set(_vm.filter, "child_in_bed", $$a.concat([$$v]));
@@ -1491,8 +1491,8 @@ var render = function render() {
       type: "checkbox"
     },
     domProps: {
-      value: 1,
-      checked: Array.isArray(_vm.filter.freight) ? _vm._i(_vm.filter.freight, 1) > -1 : _vm.filter.freight
+      value: true,
+      checked: Array.isArray(_vm.filter.freight) ? _vm._i(_vm.filter.freight, true) > -1 : _vm.filter.freight
     },
     on: {
       change: function change($event) {
@@ -1500,7 +1500,7 @@ var render = function render() {
           $$el = $event.target,
           $$c = $$el.checked ? true : false;
         if (Array.isArray($$a)) {
-          var $$v = 1,
+          var $$v = true,
             $$i = _vm._i($$a, $$v);
           if ($$el.checked) {
             $$i < 0 && _vm.$set(_vm.filter, "freight", $$a.concat([$$v]));
@@ -1528,8 +1528,8 @@ var render = function render() {
       type: "checkbox"
     },
     domProps: {
-      value: 1,
-      checked: Array.isArray(_vm.filter.filter) ? _vm._i(_vm.filter.filter, 1) > -1 : _vm.filter.filter
+      value: true,
+      checked: Array.isArray(_vm.filter.filter) ? _vm._i(_vm.filter.filter, true) > -1 : _vm.filter.filter
     },
     on: {
       change: function change($event) {
@@ -1537,7 +1537,7 @@ var render = function render() {
           $$el = $event.target,
           $$c = $$el.checked ? true : false;
         if (Array.isArray($$a)) {
-          var $$v = 1,
+          var $$v = true,
             $$i = _vm._i($$a, $$v);
           if ($$el.checked) {
             $$i < 0 && _vm.$set(_vm.filter, "filter", $$a.concat([$$v]));
@@ -1565,8 +1565,8 @@ var render = function render() {
       type: "checkbox"
     },
     domProps: {
-      value: 1,
-      checked: Array.isArray(_vm.filter.moment_confirm) ? _vm._i(_vm.filter.moment_confirm, 1) > -1 : _vm.filter.moment_confirm
+      value: true,
+      checked: Array.isArray(_vm.filter.moment_confirm) ? _vm._i(_vm.filter.moment_confirm, true) > -1 : _vm.filter.moment_confirm
     },
     on: {
       change: function change($event) {
@@ -1574,7 +1574,7 @@ var render = function render() {
           $$el = $event.target,
           $$c = $$el.checked ? true : false;
         if (Array.isArray($$a)) {
-          var $$v = 1,
+          var $$v = true,
             $$i = _vm._i($$a, $$v);
           if ($$el.checked) {
             $$i < 0 && _vm.$set(_vm.filter, "moment_confirm", $$a.concat([$$v]));
@@ -1774,7 +1774,7 @@ var render = function render() {
       slot: "header"
     },
     slot: "header"
-  }, [_c("ul", [_c("li", [_vm._v(_vm._s(_vm.order.tour.id))]), _vm._v(" "), _c("li", [_vm._v(_vm._s(_vm.order.tour.name))]), _vm._v(" "), _c("li", [_vm._v(_vm._s(_vm.order.tour.state) + ", " + _vm._s(_vm.order.tour.town) + " *")]), _vm._v(" "), _c("li", [_vm._v(_vm._s(_vm.order.tour.price))]), _vm._v(" "), _c("li", [_vm._v(_vm._s(_vm.order.tour.checkin))]), _vm._v(" "), _c("li", [_vm._v(_vm._s(_vm.order.tour.nights))])]), _vm._v(" "), _c("span", [_vm._v(_vm._s(_vm.$t("alerts.priceNote")))])]), _vm._v(" "), _c("div", {
+  }, [_c("ul", [_c("li", [_vm._v(_vm._s(_vm.order.tour.id))]), _vm._v(" "), _c("li", [_vm._v(_vm._s(_vm.order.tour.name))]), _vm._v(" "), _c("li", [_vm._v(_vm._s(_vm.order.tour.state) + ", " + _vm._s(_vm.order.tour.town) + " *")]), _vm._v(" "), _c("li", [_vm._v(_vm._s(_vm.order.tour.price) + " " + _vm._s(_vm.order.tour.currency))]), _vm._v(" "), _c("li", [_vm._v(_vm._s(_vm.order.tour.checkin))]), _vm._v(" "), _c("li", [_vm._v(_vm._s(_vm.order.tour.nights))])]), _vm._v(" "), _c("span", [_vm._v(_vm._s(_vm.$t("alerts.priceNote")))])]), _vm._v(" "), _c("div", {
     attrs: {
       slot: "body"
     },
@@ -1839,7 +1839,27 @@ var render = function render() {
         _vm.$set(_vm.order.client, "phone", $event.target.value);
       }
     }
-  }), _vm._v(" "), _c("span", [_vm._v(_vm._s(_vm.messageFieldError("client.phone")))]), _vm._v(" "), _c("textarea", {
+  }), _vm._v(" "), _c("span", [_vm._v(_vm._s(_vm.messageFieldError("client.phone")))]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.order.client.time,
+      expression: "order.client.time"
+    }],
+    attrs: {
+      placeholder: _vm.$t("placeholders.time"),
+      type: "text"
+    },
+    domProps: {
+      value: _vm.order.client.time
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.order.client, "time", $event.target.value);
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v(_vm._s(_vm.messageFieldError("client.time")))]), _vm._v(" "), _c("textarea", {
     directives: [{
       name: "model",
       rawName: "v-model",
