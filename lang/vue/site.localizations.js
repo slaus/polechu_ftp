@@ -1,7 +1,8 @@
 export default {
     uk: {
         buttons: {
-            searchTour: 'Знайти тур'
+            searchTour: 'Знайти тур',
+            orderTour: 'Замовити тур',
         },
         titles: {
 
@@ -29,6 +30,12 @@ export default {
             momentConfirm: 'гарантовані готелі',
             childAge: 'Вік дитини',
             childrenAge: 'Вік дітей',
+            region: 'Регіон',
+            checkin: 'Виліт',
+            nights: 'Ночей',
+            guaranteedConfirmation: 'Гарантоване підтвердження',
+            priceEntireTour: 'Вартість за весь тур',
+            freights: 'Наявність квитків:',
         },
         placeholders: {
 

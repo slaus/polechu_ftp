@@ -72,7 +72,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   uk: {
     buttons: {
-      searchTour: 'Знайти тур'
+      searchTour: 'Знайти тур',
+      orderTour: 'Замовити тур'
     },
     titles: {},
     labels: {
@@ -97,7 +98,13 @@ __webpack_require__.r(__webpack_exports__);
       filter: 'немає зупинки продажу',
       momentConfirm: 'гарантовані готелі',
       childAge: 'Вік дитини',
-      childrenAge: 'Вік дітей'
+      childrenAge: 'Вік дітей',
+      region: 'Регіон',
+      checkin: 'Виліт',
+      nights: 'Ночей',
+      guaranteedConfirmation: 'Гарантоване підтвердження',
+      priceEntireTour: 'Вартість за весь тур',
+      freights: 'Наявність квитків:'
     },
     placeholders: {},
     alerts: {}
@@ -453,7 +460,10 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
     tours: function tours(state) {
       return state.tourStore.resultSearchTours;
     }
-  }))
+  })),
+  methods: {
+    freights: function freights(code) {}
+  }
 });
 
 /***/ }),
@@ -1447,7 +1457,121 @@ var render = function render() {
     staticClass: "container-fluid"
   }, [_c("div", {
     staticClass: "row"
-  }, [_vm._v("\n            " + _vm._s(_vm.tours) + "\n        ")])])]);
+  }, _vm._l(_vm.tours, function (tour) {
+    return _c("div", {
+      staticClass: "tour-block"
+    }, [_c("div", {
+      staticClass: "outer"
+    }, [_c("div", {
+      staticClass: "inner"
+    }, [_c("div", {
+      staticClass: "data"
+    }, [_c("div", {
+      staticClass: "wrap"
+    }, [_c("div", {
+      staticClass: "info"
+    }, [_c("div", {
+      staticClass: "title"
+    }, [_vm._v("\n                                        " + _vm._s(tour.name) + " " + _vm._s(tour.star) + "\n                                    ")]), _vm._v(" "), _c("div", {
+      staticClass: "location"
+    }, [_vm._v("\n                                        " + _vm._s(tour.state) + " " + _vm._s(tour.town) + "\n                                    ")]), _vm._v(" "), _c("div", {
+      staticClass: "options"
+    }, [_c("ul", {
+      staticClass: "list"
+    }, [tour.town ? _c("li", {
+      staticClass: "option"
+    }, [_c("span", {
+      staticClass: "option-label"
+    }, [_vm._v("\n                                                    " + _vm._s(_vm.$t("labels.region")) + "\n                                                ")]), _vm._v("\n                                                " + _vm._s(tour.town) + "\n                                            ")]) : _vm._e(), _vm._v(" "), tour.checkin ? _c("li", {
+      staticClass: "option"
+    }, [_c("span", {
+      staticClass: "option-label"
+    }, [_vm._v("\n                                                    " + _vm._s(_vm.$t("labels.checkin")) + "\n                                                ")]), _vm._v("\n                                                " + _vm._s(tour.checkin) + "\n                                            ")]) : _vm._e(), _vm._v(" "), tour.nights ? _c("li", {
+      staticClass: "option"
+    }, [_c("span", {
+      staticClass: "option-label"
+    }, [_vm._v("\n                                                    " + _vm._s(_vm.$t("labels.nights")) + "\n                                                ")]), _vm._v("\n                                                " + _vm._s(tour.nights) + "\n                                            ")]) : _vm._e()])]), _vm._v(" "), _c("div", {
+      staticClass: "meals"
+    }, [_c("ul", {
+      staticClass: "list"
+    }, [tour.room ? _c("li", {
+      staticClass: "option"
+    }, [_c("span", {
+      staticClass: "option_icon __key"
+    }), _vm._v("\n                                                " + _vm._s(tour.room) + "\n                                            ")]) : _vm._e(), _vm._v(" "), tour.meal ? _c("li", {
+      staticClass: "option"
+    }, [_c("span", {
+      staticClass: "option_icon __spoon"
+    }), _vm._v("\n                                                " + _vm._s(tour.meal) + "\n                                            ")]) : _vm._e(), _vm._v(" "), tour.ht_place ? _c("li", {
+      staticClass: "bftr_option"
+    }, [_c("span", {
+      staticClass: "option_icon __board"
+    }), _vm._v("\n                                                " + _vm._s(tour.ht_place) + "\n                                            ")]) : _vm._e()])])]), _vm._v(" "), _c("div", {
+      staticClass: "tour"
+    }, [_c("div", {
+      staticClass: "price"
+    }, [_vm._v("\n                                        " + _vm._s(tour.price) + " "), _c("span", {
+      staticClass: "price_currency"
+    }, [_vm._v(_vm._s(tour.currency))]), _vm._v(" "), _c("div", {
+      staticClass: "price_desc"
+    }, [_vm._v("\n                                            " + _vm._s(_vm.$t("labels." + (+tour.moment_confirm === 1) ? "guaranteedConfirmation" : 0)) + "\n                                        ")])]), _vm._v(" "), _c("div", {
+      staticClass: "bftr_action"
+    }, [_c("button", {
+      staticClass: "button"
+    }, [_vm._v("\n                                            " + _vm._s(_vm.$t("buttons.orderTour")) + "\n                                        ")])])]), _vm._v(" "), _c("div", {
+      staticClass: "fly"
+    }, [_c("ul", {
+      staticClass: "list"
+    }, [tour.freights ? _c("li", {
+      staticClass: "option"
+    }, [_c("span", {
+      staticClass: "option_icon __ticket"
+    }), _vm._v("\n                                            " + _vm._s(_vm.$t("labels.freights")) + "\n                                            "), _c("div", {
+      staticClass: "inout"
+    }, [tour.freights["in"] ? _c("span", {
+      staticClass: "inout_wrap",
+      attrs: {
+        "aria-label": _vm.freights(tour.freights["in"], "text") + " →",
+        "data-title": _vm.freights(tour.freights["in"], "text") + " →"
+      }
+    }, [_c("svg", {
+      staticClass: "inout_icon",
+      "class": _vm.freights(tour.freights["in"], "prefix"),
+      attrs: {
+        xmlns: "http://www.w3.org/2000/svg",
+        width: "12",
+        height: "12"
+      }
+    }, [_c("path", {
+      attrs: {
+        d: "m6.7 11.5 5-5.1c.2 0 .2-.2.3-.3v-.5l-.2-.3-5.1-5a.8.8 0 0 0-.5-.3c-.2 0-.4 0-.6.2l-.2.6c0 .2 0 .3.2.5l3.8 3.8H.8c-.2 0-.4 0-.6.2l-.2.5c0 .3 0 .4.2.6l.6.2h8.6l-3.8 3.8-.2.5c0 .3 0 .4.2.6l.5.2c.3 0 .4 0 .6-.2Z"
+      }
+    })])]) : _vm._e(), _vm._v(" "), tour.freights.out ? _c("span", {
+      staticClass: "inout_wrap",
+      attrs: {
+        "aria-label": "←" + _vm.freights(tour.freights.out, "text"),
+        "data-title": "←" + _vm.freights(tour.freights.out, "text")
+      }
+    }, [_c("svg", {
+      staticClass: "inout_icon",
+      "class": _vm.freights(tour.freights.out, "prefix"),
+      attrs: {
+        xmlns: "http://www.w3.org/2000/svg",
+        width: "12",
+        height: "12",
+        "aria-label": "<?php esc_attr_e($freights_out['text']); ?>",
+        title: "<?php esc_attr_e($freights_out['text']); ?>"
+      }
+    }, [_c("path", {
+      attrs: {
+        d: "m5.3 11.5-5-5.1C0 6.4 0 6.2 0 6v-.5l.2-.3 5.1-5c.1-.2.3-.3.5-.3s.4 0 .6.2l.2.6c0 .2 0 .3-.2.5L2.6 5.1h8.6c.2 0 .4 0 .6.2l.2.5c0 .3 0 .4-.2.6l-.6.2H2.6l3.8 3.8.2.5c0 .3 0 .4-.2.6l-.5.2c-.3 0-.4 0-.6-.2Z"
+      }
+    })])]) : _vm._e()])]) : _vm._e(), _vm._v(" "), tour.tour ? _c("li", {
+      staticClass: "option"
+    }, [_c("span", {
+      staticClass: "option_icon __route"
+    }), _vm._v("\n                                            " + _vm._s(tour.tour) + "\n                                        ")]) : _vm._e()])])])])])])]);
+  }), 0)])]);
 };
 var staticRenderFns = [];
 render._withStripped = true;
