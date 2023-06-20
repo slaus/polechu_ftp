@@ -1,6 +1,6 @@
 <template>
     <section class="section-tours">
-        <div class="container-fluid">
+        <div class="container">
             <div class="row">
                 <div v-for="tour in tours" class="tour-block">
                     <div class="outer">
@@ -62,7 +62,7 @@
                                         <div class="price">
                                             {{ tour.price }} <span class="price_currency">{{ tour.currency }}</span>
                                             <div class="price_desc">
-                                                {{ $t('labels.' + (+tour.moment_confirm === 1) ? 'guaranteedConfirmation' : 'priceEntireTour') }}
+                                                {{ $t('labels.' + ((+tour.moment_confirm === 1) ? 'guaranteedConfirmation' : 'priceEntireTour')) }}
                                             </div>
                                         </div>
                                         <div class="bftr_action">
@@ -162,5 +162,6 @@ export default {
 .tour-block {
     border: 1px solid grey;
     margin: 30px 0;
+    padding: 15px;
 }
 </style>
