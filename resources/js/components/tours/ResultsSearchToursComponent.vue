@@ -169,7 +169,7 @@ export default {
     data() {
         return {
             isLoading: false,
-            showModal: true,
+            showModal: false,
             successSendOrder: false,
             failSendOrder: false,
             order: {
