@@ -3,6 +3,7 @@ export default {
         buttons: {
             searchTour: 'Знайти тур',
             orderTour: 'Замовити тур',
+            cancel: 'Відміна',
         },
         titles: {
 
@@ -42,7 +43,11 @@ export default {
             uponRequest: 'За запитом',
         },
         placeholders: {
-
+            name: 'Ваше імʼя *',
+            email: 'E-mail *',
+            phone: 'Ваш телефон *',
+            time: 'Зручний час для дзвінка *',
+            note: 'Побажання до туру',
         },
         alerts: {
 

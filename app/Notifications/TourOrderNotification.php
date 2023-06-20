@@ -29,7 +29,7 @@ class TourOrderNotification extends Notification implements ShouldQueue
             ->line('Email: ' . $this->payload['client']['email'])
             ->line('Phone: ' . $this->payload['client']['phone'])
             ->line('Time for call: ' . $this->payload['client']['time'])
-            ->line('Note: ' . $this->payload['client']['note'])
+            ->line('Note: ' . ($this->payload['client']['note'] ?? ''))
             ->line('-------------------------------------------')
             ->line('TOUR')
             ->line('ID: ' . $this->payload['tour']['id'])

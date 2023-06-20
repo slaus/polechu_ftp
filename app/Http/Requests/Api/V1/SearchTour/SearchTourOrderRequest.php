@@ -25,9 +25,9 @@ class SearchTourOrderRequest extends FormRequest
             'client' => ['required', 'array'],
             'client.name' => ['required', 'string'],
             'client.phone' => ['required', 'string'],
-            'client.email' => ['required', 'string'],
+            'client.email' => ['required', 'email'],
             'client.time' => ['required', 'string'],
-            'client.note' => ['required', 'string'],
+            'client.note' => ['nullable', 'string'],
         ];
     }
 }

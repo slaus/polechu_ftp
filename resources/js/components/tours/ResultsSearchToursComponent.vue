@@ -106,24 +106,54 @@
             </div>
         </div>
 
-        <simple-modal v-if="showModal" @close="showModal = false">
-            <h3 slot="header">custom header</h3>
-            <div slot="body">Body</div>
-            <h3 slot="footer">
-                <button class="modal-default-button" @click="sendOrder">
+        <simple-modal v-if="showModal">
+            <div slot="header">
+                <ul>
+                    <li>{{ order.tour.id }}</li>
+                    <li>{{ order.tour.name }}</li>
+                    <li>{{ order.tour.state }}, {{ order.tour.town }}</li>
+                    <li>{{ order.tour.price }}</li>
+                    <li>{{ order.tour.checkin }}</li>
+                    <li>{{ order.tour.nights }}</li>
+                </ul>
+            </div>
+
+            <div slot="body">
+                <div>
+                    <input v-model="order.client.name" :placeholder="$t('placeholders.name')" type="text">
+                    <span>{{ messageFieldError('client.name') }}</span>
+
+                    <input v-model="order.client.email" :placeholder="$t('placeholders.email')" type="text">
+                    <span>{{ messageFieldError('client.email') }}</span>
+
+                    <input v-model="order.client.phone" :placeholder="$t('placeholders.phone')" type="text">
+                    <span>{{ messageFieldError('client.phone') }}</span>
+
+                    <textarea  v-model="order.client.note" :placeholder="$t('placeholders.note')" rows="4"></textarea>
+                </div>
+            </div>
+
+            <div slot="footer">
+                <button class="button" @click="sendOrder">
                     {{ $t('buttons.orderTour') }}
                 </button>
-            </h3>
+                <button class="button" @click="closeModal">
+                    {{ $t('buttons.cancel') }}
+                </button>
+            </div>
         </simple-modal>
     </section>
 </template>
 
 <script>
 import { mapState } from "vuex";
-import Vue from "vue";
+import validation from "../../mixins/validation";
 
 export default {
     name: "ResultsSearchToursComponent",
+    mixins: [
+        validation
+    ],
     computed: {
         ...mapState({
             tours: state => state.tourStore.resultSearchTours
@@ -132,7 +162,7 @@ export default {
     data() {
         return {
             isLoading: false,
-            showModal: false,
+            showModal: true,
             order: {
                 tour: {
                     id: 0,
@@ -169,28 +199,17 @@ export default {
         sendOrder() {
             this.isLoading = true;
             this.$api.post('v1/tours/order', this.order).then(response => {
-                //
+                if (response.data.status === 'success') {
+                    setTimeout(() => {
+                        this.closeModal();
+                    }, 3000);
+                }
+
+                if (response.data.status === 'error') {
+
+                }
             }).finally(() => {
                 this.isLoading = false;
-                this.showModal = false;
-                this.order = {
-                    tour: {
-                        id: 0,
-                        name: '',
-                        state: '',
-                        town: '',
-                        price: '',
-                        checkin: '',
-                        nights: ''
-                    },
-                    client: {
-                        name: '',
-                        phone: '',
-                        email: '',
-                        time: '',
-                        note: ''
-                    }
-                }
             });
         },
         freights(code, key) {
@@ -224,6 +243,28 @@ export default {
             }
 
             return output[key] ?? '';
+        },
+        closeModal() {
+            this.cleanErrors();
+            this.showModal = false;
+            this.order = {
+                tour: {
+                    id: 0,
+                    name: '',
+                    state: '',
+                    town: '',
+                    price: '',
+                    checkin: '',
+                    nights: ''
+                },
+                client: {
+                    name: '',
+                    phone: '',
+                    email: '',
+                    time: '',
+                    note: ''
+                }
+            }
         }
     }
 }

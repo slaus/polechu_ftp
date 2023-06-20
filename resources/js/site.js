@@ -16,6 +16,26 @@ Vue.prototype.$api.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest
 Vue.prototype.$api.defaults.headers.common['Content-Type'] = 'application/json';
 Vue.prototype.$api.defaults.headers.common['Accept'] = 'application/json';
 Vue.prototype.$api.defaults.baseURL = window.location.protocol + "//" + window.location.hostname + ":" + window.location.port + "/api/";
+Vue.prototype.$api.interceptors.response.use(
+    function (response) {
+        store.commit('validationStore/cleanErrors');
+
+        return response;
+    },
+    function (error) {
+        if (error.response.status === 422) {
+            store.commit('validationStore/setErrors', error.response.data.errors);
+        } else {
+            store.commit('alertStore/setAlert', {
+                title: 'alerts.serverError',
+                message: error.response.data.message,
+                width: 400
+            });
+        }
+
+        return Promise.reject(error)
+    }
+);
 
 Vue.mixin({
     directives: {

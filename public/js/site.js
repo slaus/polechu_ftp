@@ -73,7 +73,8 @@ __webpack_require__.r(__webpack_exports__);
   uk: {
     buttons: {
       searchTour: 'Знайти тур',
-      orderTour: 'Замовити тур'
+      orderTour: 'Замовити тур',
+      cancel: 'Відміна'
     },
     titles: {},
     labels: {
@@ -110,7 +111,13 @@ __webpack_require__.r(__webpack_exports__);
       noSeats: 'Немає місць',
       uponRequest: 'За запитом'
     },
-    placeholders: {},
+    placeholders: {
+      name: 'Ваше імʼя *',
+      email: 'E-mail *',
+      phone: 'Ваш телефон *',
+      time: 'Зручний час для дзвінка *',
+      note: 'Побажання до туру'
+    },
     alerts: {}
   }
 });
@@ -475,7 +482,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var _mixins_validation__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../mixins/validation */ "./resources/js/mixins/validation.js");
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
@@ -486,7 +494,8 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "ResultsSearchToursComponent",
-  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapState)({
+  mixins: [_mixins_validation__WEBPACK_IMPORTED_MODULE_0__["default"]],
+  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapState)({
     tours: function tours(state) {
       return state.tourStore.resultSearchTours;
     }
@@ -494,7 +503,7 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
   data: function data() {
     return {
       isLoading: false,
-      showModal: false,
+      showModal: true,
       order: {
         tour: {
           id: 0,
@@ -532,28 +541,14 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
       var _this = this;
       this.isLoading = true;
       this.$api.post('v1/tours/order', this.order).then(function (response) {
-        //
+        if (response.data.status === 'success') {
+          setTimeout(function () {
+            _this.closeModal();
+          }, 3000);
+        }
+        if (response.data.status === 'error') {}
       })["finally"](function () {
         _this.isLoading = false;
-        _this.showModal = false;
-        _this.order = {
-          tour: {
-            id: 0,
-            name: '',
-            state: '',
-            town: '',
-            price: '',
-            checkin: '',
-            nights: ''
-          },
-          client: {
-            name: '',
-            phone: '',
-            email: '',
-            time: '',
-            note: ''
-          }
-        };
       });
     },
     freights: function freights(code, key) {
@@ -589,6 +584,28 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
           break;
       }
       return (_output$key = output[key]) !== null && _output$key !== void 0 ? _output$key : '';
+    },
+    closeModal: function closeModal() {
+      this.cleanErrors();
+      this.showModal = false;
+      this.order = {
+        tour: {
+          id: 0,
+          name: '',
+          state: '',
+          town: '',
+          price: '',
+          checkin: '',
+          nights: ''
+        },
+        client: {
+          name: '',
+          phone: '',
+          email: '',
+          time: '',
+          note: ''
+        }
+      };
     }
   }
 });
@@ -1738,33 +1755,112 @@ var render = function render() {
         }
       }
     }, [_vm._v("\n                                            " + _vm._s(_vm.$t("buttons.orderTour")) + "\n                                        ")])])])])])])])]);
-  }), 0)]), _vm._v(" "), _vm.showModal ? _c("simple-modal", {
-    on: {
-      close: function close($event) {
-        _vm.showModal = false;
-      }
-    }
-  }, [_c("h3", {
+  }), 0)]), _vm._v(" "), _vm.showModal ? _c("simple-modal", [_c("div", {
     attrs: {
       slot: "header"
     },
     slot: "header"
-  }, [_vm._v("custom header")]), _vm._v(" "), _c("div", {
+  }, [_c("ul", [_c("li", [_vm._v(_vm._s(_vm.order.tour.id))]), _vm._v(" "), _c("li", [_vm._v(_vm._s(_vm.order.tour.name))]), _vm._v(" "), _c("li", [_vm._v(_vm._s(_vm.order.tour.state) + ", " + _vm._s(_vm.order.tour.town))]), _vm._v(" "), _c("li", [_vm._v(_vm._s(_vm.order.tour.price))]), _vm._v(" "), _c("li", [_vm._v(_vm._s(_vm.order.tour.checkin))]), _vm._v(" "), _c("li", [_vm._v(_vm._s(_vm.order.tour.nights))])])]), _vm._v(" "), _c("div", {
     attrs: {
       slot: "body"
     },
     slot: "body"
-  }, [_vm._v("Body")]), _vm._v(" "), _c("h3", {
+  }, [_c("div", [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.order.client.name,
+      expression: "order.client.name"
+    }],
+    attrs: {
+      placeholder: _vm.$t("placeholders.name"),
+      type: "text"
+    },
+    domProps: {
+      value: _vm.order.client.name
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.order.client, "name", $event.target.value);
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v(_vm._s(_vm.messageFieldError("client.name")))]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.order.client.email,
+      expression: "order.client.email"
+    }],
+    attrs: {
+      placeholder: _vm.$t("placeholders.email"),
+      type: "text"
+    },
+    domProps: {
+      value: _vm.order.client.email
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.order.client, "email", $event.target.value);
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v(_vm._s(_vm.messageFieldError("client.email")))]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.order.client.phone,
+      expression: "order.client.phone"
+    }],
+    attrs: {
+      placeholder: _vm.$t("placeholders.phone"),
+      type: "text"
+    },
+    domProps: {
+      value: _vm.order.client.phone
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.order.client, "phone", $event.target.value);
+      }
+    }
+  }), _vm._v(" "), _c("span", [_vm._v(_vm._s(_vm.messageFieldError("client.phone")))]), _vm._v(" "), _c("textarea", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.order.client.note,
+      expression: "order.client.note"
+    }],
+    attrs: {
+      placeholder: _vm.$t("placeholders.note"),
+      rows: "4"
+    },
+    domProps: {
+      value: _vm.order.client.note
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.order.client, "note", $event.target.value);
+      }
+    }
+  })])]), _vm._v(" "), _c("div", {
     attrs: {
       slot: "footer"
     },
     slot: "footer"
   }, [_c("button", {
-    staticClass: "modal-default-button",
+    staticClass: "button",
     on: {
       click: _vm.sendOrder
     }
-  }, [_vm._v("\n                " + _vm._s(_vm.$t("buttons.orderTour")) + "\n            ")])])]) : _vm._e()], 1);
+  }, [_vm._v("\n                " + _vm._s(_vm.$t("buttons.orderTour")) + "\n            ")]), _vm._v(" "), _c("button", {
+    staticClass: "button",
+    on: {
+      click: _vm.closeModal
+    }
+  }, [_vm._v("\n                " + _vm._s(_vm.$t("buttons.cancel")) + "\n            ")])])]) : _vm._e()], 1);
 };
 var staticRenderFns = [];
 render._withStripped = true;
@@ -1878,6 +1974,38 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
         return '';
       }
       return string[this.locale] ? string[this.locale] : (_string$Object$keys$ = string[Object.keys(string)[0]]) !== null && _string$Object$keys$ !== void 0 ? _string$Object$keys$ : '';
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/js/mixins/validation.js":
+/*!*******************************************!*\
+  !*** ./resources/js/mixins/validation.js ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  computed: {
+    errors: function errors() {
+      return this.$store.state.validationStore.errors;
+    }
+  },
+  methods: {
+    messageFieldError: function messageFieldError(field) {
+      if (this.errors[field]) {
+        return this.errors[field];
+      }
+      return '';
+    },
+    cleanErrors: function cleanErrors() {
+      this.$store.commit('validationStore/cleanErrors');
     }
   }
 });
@@ -5710,7 +5838,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_laravel_mix_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.modal-mask[data-v-c874f348] {\n    position: fixed;\n    z-index: 9998;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n    /*background-color: rgba(0, 0, 0, 0.5);*/\n    display: table;\n    transition: opacity 0.3s ease;\n}\n.modal-wrapper[data-v-c874f348] {\n    display: table-cell;\n    vertical-align: middle;\n}\n.modal-container[data-v-c874f348] {\n    width: 300px;\n    margin: 0px auto;\n    padding: 20px 30px;\n    background-color: #fff;\n    border-radius: 2px;\n    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);\n    transition: all 0.3s ease;\n    font-family: Helvetica, Arial, sans-serif;\n}\n.modal-header h3[data-v-c874f348] {\n    margin-top: 0;\n    color: #42b983;\n}\n.modal-body[data-v-c874f348] {\n    margin: 20px 0;\n}\n.modal-default-button[data-v-c874f348] {\n    float: right;\n}\n.modal-enter[data-v-c874f348] {\n    opacity: 0;\n}\n.modal-leave-active[data-v-c874f348] {\n    opacity: 0;\n}\n.modal-enter .modal-container[data-v-c874f348],\n.modal-leave-active .modal-container[data-v-c874f348] {\n    transform: scale(1.1);\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.modal-mask[data-v-c874f348] {\n    position: fixed;\n    z-index: 9998;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n    /*background-color: rgba(0, 0, 0, 0.5);*/\n    display: table;\n    transition: opacity 0.3s ease;\n}\n.modal-wrapper[data-v-c874f348] {\n    display: table-cell;\n    vertical-align: middle;\n}\n.modal-container[data-v-c874f348] {\n    width: 450px;\n    margin: 0px auto;\n    padding: 20px 30px;\n    background-color: #fff;\n    border-radius: 2px;\n    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);\n    transition: all 0.3s ease;\n    font-family: Helvetica, Arial, sans-serif;\n}\n.modal-header h3[data-v-c874f348] {\n    margin-top: 0;\n    color: #42b983;\n}\n.modal-body[data-v-c874f348] {\n    margin: 20px 0;\n}\n.modal-default-button[data-v-c874f348] {\n    float: right;\n}\n.modal-enter[data-v-c874f348] {\n    opacity: 0;\n}\n.modal-leave-active[data-v-c874f348] {\n    opacity: 0;\n}\n.modal-enter .modal-container[data-v-c874f348],\n.modal-leave-active .modal-container[data-v-c874f348] {\n    transform: scale(1.1);\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -26331,6 +26459,21 @@ vue__WEBPACK_IMPORTED_MODULE_5__["default"].prototype.$api.defaults.headers.comm
 vue__WEBPACK_IMPORTED_MODULE_5__["default"].prototype.$api.defaults.headers.common["Content-Type"] = 'application/json';
 vue__WEBPACK_IMPORTED_MODULE_5__["default"].prototype.$api.defaults.headers.common.Accept = 'application/json';
 vue__WEBPACK_IMPORTED_MODULE_5__["default"].prototype.$api.defaults.baseURL = window.location.protocol + "//" + window.location.hostname + ":" + window.location.port + "/api/";
+vue__WEBPACK_IMPORTED_MODULE_5__["default"].prototype.$api.interceptors.response.use(function (response) {
+  _plugins_store_store__WEBPACK_IMPORTED_MODULE_0__["default"].commit('validationStore/cleanErrors');
+  return response;
+}, function (error) {
+  if (error.response.status === 422) {
+    _plugins_store_store__WEBPACK_IMPORTED_MODULE_0__["default"].commit('validationStore/setErrors', error.response.data.errors);
+  } else {
+    _plugins_store_store__WEBPACK_IMPORTED_MODULE_0__["default"].commit('alertStore/setAlert', {
+      title: 'alerts.serverError',
+      message: error.response.data.message,
+      width: 400
+    });
+  }
+  return Promise.reject(error);
+});
 vue__WEBPACK_IMPORTED_MODULE_5__["default"].mixin({
   directives: {
     ripple: {
