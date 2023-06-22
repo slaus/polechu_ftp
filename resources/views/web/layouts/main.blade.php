@@ -159,6 +159,34 @@
         .bot-home-text {
             z-index: 99!important;
         }
+        /* CHROME SCROLLBAR */
+        ::-webkit-scrollbar {
+        width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+        background-color: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+        background-color: #cccccc;
+        border-radius: 4px;
+        }
+
+        /* FIREFOX SCROLLBAR */
+        * {
+        scrollbar-width: thin;
+        scrollbar-color: #cccccc #f1f1f1;
+        }
+
+        *::-webkit-scrollbar-track {
+        background-color: #f1f1f1;
+        }
+
+        *::-webkit-scrollbar-thumb {
+        background-color: #cccccc;
+        border-radius: 4px;
+        }
     </style>
 
     @stack('meta')

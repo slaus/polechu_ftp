@@ -11,5 +11,8 @@
     "Home": "Головна",
     "Blog": "Блог",
     "The field is required": "Поле обов'язкове для заповнення",
+    "The name field is required": "Поле ім'я обов'язкове для заповнення",
+    "The email field is required": "Поле email обов'язкове для заповнення",
+    "The text field is required": "Поле тексту обов'язкове для заповнення",
     "Wrong email format": "Не вірний формат email"
 }

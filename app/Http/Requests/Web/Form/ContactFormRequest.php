@@ -23,7 +23,9 @@ class ContactFormRequest extends FormRequest
     public function messages(): array
     {
         return [
-            '*.required' => __('The field is required'),
+            'name.required' => __('The name field is required'),
+            'email.required' => __('The email field is required'),
+            'text.required' => __('The text field is required'),
             '*.email' => __('Wrong email format'),
         ];
     }

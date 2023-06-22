@@ -1,6 +1,6 @@
 <template>
-<!--    <div id="reservation" class="imgbgres" style="background-image:url(/web/img/bg-res.jpg)">-->
-    <div id="reservation" class="imgbgres">
+    <div id="reservation" class="imgbgres" style="background-image: url(/web/img/bg-res.jpg)">
+<!--    <div id="reservation" class="imgbgres">-->
         <div class="row">
             <div class="col-sm-6 form-group">
                 <select v-model="payload.country" class="form-control">
@@ -560,16 +560,31 @@ export default {
 #reservation {
     width: 100%;
     height: auto;
-    background: rgba(255,255,255,1);
+    background-color: rgba(255,255,255,1);
     box-shadow: 5px 5px 2px rgba(23, 36, 52, .1);
-    padding: 45px 35px 45px 35px;
+    /*padding: 45px 35px 45px 35px;*/
+    padding: 0;
+    background-size: cover;
+    background-position: left top;
+}
+#reservation > .row {
+  padding: 45px 35px 45px 35px;
+  backdrop-filter: blur(5px);
+}
+#reservation .field-label {
+  text-shadow: 0px 1px 4px #fff;
 }
 .checkboxes {
     text-align: initial;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin: 30px 0;
+    /*margin: 30px 0;*/
+    background: #fff;
+    padding: 4px 12px;
+    margin: 30px 15px;
+    width: calc(100% - 30px);
+    border-radius: 4px;
 }
 .checkboxes label {
     display: block;

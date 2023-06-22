@@ -155,6 +155,9 @@ export default {
             excludeTowns: 'Виключити міста відправлення',
             excludeCountriesHint: 'Список id країн через кому: 109,10,123',
             excludeTownsHint: 'Список id міст через кому: 2319,140,23',
+            prev: 'попередня',
+            next: 'наступна',
+            pages: 'Сторінка {val1} з {val2}',
         },
         tabs: {
             main: 'Головні',
