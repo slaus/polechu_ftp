@@ -1,5 +1,9 @@
 <template>
-    <div id="reservation" class="imgbgres" style="background-image: url(/web/img/bg-res.jpg)">
+    <div id="reservation"
+         :class="{'load': isLoading}"
+         class="imgbgres"
+         style="background-image: url(/web/img/bg-res.jpg)"
+    >
 <!--    <div id="reservation" class="imgbgres">-->
         <div class="row">
             <div class="col-sm-6 form-group">
@@ -566,6 +570,7 @@ export default {
     padding: 0;
     background-size: cover;
     background-position: left top;
+    position: relative;
 }
 #reservation > .row {
   padding: 45px 35px 45px 35px;
@@ -573,6 +578,27 @@ export default {
 }
 #reservation .field-label {
   text-shadow: 0px 1px 4px #fff;
+}
+#reservation.load::before {
+  position: absolute;
+  inset: 0;
+  content: '';
+  background-color: rgba(255,255,255,0.5);
+  z-index: 1;
+}
+#reservation.load::after{
+  content: '';
+  position: absolute;
+  animation: rotate 1s infinite linear;
+  border: 4px solid #ebebeb;
+  border-bottom-color: #3bb0ff;
+  width: 40px;
+  height: 40px;
+  margin-right: -24px;
+  border-radius: 50%;
+  top: 46%;
+  z-index: 2;
+  background: white;
 }
 .checkboxes {
     text-align: initial;
