@@ -21,7 +21,7 @@ export default {
 <style scoped>
 .modal-mask {
     position: fixed;
-    z-index: 9998;
+    z-index: 99999;
     top: 0;
     left: 0;
     width: 100%;
@@ -35,6 +35,8 @@ export default {
     vertical-align: middle;
 }
 .modal-container {
+    max-height: 90vh;
+    overflow-y: auto;
     width: 450px;
     margin: 0px auto;
     padding: 20px 30px;
