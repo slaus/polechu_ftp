@@ -29,13 +29,17 @@ class QueryCountryService
             $orderBy = $data['sortBy'][0];
             $sortDesc = $data['sortDesc'][0];
 
+            if ($orderBy == 'name') {
+                $orderBy = 'name->' . app()->getLocale();
+            }
+
             if ($sortDesc == 'true') {
                 $query->orderByDesc($orderBy);
             } else {
                 $query->orderBy($orderBy);
             }
         } else {
-            $query->orderBy('name');
+            $query->orderBy('name->' . app()->getLocale());
         }
 
         return $query->paginate(perPage: $data['itemsPerPage'] ?? 10);

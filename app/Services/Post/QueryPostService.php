@@ -31,6 +31,10 @@ class QueryPostService
             $orderBy = $data['sortBy'][0];
             $sortDesc = $data['sortDesc'][0];
 
+            if ($orderBy == 'name') {
+                $orderBy = 'name->' . app()->getLocale();
+            }
+
             if ($sortDesc == 'true') {
                 $query->orderByDesc($orderBy);
             } else {
