@@ -161,31 +161,45 @@
         }
         /* CHROME SCROLLBAR */
         ::-webkit-scrollbar {
-        width: 6px;
+            width: 6px;
         }
 
         ::-webkit-scrollbar-track {
-        background-color: #f1f1f1;
+            background-color: #f1f1f1;
         }
 
         ::-webkit-scrollbar-thumb {
-        background-color: #cccccc;
-        border-radius: 4px;
+            background-color: #cccccc;
+            border-radius: 4px;
         }
 
         /* FIREFOX SCROLLBAR */
         * {
-        scrollbar-width: thin;
-        scrollbar-color: #cccccc #f1f1f1;
+            scrollbar-width: thin;
+            scrollbar-color: #cccccc #f1f1f1;
         }
 
         *::-webkit-scrollbar-track {
-        background-color: #f1f1f1;
+            background-color: #f1f1f1;
         }
 
         *::-webkit-scrollbar-thumb {
-        background-color: #cccccc;
-        border-radius: 4px;
+            background-color: #cccccc;
+            border-radius: 4px;
+        }
+        /* SELECT TOURS POSITION */
+        .bot-home-text {
+            position: relative;
+            top: -400px;
+            margin-bottom: -400px;
+        }
+
+        @media only screen and (max-width: 1199px) {
+            .bot-home-text {
+                position: relative;
+                top: 0;
+                margin-bottom: 0;
+            }
         }
     </style>
 

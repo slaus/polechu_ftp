@@ -104,15 +104,17 @@
       <!-- PAGINATION -->
       <div v-if="tours.length > itemsPerPage" id="pagination" class="pagination-wrapper">
         <span class="pagina-num">{{ $t('labels.pages', {val1: currentPage, val2: totalPages}) }}</span>
-        <button
-          v-for="page in pages"
-          :key="page"
-          :class="{ 'current': page === currentPage, 'inactive': page !== currentPage }"
-          class="btn"
-          @click="goToPage(page)"
-        >
-          {{ page }}
-        </button>
+        <div class="pagination-numbers">
+          <button
+            v-for="page in pages"
+            :key="page"
+            :class="{ 'current': page === currentPage, 'inactive': page !== currentPage }"
+            class="btn"
+            @click="goToPage(page)"
+          >
+            {{ page }}
+          </button>
+        </div>
         <span class="pull-right">
           <button class="btn" @click="goToPreviousPage" href="#">{{ $t('labels.prev') }}</button>
           <button class="btn" @click="goToNextPage" href="#">{{ $t('labels.next') }}</button>
@@ -542,12 +544,14 @@ p {
 .pagination-wrapper {
   text-align: start;
   margin: 30px 0 20px;
+  display: flex;
+  align-items: center;
 }
 
 #pagination .pagina-num {
   font-size: 9pt;
   margin-right: 15px;
-  margin-bottom: 60px;
+  margin-bottom: 0 !important;
 }
 
 #pagination .btn.current {
@@ -573,6 +577,18 @@ p {
 
 .pull-right {
   float: right!important;
+  margin-left: auto;
+}
+
+@media (max-width: 640px) {
+  .pagination-wrapper {
+    flex-wrap: wrap;
+  }
+  .pagination-numbers {
+    order: 3;
+    width: 100%;
+    text-align: center;
+  }
 }
 
 .btn {
