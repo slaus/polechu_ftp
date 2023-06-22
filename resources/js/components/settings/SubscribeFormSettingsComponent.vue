@@ -59,6 +59,7 @@
 <script>
 import { mapState } from "vuex";
 import MultiLangTextField from "../shared/MultiLangTextField.vue";
+import { mergeDeep } from "../../helpers/functions";
 
 export default {
     name: "SubscribeFormSettingsComponent",
@@ -68,11 +69,11 @@ export default {
             group: 'subscribe',
             settings: {
                 subscribe: {
-                    title: '',
-                    email_placeholder: '',
-                    button_text: '',
-                    success_send_message: '',
-                    fail_send_message: ''
+                    title: null,
+                    email_placeholder: null,
+                    button_text: null,
+                    success_send_message: null,
+                    fail_send_message: null
                 }
             }
         }
@@ -84,7 +85,7 @@ export default {
     },
     mounted() {
         this.$store.dispatch('settingStore/list', this.group).then(response => {
-            this.settings = Object.assign(this.settings, this.$store.state.settingStore.list);
+            this.settings = mergeDeep(this.settings, this.$store.state.settingStore.list);
         });
     },
     methods: {

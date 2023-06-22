@@ -13,6 +13,16 @@
 
             <v-spacer></v-spacer>
 
+            <v-btn
+                small
+                color="red"
+                dark
+                class="mx-6"
+                @click="clearCache"
+            >
+                {{ $t('buttons.clearCache') }}
+            </v-btn>
+
             <v-menu offset-y>
                 <template v-slot:activator="{ attrs, on }">
                     <div v-bind="attrs" v-on="on">
@@ -82,6 +92,9 @@ export default {
         });
     },
     methods: {
+        clearCache() {
+            this.$store.dispatch('systemStore/clearCache');
+        },
         exit() {
             this.$store.commit('authStore/cleanUser');
             location.href = '/logout';

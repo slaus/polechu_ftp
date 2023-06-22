@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api\V1;
 
+use App\Enums\OrderTypeEnum;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\V1\SearchTour\SearchTourOptionsRequest;
 use App\Http\Requests\Api\V1\SearchTour\SearchTourOrderRequest;
@@ -13,6 +14,7 @@ use App\Http\Resources\Api\V1\SearchTour\ToursListResource;
 use App\Http\Resources\Api\V1\SearchTour\TownsListResource;
 use App\Notifications\TourOrderNotification;
 use App\Services\BeeFlyTour\BeeFlyTourService;
+use App\Services\Order\CommandOrderService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Notification;
@@ -55,17 +57,26 @@ class SearchTourController extends Controller
 
     public function order(SearchTourOrderRequest $request): JsonResponse
     {
-        try {
-            $payload = $request->validated();
+        $payload = $request->validated();
 
-            Notification::route('mail', settings('emails.order_form', config('mail.from.address')))
-                ->notify(new TourOrderNotification($payload));
+        $commandService = new CommandOrderService($request->user());
+        $commandService->store([
+            'type' => OrderTypeEnum::TOUR_FORM->value,
+            'title' => $payload['client']['name'] . ' (' . $payload['client']['email'] . ')',
+            'content' => $payload,
+        ]);
 
-            return new JsonResponse(['status' => 'success']);
-        } catch (\Exception $exception) {
-            Log::error('Error send щквук form notification.' . $exception->getMessage());
+        if (settings('emails.order_form')) {
+            try {
+                Notification::route('mail', settings('emails.order_form'))
+                    ->notify(new TourOrderNotification($payload));
+            } catch (\Exception $exception) {
+                Log::error('Error send щквук form notification.' . $exception->getMessage());
+
+                return new JsonResponse(['status' => 'error']);
+            }
         }
 
-        return new JsonResponse(['status' => 'error']);
+        return new JsonResponse(['status' => 'success']);
     }
 }

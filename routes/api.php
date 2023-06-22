@@ -1,11 +1,14 @@
 <?php
 
 use App\Http\Controllers\Api\V1\AuthController;
+use App\Http\Controllers\Api\V1\CountryController;
 use App\Http\Controllers\Api\V1\MenuController;
+use App\Http\Controllers\Api\V1\OrderController;
 use App\Http\Controllers\Api\V1\PageController;
 use App\Http\Controllers\Api\V1\PostController;
 use App\Http\Controllers\Api\V1\SearchTourController;
 use App\Http\Controllers\Api\V1\SettingController;
+use App\Http\Controllers\Api\V1\SystemController;
 use App\Http\Controllers\Api\V1\TagController;
 use App\Http\Controllers\Api\V1\TourController;
 use Illuminate\Support\Facades\Route;
@@ -29,11 +32,17 @@ Route::group(['prefix' => 'v1'], function() {
         Route::apiResource('tours', TourController::class);
         Route::apiResource('posts/tags', TagController::class)->only(['index']);
         Route::apiResource('posts', PostController::class);
+        Route::apiResource('countries', CountryController::class);
+        Route::apiResource('orders', OrderController::class);
         Route::get('user', [AuthController::class, 'user']);
 
         Route::group(['prefix' => 'settings', 'as' => 'settings.'], function () {
             Route::get('{group}', [SettingController::class, 'index'])->name('index');
             Route::post('{group}', [SettingController::class, 'store'])->name('store');
+        });
+
+        Route::group(['prefix' => 'system', 'as' => 'system.'], function () {
+            Route::delete('cache', [SystemController::class, 'clearCache'])->name('cache.delete');
         });
 
     });

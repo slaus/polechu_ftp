@@ -159,8 +159,8 @@ return [
         /*
          * Package Service Providers...
          */
-        App\Providers\BeeFlyTourProvider::class,
         App\Providers\HelperServiceProvider::class,
+        App\Providers\BeeFlyTourProvider::class,
 
         /*
          * Application Service Providers...

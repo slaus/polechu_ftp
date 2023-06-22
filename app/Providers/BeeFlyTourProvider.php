@@ -9,12 +9,12 @@ use Illuminate\Support\ServiceProvider;
 
 class BeeFlyTourProvider extends ServiceProvider
 {
-    public function register(): void
+    public function boot(): void
     {
         $this->app->singleton(BeeFlyTourApi::class, function (Application $app) {
             return new BeeFlyTourApi(
-                $app['config']->get('services.bee_fly_tour.base_url'),
-                $app['config']->get('services.bee_fly_tour.token')
+                settings('api.join_up.base_url', $app['config']->get('services.bee_fly_tour.base_url')),
+                settings('api.join_up.token', $app['config']->get('services.bee_fly_tour.token'))
             );
         });
 

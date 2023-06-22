@@ -9,6 +9,7 @@ class ToursListResource extends JsonResource
     public function toArray($request): array
     {
         return [
+            'image' => $this->resource['image'] ?? '',
             'name' => $this->resource['hotel'] ?? '',
             'hotel_id' => $this->resource['hotelKey'] ?? '',
             'town' => $this->resource['town'] ?? '',

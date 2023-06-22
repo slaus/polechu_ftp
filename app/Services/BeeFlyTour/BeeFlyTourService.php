@@ -2,6 +2,7 @@
 
 namespace App\Services\BeeFlyTour;
 
+use App\Models\Country;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
 
@@ -14,7 +15,7 @@ class BeeFlyTourService
     public function listCountries(): array
     {
         try {
-            return Cache::rememberForever('countries', function () {
+            return Cache::rememberForever('countries_list', function () {
                 $countries = [];
 
                 foreach ($this->listTowns() as $town) {
@@ -26,7 +27,13 @@ class BeeFlyTourService
                     ])['SearchTour_STATES'] ?? [];
 
                     foreach ($countriesByTown as $country) {
+                        if (in_array($country['id'], array_map(fn ($item) => (int) trim($item), explode(',', settings('api.join_up.exclude_countries', ''))))) {
+                            continue;
+                        }
+
                         if (! in_array($country['id'], $countries)) {
+                            $countryName = $this->countryNameById($country['id']);
+                            $country['name'] = ! empty($countryName) ? translation($countryName) : $country['name'];
                             $countries[$country['id']] = $country;
                         }
                     }
@@ -48,6 +55,10 @@ class BeeFlyTourService
                 $towns = [];
 
                 foreach ($this->listTowns() as $town) {
+                    if (in_array($town['id'], array_map(fn ($item) => (int) trim($item), explode(',', settings('api.join_up.exclude_towns', ''))))) {
+                        continue;
+                    }
+
                     $townsByCountry = $this->api->get([
                         'samo_action' => 'api',
                         'type' => 'json',
@@ -177,6 +188,7 @@ class BeeFlyTourService
             return array_map(function ($item) {
                 $townsFrom = array_filter($this->listTowns(), fn ($town) => $town['id'] == $item['townFromKey']);
 
+                $item['image'] = $this->imageByCountry($item['stateKey']);
                 $item['checkIn'] = isset($item['checkIn']) ? date('d.m.Y', strtotime($item['checkIn'])) : '';
                 $item['price'] = isset($item['price']) ? number_format((int) $item['price'], 0, ',', ' ') : '';
                 $item['meal'] = $this->mealName($item['meal'] ?? '');
@@ -221,5 +233,31 @@ class BeeFlyTourService
             'UAI' => __('ультра все включено'),
             default => '',
         };
+    }
+
+    private function imageByCountry(int $countryId): string
+    {
+        $country = Country::where('plugin_id', $countryId)->first();
+
+        $defaultImage = asset('images/placeholder.png');
+
+        if ($country) {
+            return ! empty($country->gallery)
+                ? image_uri($country->gallery[array_rand($country->gallery, 1)], '540')
+                : $defaultImage;
+        }
+
+        return $defaultImage;
+    }
+
+    private function countryNameById(int $countryId): array
+    {
+        $countries = Cache::rememberForever('countries', function () {
+            return Country::all()->toArray();
+        });
+
+        $key = array_search($countryId, array_column($countries, 'plugin_id'), true);
+
+        return $key !== false ? ($countries[$key]['name'] ?? []) : [];
     }
 }

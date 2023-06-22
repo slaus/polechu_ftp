@@ -8,6 +8,8 @@ import PostsPage from "../pages/admin/PostsPage.vue";
 import FileManagerPage from "../pages/admin/FileManagerPage";
 import NotFoundPage from "../pages/admin/NotFoundPage";
 import UsersPage from "../pages/admin/UsersPage";
+import CountriesPage from "../pages/admin/CountriesPage.vue";
+import OrdersPage from "../pages/admin/OrdersPage.vue";
 import SettingsPage from "../pages/admin/SettingsPage";
 
 const router = new VueRouter({
@@ -42,6 +44,16 @@ const router = new VueRouter({
                     path: 'posts',
                     name: 'admin.posts',
                     component: PostsPage,
+                },
+                {
+                    path: 'countries',
+                    name: 'admin.countries',
+                    component: CountriesPage,
+                },
+                {
+                    path: 'orders',
+                    name: 'admin.orders',
+                    component: OrdersPage,
                 },
                 {
                     path: 'fm',

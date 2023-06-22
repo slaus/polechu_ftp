@@ -159,7 +159,7 @@ export default {
     },
     computed: {
         ...mapState({
-            isLoading: state => state.tourStore.isLoading,
+            isLoading: state => state.postStore.isLoading,
             post: state => state.postStore.post,
             tags: state => state.postStore.listTags
         }),

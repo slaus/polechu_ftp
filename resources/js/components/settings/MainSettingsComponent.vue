@@ -147,6 +147,7 @@ import MultiLangTextField from "../shared/MultiLangTextField";
 import ImageThumb from "../shared/ImageThumb.vue";
 import MultiLangTextarea from "../shared/MultiLangTextarea.vue";
 import MultiLangEditor from "../shared/MultiLangEditor.vue";
+import { mergeDeep } from "../../helpers/functions";
 
 export default {
     name: "MainSettingsComponent",
@@ -171,8 +172,8 @@ export default {
                 },
                 socials: [],
                 contacts: {
-                    title: '',
-                    text: ''
+                    title: null,
+                    text: null
                 }
             }
         }
@@ -184,7 +185,7 @@ export default {
     },
     mounted() {
         this.$store.dispatch('settingStore/list', this.group).then(response => {
-            this.settings = Object.assign(this.settings, this.$store.state.settingStore.list);
+            this.settings = mergeDeep(this.settings, this.$store.state.settingStore.list);
         });
     },
     methods: {

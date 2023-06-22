@@ -11,7 +11,10 @@ import pageStore from "./modules/page-store";
 import tourStore from "./modules/tour-store";
 import postStore from "./modules/post-store";
 import settingStore from "./modules/setting-store";
+import countryStore from "./modules/country-store";
+import orderStore from "./modules/order-store";
 import menuStore from "./modules/menu-store";
+import systemStore from "./modules/system-store";
 
 Vue.use(Vuex);
 
@@ -38,7 +41,10 @@ export default new Vuex.Store({
         tourStore,
         postStore,
         settingStore,
-        menuStore
+        countryStore,
+        orderStore,
+        menuStore,
+        systemStore
     },
     strict: false,
     plugins: [
