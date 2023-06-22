@@ -41,6 +41,9 @@ export default {
             fewSeats: 'Мало місць',
             noSeats: 'Немає місць',
             uponRequest: 'За запитом',
+            prev: 'попередня',
+            next: 'наступна',
+            pages: 'Сторінка {val1} з {val2}',
         },
         placeholders: {
             name: 'Ваше імʼя *',
