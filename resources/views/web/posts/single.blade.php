@@ -9,7 +9,7 @@
     <meta property="og:image" content="{{ image_uri($post['page']['content']['banner']['image']) }}">
     @endif
     <meta property="og:url" content="{{ route('post', $post['slug']) }}">
-    <meta property="og:site_name" content="{{ settings('company.name', config('app.name')) }}">
+    <meta property="og:site_name" content="{{ translation(settings('company.name', ['uk' => config('app.name', '')])) }}">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="ua_UA">
     @if (! empty($post['author']))
