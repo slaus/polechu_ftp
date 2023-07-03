@@ -7,12 +7,11 @@
     <meta name="robots" content="{{ $seo['indexes'] }}" />
 @endif
 
-<meta property="og:site_name" content="{{ config('app.name') }}" />
+<meta property="og:site_name" content="{{ translation(settings('company.name', ['uk' => config('app.name', '')])) }}" />
 <meta property="og:locale" content="{{ config('localizations.supported_locales.' . app()->getLocale() . '.regional', app()->getLocale()) }}" />
 <meta property="og:url" content="{{ url()->current() }}" />
-@if (! empty($seo['og']['type']))
-    <meta property="og:type" content="{{ $seo['og']['type'] }}" />
-@endif
+<meta property="og:type" content="{{ $seo['og']['type'] ?? 'website' }}" />
+
 @if (! empty(translation($seo['og']['title'] ?? [])))
     <meta property="og:title" content="{{ translation($seo['og']['title'] ?? []) }}" />
 @endif
