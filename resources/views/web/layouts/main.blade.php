@@ -208,14 +208,12 @@
     @stack('styles')
 </head>
 <body>
-<!-- preloader -->
 <div class="bg-preloader-white"></div>
 <div class="preloader-white">
     <div class="mainpreloader">
         <span></span>
     </div>
 </div>
-<!-- preloader end -->
 
 <div class="content-wrapper">
     @include('web.includes.header')
@@ -223,16 +221,13 @@
     @include('web.includes.footer')
 </div>
 
-<script src="{{ asset('web/plugin/pluginson3step.js') }}" type="text/javascript"></script>
-<script src="{{ asset('web/plugin/sticky.js') }}" type="text/javascript"></script>
-
-<script type="text/javascript" src="{{ asset('web/js/jquery.dateselect.js') }}"></script>
-<!-- slider revolution  -->
-<script type="text/javascript" src="{{ asset('web/rs-plugin/js/jquery.themepunch.revolution.min.js') }}"></script>
-<!-- on3step JS -->
-<script src="{{ asset('web/js/on3step.js') }}" type="text/javascript"></script>
-<script src="{{ asset('web/js/plugin-set.js') }}" type="text/javascript"></script>
-<script src="{{ asset('js/app.js') }}" type="text/javascript"></script>
+<script src="{{ asset('web/plugin/pluginson3step.js') }}"></script>
+<script src="{{ asset('web/plugin/sticky.js') }}"></script>
+<script src="{{ asset('web/js/jquery.dateselect.js') }}"></script>
+<script src="{{ asset('web/rs-plugin/js/jquery.themepunch.revolution.min.js') }}"></script>
+<script src="{{ asset('web/js/on3step.js') }}"></script>
+<script src="{{ asset('web/js/plugin-set.js') }}"></script>
+<script src="{{ asset('js/app.js') }}"></script>
 
 @stack('scripts')
 </body>

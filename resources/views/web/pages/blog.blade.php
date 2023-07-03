@@ -2,6 +2,8 @@
 
 @push('meta')
     @include('web.includes.meta', ['seo' => $seo])
+
+    <link rel="canonical" href="{{ route('page', 'blog') }}" />
 @endpush
 
 @push('styles')
