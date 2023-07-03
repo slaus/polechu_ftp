@@ -30,10 +30,15 @@
                     />
                 </v-flex>
                 <v-flex class="xs12 sm6 px-0 px-sm-2 mb-6">
+                    <MultiLangTextField
+                        :value.sync="settings.company.name"
+                        :label="$t('labels.companyName')"
+                        class="mb-2"
+                    />
                     <MultiLangTextarea
                         :value.sync="settings.company.description"
                         :placeholder="$t('labels.description')"
-                        rows="6"
+                        rows="4"
                         :no-resize="true"
                     />
                 </v-flex>
@@ -166,6 +171,7 @@ export default {
                     dark: null,
                 },
                 company: {
+                    name: '',
                     phone: '',
                     email: '',
                     description: null

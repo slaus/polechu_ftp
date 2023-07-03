@@ -155,6 +155,7 @@ export default {
             excludeTowns: 'Виключити міста відправлення',
             excludeCountriesHint: 'Список id країн через кому: 109,10,123',
             excludeTownsHint: 'Список id міст через кому: 2319,140,23',
+            companyName: 'Назва компанії',
         },
         tabs: {
             main: 'Головні',

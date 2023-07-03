@@ -2,6 +2,20 @@
 
 @push('meta')
     @include('web.includes.meta', ['seo' => $seo])
+
+    <meta property="og:title" content="{{ translation($post['name'] ?? []) }}">
+    <meta property="og:description" content="{{ translation($post['description'] ?? []) }}">
+    @if(! empty($post['page']['content']['banner']['image']))
+    <meta property="og:image" content="{{ image_uri($post['page']['content']['banner']['image']) }}">
+    @endif
+    <meta property="og:url" content="{{ route('post', $post['slug']) }}">
+    <meta property="og:site_name" content="{{ settings('company.name', config('app.name')) }}">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ua_UA">
+    @if (! empty($post['author']))
+    <meta property="og:article:author" content="{{ translation($post['author']) }}">
+    @endif
+    <meta property="og:article:published_time" content="{{ $post['format_published_at'] }}">
 @endpush
 
 @push('styles')
