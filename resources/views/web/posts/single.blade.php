@@ -75,15 +75,15 @@
                                     </div>
 
                                     <div class="widget" style="margin: 20px 0;">
-                                        <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(route('post', $post['slug'])) }}&amp;p[images][0]={{ ! empty($post['image']) ? urlencode(image_uri($post['image'], '768')) : '' }}" title="{{ translation($post['name'] ?? []) }}" onclick="window.open(this.href, this.title, 'toolbar=0, status=0, width=548, height=325'); return false" rel="nofollow" target="_parent">
+                                        <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(route('post', $post['slug'])) }}&amp;p[images][0]={{ ! empty($post['image']) ? urlencode(image_uri($post['image'], '768')) : '' }}" title="{{ urlencode(translation($post['name'] ?? [])) }}" onclick="window.open(this.href, this.title, 'toolbar=0, status=0, width=548, height=325'); return false" rel="nofollow" target="_parent">
                                             <img src="/images/icons/facebook.svg" width="40" height="40" alt="Facebook">
                                         </a>
 
-                                        <a href="https://twitter.com/intent/tweet?url={{ urlencode(route('post', $post['slug'])) }}&amp;text={{ translation($post['name'] ?? []) }}" title="{{ translation($post['name'] ?? []) }}" onclick="window.open(this.href, this.title, 'toolbar=0, status=0, width=548, height=325'); return false" rel="nofollow" target="_parent">
+                                        <a href="https://twitter.com/intent/tweet?url={{ urlencode(route('post', $post['slug'])) }}&amp;text={{ urlencode(translation($post['name'] ?? [])) }}" title="{{ translation($post['name'] ?? []) }}" onclick="window.open(this.href, this.title, 'toolbar=0, status=0, width=548, height=325'); return false" rel="nofollow" target="_parent">
                                             <img src="/images/icons/twitter.svg" width="40" height="40" alt="Twitter">
                                         </a>
 
-                                        <a href="https://telegram.me/share/url?url={{ urlencode(route('post', $post['slug'])) }}&amp;text={{ translation($post['name'] ?? []) }}" rel="nofollow" target="_blank">
+                                        <a href="https://telegram.me/share/url?url={{ urlencode(route('post', $post['slug'])) }}&amp;text={{ urlencode(translation($post['name'] ?? [])) }}" rel="nofollow" target="_blank">
                                             <img src="/images/icons/telegramm.svg" width="40" height="40" alt="Telegram">
                                         </a>
 

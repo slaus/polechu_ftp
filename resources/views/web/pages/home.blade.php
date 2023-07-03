@@ -21,15 +21,23 @@
                     <div class="item imgbg" style="background-image: url('{{ image_uri($item['image']) }}')">
                         <div class="overlay-main v-align text-center ">
                             <div class="col-md-10 col-xs-11 onStep" data-animation="fadeInUp" data-time="300">
-                                <div class="home-title-h1 title-h">{!! translation($item['title'] ?? []) !!}</div>
-                                <div class="home-title-h3 title-h">{!! translation($item['subtitle'] ?? []) !!}</div>
-                                <br>
-                                <div class="star-content">
-                                    @for($i = 1; $i <= 5; $i++)
-                                        <i class="fa fa-star{{ $i <= (int) $item['stars'] ? '' : '-o' }}" aria-hidden="{{ $i <= (int) $item['stars'] ? 'true' : 'false' }}"></i>
-                                    @endfor
-                                    {!! translation($item['name'] ?? []) !!}
-                                </div>
+                                @if (! empty($item['title']))
+                                    <div class="home-title-h1 title-h">{!! translation($item['title']) !!}</div>
+                                @endif
+
+                                @if (! empty($item['subtitle']))
+                                    <div class="home-title-h3 title-h">{!! translation($item['subtitle']) !!}</div>
+                                @endif
+
+                                @if ((int) ($item['stars']) > 0)
+
+                                    <div class="star-content">
+                                        @for($i = 1; $i <= 5; $i++)
+                                            <i class="fa fa-star{{ $i <= (int) $item['stars'] ? '' : '-o' }}" aria-hidden="{{ $i <= (int) $item['stars'] ? 'true' : 'false' }}"></i>
+                                        @endfor
+                                        {!! translation($item['name'] ?? []) !!}
+                                    </div>
+                                @endif
                             </div>
                         </div>
                     </div>

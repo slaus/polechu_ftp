@@ -61,7 +61,7 @@
             text-transform: uppercase;
         }
         .home-title-h1 {
-            font-size: 44pt;
+            font-size: 32pt;
             letter-spacing: 2px;
             font-weight: 500;
             line-height: normal;
@@ -79,10 +79,11 @@
             line-height: normal;
         }
         .home-title-h3 {
-            font-size: 40pt;
+            font-size: 24pt;
             font-weight: 500;
             letter-spacing: 1px;
             line-height: normal;
+            margin-top: 5px;
         }
         .post-title-h3 {
             margin: 20px 0 -10px 0;
