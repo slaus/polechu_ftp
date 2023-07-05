@@ -66,6 +66,9 @@
             font-weight: 500;
             line-height: normal;
             text-transform: uppercase;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,.5);
         }
         .title-h2 {
             font-size: 30pt;
