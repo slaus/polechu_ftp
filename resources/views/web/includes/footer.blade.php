@@ -51,7 +51,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-               {!! __('&copy; :company :year. all reserved design by on3step', ['company' => config('app.name'), 'year' => date('Y')]) !!}
+                {!! __('Powered by') !!} <a href="https://pandateam.net.ua/" style="color: #ffb600;" rel="nofollow" target="_blank">Pandateam</a>
             </div>
 
             <div class="col-md-6">
