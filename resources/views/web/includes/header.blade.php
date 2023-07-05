@@ -8,14 +8,14 @@
                             @if(! empty(settings('company.phone')))
                                 <div>
                                     <i class="ti-mobile"></i>
-                                    {{ settings('company.phone') }}
+                                    <span>{{ settings('company.phone') }}</span>
                                 </div>
                             @endif
 
                             @if(! empty(settings('company.email')))
                                 <div>
                                     <i class="ti-email"></i>
-                                    <a href="mailto:{{ settings('company.email') }}">{{ settings('company.email') }}</a>
+                                    <a href="mailto:{{ settings('company.email') }}"><span>{{ settings('company.email') }}</span></a>
                                 </div>
                             @endif
                         </div>
