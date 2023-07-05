@@ -5,7 +5,18 @@
 @endpush
 
 @push('styles')
-
+    <style>
+        .white nav a {
+            color: #707070!important;
+            text-shadow: none!important;
+        }
+        .white nav a:hover {
+            color: #505050 !important;
+        }
+        .white nav a.actived {
+            color: #505050 !important;
+        }
+    </style>
 @endpush
 
 @push('scripts')
