@@ -599,13 +599,14 @@ section {
 .social-icons-subnav div{ display:inline-block;}
 .right .social-icons-subnav{ margin-right:0px;}
 .social-icons-subnav span, .social-icons-subnav i {
-/*  text-shadow: none;*/
-  text-shadow: 1px 1px 2px rgba(0,0,0,.5);
+  text-shadow: none;
   padding: 8px;
   width: 28px;
   height: 28px;
   text-align: center;
-  color: #fff;
+  font-weight: 500;
+/*  color: #fff;*/
+  color: #1467c3;
   border-radius: 1px;
   -moz-border-radius: 1px;
   -webkit-border-radius: 1px;
@@ -742,7 +743,7 @@ header.show{
 .white nav a {
   display: block;
   padding: 10px 0px 10px 20px;
-  color: #fff;
+  color: #707070;
   font-size: 12px;
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
   font-weight: 500;
@@ -750,10 +751,10 @@ header.show{
   letter-spacing: 1px;
   line-height: 60px;
   text-decoration: none;
-  text-shadow: 1px 1px 2px rgba(0,0,0,.5);
+  text-shadow: none;
 }
 .white nav a:hover {
-  color: #ccc !important;
+  color: #505050 !important;
   /*background:#fff!important;*/
 }
 .white nav a:hover::before {
@@ -779,7 +780,7 @@ header.show{
   white-space: nowrap;
 }
 .white nav a.actived {
-  color: #ccc!important;
+  color: #505050 !important;
   /*background:#fff;*/
 }
 .white nav ul ul {
