@@ -202,6 +202,10 @@
                 margin-bottom: 0;
             }
         }
+
+        .owl-theme .owl-controls .owl-buttons div {
+            z-index: 999 !important;
+        }
     </style>
 
     @stack('meta')
