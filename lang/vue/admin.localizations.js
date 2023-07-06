@@ -156,6 +156,7 @@ export default {
             excludeCountriesHint: 'Список id країн через кому: 109,10,123',
             excludeTownsHint: 'Список id міст через кому: 2319,140,23',
             companyName: 'Назва компанії',
+            payPageLink: 'Посилання на сторінку оплати',
         },
         tabs: {
             main: 'Головні',
@@ -167,6 +168,7 @@ export default {
             tourForm: 'Замовлення турів',
             contactFrom: 'Запити з контактної форми',
             subscribeForm: 'Запити на підписку',
+            links: 'Посилання',
         },
         placeholders: {
             search: 'Пошук...'

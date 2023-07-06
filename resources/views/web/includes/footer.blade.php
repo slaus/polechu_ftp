@@ -50,11 +50,19 @@
 <footer class="white">
     <div class="container">
         <div class="row">
-            <div class="col-md-6">
-                {!! __('Powered by') !!} <a href="https://pandateam.net.ua/" style="color: #ffb600;" rel="nofollow" target="_blank">Pandateam</a>
+            <div class="col-md-4" style="color: #ffb600; text-shadow: none;">
+                {!! __('Powered by') !!} <a href="https://pandateam.net.ua/" style="color: #ffb600; text-shadow: none;" rel="nofollow" target="_blank">Pandateam</a>
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-4">
+                @if (! empty(settings('links.pay_page', [])))
+                    <a href="{{ translation(settings('links.pay_page', [])) }}">
+                        <img src="{{ asset('images/pay-logo.svg') }}" height="25" style="display: block; margin: 0 auto;" alt="pay logo" />
+                    </a>
+                @endif
+            </div>
+
+            <div class="col-md-4">
                 <div class="right">
                     <div class="social-icons">
                         @foreach(settings('socials', []) as $item)

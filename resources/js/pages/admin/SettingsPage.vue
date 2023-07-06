@@ -9,6 +9,7 @@
                 <v-tab>{{ $t('tabs.notifications') }}</v-tab>
                 <v-tab>{{ $t('tabs.subscribe') }}</v-tab>
                 <v-tab>{{ $t('tabs.services') }}</v-tab>
+                <v-tab>{{ $t('tabs.links') }}</v-tab>
             </v-tabs>
 
             <v-tabs-items v-model="tab">
@@ -24,6 +25,9 @@
                 <v-tab-item>
                     <ServicesSettingsComponent />
                 </v-tab-item>
+                <v-tab-item>
+                    <LinksSettingsComponent />
+                </v-tab-item>
             </v-tabs-items>
         </v-card-text>
     </v-card>
@@ -34,6 +38,7 @@ import MainSettingsComponent from "../../components/settings/MainSettingsCompone
 import NotificationsSettingsComponent from "../../components/settings/NotificationsSettingsComponent.vue";
 import SubscribeFormSettingsComponent from "../../components/settings/SubscribeFormSettingsComponent.vue";
 import ServicesSettingsComponent from "../../components/settings/ServicesSettingsComponent.vue";
+import LinksSettingsComponent from "../../components/settings/LinksSettingsComponent.vue";
 
 export default {
     name: "SettingsPage",
@@ -41,7 +46,8 @@ export default {
         MainSettingsComponent,
         NotificationsSettingsComponent,
         SubscribeFormSettingsComponent,
-        ServicesSettingsComponent
+        ServicesSettingsComponent,
+        LinksSettingsComponent
     },
     data() {
         return {
