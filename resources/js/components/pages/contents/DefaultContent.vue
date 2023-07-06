@@ -85,7 +85,7 @@ export default {
                 seo: {
                     title: null,
                     text: null
-                },
+                }
             }
         }
     },
@@ -95,13 +95,10 @@ export default {
                 this.$emit('update:value', this.content);
             },
             deep: true
+        },
+        value() {
+            this.content = mergeDeep(this.content, this.value);
         }
-    },
-    mounted() {
-        this.content = mergeDeep(this.content, this.value);
-    },
-    methods: {
-
     }
 }
 </script>
