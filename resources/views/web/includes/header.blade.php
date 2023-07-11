@@ -27,7 +27,7 @@
                         <div class="social-icons-subnav">
                             @foreach(settings('socials', []) as $item)
                                 <a href="{{ $item['url'] }}" title="{{ translation($item['name'] ?? []) }}" rel="nofollow" target="_blank">
-                                    <span class="{{ $item['icon'] }}"></span>
+                                    <i class="{{ $item['icon'] }}"></i>
                                 </a>
                             @endforeach
                         </div>

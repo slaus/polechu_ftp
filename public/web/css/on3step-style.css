@@ -605,6 +605,7 @@ section {
   height: 28px;
   text-align: center;
   font-weight: 500;
+  font-size: 12px;
 /*  color: #fff;*/
   color: #1467c3;
   border-radius: 1px;
@@ -613,6 +614,37 @@ section {
   -webkit-transition: all .3s ease-in-out;
   -moz-transition: all .3s ease-in-out;
   transition: all .3s ease-in-out;
+}
+.social-icons-subnav span {
+  background: #ffffff;
+  position: relative;
+  top: -2.5px;
+  padding: 8.5px;
+}
+.social-icons-subnav i {
+  background: #ffffff;
+  font-size: 16px;
+}
+.social-icons-subnav i:not(:last-child) {
+  box-shadow: 4px 0 0 white;
+}
+.social-icons-subnav a i:hover {
+  color: #ffb600;
+}
+.social-icons .footer-icon {
+  display: inline-block;
+  background: #ffb600;
+  padding: 8px;
+  font-size: 16px;
+  width: 32px;
+  height: 32px;
+  text-align: center;
+  margin-right: 8px;
+  transition: background 0.2s;
+}
+.social-icons .footer-icon:hover {
+  color: white;
+  background: #555;;
 }
 .social-icons-subnav span:hover {
   color: #ffc128;
@@ -906,6 +938,10 @@ li a.btn-book-menu:hover {
   margin-top: 10px;
   text-transform: uppercase;
   color: #777;
+  background: #ffb600;
+  display: inline-block;
+  margin: 10px auto 0;
+  padding: 10px 50px 8px;
 }
 #subheader .subdetail li {
   display: inline-block;
