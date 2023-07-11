@@ -10,17 +10,7 @@
         <link rel="apple-touch-icon" href="{{ image_uri(settings('logo.light'), 'favicon-apple-touch-180x180') }}" />
     @endif
 
-    <!-- Bootstrap CSS -->
-    <link href="{{ asset('web/css/bootstrap.min.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('web/css/jquery.dateselect.css') }}">
-    <!-- font themify CSS -->
-    <link rel="stylesheet" href="{{ asset('web/css/themify-icons.css') }}">
-    <!-- font awesome CSS -->
-    <link href="{{ asset('web/font-awesome/css/font-awesome.css') }}" rel="stylesheet">
-    <!-- on3step CSS -->
-    <link href="{{ asset('web/css/animated-on3step.css') }}" rel="stylesheet">
-    <link href="{{ asset('web/css/owl.carousel.css') }}" rel="stylesheet">
-    <link href="{{ asset('web/css/owl.theme.css') }}" rel="stylesheet">
+
     <link href="{{ asset('web/css/owl.transitions.css') }}" rel="stylesheet">
     <link href="{{ asset('web/css/on3step-style.css') }}" rel="stylesheet">
     <link href="{{ asset('web/css/queries-on3step.css') }}" media="all" rel="stylesheet" type="text/css">
@@ -227,6 +217,18 @@
     @yield('content')
     @include('web.includes.footer')
 </div>
+
+<!-- Bootstrap CSS -->
+<link href="{{ asset('web/css/bootstrap.min.css') }}" rel="stylesheet">
+<link rel="stylesheet" href="{{ asset('web/css/jquery.dateselect.css') }}">
+<!-- font themify CSS -->
+<link rel="stylesheet" href="{{ asset('web/css/themify-icons.css') }}">
+<!-- font awesome CSS -->
+<link href="{{ asset('web/font-awesome/css/font-awesome.css') }}" rel="stylesheet">
+<!-- on3step CSS -->
+<link href="{{ asset('web/css/animated-on3step.css') }}" rel="stylesheet">
+<link href="{{ asset('web/css/owl.carousel.css') }}" rel="stylesheet">
+<link href="{{ asset('web/css/owl.theme.css') }}" rel="stylesheet">
 
 <script src="{{ asset('web/plugin/pluginson3step.js') }}"></script>
 <script src="{{ asset('web/plugin/sticky.js') }}"></script>
