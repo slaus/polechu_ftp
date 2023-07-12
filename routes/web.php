@@ -36,7 +36,7 @@ Route::get('logout', LogoutController::class)
     ->name('logout')
     ->middleware('auth:sanctum');
 
-Route::group(['prefix' => (new LocalizationService(request()))->setLocale()], function () {
+Route::group(['prefix' => (new LocalizationService(request()))->setLocale(), 'middleware' => ['redirect']], function () {
 
     Route::group(['prefix' => 'form', 'as' => 'form.'], function () {
         Route::post('feedback', [FormController::class, 'feedback'])->name('feedback');
