@@ -2,7 +2,7 @@
     <div id="reservation"
          :class="{'load': isLoading}"
          class="imgbgres"
-         style="background-image: url(/web/img/bg-res.jpg)"
+         style="background-image: url(/web/img/bg-res.webp)"
     >
 <!--    <div id="reservation" class="imgbgres">-->
         <div class="row">

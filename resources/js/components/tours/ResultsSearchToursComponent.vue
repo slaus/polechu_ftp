@@ -8,7 +8,7 @@
             <img
               alt="LUXURY SINGLE ROOM"
               class="card__image"
-              :src="tour.image ? tour.image : 'http://polechu.pandateam.net.ua/images/540/media/tours/img-news.jpg'"
+              :src="tour.image ? tour.image : '/images/540/media/tours/img-news.jpg'"
             >
             <div class="title-h3 title-h">
               {{ tour.name }} {{ tour.star }}
