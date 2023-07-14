@@ -61,6 +61,8 @@ return [
         'favicon-192x192' => App\Services\Intervention\Filters\Favicon\Favicon192X192::class,
         'favicon-apple-touch-180x180' => App\Services\Intervention\Filters\Favicon\FaviconAppleTouch180X180::class,
 
+        '50' => App\Services\Intervention\Filters\Size50::class,
+        '100' => App\Services\Intervention\Filters\Size100::class,
         '160' => App\Services\Intervention\Filters\Size160::class,
         '320' => App\Services\Intervention\Filters\Size320::class,
         '540' => App\Services\Intervention\Filters\Size540::class,
