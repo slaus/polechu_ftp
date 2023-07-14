@@ -15,7 +15,7 @@
 @endpush
 
 @section('content')
-    <section id="subheader" @if(! empty($content['banner']['image'])) style="background: url('{{ image_uri($content['banner']['image']) }}') top fixed" @endif>
+    <section id="subheader" @if(! empty($content['banner']['image'])) style="background: url('{{ image_uri($content['banner']['image']) }}') top fixed;background-size: cover;" @endif>
         <div class="container">
             <div class="row">
                 <div class="col-md-12">

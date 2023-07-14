@@ -13,7 +13,7 @@
 @endpush
 
 @section('content')
-    <section id="subheader" @if(! empty($content['banner']['image'])) style="background: url('{{ image_uri($content['banner']['image']) }}')" @endif>
+    <section id="subheader" @if(! empty($content['banner']['image'])) style="background: url('{{ image_uri($content['banner']['image']) }}');background-size: cover;" @endif>
         <div class="container">
             <div class="row">
                 <div class="col-md-12">

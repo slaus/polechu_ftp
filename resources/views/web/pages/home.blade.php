@@ -33,7 +33,7 @@
                         <div class="overlay-main v-align text-center ">
                             <div class="col-md-10 col-xs-11 onStep" data-animation="fadeInUp" data-time="300">
                                 @if (! empty($item['title']))
-                                    <div class="home-title-h1 title-h">{!! translation($item['title']) !!}</div>
+                                    <h1 class="home-title-h1 title-h">{!! translation($item['title']) !!}</h1>
                                 @endif
 
                                 @if (! empty($item['subtitle']))

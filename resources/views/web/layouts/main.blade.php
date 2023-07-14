@@ -60,15 +60,15 @@
             line-height: normal;
             text-transform: uppercase;
         }
-        .home-title-h1 {
-            font-size: 32pt;
-            letter-spacing: 2px;
-            font-weight: 500;
-            line-height: normal;
-            text-transform: uppercase;
-            margin-top: 20px;
-            margin-bottom: 10px;
-            text-shadow: 1px 1px 2px rgba(0,0,0,.5);
+        h1.home-title-h1 {
+            font-size: 32pt!important;
+            letter-spacing: 2px!important;
+            font-weight: 500!important;
+            line-height: normal!important;
+            text-transform: uppercase!important;
+            margin-top: 20px!important;
+            margin-bottom: 10px!important;
+            text-shadow: 1px 1px 2px rgba(0,0,0,.5)!important;
         }
         .title-h2 {
             font-size: 30pt;
