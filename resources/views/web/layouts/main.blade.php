@@ -299,13 +299,13 @@
     }
 </style>
 
-<script src="{{ asset('web/plugin/pluginson3step.js') }}" async></script>
-<script src="{{ asset('web/plugin/sticky.js') }}" async></script>
-<script src="{{ asset('web/js/jquery.dateselect.js') }}" async></script>
-<script src="{{ asset('web/rs-plugin/js/jquery.themepunch.revolution.min.js') }}" async></script>
-<script src="{{ asset('web/js/on3step.js') }}" async></script>
-<script src="{{ asset('web/js/plugin-set.js') }}" async></script>
-<script src="{{ asset('js/app.js') }}" async></script>
+<script src="{{ asset('web/plugin/pluginson3step.js') }}"></script>
+<script src="{{ asset('web/plugin/sticky.js') }}"></script>
+<script src="{{ asset('web/js/jquery.dateselect.js') }}"></script>
+<script src="{{ asset('web/rs-plugin/js/jquery.themepunch.revolution.min.js') }}"></script>
+<script src="{{ asset('web/js/on3step.js') }}"></script>
+<script src="{{ asset('web/js/plugin-set.js') }}"></script>
+<script src="{{ asset('js/app.js') }}"></script>
 
 @stack('scripts')
 </body>
