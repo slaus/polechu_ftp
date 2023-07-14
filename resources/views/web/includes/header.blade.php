@@ -48,11 +48,11 @@
 
                 <a class="navbar-brand white" href="{{ route('page') }}">
                     @if (! empty(settings('logo.light')))
-                        <img class="white" alt="logo" src="{{ image_uri(settings('logo.light'), '100') }}">
+                        <img loading="lazy" class="white" alt="logo" src="{{ image_uri(settings('logo.light'), '100') }}">
                     @endif
 
                     @if (! empty(settings('logo.dark')))
-                        <img class="black" alt="logo" src="{{ image_uri(settings('logo.dark'), '50') }}">
+                        <img loading="lazy" class="black" alt="logo" src="{{ image_uri(settings('logo.dark'), '50') }}">
                     @endif
                 </a>
 

@@ -4,7 +4,7 @@
             <div class="col-md-4 col-xs-12">
                 @if (! empty(settings('logo.white')))
                     <div class="logo">
-                        <img alt="logo" src="{{ image_uri(settings('logo.white'), '160') }}">
+                        <img loading="lazy" alt="logo" src="{{ image_uri(settings('logo.white'), '160') }}">
                     </div>
                 @endif
 
@@ -57,7 +57,7 @@
             <div class="col-md-4">
                 @if (! empty(settings('links.pay_page', [])))
                     <a href="{{ translation(settings('links.pay_page', [])) }}">
-                        <img src="{{ asset('images/pay-logo.svg') }}" height="25" style="display: block; margin: 0 auto;" alt="pay logo" />
+                        <img loading="lazy" src="{{ asset('images/pay-logo.svg') }}" height="25" style="display: block; margin: 0 auto;" alt="pay logo" />
                     </a>
                 @endif
             </div>

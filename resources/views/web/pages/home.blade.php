@@ -29,7 +29,7 @@
             <div id="owl-slider-home" class="owl-carousel">
                 @foreach($content['banner']['items'] as $item)
                     @continue(empty($item['image']))
-                    <div class="item imgbg" style="background-image: url('{{ image_uri($item['image']) }}')">
+                    <div class="item imgbg banner-item" data-bg-src="{{ image_uri($item['image']) }}">
                         <div class="overlay-main v-align text-center ">
                             <div class="col-md-10 col-xs-11 onStep" data-animation="fadeInUp" data-time="300">
                                 @if (! empty($item['title']))
@@ -55,6 +55,15 @@
                 @endforeach
             </div>
         </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const bannerItems = document.querySelectorAll('.banner-item');
+                Array.from(bannerItems).forEach(item => {
+                    item.style.background = 'url("' + item.getAttribute('data-bg-src') + '")';
+                });
+            }, false);
+        </script>
     @endif
 
     <div id="app">
@@ -91,7 +100,7 @@
                         <div class="col-md-4">
                             <div class="wrap-news onStep" data-animation="fadeInLeft" data-time="300">
                                 @if (! empty($tour['image']))
-                                    <img alt="{{ translation($tour['name'] ?? []) }}" class="img-responsive" src="{{ image_uri($tour['image'], '540') }}">
+                                    <img loading="lazy" alt="{{ translation($tour['name'] ?? []) }}" class="img-responsive" src="{{ image_uri($tour['image'], '540') }}">
                                 @endif
                                 <div class="title-h3 title-h">{{ translation($tour['name'] ?? []) }}</div>
                                 <p>{{ translation($tour['description'] ?? []) }}</p>
@@ -133,7 +142,7 @@
                                 <div class="item">
                                     <div class="wrap-news onStep" data-animation="fadeInLeft" data-time="300">
                                         @if (! empty($post['image']))
-                                            <img alt="{{ translation($post['name'] ?? []) }}" class="img-responsive" src="{{ image_uri($post['image'], '540') }}">
+                                            <img loading="lazy" alt="{{ translation($post['name'] ?? []) }}" class="img-responsive" src="{{ image_uri($post['image'], '540') }}">
                                         @endif
                                         <div class="title-h3 title-h">{{ translation($post['name'] ?? []) }}</div>
                                         <p>{{ translation($post['description'] ?? []) }}</p>
