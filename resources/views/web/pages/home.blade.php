@@ -20,7 +20,7 @@
 @endpush
 
 @push('scripts')
-    <script src="{{ asset('js/site.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/site.js') }}?v=1" type="text/javascript"></script>
 @endpush
 
 @section('content')
