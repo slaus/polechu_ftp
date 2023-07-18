@@ -329,6 +329,14 @@ export default {
         document.dispatchEvent(new Event('filterMounted'));
 
         this.loadCountries();
+        this.loadOptions();
+
+        document.addEventListener('checkinBeg', () => {
+            this.filter.checkin_beg = document.getElementById('checkinBeg')?.value ?? '';
+        });
+        document.addEventListener('checkinEnd', () => {
+            this.filter.checkin_end = document.getElementById('checkinEnd')?.value ?? '';
+        });
     },
     methods: {
         loadCountries() {
@@ -443,6 +451,7 @@ export default {
                     if (stringToDate(checkinEnd) < date) {
                         window.datePikerEnd.selectDate(date);
                     }
+                    document.dispatchEvent(new Event('checkinBeg'));
                 },
                 onRenderCell({ date, cellType }) {
                     let status = !window.dateEnabled.includes(date.toString());
@@ -465,6 +474,7 @@ export default {
                     if (stringToDate(checkinBeg) > date) {
                         window.datePikerFrom.selectDate(date);
                     }
+                    document.dispatchEvent(new Event('checkinEnd'));
                 },
                 onRenderCell({ date, cellType }) {
                     let status = !window.dateEnabled.includes(date.toString());
