@@ -106,6 +106,7 @@
     @include('web.includes.header')
     @yield('content')
     @include('web.includes.footer')
+    @include('web.includes.modals')
 </div>
 
 <!-- Bootstrap CSS -->

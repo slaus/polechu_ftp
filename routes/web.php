@@ -41,6 +41,7 @@ Route::group(['prefix' => (new LocalizationService(request()))->setLocale(), 'mi
     Route::group(['prefix' => 'form', 'as' => 'form.'], function () {
         Route::post('feedback', [FormController::class, 'feedback'])->name('feedback');
         Route::post('contact', [FormController::class, 'contact'])->name('contact');
+        Route::post('tour', [FormController::class, 'tour'])->name('tour');
     });
 
     Route::get('/tours/{slug}', TourController::class)->name('tours');

@@ -32,6 +32,16 @@
                         hide-details="auto"
                     ></v-text-field>
                 </v-flex>
+                <v-flex class="xs12 sm4 mb-6 px-sm-2">
+                    <v-text-field
+                        outlined
+                        dense
+                        v-model="settings.emails.search_tour_form"
+                        :readonly="isLoading"
+                        :label="$t('labels.searchTourFormEmail')"
+                        hide-details="auto"
+                    ></v-text-field>
+                </v-flex>
             </v-layout>
 
             <v-divider />
@@ -63,7 +73,8 @@ export default {
                 emails: {
                     request_form: '',
                     contact_form: '',
-                    order_form: ''
+                    order_form: '',
+                    search_tour_form: ''
                 }
             }
         }

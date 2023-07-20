@@ -50,6 +50,15 @@
                 <template  v-if="order.type === 3">
                     <div>{{ $t('labels.userEmail') }}: {{ order.content.email }}</div>
                 </template>
+
+                <template v-if="order.type === 4">
+                    <h5>{{ $t('titles.client') }}</h5>
+                    <div>{{ $t('labels.userName') }}: {{ order.content?.name }}</div>
+                    <div>{{ $t('labels.userPhone') }}: {{ order.content?.phone }}</div>
+                    <div>{{ $t('labels.userEmail') }}: {{ order.content?.email }}</div>
+                    <div>{{ $t('labels.callTime') }}: {{ order.content?.time }}</div>
+                    <div>{{ $t('labels.note') }}: {{ order.content?.text }}</div>
+                </template>
             </v-card-text>
         </v-card>
     </v-dialog>

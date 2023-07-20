@@ -18,14 +18,11 @@
 {{--            @endif--}}
 
             <li>
-                <form role="search" action="{{ route('page', 'blog') }}" method="get">
-                    <div class="input-group">
-                        <input type="text" name="search" class="form-control" value="{{ request('search') }}" placeholder="{{ __('Search') }}">
-                        <div class="input-group-btn">
-                            <button type="submit"><span class="icon"><i class="fa fa-search"></i></span></button>
-                        </div>
-                    </div>
-                </form>
+                <div class="input-group">
+                    <button id="searchTourButton" class="btn-form" style="background: #ffb600; height: 40px; padding: 0 20px; margin: 0;width: 100%">
+                        {{ __('Search tour') }}
+                    </button>
+                </div>
             </li>
         </ul>
     </nav>

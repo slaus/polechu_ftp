@@ -8,6 +8,7 @@
                 <v-tab>{{ $t('tabs.tourForm') }}</v-tab>
                 <v-tab>{{ $t('tabs.contactFrom') }}</v-tab>
                 <v-tab>{{ $t('tabs.subscribeForm') }}</v-tab>
+                <v-tab>{{ $t('tabs.searchTourForm') }}</v-tab>
             </v-tabs>
 
             <OrdersTableComponent :type="tab + 1" />

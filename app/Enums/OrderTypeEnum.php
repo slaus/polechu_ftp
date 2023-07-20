@@ -12,6 +12,8 @@ enum OrderTypeEnum: int
 
     case SUBSCRIBE_FORM = 3;
 
+    case SEARCH_FORM = 4;
+
     /**
      * @throws Exception
      */

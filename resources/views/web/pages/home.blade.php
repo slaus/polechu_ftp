@@ -67,7 +67,6 @@
     @endif
 
     <div id="app">
-
         <div class="bot-home-text onStep" data-animation="fadeInUp" data-time="1200">
             <div class="container">
                 <find-tours-component></find-tours-component>

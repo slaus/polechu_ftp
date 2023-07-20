@@ -13,6 +13,16 @@
     "The field is required": "Поле обов'язкове для заповнення",
     "The name field is required": "Поле ім'я обов'язкове для заповнення",
     "The email field is required": "Поле email обов'язкове для заповнення",
+    "The phone field is required": "Поле телефон обов'язкове для заповнення",
     "The text field is required": "Поле тексту обов'язкове для заповнення",
-    "Wrong email format": "Не вірний формат email"
+    "Wrong email format": "Не вірний формат email",
+    "Search tour": "Підберіть мені тур",
+    "Application for selecting a tour": "Заявка на підбір туру",
+    "Name *": "Ваше імʼя *",
+    "Email *": "E-mail *",
+    "Phone *": "Ваш телефон *",
+    "Note": "Побажання до туру",
+    "Send request search tour": "Відправити заявку",
+    "Thank you. Your message has been sent": "Дякуємо! Ваш запит успішно відправлений",
+    "Error, email not sent": "Помилка відправлення запиту"
 }
