@@ -56,7 +56,6 @@
                     <div>{{ $t('labels.userName') }}: {{ order.content?.name }}</div>
                     <div>{{ $t('labels.userPhone') }}: {{ order.content?.phone }}</div>
                     <div>{{ $t('labels.userEmail') }}: {{ order.content?.email }}</div>
-                    <div>{{ $t('labels.callTime') }}: {{ order.content?.time }}</div>
                     <div>{{ $t('labels.note') }}: {{ order.content?.text }}</div>
                 </template>
             </v-card-text>
