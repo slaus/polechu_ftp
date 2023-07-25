@@ -24,5 +24,6 @@
     "Note": "Побажання до туру",
     "Send request search tour": "Відправити заявку",
     "Thank you. Your message has been sent": "Дякуємо! Ваш запит успішно відправлений",
-    "Error, email not sent": "Помилка відправлення запиту"
+    "Error, email not sent": "Помилка відправлення запиту",
+    "Wrong phone format": "Телефон має містити не менше 10-ти цифр"
 }

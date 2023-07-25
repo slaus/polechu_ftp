@@ -61,6 +61,7 @@
                 const bannerItems = document.querySelectorAll('.banner-item');
                 Array.from(bannerItems).forEach(item => {
                     item.style.background = 'url("' + item.getAttribute('data-bg-src') + '")';
+                    item.style.backgroundSize = 'cover';
                 });
             }, false);
         </script>
