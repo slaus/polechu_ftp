@@ -27,7 +27,7 @@ class SearchTourOrderRequest extends FormRequest
             'tour.town_from' => ['required', 'string'],
             'client' => ['required', 'array'],
             'client.name' => ['required', 'string'],
-            'client.phone' => ['required', 'string'],
+            'client.phone' => ['required', 'regex:/^([0-9\s\-\+\(\)]*)$/', 'min:10'],
             'client.email' => ['required', 'email'],
             'client.time' => ['required', 'string'],
             'client.note' => ['nullable', 'string'],
@@ -40,6 +40,8 @@ class SearchTourOrderRequest extends FormRequest
             'tour.*.required' => __('The field is required'),
             'client.*.required' => __('The field is required'),
             'client.*.email' => __('Wrong email format'),
+            'client.phone.regex' => __('Wrong phone format'),
+            'client.phone.min' => __('Wrong phone format'),
         ];
     }
 }
