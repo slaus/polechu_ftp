@@ -59,7 +59,7 @@ class SearchTourController extends Controller
     {
         $payload = $request->validated();
 
-        $commandService = new CommandOrderService($request->user());
+        $commandService = new CommandOrderService();
         $commandService->store([
             'type' => OrderTypeEnum::TOUR_FORM->value,
             'title' => $payload['client']['name'] . ' (' . $payload['client']['email'] . ')',

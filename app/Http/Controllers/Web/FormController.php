@@ -21,7 +21,7 @@ class FormController extends Controller
     {
         $payload = $request->validated();
 
-        $commandService = new CommandOrderService($request->user());
+        $commandService = new CommandOrderService();
         $commandService->store([
             'type' => OrderTypeEnum::SUBSCRIBE_FORM->value,
             'title' => $payload['email'],
@@ -46,7 +46,7 @@ class FormController extends Controller
     {
         $payload = $request->validated();
 
-        $commandService = new CommandOrderService($request->user());
+        $commandService = new CommandOrderService();
         $commandService->store([
             'type' => OrderTypeEnum::CONTACT_FORM->value,
             'title' => $payload['name'] . ' (' . $payload['email'] . ')',
@@ -71,7 +71,7 @@ class FormController extends Controller
     {
         $payload = $request->validated();
 
-        $commandService = new CommandOrderService($request->user());
+        $commandService = new CommandOrderService();
         $commandService->store([
             'type' => OrderTypeEnum::SEARCH_FORM->value,
             'title' => $payload['name'] . ' (' . $payload['email'] . ')',

@@ -3,15 +3,10 @@
 namespace App\Services\Order;
 
 use App\Models\Order;
-use App\Models\User;
 
 class CommandOrderService
 {
     private readonly Order $order;
-
-    public function __construct(
-        private readonly User $auth
-    ) {}
 
     public function store(array $data): void
     {
