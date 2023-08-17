@@ -159,6 +159,8 @@ if (searchTourForm) {
                         formErrorsContainer.style.display = 'none';
                         formErrorsContainer.innerHTML = '';
                     }, 3000);
+
+                    fbq('track', 'CompleteRegistration');
                 }
 
                 if (response.data.status === 'error') {

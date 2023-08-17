@@ -386,6 +386,8 @@ export default {
             this.$api.get('v1/tours/tours', { params: this.filter }).then(response => {
                 if (response.data) {
                     this.$store.commit('tourStore/resultSearchTours', response.data);
+
+                    fbq('track', 'Lead');
                 }
             }).finally(() => {
                 this.isLoading = false;

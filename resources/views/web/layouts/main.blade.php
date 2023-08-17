@@ -10,6 +10,8 @@
         <link rel="apple-touch-icon" href="{{ image_uri(settings('logo.light'), 'favicon-apple-touch-180x180') }}" />
     @endif
 
+    <meta name="facebook-domain-verification" content="3ubnmrtiois9euhsphr1rytvwmqa3z" />
+
     <style>
         /* preloader */
         .preloader {
@@ -93,6 +95,24 @@
 
         gtag('config', 'G-K5V82FJLBW');
     </script>
+
+    <!-- Meta Pixel Code -->
+    <script>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+            n.queue=[];t=b.createElement(e);t.async=!0;
+            t.src=v;s=b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t,s)}(window, document,'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '612229047662179');
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+                   src="https://www.facebook.com/tr?id=612229047662179&ev=PageView&noscript=1"
+        /></noscript>
+    <!-- End Meta Pixel Code -->
 </head>
 <body>
 <div class="bg-preloader-white"></div>
