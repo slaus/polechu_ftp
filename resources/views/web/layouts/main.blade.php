@@ -336,7 +336,7 @@
 <script src="{{ asset('web/rs-plugin/js/jquery.themepunch.revolution.min.js') }}"></script>
 <script src="{{ asset('web/js/on3step.js') }}"></script>
 <script src="{{ asset('web/js/plugin-set.js') }}"></script>
-<script src="{{ asset('js/app.js') }}?v=1"></script>
+<script src="{{ asset('js/app.js') }}?v=2"></script>
 
 @stack('scripts')
 </body>
