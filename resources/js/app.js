@@ -187,7 +187,7 @@ if (searchTourForm) {
 }
 
 const modal = document.getElementById('modal');
-const searchTourMainButton = document.getElementById('searchTourButtonMain');
+const searchTourMainButton = document.getElementById('searchTourMainButton');
 const searchTourButton = document.getElementById('searchTourButton');
 const closeModalButton = document.getElementById('closeModalButton');
 
