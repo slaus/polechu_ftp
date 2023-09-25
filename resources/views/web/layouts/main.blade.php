@@ -81,6 +81,31 @@
             left: -3px;
             border-radius: 999px;
         }
+
+        .search-tour-button {
+            display: none;
+        }
+
+        @media screen and (max-width: 1198px) {
+            .mobile-header {
+                display: flex;
+                justify-content: space-around;
+                align-content: center;
+            }
+
+            .mobile-header .navbar-toggle {
+                display: block;
+            }
+
+            .mobile-header .navbar-brand {
+                display: block;
+            }
+
+            .mobile-header > .search-tour-button {
+                display: block;
+                padding: 20px 0 0 0;
+            }
+        }
     </style>
 
     @stack('meta')

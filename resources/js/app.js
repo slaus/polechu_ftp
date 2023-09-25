@@ -187,10 +187,16 @@ if (searchTourForm) {
 }
 
 const modal = document.getElementById('modal');
+const searchTourMainButton = document.getElementById('searchTourButtonMain');
 const searchTourButton = document.getElementById('searchTourButton');
 const closeModalButton = document.getElementById('closeModalButton');
 
 if (modal) {
+    if (searchTourMainButton) {
+        searchTourMainButton.addEventListener('click', e => {
+            modal.style.display = 'table';
+        });
+    }
     if (searchTourButton) {
         searchTourButton.addEventListener('click', e => {
             modal.style.display = 'table';

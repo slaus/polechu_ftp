@@ -39,12 +39,18 @@
 
     <div class="navbar-default-white navbar-fixed-top">
         <div class="container">
-            <div class="row">
+            <div class="row mobile-header">
                 <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
                     <span class="icon icon-bar"></span>
                     <span class="icon icon-bar"></span>
                     <span class="icon icon-bar"></span>
                 </button>
+
+                <div class="search-tour-button">
+                    <button id="searchTourMainButton" class="btn-form" style="background: #ffb600; height: 40px; padding: 0 20px; margin: 0;width: 100%">
+                        {{ __('Search tour') }}
+                    </button>
+                </div>
 
                 <a class="navbar-brand white" href="{{ route('page') }}">
                     @if (! empty(settings('logo.light')))
