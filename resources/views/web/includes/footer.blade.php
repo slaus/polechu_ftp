@@ -50,27 +50,49 @@
 <footer class="white">
     <div class="container">
         <div class="row">
-            <div class="col-md-4" style="color: #ffb600; text-shadow: none;">
+            <div class="col-md-3 copyright-container" style="color: #ffb600; text-shadow: none;">
                 {!! __('Powered by') !!} <a href="https://pandateam.net.ua/" style="color: #ffb600; text-shadow: none;" rel="nofollow" target="_blank">Pandateam</a>
             </div>
 
-            <div class="col-md-4">
-                @if (! empty(settings('links.pay_page', [])))
-                    <a href="{{ translation(settings('links.pay_page', [])) }}">
-                        <img loading="lazy" src="{{ asset('images/pay-logo.svg') }}" height="25" style="display: block; margin: 0 auto;" alt="pay logo" />
+            <div class="col-md-6 payment-container" style="display: flex; justify-content: center; align-items: center;">
+                @if (! empty(settings('links.pay_visa_page', [])))
+                    <a href="{{ translation(settings('links.pay_visa_page', [])) }}" style="display: block; margin: 0 5px;">
+                        <img loading="lazy" src="{{ asset('images/visa.png') }}" height="25" style="display: block;" alt="pay visa" />
+                    </a>
+                @endif
+
+                @if (! empty(settings('links.pay_master_card_page', [])))
+                    <a href="{{ translation(settings('links.pay_master_card_page', [])) }}" style="display: block; margin: 0 5px;">
+                        <img loading="lazy" src="{{ asset('images/master-card.png') }}" height="25" style="display: block;" alt="pay master card" />
+                    </a>
+                @endif
+
+                @if (! empty(settings('links.pay_usdt_page', [])))
+                    <a href="{{ translation(settings('links.pay_usdt_page', [])) }}" style="display: block; margin: 0 5px;">
+                        <img loading="lazy" src="{{ asset('images/usdt.png') }}" height="25" style="display: block;" alt="pay master card" />
+                    </a>
+                @endif
+
+                @if (! empty(settings('links.pay_cash_page', [])))
+                    <a href="{{ translation(settings('links.pay_cash_page', [])) }}" style="display: block; margin: 0 5px;">
+                        <img loading="lazy" src="{{ asset('images/cash.png') }}" height="25" style="display: block; margin: 0 5px;" alt="pay master card" />
+                    </a>
+                @endif
+
+                @if (! empty(settings('links.pay_white_pay_page', [])))
+                    <a href="{{ translation(settings('links.pay_white_pay_page', [])) }}" style="display: block; margin: 0 5px;">
+                        <img loading="lazy" src="{{ asset('images/pay-logo.svg') }}" height="25" alt="pay logo" />
                     </a>
                 @endif
             </div>
 
-            <div class="col-md-4">
-                <div class="right">
-                    <div class="social-icons">
-                        @foreach(settings('socials', []) as $item)
-                            <a href="{{ $item['url'] }}" title="{{ translation($item['name'] ?? []) }}" rel="nofollow" target="_blank">
-                                <span class="{{ $item['icon'] }} footer-icon"></span>
-                            </a>
-                        @endforeach
-                    </div>
+            <div class="col-md-3 social-icons-container">
+                <div class="social-icons">
+                    @foreach(settings('socials', []) as $item)
+                        <a href="{{ $item['url'] }}" title="{{ translation($item['name'] ?? []) }}" rel="nofollow" target="_blank">
+                            <span class="{{ $item['icon'] }} footer-icon"></span>
+                        </a>
+                    @endforeach
                 </div>
             </div>
         </div>

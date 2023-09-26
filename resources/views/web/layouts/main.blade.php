@@ -86,6 +86,10 @@
             display: none;
         }
 
+        .social-icons-container {
+            text-align: right!important;
+        }
+
         @media screen and (max-width: 1198px) {
             .mobile-header {
                 display: flex;
@@ -104,6 +108,18 @@
             .mobile-header > .search-tour-button {
                 display: block;
                 padding: 20px 0 0 0;
+            }
+
+            .social-icons-container {
+                text-align: center!important;
+            }
+
+            .payment-container {
+                padding: 15px 0!important;
+            }
+
+            .copyright-container {
+                text-align: center!important;
             }
         }
     </style>

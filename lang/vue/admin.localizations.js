@@ -157,7 +157,11 @@ export default {
             excludeCountriesHint: 'Список id країн через кому: 109,10,123',
             excludeTownsHint: 'Список id міст через кому: 2319,140,23',
             companyName: 'Назва компанії',
-            payPageLink: 'Посилання на сторінку оплати',
+            payPageLinkVisa: 'Посилання на сторінку оплати Visa',
+            payPageLinkMasterCard: 'Посилання на сторінку оплати MasterCard',
+            payPageLinkCash: 'Посилання на сторінку оплати Cash',
+            payPageLinkUsdT: 'Посилання на сторінку оплати USDT',
+            payPageLinkWhitePay: 'Посилання на сторінку оплати White Pay',
         },
         tabs: {
             main: 'Головні',

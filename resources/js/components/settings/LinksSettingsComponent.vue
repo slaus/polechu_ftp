@@ -4,8 +4,36 @@
             <v-layout wrap class="my-4">
                 <v-flex class="xs12 sm12 mb-6 px-sm-2">
                     <MultiLangTextField
-                        :value.sync="settings.links.pay_page"
-                        :label="$t('labels.payPageLink')"
+                        :value.sync="settings.links.pay_white_pay_page"
+                        :label="$t('labels.payPageLinkWhitePay')"
+                        :readonly="isLoading"
+                    />
+                </v-flex>
+                <v-flex class="xs12 sm12 mb-6 px-sm-2">
+                    <MultiLangTextField
+                        :value.sync="settings.links.pay_visa_page"
+                        :label="$t('labels.payPageLinkVisa')"
+                        :readonly="isLoading"
+                    />
+                </v-flex>
+                <v-flex class="xs12 sm12 mb-6 px-sm-2">
+                    <MultiLangTextField
+                        :value.sync="settings.links.pay_master_card_page"
+                        :label="$t('labels.payPageLinkMasterCard')"
+                        :readonly="isLoading"
+                    />
+                </v-flex>
+                <v-flex class="xs12 sm12 mb-6 px-sm-2">
+                    <MultiLangTextField
+                        :value.sync="settings.links.pay_cash_page"
+                        :label="$t('labels.payPageLinkCash')"
+                        :readonly="isLoading"
+                    />
+                </v-flex>
+                <v-flex class="xs12 sm12 mb-6 px-sm-2">
+                    <MultiLangTextField
+                        :value.sync="settings.links.pay_usdt_page"
+                        :label="$t('labels.payPageLinkUsdT')"
                         :readonly="isLoading"
                     />
                 </v-flex>
@@ -41,7 +69,11 @@ export default {
             group: 'subscribe',
             settings: {
                 links: {
-                    pay_page: null,
+                    pay_white_pay_page: null,
+                    pay_visa_page: null,
+                    pay_master_card_page: null,
+                    pay_cash_page: null,
+                    pay_usdt_page: null
                 }
             }
         }
