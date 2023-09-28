@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\V1\AuthController;
 use App\Http\Controllers\Api\V1\CountryController;
+use App\Http\Controllers\Api\V1\EmployeeController;
 use App\Http\Controllers\Api\V1\MenuController;
 use App\Http\Controllers\Api\V1\OrderController;
 use App\Http\Controllers\Api\V1\PageController;
@@ -30,6 +31,7 @@ Route::group(['prefix' => 'v1'], function() {
         Route::get('pages/list', [PageController::class, 'list']);
         Route::apiResource('pages', PageController::class);
         Route::apiResource('tours', TourController::class);
+        Route::apiResource('employees', EmployeeController::class);
         Route::apiResource('posts/tags', TagController::class)->only(['index']);
         Route::apiResource('posts', PostController::class);
         Route::apiResource('countries', CountryController::class);

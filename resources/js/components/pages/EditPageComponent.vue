@@ -54,6 +54,10 @@
                             <BlogContent :value.sync="page.content" />
                         </template>
 
+                        <template v-else-if="page.slug === 'team'">
+                            <TeamContent :value.sync="page.content" />
+                        </template>
+
                         <template v-else-if="page.slug === 'contacts'">
                             <ContactsContent :value.sync="page.content" />
                         </template>
@@ -94,6 +98,7 @@ import AboutContent from "./contents/AboutContent.vue";
 import BlogContent from "./contents/BlogContent.vue";
 import ContactsContent from "./contents/ContactsContent.vue";
 import DefaultContent from "./contents/DefaultContent.vue";
+import TeamContent from "./contents/TeamContent.vue";
 
 export default {
     name: "EditPageComponent",
@@ -108,7 +113,8 @@ export default {
         AboutContent,
         BlogContent,
         ContactsContent,
-        DefaultContent
+        DefaultContent,
+        TeamContent
     },
     props: {
         isActive: {

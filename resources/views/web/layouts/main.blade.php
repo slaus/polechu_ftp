@@ -106,8 +106,8 @@
             }
 
             .mobile-header > .search-tour-button {
-                display: block;
-                padding: 20px 0 0 0;
+                display: flex;
+                padding: 25px 0 0 0;
             }
 
             .social-icons-container {
@@ -126,6 +126,14 @@
 
     @stack('meta')
     @stack('styles')
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-TQG3PR8T');</script>
+    <!-- End Google Tag Manager -->
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-K5V82FJLBW"></script>
@@ -147,6 +155,24 @@
             t.src=v;s=b.getElementsByTagName(e)[0];
             s.parentNode.insertBefore(t,s)}(window, document,'script',
             'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '337878802027751');
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+                   src="https://www.facebook.com/tr?id=337878802027751&ev=PageView&noscript=1"
+        /></noscript>
+    <!-- End Meta Pixel Code -->
+
+    <!-- Meta Pixel Code -->
+    <script>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+            n.queue=[];t=b.createElement(e);t.async=!0;
+            t.src=v;s=b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t,s)}(window, document,'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
         fbq('init', '612229047662179');
         fbq('track', 'PageView');
     </script>
@@ -156,6 +182,11 @@
     <!-- End Meta Pixel Code -->
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TQG3PR8T"
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
 <div class="bg-preloader-white"></div>
 <div class="preloader-white">
     <div class="mainpreloader">
@@ -375,7 +406,7 @@
 <script src="{{ asset('web/plugin/sticky.js') }}"></script>
 <script src="{{ asset('web/js/jquery.dateselect.js') }}"></script>
 <script src="{{ asset('web/rs-plugin/js/jquery.themepunch.revolution.min.js') }}"></script>
-<script src="{{ asset('web/js/on3step.js') }}"></script>
+<script src="{{ asset('web/js/on3step.js') }}?v=1"></script>
 <script src="{{ asset('web/js/plugin-set.js') }}"></script>
 <script src="{{ asset('js/app.js') }}?v=3"></script>
 

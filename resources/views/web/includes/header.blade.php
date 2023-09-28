@@ -46,10 +46,22 @@
                     <span class="icon icon-bar"></span>
                 </button>
 
-                <div class="search-tour-button">
-                    <button id="searchTourMainButton" class="btn-form" style="background: #ffb600; height: 40px; padding: 0 20px; margin: 0;width: 100%">
+                <div class="search-tour-button" style="max-width: 200px;">
+                    <button id="searchTourMainButton" class="btn-form" style="background: #ffb600; line-height: 24px; height: 30px; padding: 0 5px; margin: 0; font-size: 10px">
                         {{ __('Search tour') }}
                     </button>
+
+                    @if(! empty(settings('company.phone')))
+                        <a href="tel:{{ settings('company.phone') }}" class="btn-form" style="background: #ffb600; line-height: 24px; height: 30px; padding: 0 5px; margin: 0 0 0 5px; width: 30px; color: #ffffff" title="{{ settings('company.phone') }}" rel="nofollow">
+                            <img src="/images/phone.svg" width="15" alt="phone" />
+                        </a>
+                    @endif
+
+                    @if(! empty(settings('company.email')))
+                        <a href="mailto:{{ settings('company.email') }}" class="btn-form" style="background: #ffb600; line-height: 24px; height: 30px; padding: 0 5px; margin: 0 0 0 5px; width: 30px; color: #ffffff" title="{{ settings('company.email') }}" rel="nofollow">
+                            <img src="/images/mail.svg" width="15" alt="mail" />
+                        </a>
+                    @endif
                 </div>
 
                 <a class="navbar-brand white" href="{{ route('page') }}">

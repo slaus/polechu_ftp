@@ -23,6 +23,7 @@ export default {
             fm: 'Файли',
             users: 'Користувачі',
             settings: 'Налаштування',
+            employees: 'Команда',
         },
         titles: {
             pageNotFound: 'Сторінка не знайдена',
@@ -61,6 +62,9 @@ export default {
             client: 'Клієнт',
             editCountry: 'Редагування країни - {country}',
             newCountry: 'Нова країна',
+            employees: 'Команда',
+            newEmployee: 'Новий співробітник',
+            editEmployee: 'Редагування співробітника - {employee}',
         },
         columns: {
             pageName: 'Назва сторінки',
@@ -73,6 +77,7 @@ export default {
             createdAt: 'Створено',
             title: 'Заголовок',
             countryName: 'Назва країни',
+            employeeName: 'ПІБ',
         },
         labels: {
             userName: 'І\'мя',
@@ -162,6 +167,9 @@ export default {
             payPageLinkCash: 'Посилання на сторінку оплати Cash',
             payPageLinkUsdT: 'Посилання на сторінку оплати USDT',
             payPageLinkWhitePay: 'Посилання на сторінку оплати White Pay',
+            employeeName: 'ПІБ',
+            employeePosition: 'Посада',
+            photo: 'Фото',
         },
         tabs: {
             main: 'Головні',

@@ -3,11 +3,13 @@
 namespace App\Providers;
 
 use App\Models\Country;
+use App\Models\Employee;
 use App\Models\Page;
 use App\Models\Post;
 use App\Models\Setting;
 use App\Models\Tour;
 use App\Observers\CountryObserver;
+use App\Observers\EmployeeObserver;
 use App\Observers\PageObserver;
 use App\Observers\PostObserver;
 use App\Observers\SettingObserver;
@@ -31,6 +33,7 @@ class EventServiceProvider extends ServiceProvider
         Post::observe(PostObserver::class);
         Country::observe(CountryObserver::class);
         Setting::observe(SettingObserver::class);
+        Employee::observe(EmployeeObserver::class);
     }
 
     public function shouldDiscoverEvents(): bool

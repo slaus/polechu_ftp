@@ -15,6 +15,7 @@ import countryStore from "./modules/country-store";
 import orderStore from "./modules/order-store";
 import menuStore from "./modules/menu-store";
 import systemStore from "./modules/system-store";
+import employeeStore from "./modules/employee-store";
 
 Vue.use(Vuex);
 
@@ -44,7 +45,8 @@ export default new Vuex.Store({
         countryStore,
         orderStore,
         menuStore,
-        systemStore
+        systemStore,
+        employeeStore
     },
     strict: false,
     plugins: [

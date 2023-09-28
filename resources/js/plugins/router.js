@@ -11,6 +11,7 @@ import UsersPage from "../pages/admin/UsersPage";
 import CountriesPage from "../pages/admin/CountriesPage.vue";
 import OrdersPage from "../pages/admin/OrdersPage.vue";
 import SettingsPage from "../pages/admin/SettingsPage";
+import EmployeesPage from "../pages/admin/EmployeesPage.vue";
 
 const router = new VueRouter({
     mode: 'history',
@@ -34,6 +35,11 @@ const router = new VueRouter({
                     path: 'pages',
                     name: 'admin.pages',
                     component: PagesPage,
+                },
+                {
+                    path: 'employees',
+                    name: 'admin.employees',
+                    component: EmployeesPage,
                 },
                 {
                     path: 'tours',

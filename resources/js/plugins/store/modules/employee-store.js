@@ -6,19 +6,16 @@ const state = {
     totalCount: 0,
     itemsPerPage: 10,
     currentPage: 1,
-    post: {
+    employee: {
         id: 0,
-        slug: '',
         name: null,
-        image: '',
+        position: null,
         description: null,
-        content: null,
-        author: null,
-        seo: null,
-        visibility: true,
-        tags: []
-    },
-    listTags: []
+        details: null,
+        image: '',
+        order: 0,
+        visibility: true
+    }
 };
 const getters = {
     isLoading(state) {
@@ -35,9 +32,6 @@ const getters = {
     },
     currentPage(state) {
         return state.currentPage
-    },
-    listTags(state) {
-        return state.listTags
     }
 };
 const actions = {
@@ -45,7 +39,7 @@ const actions = {
         try {
             commit('isLoading', true);
 
-            return Vue.prototype.$api.get('v1/posts', { params: params }).then(response => {
+            return Vue.prototype.$api.get('v1/employees', { params: params }).then(response => {
                 if (response.data) {
                     commit('listWithPaginate', response.data.data);
                     commit('totalCount', response.data.meta.total);
@@ -61,13 +55,13 @@ const actions = {
             console.log(error);
         }
     },
-    async loadPost({ commit }, id) {
+    async loadEmployee({ commit }, id) {
         try {
             commit('isLoading', true);
 
-            return Vue.prototype.$api.get('v1/posts/' + id).then(response => {
+            return Vue.prototype.$api.get('v1/employees/' + id).then(response => {
                 if (response.data) {
-                    commit('post', response.data);
+                    commit('employee', response.data);
                 }
 
                 return response;
@@ -78,13 +72,13 @@ const actions = {
             console.log(error);
         }
     },
-    async savePost({ commit, state, dispatch }, data) {
+    async saveEmployee({ commit, state, dispatch }, data) {
         try {
             commit('isLoading', true);
 
-            return Vue.prototype.$api.post('v1/posts', data).then(response => {
+            return Vue.prototype.$api.post('v1/employees', data).then(response => {
                 if (response.data) {
-                    commit('post', response.data);
+                    commit('employee', response.data);
                 }
 
                 return response;
@@ -95,13 +89,13 @@ const actions = {
             console.log(error);
         }
     },
-    async updatePost({ commit, state, dispatch }, data) {
+    async updateEmployee({ commit, state, dispatch }, data) {
         try {
             commit('isLoading', true);
 
-            return Vue.prototype.$api.put('v1/posts/' + data.id, data).then(response => {
+            return Vue.prototype.$api.put('v1/employees/' + data.id, data).then(response => {
                 if (response.data) {
-                    commit('post', response.data);
+                    commit('employee', response.data);
                 }
 
                 return response;
@@ -112,31 +106,12 @@ const actions = {
             console.log(error);
         }
     },
-    async deletePost({ commit, state, dispatch }, id) {
+    async deleteEmployee({ commit, state, dispatch }, id) {
         try {
             commit('isLoading', true);
 
-            return Vue.prototype.$api.delete('v1/posts/' + id).then(response => {
-                commit('resetPost');
-
-                return response;
-            }).finally(() => {
-                commit('isLoading', false);
-            });
-        } catch (error) {
-            console.log(error);
-        }
-    },
-    async listTags({ commit }, params) {
-        try {
-            commit('isLoading', true);
-
-            params.type = 'post';
-
-            return Vue.prototype.$api.get('v1/posts/tags', { params: params }).then(response => {
-                if (response.data) {
-                    commit('listTags', response.data);
-                }
+            return Vue.prototype.$api.delete('v1/employees/' + id).then(response => {
+                commit('resetEmployee');
 
                 return response;
             }).finally(() => {
@@ -163,23 +138,18 @@ const mutations = {
     currentPage(state, payload) {
         state.currentPage = payload;
     },
-    post(state, payload) {
-        state.post = payload;
+    employee(state, payload) {
+        state.employee = payload;
     },
-    resetPost(state, payload) {
-        state.post.id = 0;
-        state.post.slug = '';
-        state.post.name = null;
-        state.post.image = '';
-        state.post.description = null;
-        state.post.content = null;
-        state.post.author = null;
-        state.post.seo = null;
-        state.post.visibility = true;
-        state.post.tags = [];
-    },
-    listTags(state, payload) {
-        state.listTags = payload;
+    resetEmployee(state, payload) {
+        state.employee.id = 0;
+        state.employee.name = null;
+        state.employee.position = null;
+        state.employee.description = null;
+        state.employee.details = null;
+        state.employee.image = '';
+        state.employee.order = 0;
+        state.employee.visibility = true;
     }
 };
 

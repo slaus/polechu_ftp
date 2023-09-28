@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Employee;
 use App\Models\Post;
 use App\Models\Tag;
 use App\Models\Tour;
@@ -17,6 +18,21 @@ if (! function_exists('tours')) {
         });
 
         return $tours ?? [];
+    }
+
+}
+
+if (! function_exists('employees')) {
+
+    function employees(): mixed {
+        $employees = Cache::rememberForever('employees', function () {
+            return Employee::where('visibility', true)
+                ->orderBy('order')
+                ->get()
+                ->toArray();
+        });
+
+        return $employees ?? [];
     }
 
 }
