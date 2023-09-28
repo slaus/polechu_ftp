@@ -209,11 +209,11 @@
 <!-- font awesome CSS -->
 <link href="{{ asset('web/font-awesome/css/font-awesome.css') }}" rel="stylesheet">
 <!-- on3step CSS -->
-<link href="{{ asset('web/css/animated-on3step.css') }}" rel="stylesheet">
-<link href="{{ asset('web/css/owl.carousel.css') }}" rel="stylesheet">
-<link href="{{ asset('web/css/owl.theme.css') }}" rel="stylesheet">
-<link href="{{ asset('web/css/owl.transitions.css') }}" rel="stylesheet">
-<link href="{{ asset('web/css/on3step-style.css') }}" rel="stylesheet">
+<link href="{{ asset('web/css/animated-on3step.css') }}?v=1" rel="stylesheet">
+<link href="{{ asset('web/css/owl.carousel.css') }}?v=1" rel="stylesheet">
+<link href="{{ asset('web/css/owl.theme.css') }}?v=1" rel="stylesheet">
+<link href="{{ asset('web/css/owl.transitions.css') }}?v=1" rel="stylesheet">
+<link href="{{ asset('web/css/on3step-style.css') }}?v=1" rel="stylesheet">
 <link href="{{ asset('web/css/queries-on3step.css') }}?v=1" media="all" rel="stylesheet" type="text/css">
 
 <style>
