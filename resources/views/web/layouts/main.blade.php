@@ -214,7 +214,7 @@
 <link href="{{ asset('web/css/owl.theme.css') }}" rel="stylesheet">
 <link href="{{ asset('web/css/owl.transitions.css') }}" rel="stylesheet">
 <link href="{{ asset('web/css/on3step-style.css') }}" rel="stylesheet">
-<link href="{{ asset('web/css/queries-on3step.css') }}" media="all" rel="stylesheet" type="text/css">
+<link href="{{ asset('web/css/queries-on3step.css') }}?v=1" media="all" rel="stylesheet" type="text/css">
 
 <style>
     strong {
