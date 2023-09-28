@@ -77,46 +77,6 @@
         <results-search-tours-component></results-search-tours-component>
     </div>
 
-    @if (! empty(tours((int) ($content['posts']['count'] ?? 3))))
-        <section class="whitepage">
-            <div class="container-fluid">
-                <div class="row">
-                    @if (! empty($content['tours']['title']) || ! empty($content['tours']['subtitle']))
-                        <div class="col-md-12">
-                            <div class="text-center">
-                                @if (! empty($content['tours']['title']))
-                                    <h2 class="title-h2 title-h">{{ translation($content['tours']['title']) }}</h2>
-                                    <span class="devider-center"></span>
-                                @endif
-
-                                @if (! empty($content['tours']['subtitle']))
-                                    <div class="title-h3 title-h">{{ translation($content['tours']['subtitle']) }}</div>
-                                @endif
-                            </div>
-                        </div>
-                    @endif
-
-                    @foreach(tours((int) ($content['posts']['count'] ?? 3)) as $tour)
-                        <div class="col-md-4">
-                            <div class="wrap-news onStep" data-animation="fadeInLeft" data-time="300">
-                                @if (! empty($tour['image']))
-                                    <img loading="lazy" alt="{{ translation($tour['name'] ?? []) }}" class="img-responsive" src="{{ image_uri($tour['image'], '540') }}">
-                                @endif
-                                <div class="title-h3 title-h">{{ translation($tour['name'] ?? []) }}</div>
-                                <p>{{ translation($tour['description'] ?? []) }}</p>
-                                <div class="preview-price">{!! translation($tour['price'] ?? []) !!}</div>
-                                <a class="link-class" href="{{ route('tours', $tour['slug']) }}">
-                                    {{ __('More detail') }}
-                                    <span class="devider"></span>
-                                </a>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-            </div>
-        </section>
-    @endif
-
     @if (! empty(posts((int) ($content['posts']['count'] ?? 10))))
         <section class="whitepage" style="padding-top: 0">
             <div class="container">

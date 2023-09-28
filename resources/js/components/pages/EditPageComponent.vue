@@ -19,7 +19,7 @@
 
             <v-card-text class="pa-3">
                 <v-layout wrap class="mt-4">
-                    <v-flex :class="protectPageIds.includes(id) ? 'sm12' : 'sm8'" class="xs12 px-0 px-sm-2 mb-4">
+                    <v-flex class="xs12 sm8 px-0 px-sm-2 mb-4">
                         <MultiLangTextField
                             :value.sync="page.name"
                             :label="$t('labels.pageName')"

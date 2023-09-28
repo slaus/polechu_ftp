@@ -43,7 +43,7 @@ export default {
             address: 'Адреса',
             tours: 'Тури',
             newTour: 'Новий тур',
-            editTour: 'Редагування туру - {post}',
+            editTour: 'Редагування туру - {tour}',
             newPost: 'Новий пост',
             editPost: 'Редагування посту - {post}',
             posts: 'Болг',
