@@ -105,27 +105,27 @@
                                                                 @foreach($employee['details']['contacts'] as $contact)
                                                                     @if (! empty($contact['type']))
                                                                         @if ($contact['type'] == 'facebook')
-                                                                            <a href="{{ $contact['value'] }}" class="contact-icon" target="_blank" rel="nofollow">
+                                                                            <a href="{{ $contact['value'] }}" title="{{ translation($contact['name'] ?? []) }}" class="contact-icon" target="_blank" rel="nofollow">
                                                                                 <i class="ti-facebook"></i>
                                                                             </a>
                                                                         @elseif ($contact['type'] == 'instagram')
-                                                                            <a href="{{ $contact['value'] }}" class="contact-icon" target="_blank" rel="nofollow">
+                                                                            <a href="{{ $contact['value'] }}" title="{{ translation($contact['name'] ?? []) }}" class="contact-icon" target="_blank" rel="nofollow">
                                                                                 <i class="ti-instagram"></i>
                                                                             </a>
                                                                         @elseif ($contact['type'] == 'phone')
-                                                                            <a href="tel:{{ $contact['value'] }}" class="contact-icon" rel="nofollow">
+                                                                            <a href="tel:{{ $contact['value'] }}" title="{{ translation($contact['name'] ?? []) }}" class="contact-icon" rel="nofollow">
                                                                                 <i class="ti-mobile"></i>
                                                                             </a>
                                                                         @elseif ($contact['type'] == 'email')
-                                                                            <a href="mailto:{{ $contact['value'] }}" class="contact-icon" rel="nofollow">
+                                                                            <a href="mailto:{{ $contact['value'] }}" title="{{ translation($contact['name'] ?? []) }}" class="contact-icon" rel="nofollow">
                                                                                 <i class="ti-email"></i>
                                                                             </a>
                                                                         @elseif ($contact['type'] == 'telegram')
-                                                                            <a href="https://t.me/{{ $contact['value'] }}" class="contact-icon" rel="nofollow">
+                                                                            <a href="https://t.me/{{ $contact['value'] }}" title="{{ translation($contact['name'] ?? []) }}" class="contact-icon" rel="nofollow">
                                                                                 <img src="/images/telegram.svg" alt="telegram" />
                                                                             </a>
                                                                         @elseif ($contact['type'] == 'viber')
-                                                                            <a href=viber://contact?number={{ $contact['value'] }}" class="contact-icon" rel="nofollow">
+                                                                            <a href=viber://contact?number={{ $contact['value'] }}" title="{{ translation($contact['name'] ?? []) }}" class="contact-icon" rel="nofollow">
                                                                                 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAACQElEQVR4nMXVSYiPYRgA8BnbWLIk2fclWS4O4yAXnJyEEjkoTsJFDYkURVlC4mDNxZI01kkOIgckS0mRg2QZu8aSIYefXj1/Xp//yDLluXzfs+/PW1HxPwCdMQ/7cA31aPQdGoN2NWTmotPvGG6JlXiNWsxHNXqjKpOrClp1yBwNnRVo0ZTxpHQKFzHkL7Ieiks4kQeTC2zB2bLMAMzGe1zGQrQp8NviHDZWFBj90YCBgbfDXnwIes9MtgMm4CRuoE/B1uDQ6ZsTl2F/hm/EYbTHZmzKMngb/RmO5bheJpODWJITTmNGhteXIkCvMNoq8NTcpXiSZCKTBQUHM1GXE25hRIY/wID4n4Y7qIwMHmJyOElZTkzNLTgYjZs54Tm6ZXiqf038P8OkjDc+AkiZvEFHvCs46J70csLnUgkCHxVl6hjO1hQMzCr3zfit8SknpNFrXxDaha1R56epLBmvMg+oCOiRdHLCveJyoQvuRw/GhZO1qVy4m8oSE/ZthH/VgzpMKSM4JnowPc079kS/pibD4aChjN6sdBVywmLsaCLdMZHJtuJBi6X7UEbnUGlISoQUzcty6Wbl2hmzvySNMPrhCHZXZJBK/dMmB2M1zhS3MgeMTAZjTB9jQ7o/hVt0Hut/UMxGqzaO1b9c02NNBhnvQQ1e4MAvjHWIpo9NZwLH8SpuU/n3oGAgLZgMH4RH2Yv2Lkp0JRZxTtL505S/OkBX3MaiPzLwGw4+YhguYF2zGg8Hq+JMb0+nodkdNBd8ATPWf0oj34gaAAAAAElFTkSuQmCC" />
                                                                             </a>
                                                                         @endif
