@@ -24,6 +24,17 @@
         height: 20px;
         margin-bottom: 6px;
     }
+
+    .team-wrap {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .team-item {
+        width: 350px;
+        margin: 15px;
+    }
+
 </style>
 @endpush
 
@@ -83,9 +94,9 @@
                     @endif
 
                     <div class="onStep" data-animation="fadeInUp" data-time="300">
-                        <div class="owl-carousel" id="owl-team">
+                        <div class="team-wrap">
                             @foreach(employees() as $employee)
-                                <div class="item">
+                                <div class="team-item">
                                     <div class="team" style="background-image:url('{{ $employee['image'] }}')">
                                         <div class="hovereffect">
                                             <div>
