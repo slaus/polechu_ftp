@@ -11,6 +11,7 @@ export default {
             addBannerItem: 'Додати елемент',
             addImage: 'Додати зображення',
             clearCache: 'Скинути кеш',
+            addContact: 'Додати контакт',
         },
         menu: {
             dashboard: 'Dashboard',
@@ -170,6 +171,11 @@ export default {
             employeeName: 'ПІБ',
             employeePosition: 'Посада',
             photo: 'Фото',
+            type: 'Тип',
+            facebook: 'Facebook',
+            instagram: 'Instagram',
+            telegram: 'Telegram',
+            viber: 'Viber',
         },
         tabs: {
             main: 'Головні',
