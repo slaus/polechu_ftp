@@ -8,7 +8,7 @@
             >{{ locale.name }}</v-tab>
         </v-tabs>
 
-        <div ref="code" class="fill-height" style="height: 200px"></div>
+        <div ref="code" class="fill-height" ></div>
     </div>
 </template>
 
@@ -24,34 +24,6 @@ export default {
         value: {
             type: Object,
             default: {}
-        },
-        label: {
-            type: String,
-            default: ''
-        },
-        placeholder: {
-            type: String,
-            default: ''
-        },
-        errorMessages: {
-            type: String,
-            default: ''
-        },
-        readonly: {
-            type: Boolean,
-            default: false
-        },
-        disabled: {
-            type: Boolean,
-            default: false
-        },
-        rows: {
-            type: String,
-            default: '5'
-        },
-        noResize: {
-            type: Boolean,
-            default: false
         }
     },
     data() {
@@ -85,13 +57,15 @@ export default {
     mounted() {
         this.selectedLocale = this.locale;
 
-        this.code = this.initEditor('code', this.content[this.selectedLocale]);
+        setTimeout(() => {
+            this.code = this.initEditor('code', this.content[this.selectedLocale]);
+        }, 100);
     },
     methods: {
         initEditor(ref, code) {
             const languageConf = new Compartment;
 
-            return  new EditorView({
+            return new EditorView({
                 doc: code,
                 extensions: [
                     basicSetup,

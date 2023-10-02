@@ -25,7 +25,7 @@
   .navbar-toggle:hover {
     border: 1px solid #999;
   }
-  
+
 .navbar-default-white .navbar-toggle {
   border-color: transparent; /* Removes border color */
   float: left; /* Move navbar toggle to left */
@@ -147,7 +147,7 @@
   margin-right:30px;
   }
   /*menu block white end*/
-  
+
   .mainbg {
     background-attachment: scroll;
   }
@@ -173,7 +173,7 @@
   #spacer {
     display: none;
   }
-  
+
 /****** revolution slider queries *****/
 .big-heading{
 font-size: 40pt;
@@ -210,7 +210,7 @@ li a.btn-book-menu { margin-left:0px; padding:2px 0 4px 20px; }
     margin-top: 30px;
   }
   .subfooter p{ margin-bottom:30px;}
-  .subwrap {	
+  .subwrap {
   min-height:350px;
   }
 }
@@ -249,7 +249,7 @@ li a.btn-book-menu { margin-left:0px; padding:2px 0 4px 20px; }
     left: 15px;
   }
   .subfooter p{ margin-bottom:0px;}
-  .subwrap {	
+  .subwrap {
   min-height:330px;
   }
 }
@@ -323,7 +323,7 @@ li a.btn-book-menu { margin-left:0px; padding:2px 0 4px 20px; }
     margin-top: 40px;
   }
 
-  
+
 /****** revolution slider queries *****/
 .big-heading{
 font-size: 52pt;

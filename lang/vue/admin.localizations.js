@@ -66,6 +66,8 @@ export default {
             employees: 'Команда',
             newEmployee: 'Новий співробітник',
             editEmployee: 'Редагування співробітника - {employee}',
+            content: 'Контент',
+            tourSearch: 'Форма пошуку турів',
         },
         columns: {
             pageName: 'Назва сторінки',

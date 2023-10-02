@@ -69,13 +69,32 @@
 
     <div id="app">
         <div class="bot-home-text onStep" data-animation="fadeInUp" data-time="1200">
-            <div class="container">
-                <find-tours-component></find-tours-component>
-            </div>
-        </div>
+            {!! translation($content['search']['text'] ?? []) !!}
 
-        <results-search-tours-component></results-search-tours-component>
+{{--            <div class="container">--}}
+{{--                <find-tours-component></find-tours-component>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+
+{{--        <results-search-tours-component></results-search-tours-component>--}}
     </div>
+
+    @if (! empty(trim(translation($content['content']['text'] ?? []))))
+        <section aria-label="about" class="about-history" style="padding-top: 0; padding-bottom: 40px">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <article>
+                            <div class="title-h2 title-h">{!! translation($content['content']['title'] ?? []) !!}</div>
+                            <span class="devider-cont"></span>
+
+                            {!! translation($content['content']['text'] ?? []) !!}
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+    @endif
 
     @if (! empty(posts((int) ($content['posts']['count'] ?? 10))))
         <section class="whitepage" style="padding-top: 0">

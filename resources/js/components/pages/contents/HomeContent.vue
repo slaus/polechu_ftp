@@ -77,6 +77,48 @@
         </v-card>
 
         <v-card tile outlined class="mb-6">
+            <v-card-title>{{ $t('titles.tourSearch') }}</v-card-title>
+
+            <v-card-text class="pa-4">
+                <v-layout wrap align-center>
+                    <v-flex class="xs12 sm12 px-0 px-sm-2 mb-6">
+                        <MultiLangCodeEditor
+                            :value.sync="content.search.text"
+                        ></MultiLangCodeEditor>
+                    </v-flex>
+                </v-layout>
+            </v-card-text>
+        </v-card>
+
+        <v-card tile outlined class="mb-6">
+            <v-card-title>{{ $t('titles.content') }}</v-card-title>
+
+            <v-card-text class="pa-4">
+                <v-layout wrap align-center>
+                    <v-flex class="xs12 sm6 px-0 px-sm-2 mb-6">
+                        <MultiLangTextField
+                            :value.sync="content.content.title"
+                            :label="$t('labels.title')"
+                            class="mb-2"
+                        />
+                    </v-flex>
+                    <v-flex class="xs12 sm6 px-0 px-sm-2 mb-6">
+                        <MultiLangTextField
+                            :value.sync="content.content.subtitle"
+                            :label="$t('labels.subtitle')"
+                            class="mb-2"
+                        />
+                    </v-flex>
+                    <v-flex class="xs12 sm12 px-0 px-sm-2 mb-6">
+                        <MultiLangCodeEditor
+                            :value.sync="content.content.text"
+                        ></MultiLangCodeEditor>
+                    </v-flex>
+                </v-layout>
+            </v-card-text>
+        </v-card>
+
+        <v-card tile outlined class="mb-6">
             <v-card-title>{{ $t('titles.hotTours') }}</v-card-title>
 
             <v-card-text class="pa-4">
@@ -178,6 +220,7 @@ import MultiLangTextarea from "../../shared/MultiLangTextarea";
 import MultiLangEditor from "../../shared/MultiLangEditor";
 import localization from "../../../mixins/localization";
 import draggable from 'vuedraggable';
+import MultiLangCodeEditor from "../../shared/MultiLangCodeEditor.vue";
 
 export default {
     name: "HomeContent",
@@ -189,7 +232,8 @@ export default {
         ImageThumb,
         MultiLangTextarea,
         MultiLangEditor,
-        draggable
+        draggable,
+        MultiLangCodeEditor
     },
     props: {
         value: {
@@ -202,6 +246,14 @@ export default {
             content: {
                 banner: {
                     items: []
+                },
+                search: {
+                    text: null
+                },
+                content: {
+                    title: null,
+                    subtitle: null,
+                    text: null
                 },
                 tours: {
                     title: null,
