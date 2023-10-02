@@ -85,8 +85,10 @@
                 <div class="row">
                     <div class="col-md-12">
                         <article>
-                            <div class="title-h2 title-h">{!! translation($content['content']['title'] ?? []) !!}</div>
-                            <span class="devider-cont"></span>
+                            @if (! empty(translation($content['content']['title'] ?? [])))
+                                <div class="title-h2 title-h">{!! translation($content['content']['title']) !!}</div>
+                                <span class="devider-cont"></span>
+                            @endif
 
                             {!! translation($content['content']['text'] ?? []) !!}
                         </article>
@@ -105,7 +107,7 @@
                             <div class="text-center">
                                 @if (! empty(translation($content['posts']['title'])))
                                     <h2 class="title-h2 title-h">{{ translation($content['posts']['title']) }}</h2>
-{{--                                    <span class="devider-center"></span>--}}
+                                    <span class="devider-center"></span>
                                 @endif
 
                                 @if (! empty($content['posts']['subtitle']))
