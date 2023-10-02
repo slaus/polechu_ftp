@@ -80,7 +80,7 @@
     </div>
 
     @if (! empty(trim(translation($content['content']['text'] ?? []))))
-        <section aria-label="about" class="about-history" style="padding-top: 0; padding-bottom: 40px">
+        <section aria-label="about" class="about-history" style="padding-top: 40px; padding-bottom: 40px">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
