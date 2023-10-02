@@ -176,6 +176,9 @@ export default {
             instagram: 'Instagram',
             telegram: 'Telegram',
             viber: 'Viber',
+            editor: 'Візуальний редактор',
+            textarea: 'Тектове поле',
+            code: 'Редактор коду',
         },
         tabs: {
             main: 'Головні',

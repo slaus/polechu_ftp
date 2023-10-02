@@ -37,9 +37,34 @@
                             class="mb-2"
                         />
 
-                        <MultiLangEditor
-                            :value.sync="content.seo.text"
-                        />
+                        <div class="mt-10">
+                            <v-radio-group v-model="content.seo.type" row>
+                                <v-radio
+                                    v-for="type in contentTypes"
+                                    :key="type.value"
+                                    :label="type.text"
+                                    :value="type.value"
+                                ></v-radio>
+                            </v-radio-group>
+                        </div>
+
+                        <template v-if="content.seo.type === 'editor'">
+                            <MultiLangEditor
+                                :value.sync="content.seo.text"
+                            />
+                        </template>
+
+                        <template v-if="content.seo.type === 'textarea'">
+                            <MultiLangTextarea
+                                :value.sync="content.seo.text"
+                            />
+                        </template>
+
+                        <template v-if="content.seo.type === 'code'">
+                            <MultiLangCodeEditor
+                                :value.sync="content.seo.text"
+                            />
+                        </template>
                     </v-flex>
                 </v-layout>
             </v-card-text>
@@ -55,6 +80,7 @@ import MultiLangTextarea from "../../shared/MultiLangTextarea";
 import localization from "../../../mixins/localization";
 import draggable from 'vuedraggable';
 import MultiLangEditor from "../../shared/MultiLangEditor.vue";
+import MultiLangCodeEditor from "../../shared/MultiLangCodeEditor.vue";
 
 export default {
     name: "DefaultContent",
@@ -66,7 +92,8 @@ export default {
         MultiLangTextField,
         ImageThumb,
         MultiLangTextarea,
-        draggable
+        draggable,
+        MultiLangCodeEditor
     },
     props: {
         value: {
@@ -83,10 +110,16 @@ export default {
                     description: null
                 },
                 seo: {
+                    type: 'editor',
                     title: null,
                     text: null
                 }
-            }
+            },
+            contentTypes: [
+                { value: 'editor', text: this.$t('labels.editor') },
+                { value: 'textarea', text: this.$t('labels.textarea') },
+                { value: 'code', text: this.$t('labels.code') }
+            ]
         }
     },
     watch: {
@@ -106,5 +139,11 @@ export default {
 <style lang="scss" scoped>
 .brand-item-wrapper {
     border: 1px solid #a0aec0;
+}
+</style>
+
+<style lang="scss">
+.v-input__slot .v-label {
+    margin-bottom: 0!important;
 }
 </style>
