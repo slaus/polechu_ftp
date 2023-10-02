@@ -105,7 +105,7 @@
                             <div class="text-center">
                                 @if (! empty(translation($content['posts']['title'])))
                                     <h2 class="title-h2 title-h">{{ translation($content['posts']['title']) }}</h2>
-                                    <span class="devider-center"></span>
+{{--                                    <span class="devider-center"></span>--}}
                                 @endif
 
                                 @if (! empty($content['posts']['subtitle']))
