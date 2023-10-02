@@ -100,10 +100,10 @@
         <section class="whitepage" style="padding-top: 0">
             <div class="container">
                 <div class="row">
-                    @if (! empty($content['posts']['title']) || ! empty($content['posts']['subtitle']))
+                    @if (! empty(translation($content['posts']['title'])) || ! empty(translation($content['posts']['subtitle'])))
                         <div class="col-md-12">
                             <div class="text-center">
-                                @if (! empty($content['posts']['title']))
+                                @if (! empty(translation($content['posts']['title'])))
                                     <h2 class="title-h2 title-h">{{ translation($content['posts']['title']) }}</h2>
                                     <span class="devider-center"></span>
                                 @endif
