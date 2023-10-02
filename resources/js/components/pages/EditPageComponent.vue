@@ -54,7 +54,7 @@
                             <BlogContent :value.sync="page.content" />
                         </template>
 
-                        <template v-else-if="page.slug === 'team'">
+                        <template v-else-if="page.slug === 'komanda'">
                             <TeamContent :value.sync="page.content" />
                         </template>
 
