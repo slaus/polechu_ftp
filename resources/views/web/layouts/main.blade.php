@@ -385,7 +385,7 @@
     /* SELECT TOURS POSITION */
     .bot-home-text {
         position: relative;
-        top: -400px;
+        top: -20vh;
         margin-bottom: -400px;
     }
 
