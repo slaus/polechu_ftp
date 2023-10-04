@@ -400,6 +400,22 @@
     .owl-theme .owl-controls .owl-buttons div {
         z-index: 999 !important;
     }
+
+    .social-header {
+        fill: #1467c3;
+    }
+    .social-header:hover {
+        fill: red;
+    }
+    .social-footer {
+        fill: #ffffff;
+    }
+    .social-footer-link {
+        background: #ffb600;
+    }
+    .social-footer-link:hover {
+        background: #555;
+    }
 </style>
 
 <script src="{{ asset('web/plugin/pluginson3step.js') }}"></script>
