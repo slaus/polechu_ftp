@@ -405,7 +405,7 @@
         fill: #1467c3;
     }
     .social-header:hover {
-        fill: red;
+        fill: #ffb600;
     }
     .social-footer {
         fill: #ffffff;
