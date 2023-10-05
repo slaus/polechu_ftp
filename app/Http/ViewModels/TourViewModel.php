@@ -2,12 +2,14 @@
 
 namespace App\Http\ViewModels;
 
+use App\Models\Page;
 use App\Models\Tour;
 
 class TourViewModel extends ViewModel
 {
     public function __construct(
-        private readonly Tour $tour
+        private readonly Tour $tour,
+        private readonly Page $page,
     ) {}
 
     public function tour(): Tour
@@ -18,6 +20,14 @@ class TourViewModel extends ViewModel
     public function content(): array
     {
         return $this->tour->content ?? [];
+    }
+
+    public function search(): array
+    {
+        return [
+            'form' => $this->page->content['search']['text'] ?? [],
+            'content' => $this->page->content['content'] ?? [],
+        ];
     }
 
     public function seo(): array

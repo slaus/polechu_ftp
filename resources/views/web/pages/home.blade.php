@@ -70,13 +70,7 @@
     <div id="app">
         <div class="bot-home-text onStep" data-animation="fadeInUp" data-time="1200">
             {!! translation($content['search']['text'] ?? []) !!}
-
-{{--            <div class="container">--}}
-{{--                <find-tours-component></find-tours-component>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-
-{{--        <results-search-tours-component></results-search-tours-component>--}}
+        </div>
     </div>
 
     @if (! empty(trim(translation($content['content']['text'] ?? []))))
