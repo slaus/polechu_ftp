@@ -69,18 +69,18 @@
 
     <div id="app">
         <div class="bot-home-text onStep" data-animation="fadeInUp" data-time="1200">
-            {!! translation($search['form'] ?? []) !!}
+            {!! translation($content['search']['text'] ?? []) !!}
         </div>
     </div>
 
-    @if (! empty(trim(translation($search['content']['text'] ?? []))))
+    @if (! empty(trim(translation($content['content']['text'] ?? []))))
         <section aria-label="about" class="about-history" style="padding-top: 40px; padding-bottom: 40px">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
                         <article>
-                            @if (! empty(translation($search['content']['title'] ?? [])))
-                                <div class="title-h2 title-h">{!! translation($search['content']['title']) !!}</div>
+                            @if (! empty(translation($content['content']['title'] ?? [])))
+                                <div class="title-h2 title-h">{!! translation($content['content']['title']) !!}</div>
                                 <span class="devider-cont"></span>
                             @else
                                 <br />
@@ -89,7 +89,7 @@
                                 <br />
                             @endif
 
-                            {!! translation($search['content']['text'] ?? []) !!}
+                            {!! translation($content['content']['text'] ?? []) !!}
                         </article>
                     </div>
                 </div>

@@ -207,6 +207,48 @@
                         </v-card>
 
                         <v-card tile outlined class="mb-6">
+                            <v-card-title>{{ $t('titles.tourSearch') }}</v-card-title>
+
+                            <v-card-text class="pa-4">
+                                <v-layout wrap align-center>
+                                    <v-flex class="xs12 sm12 px-0 px-sm-2 mb-6">
+                                        <MultiLangCodeEditor
+                                            :value.sync="content.search.text"
+                                        ></MultiLangCodeEditor>
+                                    </v-flex>
+                                </v-layout>
+                            </v-card-text>
+                        </v-card>
+
+                        <v-card tile outlined class="mb-6">
+                            <v-card-title>{{ $t('titles.content') }}</v-card-title>
+
+                            <v-card-text class="pa-4">
+                                <v-layout wrap align-center>
+                                    <v-flex class="xs12 sm6 px-0 px-sm-2 mb-6">
+                                        <MultiLangTextField
+                                            :value.sync="content.content.title"
+                                            :label="$t('labels.title')"
+                                            class="mb-2"
+                                        />
+                                    </v-flex>
+                                    <v-flex class="xs12 sm6 px-0 px-sm-2 mb-6">
+                                        <MultiLangTextField
+                                            :value.sync="content.content.subtitle"
+                                            :label="$t('labels.subtitle')"
+                                            class="mb-2"
+                                        />
+                                    </v-flex>
+                                    <v-flex class="xs12 sm12 px-0 px-sm-2 mb-6">
+                                        <MultiLangCodeEditor
+                                            :value.sync="content.content.text"
+                                        ></MultiLangCodeEditor>
+                                    </v-flex>
+                                </v-layout>
+                            </v-card-text>
+                        </v-card>
+
+                        <v-card tile outlined class="mb-6">
                             <v-card-title>{{ $t('titles.recentPosts') }}</v-card-title>
 
                             <v-card-text class="pa-4">
@@ -283,7 +325,7 @@
 </template>
 
 <script>
-import { generateSlug } from "../../helpers/functions";
+import {generateSlug, mergeDeep} from "../../helpers/functions";
 import { mapState } from "vuex";
 import validation from "../../mixins/validation";
 import localization from "../../mixins/localization";
@@ -292,6 +334,7 @@ import MultiLangEditor from "../shared/MultiLangEditor";
 import ImageThumb from "../shared/ImageThumb.vue";
 import MultiLangTextarea from "../shared/MultiLangTextarea.vue";
 import draggable from "vuedraggable";
+import MultiLangCodeEditor from "../shared/MultiLangCodeEditor.vue";
 
 export default {
     name: "EditTourComponent",
@@ -300,6 +343,7 @@ export default {
         localization
     ],
     components: {
+        MultiLangCodeEditor,
         MultiLangTextarea,
         MultiLangTextField,
         MultiLangEditor,
@@ -322,6 +366,14 @@ export default {
             content: {
                 banner: {
                     items: []
+                },
+                search: {
+                    text: null
+                },
+                content: {
+                    title: null,
+                    subtitle: null,
+                    text: null
                 },
                 posts: {
                     title: null,
@@ -362,7 +414,7 @@ export default {
     methods: {
         loadTourData() {
             this.$store.dispatch('tourStore/loadTour', this.id).then(() => {
-                this.content = this.tour.content;
+                this.content = mergeDeep(this.content, this.tour.content);
             });
         },
         saveTour() {
@@ -410,19 +462,22 @@ export default {
                 banner: {
                     items: []
                 },
-                tours: {
+                search: {
+                    text: null
+                },
+                content: {
                     title: null,
-                        subtitle: null,
-                        count: 0
+                    subtitle: null,
+                    text: null
                 },
                 posts: {
                     title: null,
-                        subtitle: null,
-                        count: 0
+                    subtitle: null,
+                    count: 0
                 },
                 seo: {
                     title: null,
-                        text: null
+                    text: null
                 }
             };
 

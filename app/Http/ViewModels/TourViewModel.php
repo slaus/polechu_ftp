@@ -8,8 +8,7 @@ use App\Models\Tour;
 class TourViewModel extends ViewModel
 {
     public function __construct(
-        private readonly Tour $tour,
-        private readonly Page $page,
+        private readonly Tour $tour
     ) {}
 
     public function tour(): Tour
@@ -20,14 +19,6 @@ class TourViewModel extends ViewModel
     public function content(): array
     {
         return $this->tour->content ?? [];
-    }
-
-    public function search(): array
-    {
-        return [
-            'form' => $this->page->content['search']['text'] ?? [],
-            'content' => $this->page->content['content'] ?? [],
-        ];
     }
 
     public function seo(): array
