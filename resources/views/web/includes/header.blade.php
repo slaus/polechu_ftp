@@ -8,7 +8,7 @@
                             @if(! empty(settings('company.phone')))
                                 <div>
                                     <i class="ti-mobile"></i>
-                                    <a href="https://t.me/ulechukudahochy" target="_blank" rel="nofollow"><span>{{ settings('company.phone') }}</span></a>
+                                    <a href="https://t.me/NatalkaUkra" target="_blank" rel="nofollow"><span>{{ settings('company.phone') }}</span></a>
                                 </div>
                             @endif
 

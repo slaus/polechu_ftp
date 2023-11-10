@@ -24,23 +24,26 @@
             <div class="col-md-3 col-xs-12 pull-right">
                 <div class="title-h3 title-h">{!! translation(settings('subscribe.title', [])) !!}</div>
                 <div>
-                    <form action="{{ route('form.feedback') }}" id="feedbackForm" method="post" name="subscribe">
-                        <div>
-                            <input class="subscribfield subscribeemail" id="subscribeemail" name="email" type="text" placeholder="{{ translation(settings('subscribe.email_placeholder', [])) }}">
-                            <div class="error" id="formSubscribeErrors" style="margin-bottom: 0"></div>
-                            <button class="btn-form" id="feedbackSubmit" type="submit" style="background: #ffb600; height: 40px; padding: 0 20px; margin: 5px 0;width: 100%">
-                                {{ translation(settings('subscribe.button_text', [])) }}
-                            </button>
-                        </div>
+                    <a href="https://t.me/polechu_ua" target="_blank" rel="nofollow">
+                        <img loading="lazy" src="{{ asset('images/tg.png') }}" height="40" style="display: block;" alt="telegram" />
+                    </a>
+{{--                    <form action="{{ route('form.feedback') }}" id="feedbackForm" method="post" name="subscribe">--}}
+{{--                        <div>--}}
+{{--                            <input class="subscribfield subscribeemail" id="subscribeemail" name="email" type="text" placeholder="{{ translation(settings('subscribe.email_placeholder', [])) }}">--}}
+{{--                            <div class="error" id="formSubscribeErrors" style="margin-bottom: 0"></div>--}}
+{{--                            <button class="btn-form" id="feedbackSubmit" type="submit" style="background: #ffb600; height: 40px; padding: 0 20px; margin: 5px 0;width: 100%">--}}
+{{--                                {{ translation(settings('subscribe.button_text', [])) }}--}}
+{{--                            </button>--}}
+{{--                        </div>--}}
 
-                        <div class="success" id="mailSubscribeSendSuccess">
-                            {!! translation(settings('subscribe.success_send_message', [])) !!}
-                        </div>
+{{--                        <div class="success" id="mailSubscribeSendSuccess">--}}
+{{--                            {!! translation(settings('subscribe.success_send_message', [])) !!}--}}
+{{--                        </div>--}}
 
-                        <div class="error" id="mailSubscribeSendFail">
-                            {!! translation(settings('subscribe.fail_send_message', [])) !!}
-                        </div>
-                    </form>
+{{--                        <div class="error" id="mailSubscribeSendFail">--}}
+{{--                            {!! translation(settings('subscribe.fail_send_message', [])) !!}--}}
+{{--                        </div>--}}
+{{--                    </form>--}}
                 </div>
             </div>
         </div>
