@@ -127,6 +127,18 @@
     @stack('meta')
     @stack('styles')
 
+    <style>
+        .new_spinner-container {display: none !important;}
+        .new_progress-container{
+            background-image: url("https://i.gifer.com/VAyR.gif");
+            background-size: cover;
+            width: 50px;
+            height: 50px;
+            display: block;
+            margin: 10px auto;
+        }
+    </style>
+
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
                 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
