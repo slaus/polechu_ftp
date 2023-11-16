@@ -438,6 +438,33 @@
 <script src="{{ asset('web/js/plugin-set.js') }}"></script>
 <script src="{{ asset('js/app.js') }}?v=3"></script>
 
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const target = document.querySelector('.new_result-info');
+
+        const observer = new MutationObserver((mutations) => {
+            document.querySelector('.search-tour')?.remove();
+
+            mutations.forEach((mutation) => {
+                const node = target.querySelector('.new_not-found-message')
+
+                if (node) {
+                    const container = document.querySelector('.new_show-message');
+
+                    container?.insertAdjacentHTML('beforebegin', '<div class="search-tour" style="width: 100%; display: flex;"><button id="noResultSearchTour" class="btn-form" style="background: #ffb600; height: 40px; padding: 0 20px; margin: 0 auto;width: 220px;">Підберіть мені тур</button></div>');
+
+                    document.getElementById('noResultSearchTour').addEventListener('click', () => {
+                        document.getElementById('searchTourButton').click();
+                    });
+                }
+            });
+        });
+
+        const config = { childList: true, subtree: true };
+        observer.observe(target, config);
+    });
+</script>
+
 @stack('scripts')
 </body>
 </html>
