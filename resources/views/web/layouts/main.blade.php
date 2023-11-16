@@ -484,8 +484,10 @@
                         const form = btn.parentNode.parentNode;
 
                         setTimeout(() => {
-                            fbq('track', 'Lead');
-                            console.log('lead track complated');
+                            if (form.style.display === 'none') {
+                                fbq('track', 'Lead');
+                                console.log('lead track complated');
+                            }
                         }, 500);
                     });
                 });
