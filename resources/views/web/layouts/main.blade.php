@@ -446,7 +446,7 @@
             document.querySelector('.search-tour')?.remove();
 
             mutations.forEach((mutation) => {
-                const node = target.querySelector('.new_not-found-message')
+                const node = target.querySelector('.new_not-found-message');
 
                 if (node) {
                     const container = document.querySelector('.new_show-message');
@@ -460,7 +460,39 @@
             });
         });
 
-        const config = { childList: true, subtree: true };
+        const config = { childList: true };
+        observer.observe(target, config);
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const target = document.querySelector('.new_t-container');
+
+        const observer = new MutationObserver((mutations) => {
+
+            const els = [];
+
+            mutations.forEach((mutation) => {
+                Array.from(document.querySelectorAll('.new_t-order-btn-true')).forEach(item => {
+                    els.push(item);
+                });
+            });
+
+            Array.from(new Set(els)).forEach((item) => {
+                item.addEventListener('click', () => {
+                    const btn = document.querySelector('.os-order-form-submit_button');
+                    btn.addEventListener('click', () => {
+                        const form = btn.parentNode.parentNode;
+
+                        setTimeout(() => {
+                            fbq('track', 'Lead');
+                            console.log('lead track complated');
+                        }, 500);
+                    });
+                });
+            });
+        });
+
+        const config = { childList: true };
         observer.observe(target, config);
     });
 </script>
