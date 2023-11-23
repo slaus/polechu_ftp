@@ -130,6 +130,21 @@ export default {
             deep: true
         },
         value() {
+            if (!this.value) {
+                this.content = {
+                    banner: {
+                        image: null,
+                        title: null,
+                        description: null
+                    },
+                    seo: {
+                        type: 'editor',
+                        title: null,
+                        text: null
+                    }
+                };
+            }
+
             this.content = mergeDeep(this.content, this.value);
         }
     }

@@ -207,20 +207,6 @@
                         </v-card>
 
                         <v-card tile outlined class="mb-6">
-                            <v-card-title>{{ $t('titles.tourSearch') }}</v-card-title>
-
-                            <v-card-text class="pa-4">
-                                <v-layout wrap align-center>
-                                    <v-flex class="xs12 sm12 px-0 px-sm-2 mb-6">
-                                        <MultiLangCodeEditor
-                                            :value.sync="content.search.text"
-                                        ></MultiLangCodeEditor>
-                                    </v-flex>
-                                </v-layout>
-                            </v-card-text>
-                        </v-card>
-
-                        <v-card tile outlined class="mb-6">
                             <v-card-title>{{ $t('titles.content') }}</v-card-title>
 
                             <v-card-text class="pa-4">
@@ -367,9 +353,6 @@ export default {
                 banner: {
                     items: []
                 },
-                search: {
-                    text: null
-                },
                 content: {
                     title: null,
                     subtitle: null,
@@ -461,9 +444,6 @@ export default {
             this.content = {
                 banner: {
                     items: []
-                },
-                search: {
-                    text: null
                 },
                 content: {
                     title: null,
