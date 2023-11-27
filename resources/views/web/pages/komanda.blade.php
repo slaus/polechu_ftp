@@ -97,7 +97,7 @@
                         <div class="team-wrap">
                             @foreach(employees() as $employee)
                                 <div class="team-item">
-                                    <div class="team" style="background-image:url('{{ $employee['image'] }}')">
+                                    <div class="team" style="background-image:url('{{ image_uri($employee['image'], '540') }}')">
                                         <div class="hovereffect">
                                             <div>
                                                 <div class="overlay ">
