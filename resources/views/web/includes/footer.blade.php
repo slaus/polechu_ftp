@@ -1,3 +1,169 @@
+<style>
+    /* menu nav */
+.footer-white nav {
+  position: relative;
+  margin-right:18px;
+  z-index: 999;
+  -webkit-transition: all .1s ease-in-out;
+  -moz-transition: all .1s ease-in-out;
+  transition: all .1s ease-in-out;
+}
+.footer-white nav ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  position: relative;
+}
+.footer-white nav ul li {
+  margin: 0;
+}
+.footer-white nav ul li .input-group {
+  top:15px;
+  margin-left:20px;
+  width:220px;
+}
+.footer-white nav ul li .input-group button{
+	display:inherit;
+	padding: 0;
+	line-height: 0px;
+	border:none;
+}
+.footer-white nav ul li .input-group i{ margin-left:0px; }
+
+.footer-white nav a {
+  display: block;
+  color: #fff;
+  font-size: 12px;
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-decoration: none;
+  text-shadow: 1px 1px 2px rgba(0,0,0,.5);
+}
+.footer-white nav a:hover {
+  color: #ccc !important;
+  /*background:#fff!important;*/
+}
+.footer-white nav a:hover::before {
+  display: inline-block;
+  position: absolute;
+  max-width: 35px;
+  color: rgba(255, 255, 255, 0);
+  border-bottom: 2px solid rgba(255, 255, 255, 1);
+  -webkit-transition: max-width 0.5s;
+  -moz-transition: max-width 0.5s;
+  transition: max-width 0.5s;
+}
+.footer-white nav a::before {
+  position: absolute;
+  overflow: hidden;
+  max-width: 0;
+  border-bottom: 2px solid rgba(255, 255, 255, 0);
+  color: rgba(255, 255, 255, 0);
+  content: attr(data-hover);
+  -webkit-transition: max-width 0.5s;
+  -moz-transition: max-width 0.5s;
+  transition: max-width 0.5s;
+  footer-white-space: nowrap;
+}
+.footer-white nav a.actived {
+  color: #ccc !important;
+  /*background:#fff;*/
+}
+.footer-white nav ul ul {
+  display: none;
+  position: absolute;
+  color: #efefef;
+}
+.footer-white nav ul li:hover>ul {
+  display: inherit;
+  -webkit-animation-name: animfadeInUpmenu;
+  animation-name: animfadeInUpmenu;
+  -webkit-animation-duration: .3s;
+  animation-duration: .3s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+.footer-white nav ul ul li {
+  width: 230px;
+  float: none;
+  display: list-item;
+  background: #fff;
+  border-bottom: 1px groove rgba(0, 0, 0, .2);
+  box-shadow: 5px 5px 2px rgba(23, 36, 52, .05);
+  position: relative;
+}
+.footer-white nav ul li i { margin-left:10px;}
+.footer-white nav ul ul li a {
+  color: #707070;
+  font-size: 8pt;
+  line-height: 20px;
+  padding-left: 17px;
+}
+.footer-white nav ul ul li a:hover {
+  color: #fff!important;
+  background: #ffc128;
+}
+.footer-white nav ul ul li a.active {
+  color: #fff;
+  background: #3ab0ff;
+}
+.footer-white nav ul ul li:last-child {
+  border-bottom: none;
+}
+.footer-white nav ul ul ul li {
+  position: relative;
+  top: -75px;
+  left: 230px;
+}
+li>a:after {
+  content: '';
+  margin-left: 20px;
+}
+li>a:only-child:after {
+  content: '';
+}
+
+li a.btn-book-menu {
+  display: block;
+  width: 140px;
+  height: 36px;
+  font-size: 10pt;
+  font-weight: 400;
+  text-align: center!important;
+  letter-spacing:1px;
+  line-height: 27px;
+  color: #fff!important;
+  border: 1px solid rgba(255, 255, 255, 0);
+  background: #ffc128;
+  outline: none;
+  text-shadow: none;
+  padding:4px 0 4px 20px;
+  margin:0 0 0 15px;
+  cursor: pointer;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+li a.btn-book-menu:hover {
+  color: #fff!important;
+  background: #ffd928;
+  border: 1px solid rgba(255, 255, 255, 0);
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+/******************** navigation end *******************/
+
+/* end menu nav */
+</style>
+
 <section aria-label="footer" class="subfooter">
     <div class="container">
         <div class="row">
@@ -11,22 +177,27 @@
                 @if (! empty(settings('company.description')))
                     <p>{{ translation(settings('company.description')) }}</p>
                 @endif
+
+                @if (! empty(settings('contacts.title', [])))
+                    <div class="title-h3 title-h">{!! translation(settings('contacts.title', [])) !!}</div>
+                @endif
+
+                @if(! empty(settings('contacts.text')))
+                    {!! translation(settings('contacts.text', [])) !!}
+                @endif
             </div>
 
 
-            <div class="col-md-4 col-xs-12 col-md-offset-1">
-                <div class="title-h3 title-h">{!! translation(settings('contacts.title', [])) !!}</div>
-                <address>
-                    {!! translation(settings('contacts.text', [])) !!}
-                </address>
+            <div class="footer-white col-md-4 col-xs-12 col-md-offset-1">
+                <x-menu-component layout="main" searchButton="false" />
             </div>
 
             <div class="col-md-3 col-xs-12 pull-right">
                 <div class="title-h3 title-h">{!! translation(settings('subscribe.title', [])) !!}</div>
                 <div>
-                    <a href="https://t.me/polechu_ua" target="_blank" rel="nofollow">
-                        <img loading="lazy" src="{{ asset('images/tg.png') }}" height="40" style="display: block;" alt="telegram" />
-                    </a>
+                    @if(! empty(settings('subscribe.description', [])))
+                        {!! translation(settings('subscribe.description', [])) !!}
+                    @endif
 {{--                    <form action="{{ route('form.feedback') }}" id="feedbackForm" method="post" name="subscribe">--}}
 {{--                        <div>--}}
 {{--                            <input class="subscribfield subscribeemail" id="subscribeemail" name="email" type="text" placeholder="{{ translation(settings('subscribe.email_placeholder', [])) }}">--}}

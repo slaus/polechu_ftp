@@ -68,6 +68,7 @@ export default {
             editEmployee: 'Редагування співробітника - {employee}',
             content: 'Контент',
             tourSearch: 'Форма пошуку турів',
+            tourSelection: 'Підбір туру',
         },
         columns: {
             pageName: 'Назва сторінки',
