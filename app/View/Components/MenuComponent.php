@@ -10,7 +10,8 @@ use Illuminate\View\View;
 class MenuComponent extends Component
 {
     public function __construct(
-        public string $layout
+        public string $layout,
+        public string $searchButton = "true",
     ) {}
 
     public function render(): View
@@ -52,6 +53,7 @@ class MenuComponent extends Component
 
         return view('components.menu.' . $this->layout . '.index', [
             'items' => $items,
+            'searchButton' => $this->searchButton,
         ]);
     }
 }

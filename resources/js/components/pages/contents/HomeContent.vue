@@ -267,7 +267,10 @@ export default {
                 },
                 seo: {
                     title: null,
-                    text: null
+                    text: null,
+                },
+                tourSelection: {
+                    text: null,
                 }
             }
         }
