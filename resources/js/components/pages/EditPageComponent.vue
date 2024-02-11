@@ -62,6 +62,10 @@
                             <ContactsContent :value.sync="page.content" />
                         </template>
 
+                        <template v-else-if="page.slug === 'vidguky'">
+                            <VidgukyContent :value.sync="page.content" />
+                        </template>
+
                         <template v-else>
                             <DefaultContent :value.sync="page.content" />
                         </template>
@@ -99,6 +103,7 @@ import BlogContent from "./contents/BlogContent.vue";
 import ContactsContent from "./contents/ContactsContent.vue";
 import DefaultContent from "./contents/DefaultContent.vue";
 import TeamContent from "./contents/TeamContent.vue";
+import VidgukyContent from "./contents/VidgukyContent.vue";
 
 export default {
     name: "EditPageComponent",
@@ -110,6 +115,7 @@ export default {
         MultiLangTextField,
         MultiLangEditor,
         HomeContent,
+        VidgukyContent,
         AboutContent,
         BlogContent,
         ContactsContent,
