@@ -41,6 +41,7 @@ export default {
             banner: 'Банер',
             feedbackForm: 'Форма зворотнього зв\'язку',
             seoContent: 'SEO контент',
+            moreText: 'More текст',
             contactForm: 'Контактна форма',
             address: 'Адреса',
             tours: 'Тури',

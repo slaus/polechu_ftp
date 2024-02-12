@@ -37,6 +37,14 @@
                         :readonly="isLoading"
                     />
                 </v-flex>
+                <v-flex class="xs12 sm12 mb-6 px-sm-2">
+                    <MultiLangEditor
+                        :value.sync="settings.subscribe.description"
+                        :placeholder="$t('labels.description')"
+                        rows="4"
+                        :no-resize="true"
+                    />
+                </v-flex>
             </v-layout>
 
             <v-divider />
@@ -58,12 +66,13 @@
 
 <script>
 import { mapState } from "vuex";
+import MultiLangEditor from "../shared/MultiLangEditor.vue";
 import MultiLangTextField from "../shared/MultiLangTextField.vue";
 import { mergeDeep } from "../../helpers/functions";
 
 export default {
     name: "SubscribeFormSettingsComponent",
-    components: {MultiLangTextField},
+    components: {MultiLangEditor, MultiLangTextField},
     data() {
         return {
             group: 'subscribe',
@@ -73,7 +82,8 @@ export default {
                     email_placeholder: null,
                     button_text: null,
                     success_send_message: null,
-                    fail_send_message: null
+                    fail_send_message: null,
+                    description: null,
                 }
             }
         }

@@ -47,4 +47,10 @@
             }, false);
         </script>
     @endif
+
+    <section aria-label="about" class="about-history" style="padding-top: 40px; padding-bottom: 40px">
+        <div class="container">
+            {!! translation($content['seo']['text']) !!}
+        </div>
+    </section>
 @endsection

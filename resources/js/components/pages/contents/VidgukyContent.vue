@@ -75,6 +75,26 @@
                 </v-layout>
             </v-card-text>
         </v-card>
+
+        <v-card tile outlined class="mb-6">
+            <v-card-title>{{ $t('titles.seoContent') }}</v-card-title>
+
+            <v-card-text class="pa-4">
+                <v-layout wrap align-center>
+                    <v-flex class="xs12 sm12 px-0 px-sm-2 mb-6">
+                        <MultiLangTextField
+                            :value.sync="content.seo.title"
+                            :label="$t('labels.title')"
+                            class="mb-2"
+                        />
+
+                        <MultiLangEditor
+                            :value.sync="content.seo.text"
+                        />
+                    </v-flex>
+                </v-layout>
+            </v-card-text>
+        </v-card>
     </div>
 </template>
 
@@ -112,24 +132,6 @@ export default {
             content: {
                 banner: {
                     items: []
-                },
-                search: {
-                    text: null
-                },
-                content: {
-                    title: null,
-                    subtitle: null,
-                    text: null
-                },
-                tours: {
-                    title: null,
-                    subtitle: null,
-                    count: 0
-                },
-                posts: {
-                    title: null,
-                    subtitle: null,
-                    count: 0
                 },
                 seo: {
                     title: null,

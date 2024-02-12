@@ -193,9 +193,7 @@ li a.btn-book-menu:hover {
             <div class="col-md-3 col-xs-12 pull-right">
                 <div class="title-h3 title-h">{!! translation(settings('subscribe.title', [])) !!}</div>
                 <div>
-                    <a href="https://t.me/polechu_ua" target="_blank" rel="nofollow">
-                        <img loading="lazy" src="{{ asset('images/tg.png') }}" height="40" style="display: block;" alt="telegram" />
-                    </a>
+                    {!! translation(settings('subscribe.description', [])) !!}
 {{--                    <form action="{{ route('form.feedback') }}" id="feedbackForm" method="post" name="subscribe">--}}
 {{--                        <div>--}}
 {{--                            <input class="subscribfield subscribeemail" id="subscribeemail" name="email" type="text" placeholder="{{ translation(settings('subscribe.email_placeholder', [])) }}">--}}
