@@ -53,8 +53,14 @@
 
                 <div class="space-double"></div>
 
+                <div class="col-md-12 col-sm-12">
+                    {!! translation($content['seo']['text']) !!}
+                </div>
+
                 <div class="col-md-8 col-xs-12">
                     <div class="title-h2 title-h">{{ translation($content['contact_form']['title'] ?? []) }}</div>
+
+                    <a href="https://invite.viber.com/?g2=AQBjO%2ByoogOGXUlc2xQjnwY9TPi6nZl4v3kLDdccOa4VD6T%2BciGD0ykiBvXZW0%2BF"><img src="../images/viber.png" height="25" /></a><a href="https://t.me/polechu_ua"><img src="../images/telegram.png" height="25" /></a>(>Alina)
 
                     <div class="space-single"></div>
 
@@ -94,4 +100,47 @@
             </div>
         </div>
     </section>
+
+    @if (! empty($content['banner']['items']))
+        <div class="bgslider-owl" id="home">
+            <div id="owl-slider-home" class="owl-carousel">
+                @foreach($content['banner']['items'] as $item)
+                    @continue(empty($item['image']))
+                    <div class="item imgbg banner-item" data-bg-src="{{ image_uri($item['image']) }}">
+                        <div class="overlay-main v-align text-center ">
+                            <div class="col-md-10 col-xs-11 onStep" data-animation="fadeInUp" data-time="300">
+                                @if (! empty($item['title']))
+                                    <h1 class="home-title-h1 title-h">{!! translation($item['title']) !!}</h1>
+                                @endif
+
+                                @if (! empty($item['subtitle']))
+                                    <div class="home-title-h3 title-h">{!! translation($item['subtitle']) !!}</div>
+                                @endif
+
+                                @if ((int) ($item['stars']) > 0)
+
+                                    <div class="star-content">
+                                        @for($i = 1; $i <= 5; $i++)
+                                            <i class="fa fa-star{{ $i <= (int) $item['stars'] ? '' : '-o' }}" aria-hidden="{{ $i <= (int) $item['stars'] ? 'true' : 'false' }}"></i>
+                                        @endfor
+                                        {!! translation($item['name'] ?? []) !!}
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const bannerItems = document.querySelectorAll('.banner-item');
+                Array.from(bannerItems).forEach(item => {
+                    item.style.background = 'url("' + item.getAttribute('data-bg-src') + '")';
+                    item.style.backgroundSize = 'cover';
+                });
+            }, false);
+        </script>
+    @endif
 @endsection

@@ -9,6 +9,10 @@
 
             <div class="modal-title-h3">{{ __('Application for selecting a tour') }}</div>
 
+            <p>
+                {{ __('Select my tour') }}
+            </p>
+
             <div>
                 <form action="{{ route('form.tour') }}" class="row" id="searchTourForm" method="post" name="form-search-tour">
                     <div class="form-fields-wrapper">
