@@ -62,6 +62,38 @@
                             <ContactsContent :value.sync="page.content" />
                         </template>
 
+                        <template v-else-if="page.slug === 'vidguky'">
+                            <VidgukyContent :value.sync="page.content" />
+                        </template>
+
+                        <template v-else-if="page.slug === 'list-dlya-tebe'">
+                            <ListDlyaTebeContent :value.sync="page.content" />
+                        </template>
+
+                        <template v-else-if="page.slug === 'kruzi'">
+                            <KruziContent :value.sync="page.content" />
+                        </template>
+
+                        <template v-else-if="page.slug === 'mice-dloviy-turizm'">
+                            <MiceDloviyTurizmContent :value.sync="page.content" />
+                        </template>
+
+                        <template v-else-if="page.slug === 'polechu-na-drayv'">
+                            <PolechuNaDrayvContent :value.sync="page.content" />
+                        </template>
+
+                        <template v-else-if="page.slug === 'sertifkat'">
+                            <SertifkatContent :value.sync="page.content" />
+                        </template>
+
+                        <template v-else-if="page.slug === 'kompanya'">
+                            <KompanyaContent :value.sync="page.content" />
+                        </template>
+
+                        <template v-else-if="page.slug === 'nagorodi'">
+                            <NagorodiContent :value.sync="page.content" />
+                        </template>
+
                         <template v-else>
                             <DefaultContent :value.sync="page.content" />
                         </template>
@@ -99,6 +131,14 @@ import BlogContent from "./contents/BlogContent.vue";
 import ContactsContent from "./contents/ContactsContent.vue";
 import DefaultContent from "./contents/DefaultContent.vue";
 import TeamContent from "./contents/TeamContent.vue";
+import VidgukyContent from "./contents/VidgukyContent.vue";
+import KruziContent from "./contents/KruziContent.vue";
+import ListDlyaTebeContent from "./contents/ListDlyaTebeContent.vue";
+import MiceDloviyTurizmContent from "./contents/MiceDloviyTurizmContent.vue";
+import PolechuNaDrayvContent from "./contents/PolechuNaDrayvContent.vue";
+import SertifkatContent from "./contents/SertifkatContent.vue";
+import KompanyaContent from "./contents/KompanyaContent.vue";
+import NagorodiContent from "./contents/NagorodiContent.vue";
 
 export default {
     name: "EditPageComponent",
@@ -110,11 +150,19 @@ export default {
         MultiLangTextField,
         MultiLangEditor,
         HomeContent,
+        VidgukyContent,
         AboutContent,
         BlogContent,
         ContactsContent,
         DefaultContent,
-        TeamContent
+        TeamContent,
+        KruziContent,
+        ListDlyaTebeContent,
+        MiceDloviyTurizmContent,
+        PolechuNaDrayvContent,
+        SertifkatContent,
+        KompanyaContent,
+        NagorodiContent,
     },
     props: {
         isActive: {
