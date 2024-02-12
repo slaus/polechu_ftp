@@ -77,78 +77,6 @@
         </v-card>
 
         <v-card tile outlined class="mb-6">
-            <v-card-title>{{ $t('titles.address') }}</v-card-title>
-
-            <v-card-text class="pa-4">
-                <v-layout wrap align-center>
-                    <v-flex class="xs12 sm12 px-0 px-sm-2 mb-6">
-                        <MultiLangTextField
-                            :value.sync="content.address.title"
-                            :label="$t('labels.title')"
-                            class="mb-2"
-                        />
-
-                        <MultiLangEditor
-                            :value.sync="content.address.text"
-                        />
-                    </v-flex>
-                </v-layout>
-            </v-card-text>
-        </v-card>
-
-        <v-card tile outlined class="mb-6">
-            <v-card-title>{{ $t('titles.contactForm') }}</v-card-title>
-
-            <v-card-text class="pa-4">
-                <v-layout wrap align-center>
-                    <v-flex class="xs12 sm12 px-0 px-sm-2 mb-6">
-                        <MultiLangTextField
-                            :value.sync="content.contact_form.title"
-                            :label="$t('labels.formTitle')"
-                            class="mb-2"
-                        />
-
-                        <MultiLangTextField
-                            :value.sync="content.contact_form.name_placeholder"
-                            :label="$t('labels.namePlaceholder')"
-                            class="mb-2"
-                        />
-
-                        <MultiLangTextField
-                            :value.sync="content.contact_form.email_placeholder"
-                            :label="$t('labels.emailPlaceholder')"
-                            class="mb-2"
-                        />
-
-                        <MultiLangTextField
-                            :value.sync="content.contact_form.text_placeholder"
-                            :label="$t('labels.textPlaceholder')"
-                            class="mb-2"
-                        />
-
-                        <MultiLangTextField
-                            :value.sync="content.contact_form.button_text"
-                            :label="$t('labels.buttonText')"
-                            class="mb-2"
-                        />
-
-                        <MultiLangTextField
-                            :value.sync="content.contact_form.success_send_text"
-                            :label="$t('labels.successSend')"
-                            class="mb-2"
-                        />
-
-                        <MultiLangTextField
-                            :value.sync="content.contact_form.fail_send_text"
-                            :label="$t('labels.failSend')"
-                            class="mb-2"
-                        />
-                    </v-flex>
-                </v-layout>
-            </v-card-text>
-        </v-card>
-
-        <v-card tile outlined class="mb-6">
             <v-card-title>{{ $t('titles.seoContent') }}</v-card-title>
 
             <v-card-text class="pa-4">
@@ -167,6 +95,26 @@
                 </v-layout>
             </v-card-text>
         </v-card>
+
+        <v-card tile outlined class="mb-6">
+            <v-card-title>{{ $t('titles.moreText') }}</v-card-title>
+
+            <v-card-text class="pa-4">
+                <v-layout wrap align-center>
+                    <v-flex class="xs12 sm12 px-0 px-sm-2 mb-6">
+                        <MultiLangTextField
+                            :value.sync="content.moreText.title"
+                            :label="$t('labels.title')"
+                            class="mb-2"
+                        />
+
+                        <MultiLangEditor
+                            :value.sync="content.moreText.text"
+                        />
+                    </v-flex>
+                </v-layout>
+            </v-card-text>
+        </v-card>
     </div>
 </template>
 
@@ -175,21 +123,23 @@ import { mergeDeep } from "../../../helpers/functions";
 import MultiLangTextField from "../../shared/MultiLangTextField";
 import ImageThumb from "../../shared/ImageThumb";
 import MultiLangTextarea from "../../shared/MultiLangTextarea";
+import MultiLangEditor from "../../shared/MultiLangEditor";
 import localization from "../../../mixins/localization";
 import draggable from 'vuedraggable';
-import MultiLangEditor from "../../shared/MultiLangEditor.vue";
+import MultiLangCodeEditor from "../../shared/MultiLangCodeEditor.vue";
 
 export default {
-    name: "ContactsContent",
+    name: "HomeContent",
     mixins: [
         localization
     ],
     components: {
-        MultiLangEditor,
         MultiLangTextField,
         ImageThumb,
         MultiLangTextarea,
-        draggable
+        MultiLangEditor,
+        draggable,
+        MultiLangCodeEditor
     },
     props: {
         value: {
@@ -201,27 +151,21 @@ export default {
         return {
             content: {
                 banner: {
-                    items: [],
-                },
-                address: {
-                    title: null,
-                    text: null
-                },
-                contact_form: {
-                    title: null,
-                    name_placeholder: null,
-                    email_placeholder: null,
-                    text_placeholder: null,
-                    button_text: null,
-                    success_send_text: null,
-                    fail_send_tex: null
+                    items: []
                 },
                 seo: {
                     title: null,
+                    text: null
+                },
+                moreText: {
+                    title: null,
                     text: null,
-                }
+                },
             }
         }
+    },
+    computed: {
+
     },
     watch: {
         content: {

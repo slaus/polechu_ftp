@@ -23,15 +23,16 @@
         "vuetifyjs-mix-extension": "0.0.20"
     },
     "dependencies": {
-        "codemirror": "^6.0.1",
         "@codemirror/lang-html": "^6.4.2",
         "@tinymce/tinymce-vue": "^3",
         "air-datepicker": "^3.3.5",
+        "codemirror": "^6.0.1",
         "laravel-file-manager": "^2.5.4",
         "vue": "^2.7.0",
         "vue-i18n": "^8.28.2",
         "vue-nestable": "^2.6.0",
         "vue-router": "^3.5.4",
+        "vue2-editor": "^2.10.3",
         "vuedraggable": "^2.24.3",
         "vuetify": "^2.6.3",
         "vuetify-loader": "^1.7.3",

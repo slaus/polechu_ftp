@@ -44,6 +44,14 @@
                         :readonly="isLoading"
                     />
                 </v-flex>
+                <v-flex class="xs12 sm12 mb-6 px-sm-2">
+                    <MultiLangEditor
+                        :value.sync="settings.subscribe.description"
+                        :placeholder="$t('labels.description')"
+                        rows="4"
+                        :no-resize="true"
+                    />
+                </v-flex>
             </v-layout>
 
             <v-divider />
@@ -82,7 +90,7 @@ export default {
                     email_placeholder: null,
                     button_text: null,
                     success_send_message: null,
-                    fail_send_message: null
+                    fail_send_message: null,
                 }
             }
         }

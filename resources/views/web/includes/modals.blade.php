@@ -13,6 +13,10 @@
                 Давай знайомитись! Залишай номер телефону і коментар про свої побажання, ми напишемо тобі протягом 1 години в робочий час.
             </div>
 
+            <p>
+                {{ __('Select my tour') }}
+            </p>
+
             <div>
                 <form action="{{ route('form.tour') }}" class="row" id="searchTourForm" method="post" name="form-search-tour">
                     <div class="form-fields-wrapper">

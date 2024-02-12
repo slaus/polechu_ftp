@@ -10,23 +10,18 @@
             >{{ locale.name }}</v-tab>
         </v-tabs>
 
-        <Editor
-            :init="editorOpt"
-            v-model="content[selectedLocale]"
-            :api-key="tinyApiKey"
-            @input="input"
-        ></Editor>
+        <vue-editor v-model="content[selectedLocale]" @text-change="input" :editorToolbar="customToolbar"></vue-editor>
     </div>
 </template>
 
 <script>
-import Editor from "@tinymce/tinymce-vue";
+import { VueEditor } from "vue2-editor";
 import { mapState } from "vuex";
 
 export default {
     name: "MultiLangEditor",
     components: {
-        Editor
+        VueEditor
     },
     props: {
         value: {
@@ -58,19 +53,22 @@ export default {
         return {
             tab: null,
             selectedLocale: '',
-            tinyApiKey: 'uqrwnf5eemmc8gq2ytkajtgss8qdhfng7zzwjmo6hv1k3uzh',
-            editorOpt: {
-                height: this.height,
-                plugins: [
-                    'advlist', 'autolink', 'lists', 'link', 'image', 'charmap', 'preview',
-                    'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
-                    'insertdatetime', 'media', 'table', 'help', 'wordcount', 'directionality'
+            customToolbar: [
+                [{ header: [false, 1, 2, 3, 4, 5, 6] }],
+                ["bold", "italic", "underline", "strike"], // toggled buttons
+                [
+                    { align: "" },
+                    { align: "center" },
+                    { align: "right" },
+                    { align: "justify" }
                 ],
-                toolbar: 'undo redo | blocks | ' +
-                    'bold italic backcolor | alignleft aligncenter ' +
-                    'alignright alignjustify | bullist numlist outdent indent | ltr rtl | ' +
-                    'removeformat | help'
-            }
+                ["blockquote", "code-block"],
+                [{ list: "ordered" }, { list: "bullet" }, { list: "check" }],
+                [{ indent: "-1" }, { indent: "+1" }], // outdent/indent
+                [{ color: [] }, { background: [] }], // dropdown with defaults from theme
+                ["link", "video"],
+                ["clean"] // remove formatting button
+            ]
         }
     },
     computed: {
