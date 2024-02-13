@@ -8,6 +8,10 @@
             </div>
 
             <div class="modal-title-h3">{{ __('Application for selecting a tour') }}</div>
+            <div class="mb-20">
+                Хочеш полетіти з нами на відпочинок? Ми все організуємо)
+                Давай знайомитись! Залишай номер телефону і коментар про свої побажання, ми напишемо тобі протягом 1 години в робочий час.
+            </div>
 
             <p>
                 {{ __('Select my tour') }}
@@ -50,6 +54,10 @@
 </div>
 
 <style>
+    .mb-20 {
+        margin-bottom: 20px;
+    }
+
     .modal-mask {
         position: fixed;
         z-index: 99999;

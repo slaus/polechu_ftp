@@ -16,7 +16,6 @@
 {{--                    </ul>--}}
 {{--                </li>--}}
 {{--            @endif--}}
-
             @if(filter_var($searchButton, FILTER_VALIDATE_BOOLEAN))
                 <li>
                     <div class="input-group">

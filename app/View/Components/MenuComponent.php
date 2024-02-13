@@ -11,7 +11,7 @@ class MenuComponent extends Component
 {
     public function __construct(
         public string $layout,
-        public string $searchButton = 'true',
+        public string $searchButton = "true"
     ) {}
 
     public function render(): View

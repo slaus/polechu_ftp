@@ -1,5 +1,9 @@
 <style>
+<<<<<<< HEAD
+    /* menu nav */
+=======
 /* menu nav */
+>>>>>>> e68556fd4b23552bae31fdd26c460bdf0f371f14
 .footer-white nav {
   position: relative;
   margin-right:18px;
@@ -16,7 +20,10 @@
 }
 .footer-white nav ul li {
   margin: 0;
+<<<<<<< HEAD
+=======
   margin-right:-4px;
+>>>>>>> e68556fd4b23552bae31fdd26c460bdf0f371f14
 }
 .footer-white nav ul li .input-group {
   top:15px;
@@ -66,7 +73,11 @@
   -webkit-transition: max-width 0.5s;
   -moz-transition: max-width 0.5s;
   transition: max-width 0.5s;
+<<<<<<< HEAD
+  footer-white-space: nowrap;
+=======
   white-space: nowrap;
+>>>>>>> e68556fd4b23552bae31fdd26c460bdf0f371f14
 }
 .footer-white nav a.actived {
   color: #ccc !important;
@@ -76,7 +87,10 @@
   display: none;
   position: absolute;
   color: #efefef;
+<<<<<<< HEAD
+=======
   z-index: 9999;
+>>>>>>> e68556fd4b23552bae31fdd26c460bdf0f371f14
 }
 .footer-white nav ul li:hover>ul {
   display: inherit;
@@ -180,6 +194,19 @@ li a.btn-book-menu:hover {
                     <p>{{ translation(settings('company.description')) }}</p>
                 @endif
 
+                @if (! empty(settings('contacts.title', [])))
+                    <div class="title-h3 title-h">{!! translation(settings('contacts.title', [])) !!}</div>
+                @endif
+
+                @if(! empty(settings('contacts.text')))
+                    {!! translation(settings('contacts.text', [])) !!}
+                @endif
+            </div>
+
+
+            <div class="footer-white col-md-4 col-xs-12 col-md-offset-1">
+                <x-menu-component layout="main" searchButton="false" />
+
                 <div class="title-h3 title-h">{!! translation(settings('contacts.title', [])) !!}</div>
                 <address>
                     {!! translation(settings('contacts.text', [])) !!}
@@ -193,7 +220,13 @@ li a.btn-book-menu:hover {
             <div class="col-md-3 col-xs-12 pull-right">
                 <div class="title-h3 title-h">{!! translation(settings('subscribe.title', [])) !!}</div>
                 <div>
+<<<<<<< HEAD
+                    @if(! empty(settings('subscribe.description', [])))
+                        {!! translation(settings('subscribe.description', [])) !!}
+                    @endif
+=======
                     {!! translation(settings('subscribe.description', [])) !!}
+>>>>>>> e68556fd4b23552bae31fdd26c460bdf0f371f14
 {{--                    <form action="{{ route('form.feedback') }}" id="feedbackForm" method="post" name="subscribe">--}}
 {{--                        <div>--}}
 {{--                            <input class="subscribfield subscribeemail" id="subscribeemail" name="email" type="text" placeholder="{{ translation(settings('subscribe.email_placeholder', [])) }}">--}}
