@@ -10,18 +10,23 @@
             >{{ locale.name }}</v-tab>
         </v-tabs>
 
-        <vue-editor v-model="content[selectedLocale]" @text-change="input" :editorToolbar="customToolbar"></vue-editor>
+        <Editor
+            :init="editorOpt"
+            v-model="content[selectedLocale]"
+            :api-key="tinyApiKey"
+            @input="input"
+        ></Editor>
     </div>
 </template>
 
 <script>
-import { VueEditor } from "vue2-editor";
+import Editor from "@tinymce/tinymce-vue";
 import { mapState } from "vuex";
 
 export default {
     name: "MultiLangEditor",
     components: {
-        VueEditor
+        Editor
     },
     props: {
         value: {
@@ -53,22 +58,19 @@ export default {
         return {
             tab: null,
             selectedLocale: '',
-            customToolbar: [
-                [{ header: [false, 1, 2, 3, 4, 5, 6] }],
-                ["bold", "italic", "underline", "strike"], // toggled buttons
-                [
-                    { align: "" },
-                    { align: "center" },
-                    { align: "right" },
-                    { align: "justify" }
+            tinyApiKey: 'lcz9ozkgs7y830w6eqekzma693jas3qt8s84izr33f4c89dp',
+            editorOpt: {
+                height: this.height,
+                plugins: [
+                    'advlist', 'autolink', 'lists', 'link', 'image', 'charmap', 'preview',
+                    'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
+                    'insertdatetime', 'media', 'table', 'help', 'wordcount', 'directionality'
                 ],
-                ["blockquote", "code-block"],
-                [{ list: "ordered" }, { list: "bullet" }, { list: "check" }],
-                [{ indent: "-1" }, { indent: "+1" }], // outdent/indent
-                [{ color: [] }, { background: [] }], // dropdown with defaults from theme
-                ["link", "video"],
-                ["clean"] // remove formatting button
-            ]
+                toolbar: 'undo redo | blocks | ' +
+                    'bold italic backcolor | alignleft aligncenter ' +
+                    'alignright alignjustify | bullist numlist outdent indent | ltr rtl | ' +
+                    'removeformat | help'
+            }
         }
     },
     computed: {
