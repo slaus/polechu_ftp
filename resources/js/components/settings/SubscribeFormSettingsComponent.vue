@@ -44,14 +44,6 @@
                         :readonly="isLoading"
                     />
                 </v-flex>
-                <v-flex class="xs12 sm12 mb-6 px-sm-2">
-                    <MultiLangEditor
-                        :value.sync="settings.subscribe.description"
-                        :placeholder="$t('labels.description')"
-                        rows="4"
-                        :no-resize="true"
-                    />
-                </v-flex>
             </v-layout>
 
             <v-divider />
