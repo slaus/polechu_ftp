@@ -164,10 +164,15 @@
   .blog-news .hovereffect .overlay h3 {
     font-size: 8pt;
   }
-  .bot-home, .bot-home-text {
+  /* .bot-home, .bot-home-text {
     position: relative;
-	top:0px;
-	margin-top:0px;
+	  top:0px;
+	  margin-top:0px;
+  } */
+  .bot-home {
+    position: relative;
+	  top:0px;
+	  margin-top:0px;
   }
   #reservation { padding:5%; }
   #spacer {

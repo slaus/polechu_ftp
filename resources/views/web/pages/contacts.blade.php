@@ -103,7 +103,7 @@
 
     @if (! empty($content['banner']['items']))
         <div class="bgslider-owl" id="home">
-            <div id="owl-slider-home" class="owl-carousel">
+            <div class="owl-carousel">
                 @foreach($content['banner']['items'] as $item)
                     @continue(empty($item['image']))
                     <div class="item imgbg banner-item" data-bg-src="{{ image_uri($item['image']) }}">

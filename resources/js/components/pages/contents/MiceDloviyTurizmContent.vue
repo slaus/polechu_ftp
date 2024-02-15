@@ -91,6 +91,10 @@
                         <MultiLangEditor
                             :value.sync="content.seo.text"
                         />
+
+                        <MultiLangCodeEditor
+                            :value.sync="content.seo.code"
+                        />
                     </v-flex>
                 </v-layout>
             </v-card-text>
@@ -135,7 +139,8 @@ export default {
                 },
                 seo: {
                     title: null,
-                    text: null
+                    text: null,
+                    code: null,
                 }
             }
         }

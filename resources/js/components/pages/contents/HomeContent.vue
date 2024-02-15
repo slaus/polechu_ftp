@@ -205,6 +205,10 @@
                         <MultiLangEditor
                             :value.sync="content.seo.text"
                         />
+
+                        <MultiLangCodeEditor
+                            :value.sync="content.seo.code"
+                        />
                     </v-flex>
                 </v-layout>
             </v-card-text>

@@ -207,10 +207,10 @@
 </div>
 
 <div class="content-wrapper">
+    @include('web.includes.modals')
     @include('web.includes.header')
     @yield('content')
     @include('web.includes.footer')
-    @include('web.includes.modals')
 </div>
 
 <!-- Bootstrap CSS -->
@@ -395,11 +395,11 @@
         border-radius: 4px;
     }
     /* SELECT TOURS POSITION */
-    .bot-home-text {
+    /* .bot-home-text {
         position: relative;
         top: -20vh;
         margin-bottom: -400px;
-    }
+    } */
 
     @media only screen and (max-width: 1199px) {
         .bot-home-text {

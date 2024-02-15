@@ -70,6 +70,8 @@
     <section style="margin-top: 40px; margin-bottom: 40px">
         <div class="container">
             {!! translation($content['seo']['text']) !!}
+            {!! translation($content['seo']['code']) !!}
+
         </div>
     </section>
 @endsection

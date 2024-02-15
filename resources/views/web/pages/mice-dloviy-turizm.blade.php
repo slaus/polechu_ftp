@@ -76,6 +76,7 @@
     <section>
         <div class="container">
             {!! translation($content['seo']['text']) !!}
+            {!! translation($content['seo']['code']) !!}
         </div>
     </section>
 @endsection
