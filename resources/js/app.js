@@ -189,6 +189,13 @@ if (searchTourForm) {
 const modal = document.getElementById('modal');
 const searchTourMainButton = document.getElementById('searchTourMainButton');
 const searchTourButton = document.getElementById('searchTourButton');
+const searchTourButtonTury = document.getElementById('searchTourButtonTury');
+const searchTourButtonHome1 = document.getElementById('searchTourButtonHome1');
+const searchTourButtonHome2 = document.getElementById('searchTourButtonHome2');
+const searchTourButtonKruzi = document.getElementById('searchTourButtonKruzi');
+const searchTourButtonMICE = document.getElementById('searchTourButtonMICE');
+const searchTourButtonSertifkat = document.getElementById('searchTourButtonSertifkat');
+const searchTourButtonKompanya = document.getElementById('searchTourButtonKompanya');
 const closeModalButton = document.getElementById('closeModalButton');
 
 if (modal) {
@@ -199,6 +206,41 @@ if (modal) {
     }
     if (searchTourButton) {
         searchTourButton.addEventListener('click', e => {
+            modal.style.display = 'table';
+        });
+    }
+    if(searchTourButtonTury) {
+        searchTourButtonTury.addEventListener('click', e => {
+            modal.style.display = 'table';
+        });
+    }
+    if(searchTourButtonHome1) {
+        searchTourButtonHome1.addEventListener('click', e => {
+            modal.style.display = 'table';
+        });
+    }
+    if(searchTourButtonHome2) {
+        searchTourButtonHome2.addEventListener('click', e => {
+            modal.style.display = 'table';
+        });
+    }
+    if(searchTourButtonKruzi) {
+        searchTourButtonKruzi.addEventListener('click', e => {
+            modal.style.display = 'table';
+        });
+    }
+    if(searchTourButtonMICE) {
+        searchTourButtonMICE.addEventListener('click', e => {
+            modal.style.display = 'table';
+        });
+    }
+    if(searchTourButtonSertifkat) {
+        searchTourButtonSertifkat.addEventListener('click', e => {
+            modal.style.display = 'table';
+        });
+    }
+    if(searchTourButtonKompanya) {
+        searchTourButtonKompanya.addEventListener('click', e => {
             modal.style.display = 'table';
         });
     }
