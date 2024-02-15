@@ -76,6 +76,7 @@
     <section style="padding-top: 40px; padding-bottom: 40px">
         <div class="container">
             {!! translation($content['moreText']['text']) !!}
+            {!! translation($content['moreText']['code']) !!}
         </div>
     </section>
 @endsection

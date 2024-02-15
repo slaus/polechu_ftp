@@ -149,9 +149,7 @@
                         <span class="devider-cont"></span>
 
                         {!! translation($content['seo']['text'] ?? []) !!}
-                        <button class="btn-form" style="background: #ffb600; height: 40px; padding: 0 20px; margin: 0;width: 100%">
-                            {{ __('Search tour') }}
-                        </button>
+                        {!! translation($content['seo']['code'] ?? []) !!}
                     </article>
                 </div>
             </div>

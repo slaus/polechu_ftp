@@ -111,6 +111,10 @@
                         <MultiLangEditor
                             :value.sync="content.moreText.text"
                         />
+
+                        <MultiLangCodeEditor 
+                            :value.sync="content.moreText.code"
+                        />
                     </v-flex>
                 </v-layout>
             </v-card-text>
@@ -160,6 +164,7 @@ export default {
                 moreText: {
                     title: null,
                     text: null,
+                    code: null,
                 },
             }
         }
